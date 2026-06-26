@@ -3,17 +3,16 @@ Title: RecordWeb Concept (RWC)
 Shortname: rwc
 Level: 1
 Status: CG-DRAFT
-Group: recordweb
+Group: w3c
 URL: https://recordweb.github.io/rwc/
 Editor: Nik Jenzer, nik@triebwerkstatt.ch
 Abstract:
     RecordWeb postulates a paradigm shift in institutional information management. Not a better filing principle, not a smarter dossier structure — but a different foundational decision about what information is: an autonomous, permanently identifiable, versioned, and cryptographically secured object called a Record. This concept paper lays out the conceptual foundations of RecordWeb, distinguishes it from related approaches, and describes the path from idea to specification. It is the conceptual counterpart to the RecordWeb Protocol ([[RWP]]).
 Repository: recordweb/rwc
 Markup Shorthands: markdown yes
-Boilerplate: copyright no
+Boilerplate: omit copyright
 Version History: https://github.com/recordweb/rwc/commits/main/index.bs
 Previous Version: https://doi.org/10.5281/zenodo.20475343
-License: https://creativecommons.org/licenses/by/4.0/
 </pre>
 
 <pre class="biblio">
@@ -332,7 +331,7 @@ Why SoW, SoR, and SoA Have No Future {#sow-sor-soa}
 
 ## An Honest Appreciation ## {#appreciation}
 
-The distinction between <dfn>System of Work (SoW)</dfn>, <dfn>System of Record (SoR)</dfn>, and <dfn>System of Archive (SoA)</dfn> is not wrong. It is precise, legally grounded, and reflects a real institutional logic: information is created in the work process, secured in the record repository, and preserved in the archive. RecordWeb does not challenge this approach. It asks one level deeper.
+The distinction between *System of Work (SoW)*, *System of Record (SoR)*, and *System of Archive (SoA) is not wrong. It is precise, legally grounded, and reflects a real institutional logic: information is created in the work process, secured in the record repository, and preserved in the archive. RecordWeb does not challenge this approach. It asks one level deeper.
 
 ## The Diagnosis: The Problem Is the System Boundary Itself ## {#system-boundary}
 
@@ -697,44 +696,44 @@ Annex A: Glossary {#glossary}
 ==============================
 
 <dl>
-  <dt><dfn>Branch</dfn></dt>
+  <dt>Branch</dt>
   <dd>A parallel development line within the [=version graph=] of a [=Record=]. From one finalised version, two or more simultaneously existing drafts arise. Branches are transparently visible; their consolidation is effected through an explicit merge act.</dd>
 
-  <dt><dfn>Case</dfn></dt>
+  <dt>Case</dt>
   <dd>A specialised Record type that represents a persisted view of a set of linked [=Records=]. A [=Case=] groups the [=Records=] belonging to a business transaction according to a defined schema. It follows the same rules as any other [=Record=]: DID, states, [=version graph=], [=finalisation=].</dd>
 
-  <dt><dfn>Content hash</dfn></dt>
+  <dt>Content hash</dt>
   <dd>A cryptographic fingerprint calculated from the content of a dataset. Two datasets with identical content hashes are guaranteed to be identical. If even a single bit in the content changes, the hash changes.</dd>
 
-  <dt><dfn>DID (Decentralized Identifier)</dfn></dt>
+  <dt>DID (Decentralized Identifier)</dt>
   <dd>A globally unique identifier that requires no central register. A DID permanently identifies a [=Record=] — regardless of where it is physically stored. Defined in [[DID-CORE]].</dd>
 
-  <dt><dfn>Directed Acyclic Graph (DAG)</dfn></dt>
+  <dt>Directed Acyclic Graph (DAG)</dt>
   <dd>A graph with directed edges and no cycles. Every node has one or more predecessors; no node can be its own ancestor. The [=version graph=] of every [=Record=] in RecordWeb is a DAG.</dd>
 
-  <dt><dfn>Finalisation</dfn></dt>
+  <dt>Finalisation</dt>
   <dd>The explicit act by which a [=Record=] draft is converted into a binding, immutable version. Only finalised versions are linkable. Finalisation is a human decision, documented with [=owner=] and timestamp.</dd>
 
-  <dt><dfn>Merkle root</dfn></dt>
+  <dt>Merkle root</dt>
   <dd>A cryptographic value calculated from the hash values of a set of [=Records=] that uniquely represents the aggregate state of that set. The [=Case=] [=Merkle root=] represents the state of a complete [=Case=] at a specific point in time.</dd>
 
-  <dt><dfn>Metadata</dfn></dt>
+  <dt>Metadata</dt>
   <dd>The dimensions along which a [=Record=] can be found, linked, and classified. The minimum set: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.</dd>
 
-  <dt><dfn>Owner</dfn></dt>
+  <dt>Owner</dt>
   <dd>The person or organisational unit responsible for a [=Record=] at a specific point in time. Identified by a DID. The [=owner=] is the one who finalises the [=Record=] and thereby assumes accountability for its content.</dd>
 
-  <dt><dfn>Payload</dfn></dt>
+  <dt>Payload</dt>
   <dd>The actual content of a [=Record=] — the information it carries. A [=payload=] always follows the schema of its Record type.</dd>
 
-  <dt><dfn>Record</dfn></dt>
+  <dt>Record</dt>
   <dd>The smallest semantically autonomous unit of information in RecordWeb. A [=Record=] consists of [=identity=] (DID), [=payload=], and [=metadata=]. It has a type that determines its schema, and a state that controls its linkability. It exists
   within a [=version graph=] and is permanently identifiable regardless of system boundaries.</dd>
 
-  <dt><dfn>State transition</dfn></dt>
+  <dt>State transition</dt>
   <dd>A change of the state of a [=Record=], for example from [=draft=] to [=finalized=]. In RecordWeb, "archiving" is a [=state transition=], not a system migration.</dd>
 
-  <dt><dfn>Version graph</dfn></dt>
+  <dt>Version graph</dt>
   <dd>The entirety of all versions of a [=Record=] and their linkages. Every node is an immutable snapshot; every edge describes a provenance relationship. The [=version graph=] is a [=Directed Acyclic Graph (DAG)=]: directed (from old to new), acyclic (no cycles). It contains [=branches=] and merges.</dd>
 </dl>
 
