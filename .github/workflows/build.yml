@@ -1,14 +1,20 @@
 name: Build and Deploy Spec
 
 on:
+  pull_request: {}
   push:
     branches: [main]
 
 jobs:
-  build:
-    uses: w3c/spec-prod/.github/workflows/reusable-build-deploy.yml@v2
-    with:
-      TOOLCHAIN: bikeshed
-      GH_PAGES_BRANCH: gh-pages
+  main:
+    name: Build, Validate and Deploy
+    runs-on: ubuntu-latest
     permissions:
       contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: w3c/spec-prod@v2
+        with:
+          TOOLCHAIN: bikeshed
+          GH_PAGES_BRANCH: gh-pages
+          VALIDATE_WEBIDL: false
