@@ -1,0 +1,2134 @@
+<!doctype html><html lang="en">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>RecordWeb Concept (RWC)</title>
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
+  <meta content="Bikeshed version d113b2e81, updated Tue Jun 9 14:57:55 2026 -0700" name="generator">
+  <link href="https://recordweb.github.io/rwc/" rel="canonical">
+  <meta content="d92bc2471efd25841d6c79c4a050a69bb08a9cb4" name="revision">
+  <meta content="dark light" name="color-scheme">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
+<style>/* Boilerplate: style-autolinks */
+.css.css, .property.property, .descriptor.descriptor {
+    color: var(--a-normal-text);
+    font-size: inherit;
+    font-family: inherit;
+}
+.css::before, .property::before, .descriptor::before {
+    content: "‘";
+}
+.css::after, .property::after, .descriptor::after {
+    content: "’";
+}
+.property, .descriptor {
+    /* Don't wrap property and descriptor names */
+    white-space: nowrap;
+}
+.type { /* CSS value <type> */
+    font-style: italic;
+}
+pre .property::before, pre .property::after {
+    content: "";
+}
+[data-link-type="property"]::before,
+[data-link-type="propdesc"]::before,
+[data-link-type="descriptor"]::before,
+[data-link-type="value"]::before,
+[data-link-type="function"]::before,
+[data-link-type="at-rule"]::before,
+[data-link-type="selector"]::before,
+[data-link-type="maybe"]::before {
+    content: "‘";
+}
+[data-link-type="property"]::after,
+[data-link-type="propdesc"]::after,
+[data-link-type="descriptor"]::after,
+[data-link-type="value"]::after,
+[data-link-type="function"]::after,
+[data-link-type="at-rule"]::after,
+[data-link-type="selector"]::after,
+[data-link-type="maybe"]::after {
+    content: "’";
+}
+
+[data-link-type].production::before,
+[data-link-type].production::after,
+.prod [data-link-type]::before,
+.prod [data-link-type]::after {
+    content: "";
+}
+
+[data-link-type=element],
+[data-link-type=element-attr] {
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: .9em;
+}
+[data-link-type=element]::before { content: "<" }
+[data-link-type=element]::after  { content: ">" }
+
+[data-link-type=biblio] {
+    white-space: pre;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
+<style>/* Boilerplate: style-colors */
+/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+:root {
+    color-scheme: light dark;
+
+    --text: black;
+    --bg: white;
+
+    --unofficial-watermark: url(https://www.w3.org/StyleSheets/TR/2016/logos/UD-watermark);
+
+    --logo-bg: #1a5e9a;
+    --logo-active-bg: #c00;
+    --logo-text: white;
+
+    --tocnav-normal-text: #707070;
+    --tocnav-normal-bg: var(--bg);
+    --tocnav-hover-text: var(--tocnav-normal-text);
+    --tocnav-hover-bg: #f8f8f8;
+    --tocnav-active-text: #c00;
+    --tocnav-active-bg: var(--tocnav-normal-bg);
+
+    --tocsidebar-text: var(--text);
+    --tocsidebar-bg: #f7f8f9;
+    --tocsidebar-shadow: rgba(0,0,0,.1);
+    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+    --toclink-text: var(--text);
+    --toclink-underline: #3980b5;
+    --toclink-visited-text: var(--toclink-text);
+    --toclink-visited-underline: #054572;
+
+    --heading-text: #005a9c;
+
+    --hr-text: var(--text);
+
+    --algo-border: #def;
+
+    --del-text: red;
+    --del-bg: transparent;
+    --ins-text: #080;
+    --ins-bg: transparent;
+
+    --a-normal-text: #034575;
+    --a-normal-underline: #bbb;
+    --a-visited-text: var(--a-normal-text);
+    --a-visited-underline: #707070;
+    --a-hover-bg: rgba(75%, 75%, 75%, .25);
+    --a-active-text: #c00;
+    --a-active-underline: #c00;
+
+    --blockquote-border: silver;
+    --blockquote-bg: transparent;
+    --blockquote-text: currentcolor;
+
+    --issue-border: #e05252;
+    --issue-bg: #fbe9e9;
+    --issue-text: var(--text);
+    --issueheading-text: #831616;
+
+    --example-border: #e0cb52;
+    --example-bg: #fcfaee;
+    --example-text: var(--text);
+    --exampleheading-text: #574b0f;
+
+    --note-border: #52e052;
+    --note-bg: #e9fbe9;
+    --note-text: var(--text);
+    --noteheading-text: hsl(120, 70%, 30%);
+    --notesummary-underline: silver;
+
+    --assertion-border: #aaa;
+    --assertion-bg: #eee;
+    --assertion-text: black;
+
+    --advisement-border: orange;
+    --advisement-bg: #fec;
+    --advisement-text: var(--text);
+    --advisementheading-text: #b35f00;
+
+    --warning-border: red;
+    --warning-bg: hsla(40,100%,50%,0.95);
+    --warning-text: var(--text);
+
+    --amendment-border: #330099;
+    --amendment-bg: #F5F0FF;
+    --amendment-text: var(--text);
+    --amendmentheading-text: #220066;
+
+    --def-border: #8ccbf2;
+    --def-bg: #def;
+    --def-text: var(--text);
+    --defrow-border: #bbd7e9;
+
+    --datacell-border: silver;
+
+    --indexinfo-text: #707070;
+
+    --indextable-hover-text: black;
+    --indextable-hover-bg: #f7f8f9;
+
+    --outdatedspec-bg: rgba(0, 0, 0, .5);
+    --outdatedspec-text: black;
+    --outdated-bg: maroon;
+    --outdated-text: white;
+    --outdated-shadow: red;
+
+    --editedrec-bg: darkorange;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddd;
+        --bg: black;
+
+        --unofficial-watermark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23100808' transform='translate(200 200) rotate(-45) translate(-200 -200)' stroke='%23100808' stroke-width='3'%3E%3Ctext x='50%25' y='220' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EUNOFFICIAL%3C/text%3E%3Ctext x='50%25' y='305' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EDRAFT%3C/text%3E%3C/g%3E%3C/svg%3E");
+
+        --logo-bg: #1a5e9a;
+        --logo-active-bg: #c00;
+        --logo-text: white;
+
+        --tocnav-normal-text: #999;
+        --tocnav-normal-bg: var(--bg);
+        --tocnav-hover-text: var(--tocnav-normal-text);
+        --tocnav-hover-bg: #080808;
+        --tocnav-active-text: #f44;
+        --tocnav-active-bg: var(--tocnav-normal-bg);
+
+        --tocsidebar-text: var(--text);
+        --tocsidebar-bg: #080808;
+        --tocsidebar-shadow: rgba(255,255,255,.1);
+        --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+        --toclink-text: var(--text);
+        --toclink-underline: #6af;
+        --toclink-visited-text: var(--toclink-text);
+        --toclink-visited-underline: #054572;
+
+        --heading-text: #8af;
+
+        --hr-text: var(--text);
+
+        --algo-border: #456;
+
+        --del-text: #f44;
+        --del-bg: transparent;
+        --ins-text: #4a4;
+        --ins-bg: transparent;
+
+        --a-normal-text: #6af;
+        --a-normal-underline: #555;
+        --a-visited-text: var(--a-normal-text);
+        --a-visited-underline: var(--a-normal-underline);
+        --a-hover-bg: rgba(25%, 25%, 25%, .2);
+        --a-active-text: #f44;
+        --a-active-underline: var(--a-active-text);
+
+        --borderedblock-bg: rgba(255, 255, 255, .05);
+
+        --blockquote-border: silver;
+        --blockquote-bg: var(--borderedblock-bg);
+        --blockquote-text: currentcolor;
+
+        --issue-border: #e05252;
+        --issue-bg: var(--borderedblock-bg);
+        --issue-text: var(--text);
+        --issueheading-text: hsl(0deg, 70%, 70%);
+
+        --example-border: hsl(50deg, 90%, 60%);
+        --example-bg: var(--borderedblock-bg);
+        --example-text: var(--text);
+        --exampleheading-text: hsl(50deg, 70%, 70%);
+
+        --note-border: hsl(120deg, 100%, 35%);
+        --note-bg: var(--borderedblock-bg);
+        --note-text: var(--text);
+        --noteheading-text: hsl(120, 70%, 70%);
+        --notesummary-underline: silver;
+
+        --assertion-border: #444;
+        --assertion-bg: var(--borderedblock-bg);
+        --assertion-text: var(--text);
+
+        --advisement-border: orange;
+        --advisement-bg: #222218;
+        --advisement-text: var(--text);
+        --advisementheading-text: #f84;
+
+        --warning-border: red;
+        --warning-bg: hsla(40,100%,20%,0.95);
+        --warning-text: var(--text);
+
+        --amendment-border: #330099;
+        --amendment-bg: #080010;
+        --amendment-text: var(--text);
+        --amendmentheading-text: #cc00ff;
+
+        --def-border: #8ccbf2;
+        --def-bg: #080818;
+        --def-text: var(--text);
+        --defrow-border: #136;
+
+        --datacell-border: silver;
+
+        --indexinfo-text: #aaa;
+
+        --indextable-hover-text: var(--text);
+        --indextable-hover-bg: #181818;
+
+        --outdatedspec-bg: rgba(255, 255, 255, .5);
+        --outdatedspec-text: black;
+        --outdated-bg: maroon;
+        --outdated-text: white;
+        --outdated-shadow: red;
+
+        --editedrec-bg: darkorange;
+    }
+    /* In case a transparent-bg image doesn't expect to be on a dark bg,
+       which is quite common in practice... */
+    img { background: white; }
+}
+</style>
+<style>/* Boilerplate: style-counters */
+body {
+    counter-reset: example figure issue table;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
+}
+
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example " counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}
+
+figure.table figcaption {
+    counter-increment: table;
+}
+figure.table figcaption:not(.no-marker)::before {
+    content: "Table " counter(table) " ";
+}
+</style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+    --dfnpanel-target-bg: #ffc;
+    --dfnpanel-target-outline: orange;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dfnpanel-bg: #222;
+        --dfnpanel-text: var(--text);
+        --dfnpanel-target-bg: #333;
+        --dfnpanel-target-outline: silver;
+    }
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel a:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: 8px;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+    transition: left 1s ease-out, bottom 1s ease-out;
+}
+
+.dfn-panel .link-item:hover {
+    text-decoration: underline;
+}
+.dfn-panel .link-item .copy-icon {
+    opacity: 0;
+}
+.dfn-panel .link-item:hover .copy-icon,
+.dfn-panel .link-item .copy-icon:focus {
+    opacity: 1;
+}
+
+.dfn-panel .copy-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 0.85em;
+    height: 1em;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dfn-panel .copy-icon .icon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dfn-panel .copy-icon .icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #ccc;
+    opacity: 0.25;
+    transform: translate(3px, -3px);
+}
+
+.dfn-panel .copy-icon:active .icon::before {
+    opacity: 1;
+}
+
+.dfn-paneled[role="button"] { cursor: help; }
+
+.highlighted {
+    animation: target-fade 3s;
+}
+
+@keyframes target-fade {
+    from {
+        background-color: var(--dfnpanel-target-bg);
+        outline: 5px solid var(--dfnpanel-target-outline);
+    }
+    to {
+        color: var(--a-normal-text);
+        background-color: transparent;
+        outline: transparent;
+    }
+}
+</style>
+<style>/* Boilerplate: style-issues */
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+<style>/* Boilerplate: style-md-lists */
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}
+</style>
+<style>/* Boilerplate: style-ref-hints */
+:root {
+    --ref-hint-bg: #ddd;
+    --ref-hint-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ref-hint-bg: #222;
+        --ref-hint-text: var(--text);
+    }
+}
+
+.ref-hint {
+    display: inline-block;
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.5em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--ref-hint-bg);
+    color: var(--ref-hint-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+
+.ref-hint * { margin: 0; padding: 0; text-indent: 0; }
+
+.ref-hint ul { padding: 0 0 0 1em; list-style: none; }
+</style>
+<style>/* Boilerplate: style-selflinks */
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: var(--selflink-hover-text);
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }
+</style>
+ <body class="h-entry">
+  <div class="head">
+   <h1 class="no-ref p-name" id="title">RecordWeb Concept (RWC)</h1>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>,
+    <time class="dt-updated" datetime="2026-06-26">26 June 2026</time></p>
+   <div data-fill-with="spec-metadata">
+    <dl>
+     <dt>This version:
+     <dd><a class="u-url" href="https://recordweb.github.io/rwc/">https://recordweb.github.io/rwc/</a>
+     <dt>Previous Versions:
+     <dd><a href="https://doi.org/10.5281/zenodo.20475343" rel="prev">https://doi.org/10.5281/zenodo.20475343</a>
+     <dt>Version History:
+     <dd><a href="https://github.com/recordweb/rwc/commits/main/index.bs">https://github.com/recordweb/rwc/commits/main/index.bs</a>
+     <dt>Issue Tracking:
+     <dd><a href="https://github.com/recordweb/rwc/issues/">GitHub</a>
+     <dt class="editor">Editor:
+     <dd class="editor h-card p-author vcard"><a class="email fn p-name u-email" href="mailto:nik@triebwerkstatt.ch">Nik Jenzer</a>
+    </dl>
+   </div>
+   <div data-fill-with="warning"></div>
+   <hr title="Separator for header">
+  </div>
+  <div class="p-summary" data-fill-with="abstract">
+   <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
+   <p>RecordWeb postulates a paradigm shift in institutional information management. Not a better filing principle, not a smarter dossier structure — but a different foundational decision about what information is: an autonomous, permanently identifiable, versioned, and cryptographically secured object called a Record. This concept paper lays out the conceptual foundations of RecordWeb, distinguishes it from related approaches, and describes the path from idea to specification. It is the conceptual counterpart to the RecordWeb Protocol (<a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>).</p>
+  </div>
+  <div data-fill-with="at-risk"></div>
+  <h2 class="heading no-num no-ref no-toc settled" id="status"><span class="content">Status of this document</span></h2>
+  <div data-fill-with="status">
+   <p>
+  This specification was published by the <a href="https://www.w3.org/community/wicg/">Web Platform Incubator Community Group</a>.
+  It is not a W3C Standard nor is it on the W3C Standards Track.
+
+  Please note that under the
+  <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+  there is a limited opt-out and other conditions apply.
+
+  Learn more about
+  <a href="http://www.w3.org/community/">W3C Community and Business Groups</a>.
+</p>
+   <p></p>
+  </div>
+  <div data-fill-with="at-risk"></div>
+  <nav data-fill-with="table-of-contents" id="toc">
+   <h2 class="no-num no-ref no-toc" id="contents">Table of Contents</h2>
+   <ol class="toc">
+    <li>
+     <a href="#intro"><span class="secno">1</span> <span class="content">Introduction</span></a>
+     <ol class="toc">
+      <li><a href="#status①"><span class="secno">1.1</span> <span class="content">Status of This Document</span></a>
+     </ol>
+    <li><a href="#abstract①"><span class="secno">2</span> <span class="content">Abstract</span></a>
+    <li>
+     <a href="#web-to-recordweb"><span class="secno">3</span> <span class="content">From Berners-Lee to RecordWeb: The Unfinished Revolution</span></a>
+     <ol class="toc">
+      <li><a href="#www-architecture"><span class="secno">3.1</span> <span class="content">The World Wide Web as an Information Architecture</span></a>
+      <li><a href="#linked-data"><span class="secno">3.2</span> <span class="content">Linked Data: The Second Attempt</span></a>
+      <li><a href="#overlooked-question"><span class="secno">3.3</span> <span class="content">The Overlooked Question</span></a>
+      <li><a href="#recordweb-extension"><span class="secno">3.4</span> <span class="content">RecordWeb: The Consistent Extension</span></a>
+      <li><a href="#paradigm-shift"><span class="secno">3.5</span> <span class="content">A Paradigm Shift, Not a Replacement</span></a>
+     </ol>
+    <li>
+     <a href="#records-continuum"><span class="secno">4</span> <span class="content">The Records Continuum and Its Unresolved Tension</span></a>
+     <ol class="toc">
+      <li><a href="#australian-revolution"><span class="secno">4.1</span> <span class="content">The Australian Revolution</span></a>
+      <li><a href="#continuity-vs-provability"><span class="secno">4.2</span> <span class="content">The Unresolved Tension: Continuity Versus Provability</span></a>
+      <li><a href="#classical-lifecycle"><span class="secno">4.3</span> <span class="content">The Classical Lifecycle: Structure Without Flexibility</span></a>
+      <li><a href="#synthesis"><span class="secno">4.4</span> <span class="content">RecordWeb as Synthesis</span></a>
+      <li><a href="#inheritance"><span class="secno">4.5</span> <span class="content">What RecordWeb Inherits from Both</span></a>
+     </ol>
+    <li>
+     <a href="#sow-sor-soa"><span class="secno">5</span> <span class="content">Why SoW, SoR, and SoA Have No Future</span></a>
+     <ol class="toc">
+      <li><a href="#appreciation"><span class="secno">5.1</span> <span class="content">An Honest Appreciation</span></a>
+      <li><a href="#system-boundary"><span class="secno">5.2</span> <span class="content">The Diagnosis: The Problem Is the System Boundary Itself</span></a>
+      <li><a href="#artefact"><span class="secno">5.3</span> <span class="content">The Thesis: System Boundaries Are an Artefact of the Twentieth Century</span></a>
+      <li><a href="#what-remains"><span class="secno">5.4</span> <span class="content">What Remains — and What Disappears</span></a>
+      <li><a href="#consequence-for-staff"><span class="secno">5.5</span> <span class="content">The Consequence for Staff</span></a>
+     </ol>
+    <li>
+     <a href="#the-record"><span class="secno">6</span> <span class="content">The Record: The Smallest Meaningful Unit of Information</span></a>
+     <ol class="toc">
+      <li><a href="#record-definition"><span class="secno">6.1</span> <span class="content">What a Record Is — and What It Is Not</span></a>
+      <li><a href="#record-components"><span class="secno">6.2</span> <span class="content">The Three Components of a Record</span></a>
+      <li><a href="#record-type-schema"><span class="secno">6.3</span> <span class="content">Type and Schema: The Record’s Contract</span></a>
+      <li><a href="#record-states"><span class="secno">6.4</span> <span class="content">States: The Liveliness of the Record</span></a>
+      <li><a href="#admin-example"><span class="secno">6.5</span> <span class="content">An Example from Administrative Practice</span></a>
+     </ol>
+    <li>
+     <a href="#version-graph-section"><span class="secno">7</span> <span class="content">The Version Graph: How Information Changes Without Disappearing</span></a>
+     <ol class="toc">
+      <li><a href="#versions-today"><span class="secno">7.1</span> <span class="content">The Problem with Versions Today</span></a>
+      <li><a href="#change-as-linkage"><span class="secno">7.2</span> <span class="content">The Core Idea: Change as Linkage</span></a>
+      <li><a href="#branches"><span class="secno">7.3</span> <span class="content">Branches: Parallel Work as the Normal Case</span></a>
+      <li><a href="#finalisation-section"><span class="secno">7.4</span> <span class="content">Finalisation: The Moment of Binding Force</span></a>
+      <li><a href="#corrections"><span class="secno">7.5</span> <span class="content">Corrections, Replacements, and Validity</span></a>
+      <li><a href="#dag-semantics"><span class="secno">7.6</span> <span class="content">Why a DAG Is More Than a Technical Detail</span></a>
+     </ol>
+    <li>
+     <a href="#cases"><span class="secno">8</span> <span class="content">The Case: Cases as a View onto the RecordWeb</span></a>
+     <ol class="toc">
+      <li><a href="#dossier-limitations"><span class="secno">8.1</span> <span class="content">Why the Dossier Is Not Enough</span></a>
+      <li><a href="#case-definition"><span class="secno">8.2</span> <span class="content">What a Case Is</span></a>
+      <li><a href="#case-as-view"><span class="secno">8.3</span> <span class="content">Case as View, Not as Container</span></a>
+      <li><a href="#building-permit-example"><span class="secno">8.4</span> <span class="content">Example: A Building Permit as a Case</span></a>
+      <li><a href="#case-governance"><span class="secno">8.5</span> <span class="content">Cases and Governance</span></a>
+     </ol>
+    <li>
+     <a href="#accountability"><span class="secno">9</span> <span class="content">Accountability and Trust: Proving Rather Than Claiming</span></a>
+     <ol class="toc">
+      <li><a href="#the-question"><span class="secno">9.1</span> <span class="content">The Question Authorities Dread</span></a>
+      <li>
+       <a href="#traceability-levels"><span class="secno">9.2</span> <span class="content">Three Levels of Traceability</span></a>
+       <ol class="toc">
+        <li><a href="#level-1-record"><span class="secno">9.2.1</span> <span class="content">Level 1: The Individual Record</span></a>
+        <li><a href="#level-2-version-graph"><span class="secno">9.2.2</span> <span class="content">Level 2: The Version Graph</span></a>
+        <li><a href="#level-3-merkle"><span class="secno">9.2.3</span> <span class="content">Level 3: The Case Merkle Root</span></a>
+       </ol>
+      <li><a href="#optional-ledger"><span class="secno">9.3</span> <span class="content">The Optional Ledger: Hyperledger as External Anchor</span></a>
+      <li><a href="#optional-solid"><span class="secno">9.4</span> <span class="content">The Optional Pod: Solid as Citizen-Controlled Storage</span></a>
+      <li><a href="#trust"><span class="secno">9.5</span> <span class="content">Trust Through Transparency, Transparency Through Structure</span></a>
+     </ol>
+    <li>
+     <a href="#related-concepts"><span class="secno">10</span> <span class="content">Related Concepts and Demarcation</span></a>
+     <ol class="toc">
+      <li><a href="#related-linked-data"><span class="secno">10.1</span> <span class="content">Linked Data and the Semantic Web</span></a>
+      <li><a href="#related-continuum"><span class="secno">10.2</span> <span class="content">Records Continuum</span></a>
+      <li><a href="#related-iso15489"><span class="secno">10.3</span> <span class="content">ISO 15489 and eCH-0164</span></a>
+      <li><a href="#related-oais"><span class="secno">10.4</span> <span class="content">OAIS</span></a>
+      <li><a href="#related-provo"><span class="secno">10.5</span> <span class="content">PROV-O</span></a>
+      <li><a href="#related-git"><span class="secno">10.6</span> <span class="content">Git</span></a>
+      <li><a href="#positioning-summary"><span class="secno">10.7</span> <span class="content">Summary: Positioning of RecordWeb</span></a>
+     </ol>
+    <li>
+     <a href="#roadmap"><span class="secno">11</span> <span class="content">Roadmap and Open Questions: An Invitation</span></a>
+     <ol class="toc">
+      <li><a href="#current-state"><span class="secno">11.1</span> <span class="content">What RecordWeb Is Today</span></a>
+      <li><a href="#next-steps"><span class="secno">11.2</span> <span class="content">The Next Steps</span></a>
+      <li><a href="#open-questions"><span class="secno">11.3</span> <span class="content">Open Questions</span></a>
+      <li><a href="#invitation"><span class="secno">11.4</span> <span class="content">An Invitation</span></a>
+     </ol>
+    <li><a href="#glossary"><span class="secno">12</span> <span class="content">Annex A: Glossary</span></a>
+    <li><a href="#annex-standards"><span class="secno">13</span> <span class="content">Annex B: Relationship to Existing Standards</span></a>
+    <li>
+     <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
+     <ol class="toc">
+      <li><a href="#w3c-conventions"><span class="secno"></span> <span class="content">Document conventions</span></a>
+     </ol>
+    <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-here"><span class="secno"></span> <span class="content">Terms defined by this specification</span></a>
+     </ol>
+    <li>
+     <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
+     <ol class="toc">
+      <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
+      <li><a href="#informative"><span class="secno"></span> <span class="content">Non-Normative References</span></a>
+     </ol>
+   </ol>
+  </nav>
+  <main>
+   <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
+   <h3 class="heading settled" data-level="1.1" id="status①"><span class="secno">1.1. </span><span class="content">Status of This Document</span><a class="self-link" href="#status①"></a></h3>
+   <p>This document is a <strong>CG Draft</strong> of the RecordWeb Community Group. It is an Editor’s Draft and does not represent a W3C standard or endorsed position.</p>
+   <p>The published baseline of this concept is available at <a data-link-type="biblio" href="#biblio-zenodo-rwc" title="RecordWeb Concept (RWC) v1.0 — Published baseline">[ZENODO-RWC]</a> (Version 1.0, DOI: 10.5281/zenodo.20475343). This working document reflects ongoing development toward the Community Group deliverable.</p>
+   <p>Feedback is invited via <a href="https://github.com/recordweb/rwc/issues">GitHub Issues</a>.</p>
+   <h2 class="heading settled" data-level="2" id="abstract①"><span class="secno">2. </span><span class="content">Abstract</span><a class="self-link" href="#abstract①"></a></h2>
+   <p>Public administrations have managed information for decades in systems built for filing, not for traceability. The result is well known: incomplete dossiers, lost version histories, system boundaries that fragment information, and an institutional memory that promises more than it delivers.</p>
+   <p>RecordWeb postulates a paradigm shift. Not a better filing principle, not a smarter dossier structure, but a different foundational decision about what information is: an autonomous, permanently identifiable, versioned, and cryptographically secured object. The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="record">Record</dfn> is the smallest meaningful unit of information. It knows its origin. It proves its state. It exists independently of the systems in which it is stored.</p>
+   <p>RecordWeb takes up the networking idea of the World Wide Web (not for documents, but for Records) and combines it with the conceptual openness of the Records Continuum, the cryptographic integrity of modern versioning systems, and the institutional accountability of classical Records Management. The result is an architecture in which information no longer migrates through system changes but traverses states. In which completeness is not trusted but proven. In which accountability is not a claim but a structural property.</p>
+   <p>This concept paper lays out the conceptual foundations of RecordWeb, distinguishes it from related approaches, and describes the path from idea to specification. It is addressed to professionals in Records Management, archival science, and public administration, as well as to anyone interested in the question of how institutional information can exist in a digital world in a way that allows it not merely to be stored but permanently proven. For the normative technical specification, see <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>.</p>
+   <h2 class="heading settled" data-level="3" id="web-to-recordweb"><span class="secno">3. </span><span class="content">From Berners-Lee to RecordWeb: The Unfinished Revolution</span><a class="self-link" href="#web-to-recordweb"></a></h2>
+   <h3 class="heading settled" data-level="3.1" id="www-architecture"><span class="secno">3.1. </span><span class="content">The World Wide Web as an Information Architecture</span><a class="self-link" href="#www-architecture"></a></h3>
+   <p>When Tim Berners-Lee sketched out his idea for a distributed hypertext system at CERN in 1989 <a data-link-type="biblio" href="#biblio-berners-lee-1989" title="Information Management: A Proposal">[BERNERS-LEE-1989]</a>, he was pursuing a precise goal: information should be linked together, regardless of which system it was stored on. His proposal, "a large hypertext database with typed links", was no technical gimmick but an epistemological thesis: knowledge emerges through connection, not through filing.</p>
+   <p>The Web that grew from it fulfilled this thesis, but only halfway. It networked <em>documents</em>: Web pages, PDFs, images, videos. The networked unit remained the document, not the information.</p>
+   <h3 class="heading settled" data-level="3.2" id="linked-data"><span class="secno">3.2. </span><span class="content">Linked Data: The Second Attempt</span><a class="self-link" href="#linked-data"></a></h3>
+   <p>Berners-Lee recognised the incompleteness early. With his concept of the <em>Semantic Web</em> and later the <em>Linked Data</em> principles <a data-link-type="biblio" href="#biblio-linked-data" title="Linked Data">[LINKED-DATA]</a>, he tried to go a step further: networking not documents but data. The four principles are well known:</p>
+   <ol>
+    <li data-md>
+     <p>Use URIs as names for things.</p>
+    <li data-md>
+     <p>Use HTTP URIs so that names can be resolved.</p>
+    <li data-md>
+     <p>Provide useful information when someone looks up a URI.</p>
+    <li data-md>
+     <p>Link to other URIs to enable discovery.</p>
+   </ol>
+   <p>Linked Data has achieved significant successes: Wikidata, DBpedia, and Google’s Knowledge Graph are children of this idea. But the core problem remained: the networked unit is a <em>data point in a graph</em>, not an <em>autonomous information object with history, provenance, and accountability</em>.</p>
+   <p>What is missing is the institutional dimension. An RDF triple does not know who created it. It does not know when it was valid. It has no version. It has no responsible party. It is not auditable.</p>
+   <h3 class="heading settled" data-level="3.3" id="overlooked-question"><span class="secno">3.3. </span><span class="content">The Overlooked Question</span><a class="self-link" href="#overlooked-question"></a></h3>
+   <p>Berners-Lee’s approaches answer the question <em>how do I connect information?</em>, but not the question <em>what is information that can be connected?</em> This question arises everywhere that information must not merely be <em>transmitted</em> but <em>proven</em>.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> <a data-link-type="biblio" href="#biblio-iso15489" title="ISO 15489-1:2016 — Information and documentation — Records management">[ISO15489]</a> defines a Record as "information created, received, and maintained as evidence and as an asset by an organization or person, in pursuit of legal obligations or in the transaction of business" (Section 3.14). This definition emphasises the evidentiary character (information as an object of proof) and forms the normative foundation for the <a data-link-type="dfn" href="#record" id="ref-for-record">Record</a> concept in RecordWeb.</p>
+   <p>This question is not technical. It is ontological: what is the smallest meaningful unit of information; autonomous, identifiable, traceable, and permanent?</p>
+   <p>The answer RecordWeb postulates is: **the <a data-link-type="dfn" href="#record" id="ref-for-record①">Record</a>**.</p>
+   <h3 class="heading settled" data-level="3.4" id="recordweb-extension"><span class="secno">3.4. </span><span class="content">RecordWeb: The Consistent Extension</span><a class="self-link" href="#recordweb-extension"></a></h3>
+   <p>RecordWeb takes up Berners-Lee’s core idea and radicalises it. Not documents are networked, not data points, but **<a data-link-type="dfn" href="#record" id="ref-for-record②">Records</a>**: autonomous, versioned, schema-based information objects with unambiguous identity, traceable provenance, and explicit accountability.</p>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Dimension
+      <th>World Wide Web
+      <th>Linked Data
+      <th>RecordWeb
+    <tbody>
+     <tr>
+      <td>Networked unit
+      <td>Document
+      <td>Data point (triple)
+      <td><a data-link-type="dfn" href="#record" id="ref-for-record③">Record</a>
+     <tr>
+      <td>Identity
+      <td>URL (location = name)
+      <td>URI
+      <td>DID (location ≠ name)
+     <tr>
+      <td>Versioning
+      <td>None (implicit)
+      <td>None
+      <td><a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph">Version graph</a> (DAG)
+     <tr>
+      <td>Accountability
+      <td>None
+      <td>None
+      <td><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="record-owner">record owner</dfn> (DID)
+     <tr>
+      <td>Immutability
+      <td>None
+      <td>None
+      <td>Content hash per version
+     <tr>
+      <td>Auditability
+      <td>None
+      <td>None
+      <td>Merkle integrity
+     <tr>
+      <td>Schema
+      <td>Not required
+      <td>RDF/OWL (optional)
+      <td>Mandatory per type and version
+   </table>
+   <p>The Web made documents findable. Linked Data made facts linkable. RecordWeb makes <strong>information provable</strong>.</p>
+   <h3 class="heading settled" data-level="3.5" id="paradigm-shift"><span class="secno">3.5. </span><span class="content">A Paradigm Shift, Not a Replacement</span><a class="self-link" href="#paradigm-shift"></a></h3>
+   <p>RecordWeb does not replace the World Wide Web and does not compete with Linked Data. It is a complementary architecture that answers a different question: how can information (as an atomic, autonomous unit) exist in such a way that it can be reliably identified, linked, and proven across system boundaries, organisational boundaries, and time boundaries?</p>
+   <p>This question arises everywhere that information must not merely be <em>transmitted</em> but <em>proven</em>: in healthcare, in finance, and especially in public administration, which owes accountability to the sovereign, to parliaments, and to courts.</p>
+   <h2 class="heading settled" data-level="4" id="records-continuum"><span class="secno">4. </span><span class="content">The Records Continuum and Its Unresolved Tension</span><a class="self-link" href="#records-continuum"></a></h2>
+   <h3 class="heading settled" data-level="4.1" id="australian-revolution"><span class="secno">4.1. </span><span class="content">The Australian Revolution</span><a class="self-link" href="#australian-revolution"></a></h3>
+   <p>In the second half of the twentieth century, archival science was dominated by linear thinking: Records are created, used, transferred to the archive, and end there. This lifecycle (creation, maintenance, disposal) was intuitive, easy to convey, and closely tied to the physical reality of paper documents.</p>
+   <p>Frank Upward and his colleagues at Monash University fundamentally challenged this model in the 1990s <a data-link-type="biblio" href="#biblio-upward-1996" title="Structuring the Records Continuum — Part One">[UPWARD-1996]</a> <a data-link-type="biblio" href="#biblio-upward-1997" title="Structuring the Records Continuum — Part Two">[UPWARD-1997]</a>. Their <em>Records Continuum Model</em> replaced the linear sequence with a multidimensional, continuous spatial model. A Record does not pass through phases, it exists simultaneously across multiple dimensions: <em>create</em>, <em>capture</em>, <em>organise</em>, <em>pluralise</em>. The underlying idea is radical: a Record is not an object that travels from A to B. It is an entity that lives in a continuous space of meaning, context, and use.</p>
+   <p>This idea is conceptually far more advanced than the classical lifecycle. It anticipates what RecordWeb thinks through to its logical conclusion: a Record never ceases to exist. It changes its context, its use, its meaning. But it itself endures.</p>
+   <h3 class="heading settled" data-level="4.2" id="continuity-vs-provability"><span class="secno">4.2. </span><span class="content">The Unresolved Tension: Continuity Versus Provability</span><a class="self-link" href="#continuity-vs-provability"></a></h3>
+   <p>The Records Continuum Model has a blind spot that is often underestimated in scholarly discussion. The model’s strength (its openness, its multidimensionality, its rejection of rigid phase boundaries) is simultaneously its weakness in the institutional context.</p>
+   <p>Public administrations owe accountability. They must be able to prove:</p>
+   <ul>
+    <li data-md>
+     <p><em>When</em> was which information available in which version?</p>
+    <li data-md>
+     <p><em>Who</em> had knowledge of which matter at which point in time?</p>
+    <li data-md>
+     <p><em>How</em> was a decision prepared — which information was present, which was not?</p>
+   </ul>
+   <p>The Records Continuum provides no structural answer to these questions. It describes how Records are <em>meaningful</em>, but not how they are <em>provable</em>. This is not a flaw in the model; it was not designed for this purpose. But it is the gap that RecordWeb must close.</p>
+   <h3 class="heading settled" data-level="4.3" id="classical-lifecycle"><span class="secno">4.3. </span><span class="content">The Classical Lifecycle: Structure Without Flexibility</span><a class="self-link" href="#classical-lifecycle"></a></h3>
+   <p>On the other side stands the classical lifecycle, as anchored in <a data-link-type="biblio" href="#biblio-iso15489" title="ISO 15489-1:2016 — Information and documentation — Records management">[ISO15489]</a> and in Switzerland in <a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 — Information lifecycle in public administration">[ECH-0164]</a>: processing — retention — archiving or disposal.</p>
+   <p>This framework has great merits. It creates clarity about responsibilities, enables legally compliant retention periods, and structures the transition between operational use and historical preservation. But the model carries a structural cost: it thinks in system boundaries. A Record "lives" in one system and is "moved" to another. Every transition is a migration, a transformation, a potential loss of information.</p>
+   <h3 class="heading settled" data-level="4.4" id="synthesis"><span class="secno">4.4. </span><span class="content">RecordWeb as Synthesis</span><a class="self-link" href="#synthesis"></a></h3>
+   <p>RecordWeb postulates that the tension between continuity and provability cannot be resolved through a better lifecycle model, but through a different approach.</p>
+   <p><strong>The thesis:</strong> a Record does not need a system that carries it through phases. It needs an identity that outlasts it. It needs a version history that documents its change. And it needs cryptographic integrity that proves its state at any point in time.</p>
+   <p>What is today understood as "archiving" (the physical or digital transfer to a retention system) becomes in RecordWeb a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="state-transition">state transition</dfn>. The <a data-link-type="dfn" href="#record" id="ref-for-record④">Record</a> stays where it is. It receives a new state. Its location can change; its DID remains. Its version is frozen; new versions can emerge without overwriting the old one.</p>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Concept
+      <th>Records Continuum
+      <th>Classical Lifecycle
+      <th>RecordWeb
+    <tbody>
+     <tr>
+      <td>Core idea
+      <td>Record lives continuously
+      <td>Record moves through phases
+      <td>Record exists with states
+     <tr>
+      <td>Strength
+      <td>Flexibility, openness
+      <td>Clarity, legal compliance
+      <td>Provability, continuity
+     <tr>
+      <td>Weakness
+      <td>Weak auditability
+      <td>Rigid system boundaries, migration losses
+      <td>Higher technical complexity
+     <tr>
+      <td>Archive
+      <td>No fixed boundary
+      <td>Separate system (SoA)
+      <td>State, not a system change
+     <tr>
+      <td>Versions
+      <td>Not explicitly modelled
+      <td>Not explicitly modelled
+      <td><a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①">Version graph</a> (DAG), mandatory
+     <tr>
+      <td>Integrity
+      <td>Conceptual
+      <td>Organisational
+      <td>Cryptographic
+   </table>
+   <h3 class="heading settled" data-level="4.5" id="inheritance"><span class="secno">4.5. </span><span class="content">What RecordWeb Inherits from Both</span><a class="self-link" href="#inheritance"></a></h3>
+   <p>RecordWeb is not a refutation of the Records Continuum, it is its technical implementation. The idea that a Record does not die but lives on is the core thought of both approaches. What RecordWeb adds is the mechanism: the immutable, cryptographically secured snapshot as the basis for every statement about the state of information at a specific point in time.</p>
+   <p>From the classical lifecycle, RecordWeb inherits the insight that Records exist in an institutional context, with responsible parties, with retention periods, with governance. This institutional dimension is absent from the Records Continuum just as it is from Linked Data. It is constitutive for RecordWeb.</p>
+   <p>The result is a model that combines the conceptual openness of the Continuum with the institutional binding force of the classical lifecycle (and places both on a cryptographic foundation that was not yet available in the 1990s).</p>
+   <h2 class="heading settled" data-level="5" id="sow-sor-soa"><span class="secno">5. </span><span class="content">Why SoW, SoR, and SoA Have No Future</span><a class="self-link" href="#sow-sor-soa"></a></h2>
+   <h3 class="heading settled" data-level="5.1" id="appreciation"><span class="secno">5.1. </span><span class="content">An Honest Appreciation</span><a class="self-link" href="#appreciation"></a></h3>
+   <p>The distinction between <em>System of Work (SoW)</em>, <em>System of Record (SoR)</em>, and *System of Archive (SoA) is not wrong. It is precise, legally grounded, and reflects a real institutional logic: information is created in the work process, secured in the record repository, and preserved in the archive. RecordWeb does not challenge this approach. It asks one level deeper.</p>
+   <h3 class="heading settled" data-level="5.2" id="system-boundary"><span class="secno">5.2. </span><span class="content">The Diagnosis: The Problem Is the System Boundary Itself</span><a class="self-link" href="#system-boundary"></a></h3>
+   <p>The lifecycle model does not fail in practice due to poor technology. It fails because of people, but not because people lack discipline. It fails because the model assigns people a task that is structurally incompatible with their work.</p>
+   <p>Staff in a public authority want two things: to get their work done, and to have access to all relevant information at any time. What they do not want (and what they have consistently refused to do over decades, not out of ill will but out of rational time management) is the manual transfer of information from one system to another.</p>
+   <h3 class="heading settled" data-level="5.3" id="artefact"><span class="secno">5.3. </span><span class="content">The Thesis: System Boundaries Are an Artefact of the Twentieth Century</span><a class="self-link" href="#artefact"></a></h3>
+   <p>The tripartite SoW/SoR/SoA structure is historically motivated. Paper could not simultaneously be in circulation and in the archive. Electronic systems were expensive, specialised, and poorly networked. The transition between phases was a physical or organisational necessity.</p>
+   <p><strong>This necessity no longer exists technically.</strong></p>
+   <p>RecordWeb does precisely this: there is no longer any transition between SoW and SoR, because every <a data-link-type="dfn" href="#record" id="ref-for-record⑤">Record</a> from the outset satisfies both requirements: it is editable (in the <a data-link-type="dfn" href="#draft" id="ref-for-draft">draft</a> state) and it is archivable (every finalised version is immutable, cryptographically secured, and permanently addressable). There is no longer any transition between SoR and SoA, because the archive is no longer a place, it is a state.</p>
+   <h3 class="heading settled" data-level="5.4" id="what-remains"><span class="secno">5.4. </span><span class="content">What Remains — and What Disappears</span><a class="self-link" href="#what-remains"></a></h3>
+   <p><strong>What disappears:</strong></p>
+   <ul>
+    <li data-md>
+     <p>The organisational obligation to manually transfer information between systems</p>
+    <li data-md>
+     <p>The institutional distinction between "working area" and "record repository" as a system boundary</p>
+    <li data-md>
+     <p>Migration as a regular, risk-laden transition in the information lifecycle</p>
+    <li data-md>
+     <p>The archive as a separate system with its own staff, its own interfaces, its own logic</p>
+   </ul>
+   <p><strong>What remains:</strong></p>
+   <ul>
+    <li data-md>
+     <p>The substantive distinction between active and concluded information: mapped as states</p>
+    <li data-md>
+     <p>Legal retention periods: mapped as <a data-link-type="dfn" href="#metadata" id="ref-for-metadata">metadata</a> in the <a data-link-type="dfn" href="#record" id="ref-for-record⑥">Record</a></p>
+    <li data-md>
+     <p>The archive’s responsibility for long-term stability and accessibility: mapped as governance rules</p>
+    <li data-md>
+     <p>The human decision about <a data-link-type="dfn" href="#finalisation" id="ref-for-finalisation">finalisation</a>: as an explicit, documented act</p>
+   </ul>
+   <h3 class="heading settled" data-level="5.5" id="consequence-for-staff"><span class="secno">5.5. </span><span class="content">The Consequence for Staff</span><a class="self-link" href="#consequence-for-staff"></a></h3>
+   <p>For staff, RecordWeb means a radical simplification: they work in a single conceptual space. They create Records, edit them, finalise them. They link Records to Cases. They never again have to decide whether information is "ready for filing". They never again have to switch between systems. They never again have to classify before they are allowed to work.</p>
+   <h2 class="heading settled" data-level="6" id="the-record"><span class="secno">6. </span><span class="content">The Record: The Smallest Meaningful Unit of Information</span><a class="self-link" href="#the-record"></a></h2>
+   <h3 class="heading settled" data-level="6.1" id="record-definition"><span class="secno">6.1. </span><span class="content">What a Record Is — and What It Is Not</span><a class="self-link" href="#record-definition"></a></h3>
+   <p>The term "Record" is established in archival science and Records Management, but it is imprecise. RecordWeb uses the term more precisely: a <a data-link-type="dfn" href="#record" id="ref-for-record⑦">Record</a> is the <strong>smallest semantically autonomous unit of information</strong> that can meaningfully exist without additional context.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> This definition sharpens the normative Record concept from <a data-link-type="biblio" href="#biblio-iso15489" title="ISO 15489-1:2016 — Information and documentation — Records management">[ISO15489]</a> (Section 3.14) in two dimensions: first, RecordWeb emphasises <em>semantic autonomy</em>: a <a data-link-type="dfn" href="#record" id="ref-for-record⑧">Record</a> must be understandable without an external container. Second, RecordWeb adds <em>technical identifiability</em>: a <a data-link-type="dfn" href="#record" id="ref-for-record⑨">Record</a> must be globally and uniquely addressable without a foreign register.</p>
+   <p>A single database field is not a Record. An email attachment is not a Record. A folder is not a Record (it is a container).</p>
+   <p>A <a data-link-type="dfn" href="#record" id="ref-for-record①⓪">Record</a>, by contrast, is: a decision of a public authority; an application submitted by a citizen; minutes of a meeting; an expert opinion; a contract. Each of these objects carries its meaning within itself.</p>
+   <h3 class="heading settled" data-level="6.2" id="record-components"><span class="secno">6.2. </span><span class="content">The Three Components of a Record</span><a class="self-link" href="#record-components"></a></h3>
+   <p>Every <a data-link-type="dfn" href="#record" id="ref-for-record①①">Record</a> in RecordWeb consists of three inseparable components: its <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="identity">identity</dfn>, its <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="payload">payload</dfn>, and its <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="metadata">metadata</dfn>.</p>
+   <p>**<a data-link-type="dfn" href="#identity" id="ref-for-identity">Identity</a>** is what makes the <a data-link-type="dfn" href="#record" id="ref-for-record①②">Record</a> unambiguous. Globally, permanently, and without a foreign register. Every <a data-link-type="dfn" href="#record" id="ref-for-record①③">Record</a> carries a unique identifier that identifies it across system boundaries, organisational boundaries, and time boundaries. This identifier is entirely independent of the <a data-link-type="dfn" href="#record" id="ref-for-record①④">Record</a>’s physical storage location.</p>
+   <p>**The <a data-link-type="dfn" href="#payload" id="ref-for-payload">payload</a>** is the actual content, the information that the <a data-link-type="dfn" href="#record" id="ref-for-record①⑤">Record</a> carries. A <a data-link-type="dfn" href="#payload" id="ref-for-payload①">payload</a> always follows a schema defined for its Record type. The schema is the contract between the <a data-link-type="dfn" href="#record" id="ref-for-record①⑥">Record</a> and the system. A <a data-link-type="dfn" href="#record" id="ref-for-record①⑦">Record</a> can carry multiple payload representations of the same information: a working format in <a data-link-type="dfn" href="#draft" id="ref-for-draft①">draft</a> state and a long-term format in <a data-link-type="dfn" href="#finalized" id="ref-for-finalized">finalized</a> state.</p>
+   <p>**<a data-link-type="dfn" href="#metadata" id="ref-for-metadata①">Metadata</a>** are the dimensions along which a <a data-link-type="dfn" href="#record" id="ref-for-record①⑧">Record</a> can be found, linked, and classified. They describe the <a data-link-type="dfn" href="#record" id="ref-for-record①⑨">Record</a> from the outside without needing to know its content. The minimum set is deliberately kept small: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.</p>
+   <h3 class="heading settled" data-level="6.3" id="record-type-schema"><span class="secno">6.3. </span><span class="content">Type and Schema: The Record’s Contract</span><a class="self-link" href="#record-type-schema"></a></h3>
+   <p>Every <a data-link-type="dfn" href="#record" id="ref-for-record②⓪">Record</a> has a type. And every type has a schema. A <a data-link-type="dfn" href="#record" id="ref-for-record②①">Record</a>’s type is not merely a label, it is a statement about which rules apply to this <a data-link-type="dfn" href="#record" id="ref-for-record②②">Record</a>. In RecordWeb, a schema is itself a <a data-link-type="dfn" href="#record" id="ref-for-record②③">Record</a>: a SchemaRecord with its own type, its own <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph②">version graph</a>, and its own history. This guarantees backward compatibility structurally: every version of a <a data-link-type="dfn" href="#record" id="ref-for-record②④">Record</a> remains permanently linked to the schema version that was valid at the time of its creation.</p>
+   <h3 class="heading settled" data-level="6.4" id="record-states"><span class="secno">6.4. </span><span class="content">States: The Liveliness of the Record</span><a class="self-link" href="#record-states"></a></h3>
+   <p>A <a data-link-type="dfn" href="#record" id="ref-for-record②⑤">Record</a> in RecordWeb is not static. It has a <strong>state</strong> that describes the condition it is in. The minimum set is:</p>
+   <dl>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="draft">draft</dfn>
+    <dd data-md>
+     <p>Being worked on. Not yet linkable. Content can still change.</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="finalized">finalized</dfn>
+    <dd data-md>
+     <p>Complete. Content is immutable. Cryptographically secured. Linkable.</p>
+   </dl>
+   <p>Record types MAY define additional states. A contract may have the state <em>signed</em>. An expert opinion may have the state <em>under review</em>. These extensions must be defined in the SchemaRecord.</p>
+   <p>What does <em>not</em> exist is a state <em>archived</em> as a system transition. In RecordWeb, there is no "moving into the archive". There are finalised versions that can no longer be changed. That is archiving, without migration, without a system boundary.</p>
+   <h3 class="heading settled" data-level="6.5" id="admin-example"><span class="secno">6.5. </span><span class="content">An Example from Administrative Practice</span><a class="self-link" href="#admin-example"></a></h3>
+   <p>A citizen submits an application for a building permit.</p>
+   <p><strong>In today’s system:</strong> the application arrives by email or as a PDF. It is printed out or filed in a RecordManagement System. Perhaps it is classified, perhaps not. Later someone looks for it and finds three versions on two drives and in one email.</p>
+   <p><strong>In RecordWeb:</strong> the application is captured as a <a data-link-type="dfn" href="#record" id="ref-for-record②⑥">Record</a> of the type <em>building-permit-application</em>. Its schema specifies which fields must be present: parcel number, applicant, description of the construction project, date. The <a data-link-type="dfn" href="#record" id="ref-for-record②⑦">Record</a> immediately receives a unique identity. Once fully captured, it is finalised. From that moment on, it is immutable, but accessible, linkable, and discoverable for all involved.</p>
+   <h2 class="heading settled" data-level="7" id="version-graph-section"><span class="secno">7. </span><span class="content">The Version Graph: How Information Changes Without Disappearing</span><a class="self-link" href="#version-graph-section"></a></h2>
+   <h3 class="heading settled" data-level="7.1" id="versions-today"><span class="secno">7.1. </span><span class="content">The Problem with Versions Today</span><a class="self-link" href="#versions-today"></a></h3>
+   <p>Anyone who today looks for the "current version" of a document in a public authority enters uncertain terrain. In most cases, the history of a document (who changed it, when, and how) cannot be reconstructed. This is not a marginal problem. It is the normal condition. And it has real consequences: decisions are made on the basis of information whose period of validity is unclear.</p>
+   <h3 class="heading settled" data-level="7.2" id="change-as-linkage"><span class="secno">7.2. </span><span class="content">The Core Idea: Change as Linkage</span><a class="self-link" href="#change-as-linkage"></a></h3>
+   <p>In RecordWeb, information is never overwritten. When a <a data-link-type="dfn" href="#record" id="ref-for-record②⑧">Record</a> changes, a new version arises, a new, autonomous snapshot. This snapshot is linked to its predecessor: it knows where it came from. The entirety of all versions of a <a data-link-type="dfn" href="#record" id="ref-for-record②⑨">Record</a> and their linkages forms the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="version-graph">version graph</dfn>.</p>
+   <p>A graph is the right metaphor because the history of information is rarely a straight line. Sometimes it branches: two staff members work simultaneously on different aspects of the same <a data-link-type="dfn" href="#record" id="ref-for-record③⓪">Record</a>. Sometimes strands come together again: different revisions are merged into one authoritative version.</p>
+   <h3 class="heading settled" data-level="7.3" id="branches"><span class="secno">7.3. </span><span class="content">Branches: Parallel Work as the Normal Case</span><a class="self-link" href="#branches"></a></h3>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="branch">branch</dfn> arises when from one finalised version, two or more simultaneously existing drafts emerge. Both are visible. Both are in the <a data-link-type="dfn" href="#draft" id="ref-for-draft②">draft</a> state. Anyone looking at the <a data-link-type="dfn" href="#record" id="ref-for-record③①">Record</a> sees immediately that parallel work is underway. Nothing is hidden, nothing is lost.</p>
+   <h3 class="heading settled" data-level="7.4" id="finalisation-section"><span class="secno">7.4. </span><span class="content">Finalisation: The Moment of Binding Force</span><a class="self-link" href="#finalisation-section"></a></h3>
+   <p>The heart of the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph③">version graph</a> is <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="finalisation">finalisation</dfn>. It is the moment in which a draft becomes binding information. The moment in which the <a data-link-type="dfn" href="#record" id="ref-for-record③②">Record</a> becomes linkable, referencable, and usable as the basis for further actions.</p>
+   <p>Finalisation is not a technical automatism. It is a human decision, documented and attributable. Whoever finalises assumes responsibility for the content. A finalised version is immutable: it cannot be withdrawn, corrected, or overwritten. Corrections arise as new versions, with explicit reference to the version they replace.</p>
+   <p>This immutability is not a technical limitation. It is a statement about the nature of accountability: whoever declares something to be true and binding at a particular point in time must be able to stand by it.</p>
+   <h3 class="heading settled" data-level="7.5" id="corrections"><span class="secno">7.5. </span><span class="content">Corrections, Replacements, and Validity</span><a class="self-link" href="#corrections"></a></h3>
+   <p>When a finalised <a data-link-type="dfn" href="#record" id="ref-for-record③③">Record</a> is incorrect, it remains what it was — a finalised, provable version at a particular point in time. A new version arises that corrects or replaces it. What changes is not the past, but the state of knowledge about the past.</p>
+   <p>This distinction is central. An incorrect version remains visible as a historical fact. The corrected version becomes visible as its successor. This does not weaken trust, it strengthens it. Trust does not arise from the fiction that institutions never make mistakes, but from the ability to prove how they dealt with mistakes.</p>
+   <h3 class="heading settled" data-level="7.6" id="dag-semantics"><span class="secno">7.6. </span><span class="content">Why a DAG Is More Than a Technical Detail</span><a class="self-link" href="#dag-semantics"></a></h3>
+   <p>Technically, the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph④">version graph</a> is implemented as a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="directed-acyclic-graph-dag">Directed Acyclic Graph (DAG)</dfn>. This means: every version has one or more predecessors, but no cycles. A <a data-link-type="dfn" href="#record" id="ref-for-record③④">Record</a> can refer back to earlier versions, but it cannot become its own ancestor.</p>
+   <p>Acyclicity means that history has a direction. One can reinterpret the past, correct it, recontextualise it, but one cannot make it unhappen. The graph therefore expresses, in technical form, an institutional principle: <strong>accountability needs chronology</strong>.</p>
+   <p>The <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑤">version graph</a> is not an optional implementation feature of RecordWeb. It is part of its ontology.</p>
+   <h2 class="heading settled" data-level="8" id="cases"><span class="secno">8. </span><span class="content">The Case: Cases as a View onto the RecordWeb</span><a class="self-link" href="#cases"></a></h2>
+   <h3 class="heading settled" data-level="8.1" id="dossier-limitations"><span class="secno">8.1. </span><span class="content">Why the Dossier Is Not Enough</span><a class="self-link" href="#dossier-limitations"></a></h3>
+   <p>In public administration, the dossier has long been the central organisational principle. But it has a weakness that becomes visible in the digital context: the dossier is a <strong>container</strong>. It holds together what belongs together. But it does not explain why it belongs together, and it does not create any identity of its own for the individual parts.</p>
+   <p>RecordWeb therefore proposes a different perspective: not the dossier as the primary unit, but the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="case">Case</dfn> as a view onto linked Records.</p>
+   <h3 class="heading settled" data-level="8.2" id="case-definition"><span class="secno">8.2. </span><span class="content">What a Case Is</span><a class="self-link" href="#case-definition"></a></h3>
+   <p>A <a data-link-type="dfn" href="#case" id="ref-for-case">Case</a> in RecordWeb is not a container into which <a data-link-type="dfn" href="#record" id="ref-for-record③⑤">Records</a> are placed. It is a <strong>semantic and procedural relationship structure</strong> that links <a data-link-type="dfn" href="#record" id="ref-for-record③⑥">Records</a> to one another and makes them visible as belonging together.</p>
+   <p>A <a data-link-type="dfn" href="#case" id="ref-for-case①">Case</a> answers questions such as:</p>
+   <ul>
+    <li data-md>
+     <p>Which <a data-link-type="dfn" href="#record" id="ref-for-record③⑦">Records</a> belong to the same matter?</p>
+    <li data-md>
+     <p>Which <a data-link-type="dfn" href="#record" id="ref-for-record③⑧">Records</a> were causally relevant to a decision?</p>
+    <li data-md>
+     <p>Which <a data-link-type="dfn" href="#record" id="ref-for-record③⑨">Records</a> together constitute the context of a process?</p>
+   </ul>
+   <p>This has a fundamental consequence: a <a data-link-type="dfn" href="#record" id="ref-for-record④⓪">Record</a> can belong to multiple <a data-link-type="dfn" href="#case" id="ref-for-case②">Cases</a>
+without being duplicated.</p>
+   <h3 class="heading settled" data-level="8.3" id="case-as-view"><span class="secno">8.3. </span><span class="content">Case as View, Not as Container</span><a class="self-link" href="#case-as-view"></a></h3>
+   <p>In the classical system, the dossier is primary and the document secondary. In RecordWeb, the <a data-link-type="dfn" href="#record" id="ref-for-record④①">Record</a> is primary and the <a data-link-type="dfn" href="#case" id="ref-for-case③">Case</a> secondary. The <a data-link-type="dfn" href="#record" id="ref-for-record④②">Record</a> exists in its own right. The <a data-link-type="dfn" href="#case" id="ref-for-case④">Case</a> emerges through the explicit linking of <a data-link-type="dfn" href="#record" id="ref-for-record④③">Records</a>. Context is not produced by storage, but by relation.</p>
+   <p>A <a data-link-type="dfn" href="#case" id="ref-for-case⑤">Case</a> can be polycontextual: it can connect <a data-link-type="dfn" href="#record" id="ref-for-record④④">Records</a> across organisational units, across processes, across time periods. It can represent causal links where the dossier can only represent storage location.</p>
+   <h3 class="heading settled" data-level="8.4" id="building-permit-example"><span class="secno">8.4. </span><span class="content">Example: A Building Permit as a Case</span><a class="self-link" href="#building-permit-example"></a></h3>
+   <p>A citizen submits an application for a building permit. This application is a <a data-link-type="dfn" href="#record" id="ref-for-record④⑤">Record</a>. Later a site plan is added, then an expert opinion from the heritage authority, then the hearing of neighbours, then the authority’s decision.</p>
+   <p>In a classical system, all of this would be placed in a dossier. In RecordWeb, all these are autonomous <a data-link-type="dfn" href="#record" id="ref-for-record④⑥">Records</a> linked through a <a data-link-type="dfn" href="#case" id="ref-for-case⑥">Case</a>: "Building Permit Muller, Parcel 4711".</p>
+   <p>The <a data-link-type="dfn" href="#case" id="ref-for-case⑦">Case</a> makes visible that the <a data-link-type="dfn" href="#record" id="ref-for-record④⑦">Records</a> belong together. But none of them loses its autonomy. The heritage expert opinion can later appear in another <a data-link-type="dfn" href="#case" id="ref-for-case⑧">Case</a> if a legal dispute arises. The authority’s decision can be linked to a political oversight <a data-link-type="dfn" href="#case" id="ref-for-case⑨">Case</a>. The application remains the same application.</p>
+   <p>**The context changes. The <a data-link-type="dfn" href="#record" id="ref-for-record④⑧">Record</a> remains.**</p>
+   <h3 class="heading settled" data-level="8.5" id="case-governance"><span class="secno">8.5. </span><span class="content">Cases and Governance</span><a class="self-link" href="#case-governance"></a></h3>
+   <p>Because <a data-link-type="dfn" href="#case" id="ref-for-case①⓪">Cases</a> create context, they are institutionally relevant. They also need governance: who may open a <a data-link-type="dfn" href="#case" id="ref-for-case①①">Case</a>? Who may add or remove <a data-link-type="dfn" href="#record" id="ref-for-record④⑨">Records</a>? Under what conditions may a <a data-link-type="dfn" href="#case" id="ref-for-case①②">Case</a> be split, merged, or closed?</p>
+   <p>RecordWeb’s answer is clear: <a data-link-type="dfn" href="#case" id="ref-for-case①③">Cases</a> must be defined semantically and governed institutionally, but without reducing them again to containers.</p>
+   <h2 class="heading settled" data-level="9" id="accountability"><span class="secno">9. </span><span class="content">Accountability and Trust: Proving Rather Than Claiming</span><a class="self-link" href="#accountability"></a></h2>
+   <h3 class="heading settled" data-level="9.1" id="the-question"><span class="secno">9.1. </span><span class="content">The Question Authorities Dread</span><a class="self-link" href="#the-question"></a></h3>
+   <p>"Can you prove that this information existed at the time the decision was made?"</p>
+   <p>No court asks this question lightly. But it is asked in legal remedy proceedings, in parliamentary inquiries, in audits, in criminal investigations. And in most administrations, the honest answer is the same: no, not with certainty.</p>
+   <p>RecordWeb is built for provability. That is not a side benefit, it is a design principle.</p>
+   <h3 class="heading settled" data-level="9.2" id="traceability-levels"><span class="secno">9.2. </span><span class="content">Three Levels of Traceability</span><a class="self-link" href="#traceability-levels"></a></h3>
+   <p>RecordWeb anchors traceability at three levels that together produce a complete picture.</p>
+   <h4 class="heading settled" data-level="9.2.1" id="level-1-record"><span class="secno">9.2.1. </span><span class="content">Level 1: The Individual Record</span><a class="self-link" href="#level-1-record"></a></h4>
+   <p>Every finalised version of a <a data-link-type="dfn" href="#record" id="ref-for-record⑤⓪">Record</a> is cryptographically secured. The content, the schema, the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata②">metadata</a>, and the provenance references are condensed into a single hash value. This value is unambiguous: two <a data-link-type="dfn" href="#record" id="ref-for-record⑤①">Records</a> with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable.</p>
+   <h4 class="heading settled" data-level="9.2.2" id="level-2-version-graph"><span class="secno">9.2.2. </span><span class="content">Level 2: The Version Graph</span><a class="self-link" href="#level-2-version-graph"></a></h4>
+   <p>The history of a <a data-link-type="dfn" href="#record" id="ref-for-record⑤②">Record</a> is not separately documented, it is structurally anchored. Every version knows its predecessors. Every <a data-link-type="dfn" href="#branch" id="ref-for-branch">branch</a> is visible. The question "which information was available at the time of the decision?" is answered by examining the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑥">version graph</a> at the relevant point in time (not by questioning those involved, not by searching through email archives).</p>
+   <h4 class="heading settled" data-level="9.2.3" id="level-3-merkle"><span class="secno">9.2.3. </span><span class="content">Level 3: The Case Merkle Root</span><a class="self-link" href="#level-3-merkle"></a></h4>
+   <p>A finalised <a data-link-type="dfn" href="#case" id="ref-for-case①④">Case</a> has a fingerprint: the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="merkle-root">Merkle root</dfn>, calculated from the hash values of all linked <a data-link-type="dfn" href="#record" id="ref-for-record⑤③">Records</a>. This value represents the entire state of the <a data-link-type="dfn" href="#case" id="ref-for-case①⑤">Case</a> at a specific point in time: completely, immutably, and machine-verifiably.</p>
+   <p>The question "was this <a data-link-type="dfn" href="#case" id="ref-for-case①⑥">Case</a> complete at the time of the decision?" is answered by comparing the <a data-link-type="dfn" href="#merkle-root" id="ref-for-merkle-root">Merkle root</a> from that time with the one from today. If they are identical, nothing has changed. If they differ, the system knows exactly which <a data-link-type="dfn" href="#record" id="ref-for-record⑤④">Record</a> has changed.</p>
+   <h3 class="heading settled" data-level="9.3" id="optional-ledger"><span class="secno">9.3. </span><span class="content">The Optional Ledger: Hyperledger as External Anchor</span><a class="self-link" href="#optional-ledger"></a></h3>
+   <p>For situations in which an authority needs external proof, RecordWeb offers an optional extension: anchoring the <a data-link-type="dfn" href="#case" id="ref-for-case①⑦">Case</a> <a data-link-type="dfn" href="#merkle-root" id="ref-for-merkle-root①">Merkle root</a> on a distributed infrastructure (for example Hyperledger Fabric <a data-link-type="biblio" href="#biblio-hyperledger" title="Hyperledger: An Introduction">[HYPERLEDGER]</a>, a permissioned distributed ledger that operates without a public blockchain).</p>
+   <p>The principle is simple: when a <a data-link-type="dfn" href="#case" id="ref-for-case①⑧">Case</a> is finalised, its <a data-link-type="dfn" href="#merkle-root" id="ref-for-merkle-root②">Merkle root</a> (and only this value, no content) is written to the ledger. This creates a timestamped, publicly provable entry: "this <a data-link-type="dfn" href="#case" id="ref-for-case①⑨">Case</a> had this state at this point in time", without privacy or official secrecy being violated.</p>
+   <p>The Hyperledger anchor is an option, not an obligation.</p>
+   <h3 class="heading settled" data-level="9.4" id="optional-solid"><span class="secno">9.4. </span><span class="content">The Optional Pod: Solid as Citizen-Controlled Storage</span><a class="self-link" href="#optional-solid"></a></h3>
+   <p>For situations in which a <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑤">Record</a> or <a data-link-type="dfn" href="#case" id="ref-for-case②⓪">Case</a> belongs not to an authority but to a citizen (as the subject, recipient, or rights-holder) RecordWeb offers a second optional extension: delivery and storage of <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑥">Records</a> in a Solid Pod <a data-link-type="biblio" href="#biblio-solid" title="The Solid Protocol">[SOLID]</a>.</p>
+   <p>Solid is a W3C-based protocol that enables individuals to store their own data in a personal online data store (a <em>Pod</em>), fully under their own control. Applications and institutions may read from or write to a Pod only with explicit, revocable consent. The citizen is not the recipient of a copy, the citizen is the <strong>owner of the original</strong>.</p>
+   <p>The principle for RecordWeb is straightforward: when an authority finalises a <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑦">Record</a> that concerns a specific citizen, it may (with the citizen’s consent) deliver that <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑧">Record</a> directly into the citizen’s Pod. The <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑨">Record</a> retains its DID, its <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑦">version graph</a>, and its cryptographic integrity. What changes is the storage location: the authority’s system and the citizen’s Pod both hold a reference to the same immutable, permanently addressable object.</p>
+   <p>Typical use cases for citizen-held Records include:</p>
+   <ul>
+    <li data-md>
+     <p>A driving licence issued by the road traffic authority</p>
+    <li data-md>
+     <p>A medical image (X-ray, MRI) delivered by a hospital</p>
+    <li data-md>
+     <p>A residence registration confirmation issued by the municipality</p>
+    <li data-md>
+     <p>A building permit delivered to the applicant</p>
+    <li data-md>
+     <p>A diploma or professional certification</p>
+   </ul>
+   <p>In each case, the citizen can present the <a data-link-type="dfn" href="#record" id="ref-for-record⑥⓪">Record</a> to any third party (an employer, an insurer, a foreign authority) who can independently verify its authenticity via the DID and the cryptographic hash, without querying the issuing authority. The authority’s system remains authoritative; the citizen’s Pod holds a provable, portable copy.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> The Solid Pod option complements, not replaces, the authority’s own record keeping. The issuing authority retains the <a data-link-type="dfn" href="#record" id="ref-for-record⑥①">Record</a> in its own RecordWeb system. The Pod delivery is an additional output, a citizen-facing endpoint for Records whose primary subject is the individual.</p>
+   <p>The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a <code>delivery-target</code> field in the optional <a data-link-type="dfn" href="#metadata" id="ref-for-metadata③">metadata</a> extension block for this purpose.</p>
+   <h3 class="heading settled" data-level="9.5" id="trust"><span class="secno">9.5. </span><span class="content">Trust Through Transparency, Transparency Through Structure</span><a class="self-link" href="#trust"></a></h3>
+   <p>Trust in public institutions arises not from promises but from provability. An authority that can say: "here is the decision, here is its history, here is the proof that it has not changed", this authority deserves trust. Not because it was well-intentioned, but because it can prove it.</p>
+   <p>RecordWeb is not an instrument of control <em>against</em> authorities. It is an instrument of credibility <em>for</em> authorities.</p>
+   <h2 class="heading settled" data-level="10" id="related-concepts"><span class="secno">10. </span><span class="content">Related Concepts and Demarcation</span><a class="self-link" href="#related-concepts"></a></h2>
+   <h3 class="heading settled" data-level="10.1" id="related-linked-data"><span class="secno">10.1. </span><span class="content">Linked Data and the Semantic Web</span><a class="self-link" href="#related-linked-data"></a></h3>
+   <p>Tim Berners-Lee’s Linked Data principles <a data-link-type="biblio" href="#biblio-linked-data" title="Linked Data">[LINKED-DATA]</a> are the conceptually closest relative of RecordWeb. RecordWeb takes up the networking idea from Linked Data and adds the institutional dimension that is missing there: accountability, versioning, auditability, states.</p>
+   <h3 class="heading settled" data-level="10.2" id="related-continuum"><span class="secno">10.2. </span><span class="content">Records Continuum</span><a class="self-link" href="#related-continuum"></a></h3>
+   <p>RecordWeb is the technical implementation of the Records Continuum idea <a data-link-type="biblio" href="#biblio-upward-1996" title="Structuring the Records Continuum — Part One">[UPWARD-1996]</a> <a data-link-type="biblio" href="#biblio-upward-1997" title="Structuring the Records Continuum — Part Two">[UPWARD-1997]</a>. The notion that a <a data-link-type="dfn" href="#record" id="ref-for-record⑥②">Record</a> does not die but lives on is structurally anchored in RecordWeb, through immutable versions, through the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑧">version graph</a>, through the absence of an "archiving" system transition.</p>
+   <h3 class="heading settled" data-level="10.3" id="related-iso15489"><span class="secno">10.3. </span><span class="content">ISO 15489 and eCH-0164</span><a class="self-link" href="#related-iso15489"></a></h3>
+   <p><a data-link-type="biblio" href="#biblio-iso15489" title="ISO 15489-1:2016 — Information and documentation — Records management">[ISO15489]</a> defines international principles of Records Management: authenticity, reliability, integrity, usability. These four properties are RecordWeb’s requirements specification. RecordWeb fulfils all four structurally:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Authenticity</strong>: DID and cryptographic hash guarantee that a <a data-link-type="dfn" href="#record" id="ref-for-record⑥③">Record</a> is what it claims to be</p>
+    <li data-md>
+     <p><strong>Reliability</strong>: <a data-link-type="dfn" href="#finalisation" id="ref-for-finalisation①">Finalisation</a> and immutable versions guarantee that a <a data-link-type="dfn" href="#record" id="ref-for-record⑥④">Record</a> is complete and correct at the time of finalisation</p>
+    <li data-md>
+     <p><strong>Integrity</strong>: Merkle hashes guarantee that a <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑤">Record</a> cannot change unnoticed after finalisation</p>
+    <li data-md>
+     <p><strong>Usability</strong>: The DID document and <a data-link-type="dfn" href="#metadata" id="ref-for-metadata④">metadata</a> guarantee that a <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑥">Record</a> remains findable and accessible, regardless of system migrations</p>
+   </ul>
+   <p><a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 — Information lifecycle in public administration">[ECH-0164]</a> defines the information lifecycle for Swiss administration. RecordWeb reinterprets this model: the three phases become states within a single information object, without system boundaries between them.</p>
+   <h3 class="heading settled" data-level="10.4" id="related-oais"><span class="secno">10.4. </span><span class="content">OAIS</span><a class="self-link" href="#related-oais"></a></h3>
+   <p>OAIS <a data-link-type="biblio" href="#biblio-iso14721" title="ISO 14721:2012 — Open Archival Information System (OAIS)">[ISO14721]</a> is the international standard for digital long-term preservation. RecordWeb and OAIS are complementary: RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑦">Records</a> can be migrated to long-term archives according to OAIS principles; the DID is retained in this process.</p>
+   <h3 class="heading settled" data-level="10.5" id="related-provo"><span class="secno">10.5. </span><span class="content">PROV-O</span><a class="self-link" href="#related-provo"></a></h3>
+   <p><a data-link-type="biblio" href="#biblio-provo" title="PROV-O: The PROV Ontology">[PROVO]</a> is a W3C standard for describing the provenance and history of data. RecordWeb and PROV-O overlap in intention. The difference: PROV-O is a description standard, it can be layered onto existing systems. RecordWeb is an architecture standard, provenance is structurally anchored in the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑨">version graph</a>. PROV-O would be a possible serialisation format for RecordWeb lineage documentation.</p>
+   <h3 class="heading settled" data-level="10.6" id="related-git"><span class="secno">10.6. </span><span class="content">Git</span><a class="self-link" href="#related-git"></a></h3>
+   <p><a data-link-type="biblio" href="#biblio-git" title="Git: Fast Version Control System">[GIT]</a> internally uses the same DAG approach as RecordWeb: every commit is an immutable snapshot, linked to its predecessors, identified by a cryptographic hash.</p>
+   <p>RecordWeb learns from <a data-link-type="biblio" href="#biblio-git" title="Git: Fast Version Control System">[GIT]</a>: the immutability of commits, the explicitness of branches and merges, the cryptographic securing through content hashes. The difference: <a data-link-type="biblio" href="#biblio-git" title="Git: Fast Version Control System">[GIT]</a> is for code and files, not for semantic information objects with institutional accountability. <a data-link-type="biblio" href="#biblio-git" title="Git: Fast Version Control System">[GIT]</a> knows no states, no <a data-link-type="dfn" href="#record-owner" id="ref-for-record-owner">record owner</a>, no classification, no schema. RecordWeb adopts the fundamental technical logic of <a data-link-type="biblio" href="#biblio-git" title="Git: Fast Version Control System">[GIT]</a> and transfers it into the institutional context.</p>
+   <h3 class="heading settled" data-level="10.7" id="positioning-summary"><span class="secno">10.7. </span><span class="content">Summary: Positioning of RecordWeb</span><a class="self-link" href="#positioning-summary"></a></h3>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Concept
+      <th>Networking
+      <th>Versioning
+      <th>Auditability
+      <th>Institutional Governance
+      <th>Long-term Stability
+    <tbody>
+     <tr>
+      <td>Linked Data
+      <td>✓
+      <td>✗
+      <td>✗
+      <td>✗
+      <td>✗
+     <tr>
+      <td>Records Continuum
+      <td>✓
+      <td>✗
+      <td>✗
+      <td>✓
+      <td>✓
+     <tr>
+      <td>ISO 15489
+      <td>✗
+      <td>✗
+      <td>✓
+      <td>✓
+      <td>✓
+     <tr>
+      <td>eCH-0164
+      <td>✗
+      <td>✗
+      <td>✓
+      <td>✓
+      <td>✓
+     <tr>
+      <td>OAIS
+      <td>✗
+      <td>✗
+      <td>✓
+      <td>✓
+      <td>✓
+     <tr>
+      <td>PROV-O
+      <td>✓
+      <td>✓
+      <td>✓
+      <td>✗
+      <td>✗
+     <tr>
+      <td>Git
+      <td>✗
+      <td>✓
+      <td>✓
+      <td>✗
+      <td>✗
+     <tr>
+      <td><strong>RecordWeb</strong>
+      <td><strong>✓</strong>
+      <td><strong>✓</strong>
+      <td><strong>✓</strong>
+      <td><strong>✓</strong>
+      <td><strong>✓</strong>
+   </table>
+   <h2 class="heading settled" data-level="11" id="roadmap"><span class="secno">11. </span><span class="content">Roadmap and Open Questions: An Invitation</span><a class="self-link" href="#roadmap"></a></h2>
+   <h3 class="heading settled" data-level="11.1" id="current-state"><span class="secno">11.1. </span><span class="content">What RecordWeb Is Today</span><a class="self-link" href="#current-state"></a></h3>
+   <p>In this document, RecordWeb is a concept with an initial specification. It is not a product, not software. It is an architectural idea. Precise enough to discuss, open enough to be developed further together. The normative technical specification (the RecordWeb Protocol <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>) defines the JSON schemas, the DID structure, the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①⓪">version graph</a> algorithms, and the Merkle calculations.</p>
+   <h3 class="heading settled" data-level="11.2" id="next-steps"><span class="secno">11.2. </span><span class="content">The Next Steps</span><a class="self-link" href="#next-steps"></a></h3>
+   <p><strong>Step 1: Concept Validation</strong></p>
+   <p>The present concept must be discussed with professionals from Records Management, archival science, computer science, and public administration. Do the basic assumptions hold? Are there use cases that the model does not cover?</p>
+   <p><strong>Step 2: Pilot Use Case</strong></p>
+   <p>A concrete pilot use case is needed: a real <a data-link-type="dfn" href="#case" id="ref-for-case②①">Case</a> from a public authority, modelled as a RecordWeb structure. What <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑧">Record</a> types arise? What does the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①①">version graph</a> look like? Where do the concepts reach their limits?</p>
+   <p><strong>Step 3: Standardisation Process</strong></p>
+   <p>RecordWeb has the potential to contribute to international standardisation processes. This path is long. It begins with the concept, proceeds through the specification, and is validated through implementations.</p>
+   <h3 class="heading settled" data-level="11.3" id="open-questions"><span class="secno">11.3. </span><span class="content">Open Questions</span><a class="self-link" href="#open-questions"></a></h3>
+   <p>The following questions are explicitly offered for community contribution:</p>
+   <p><strong>Access control</strong>: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional <code>access-policy</code> block in the minimum metadata set.</p>
+   <p><strong>Federation</strong>: RecordWeb offers a directional answer inspired by DNS architecture. DID resolvers function like DNS servers: federated, replicated, without a single point of failure. The Nanopublication network <a data-link-type="biblio" href="#biblio-nanopub" title="Nanopublications: A Growing Resource of Provenance-Centric Scientific Linked Data">[NANOPUB]</a> offers a working reference model: a decentralised peer-to-peer server network in which each node holds cryptographically signed, immutable micro-assertions identified by Trusty URIs. RecordWeb <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑨">Records</a> in their finalised state share the same structural properties (immutable, hash-identified, independently verifiable) and could be published and queried across a Nanopub-inspired federation layer. The complete federation architecture is the subject of <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>.</p>
+   <p><strong>Deletion obligations</strong>: The tension between RecordWeb’s immutability and the data protection right to erasure (GDPR, Swiss DSG) is resolved through <em>payload deletion while retaining structure</em>. On a legal requirement, the payload is deleted; the DID, the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑤">metadata</a>, and the graph structure are retained. The <a data-link-type="dfn" href="#record" id="ref-for-record⑦⓪">Record</a> continues to exist as a provable "empty shell", its former existence is documented, its content is gone.</p>
+   <p>Depending on the specific legal basis, the deletion regime admits three distinct modes:</p>
+   <dl>
+    <dt data-md>Payload deletion (default)
+    <dd data-md>
+     <p>The <a data-link-type="dfn" href="#payload" id="ref-for-payload②">payload</a> is deleted; DID, <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑥">metadata</a>, and <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①②">version graph</a> are retained. The <a data-link-type="dfn" href="#record" id="ref-for-record⑦①">Record</a> remains as a structural shell. Applies where provenance continuity is legally required despite erasure (e.g. audit trails, public registers).</p>
+    <dt data-md>Full deletion (opt-out)
+    <dd data-md>
+     <p>The entire <a data-link-type="dfn" href="#record" id="ref-for-record⑦②">Record</a> (including DID, <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑦">metadata</a>, and graph edges) is deleted. Applies where no retention obligation exists and the right to erasure is absolute (e.g. erroneously captured personal data with no public interest basis).</p>
+    <dt data-md>Deletion exemption (opt-out)
+    <dd data-md>
+     <p>No deletion occurs, not even of the <a data-link-type="dfn" href="#payload" id="ref-for-payload③">payload</a>. Applies where a statutory retention obligation overrides the erasure claim (e.g. tax records, notarial acts, public register entries). The legal basis must be documented as <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑧">metadata</a> on the <a data-link-type="dfn" href="#record" id="ref-for-record⑦③">Record</a> at the time of creation.</p>
+   </dl>
+   <p>The applicable mode is declared in the <code>deletion-regime</code> field of the <a data-link-type="dfn" href="#record" id="ref-for-record⑦④">Record</a>’s <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑨">metadata</a>. Implementations MUST respect this field and MAY enforce it at the infrastructure level.</p>
+   <p><strong>Performance and scaling</strong>: A global network of linked <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑤">Records</a> with cryptographic hash values places demands on infrastructure that are not yet fully foreseeable.</p>
+   <p><strong>Platform adoption</strong>: The actual adoption task lies not with the end user, but with the platform providers: Microsoft, Google, SAP, and others must integrate RWP as a native layer into their products.</p>
+   <h3 class="heading settled" data-level="11.4" id="invitation"><span class="secno">11.4. </span><span class="content">An Invitation</span><a class="self-link" href="#invitation"></a></h3>
+   <p>RecordWeb is a thesis, not a doctrine. It is an invitation to think together about the foundations of institutional information architecture, and in doing so, to question old assumptions.</p>
+   <p>Whoever wishes to accept this invitation (as a critic, as a fellow thinker, as an implementer) is welcome. Feedback is invited via <a href="https://github.com/recordweb/rwc/issues">GitHub Issues</a>.</p>
+   <h2 class="heading settled" data-level="12" id="glossary"><span class="secno">12. </span><span class="content">Annex A: Glossary</span><a class="self-link" href="#glossary"></a></h2>
+   <dl>
+    <dt>Branch
+    <dd>A parallel development line within the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①③">version graph</a> of a <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑥">Record</a>. From one finalised version, two or more simultaneously existing drafts arise. Branches are transparently visible; their consolidation is effected through an explicit merge act.
+    <dt>Case
+    <dd>A specialised Record type that represents a persisted view of a set of linked <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑦">Records</a>. A <a data-link-type="dfn" href="#case" id="ref-for-case②②">Case</a> groups the <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑧">Records</a> belonging to a business transaction according to a defined schema. It follows the same rules as any other <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑨">Record</a>: DID, states, <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①④">version graph</a>, <a data-link-type="dfn" href="#finalisation" id="ref-for-finalisation②">finalisation</a>.
+    <dt>Content hash
+    <dd>A cryptographic fingerprint calculated from the content of a dataset. Two datasets with identical content hashes are guaranteed to be identical. If even a single bit in the content changes, the hash changes.
+    <dt>DID (Decentralized Identifier)
+    <dd>A globally unique identifier that requires no central register. A DID permanently identifies a <a data-link-type="dfn" href="#record" id="ref-for-record⑧⓪">Record</a> — regardless of where it is physically stored. Defined in <a data-link-type="biblio" href="#biblio-did-core" title="Decentralized Identifiers (DIDs) v1.0">[DID-CORE]</a>.
+    <dt>Directed Acyclic Graph (DAG)
+    <dd>A graph with directed edges and no cycles. Every node has one or more predecessors; no node can be its own ancestor. The <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①⑤">version graph</a> of every <a data-link-type="dfn" href="#record" id="ref-for-record⑧①">Record</a> in RecordWeb is a DAG.
+    <dt>Finalisation
+    <dd>The explicit act by which a <a data-link-type="dfn" href="#record" id="ref-for-record⑧②">Record</a> draft is converted into a binding, immutable version. Only finalised versions are linkable. Finalisation is a human decision, documented with <a data-link-type="dfn" href="#record-owner" id="ref-for-record-owner①">record owner</a> and timestamp.
+    <dt>Merkle root
+    <dd>A cryptographic value calculated from the hash values of a set of <a data-link-type="dfn" href="#record" id="ref-for-record⑧③">Records</a> that uniquely represents the aggregate state of that set. The <a data-link-type="dfn" href="#case" id="ref-for-case②③">Case</a> <a data-link-type="dfn" href="#merkle-root" id="ref-for-merkle-root③">Merkle root</a> represents the state of a complete <a data-link-type="dfn" href="#case" id="ref-for-case②④">Case</a> at a specific point in time.
+    <dt>Metadata
+    <dd>The dimensions along which a <a data-link-type="dfn" href="#record" id="ref-for-record⑧④">Record</a> can be found, linked, and classified. The minimum set: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.
+    <dt>Owner
+    <dd>The person or organisational unit responsible for a <a data-link-type="dfn" href="#record" id="ref-for-record⑧⑤">Record</a> at a specific point in time. Identified by a DID. The <a data-link-type="dfn" href="#record-owner" id="ref-for-record-owner②">record owner</a> is the one who finalises the <a data-link-type="dfn" href="#record" id="ref-for-record⑧⑥">Record</a> and thereby assumes accountability for its content.
+    <dt>Payload
+    <dd>The actual content of a <a data-link-type="dfn" href="#record" id="ref-for-record⑧⑦">Record</a> — the information it carries. A <a data-link-type="dfn" href="#payload" id="ref-for-payload④">payload</a> always follows the schema of its Record type.
+    <dt>Record
+    <dd>The smallest semantically autonomous unit of information in RecordWeb. A <a data-link-type="dfn" href="#record" id="ref-for-record⑧⑧">Record</a> consists of <a data-link-type="dfn" href="#identity" id="ref-for-identity①">identity</a> (DID), <a data-link-type="dfn" href="#payload" id="ref-for-payload⑤">payload</a>, and <a data-link-type="dfn" href="#metadata" id="ref-for-metadata①⓪">metadata</a>. It has a type that determines its schema, and a state that controls its linkability. It exists
+  within a <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①⑥">version graph</a> and is permanently identifiable regardless of system boundaries.
+    <dt>State transition
+    <dd>A change of the state of a <a data-link-type="dfn" href="#record" id="ref-for-record⑧⑨">Record</a>, for example from <a data-link-type="dfn" href="#draft" id="ref-for-draft③">draft</a> to <a data-link-type="dfn" href="#finalized" id="ref-for-finalized①">finalized</a>. In RecordWeb, "archiving" is a <a data-link-type="dfn" href="#state-transition" id="ref-for-state-transition">state transition</a>, not a system migration.
+    <dt>Version graph
+    <dd>The entirety of all versions of a <a data-link-type="dfn" href="#record" id="ref-for-record⑨⓪">Record</a> and their linkages. Every node is an immutable snapshot; every edge describes a provenance relationship. The <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①⑦">version graph</a> is a <a data-link-type="dfn" href="#directed-acyclic-graph-dag" id="ref-for-directed-acyclic-graph-dag">Directed Acyclic Graph (DAG)</a>: directed (from old to new), acyclic (no cycles). It contains <a data-link-type="dfn" href="#branch" id="ref-for-branch①">branches</a> and merges.
+   </dl>
+   <h2 class="heading settled" data-level="13" id="annex-standards"><span class="secno">13. </span><span class="content">Annex B: Relationship to Existing Standards</span><a class="self-link" href="#annex-standards"></a></h2>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Standard
+      <th>Relationship to RecordWeb
+    <tbody>
+     <tr>
+      <td><a data-link-type="biblio" href="#biblio-iso15489" title="ISO 15489-1:2016 — Information and documentation — Records management">[ISO15489]</a>
+      <td>Conceptually compatible. RecordWeb provides a technical architecture that makes the normative requirements (authenticity, reliability, integrity, usability) implementable.
+     <tr>
+      <td>ISO 30300
+      <td>Complementary. ISO 30300 defines who is responsible; RecordWeb defines how responsibility is structurally anchored.
+     <tr>
+      <td><a data-link-type="biblio" href="#biblio-iso14721" title="ISO 14721:2012 — Open Archival Information System (OAIS)">[ISO14721]</a> (OAIS)
+      <td>Complementary. RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb <a data-link-type="dfn" href="#record" id="ref-for-record⑨①">Records</a> can be migrated to OAIS-compliant archives with the DID retained.
+     <tr>
+      <td><a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 — Information lifecycle in public administration">[ECH-0164]</a>
+      <td>Compatible. RecordWeb reinterprets the three lifecycle phases as states within a single information object, without system boundaries between them.
+     <tr>
+      <td><a data-link-type="biblio" href="#biblio-did-core" title="Decentralized Identifiers (DIDs) v1.0">[DID-CORE]</a>
+      <td>RecordWeb uses DIDs as the basis for <a data-link-type="dfn" href="#record" id="ref-for-record⑨②">Record</a> <a data-link-type="dfn" href="#identity" id="ref-for-identity②">identity</a> and is fully compatible with the W3C DID standard.
+     <tr>
+      <td><a data-link-type="biblio" href="#biblio-provo" title="PROV-O: The PROV Ontology">[PROVO]</a>
+      <td>PROV-O could be used as a serialisation format for RecordWeb lineage documentation to establish interoperability with PROV-O-compatible systems.
+   </table>
+  </main>
+  <div data-fill-with="conformance">
+   <h2 class="heading no-num no-ref settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
+   <h3 class="heading no-num no-ref settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
+   <p>Conformance requirements are expressed
+    with a combination of descriptive assertions
+    and RFC 2119 terminology.
+    The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
+    in the normative parts of this document
+    are to be interpreted as described in RFC 2119.
+    However, for readability,
+    these words do not appear in all uppercase letters in this specification.
+
+    </p>
+   <p>All of the text of this specification is normative
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a>
+
+    </p>
+   <p>Examples in this specification are introduced with the words “for example”
+    or are set apart from the normative text
+    with <code>class="example"</code>,
+    like this:
+
+    </p>
+   <div class="example" id="w3c-example">
+    <a class="self-link" href="#w3c-example"></a>
+        
+    <p>This is an example of an informative example.
+    </p>
+   </div>
+   <p>Informative notes begin with the word “Note”
+    and are set apart from the normative text
+    with <code>class="note"</code>,
+    like this:
+
+    </p>
+   <p class="note" role="note">Note, this is an informative note.</p>
+  </div>
+  <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
+  <h2 class="heading no-num no-ref settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <ul class="index">
+   <li><a href="#branch">branch</a><span>, in § 7.3</span>
+   <li><a href="#case">Case</a><span>, in § 8.1</span>
+   <li><a href="#directed-acyclic-graph-dag">Directed Acyclic Graph (DAG)</a><span>, in § 7.6</span>
+   <li><a href="#draft">draft</a><span>, in § 6.4</span>
+   <li><a href="#finalisation">finalisation</a><span>, in § 7.4</span>
+   <li><a href="#finalized">finalized</a><span>, in § 6.4</span>
+   <li><a href="#identity">identity</a><span>, in § 6.2</span>
+   <li><a href="#merkle-root">Merkle root</a><span>, in § 9.2.3</span>
+   <li><a href="#metadata">metadata</a><span>, in § 6.2</span>
+   <li><a href="#payload">payload</a><span>, in § 6.2</span>
+   <li><a href="#record">Record</a><span>, in § 2</span>
+   <li><a href="#record-owner">record owner</a><span>, in § 3.4</span>
+   <li><a href="#state-transition">state transition</a><span>, in § 4.4</span>
+   <li><a href="#version-graph">version graph</a><span>, in § 7.2</span>
+  </ul>
+  <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
+  <dl>
+   <dt id="biblio-rfc2119">[RFC2119]
+   <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
+  </dl>
+  <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Non-Normative References</span><a class="self-link" href="#informative"></a></h3>
+  <dl>
+   <dt id="biblio-berners-lee-1989">[BERNERS-LEE-1989]
+   <dd>Tim Berners-Lee. <a href="https://www.w3.org/History/1989/proposal.html"><cite>Information Management: A Proposal</cite></a>. 1989. URL: <a href="https://www.w3.org/History/1989/proposal.html">https://www.w3.org/History/1989/proposal.html</a>
+   <dt id="biblio-did-core">[DID-CORE]
+   <dd><a href="https://www.w3.org/TR/did-core/"><cite>Decentralized Identifiers (DIDs) v1.0</cite></a>. URL: <a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>
+   <dt id="biblio-ech-0164">[ECH-0164]
+   <dd><a href="https://www.ech.ch"><cite>eCH-0164 — Information lifecycle in public administration</cite></a>. URL: <a href="https://www.ech.ch">https://www.ech.ch</a>
+   <dt id="biblio-git">[GIT]
+   <dd>Linus Torvalds. <a href="https://git-scm.com"><cite>Git: Fast Version Control System</cite></a>. 2005. URL: <a href="https://git-scm.com">https://git-scm.com</a>
+   <dt id="biblio-hyperledger">[HYPERLEDGER]
+   <dd><a href="https://www.hyperledger.org/learn/white-papers"><cite>Hyperledger: An Introduction</cite></a>. 2015. URL: <a href="https://www.hyperledger.org/learn/white-papers">https://www.hyperledger.org/learn/white-papers</a>
+   <dt id="biblio-iso14721">[ISO14721]
+   <dd><a href="https://www.iso.org/standard/57284.html"><cite>ISO 14721:2012 — Open Archival Information System (OAIS)</cite></a>. URL: <a href="https://www.iso.org/standard/57284.html">https://www.iso.org/standard/57284.html</a>
+   <dt id="biblio-iso15489">[ISO15489]
+   <dd><a href="https://www.iso.org/standard/62542.html"><cite>ISO 15489-1:2016 — Information and documentation — Records management</cite></a>. URL: <a href="https://www.iso.org/standard/62542.html">https://www.iso.org/standard/62542.html</a>
+   <dt id="biblio-linked-data">[LINKED-DATA]
+   <dd>Tim Berners-Lee. <a href="https://www.w3.org/DesignIssues/LinkedData.html"><cite>Linked Data</cite></a>. 2006. URL: <a href="https://www.w3.org/DesignIssues/LinkedData.html">https://www.w3.org/DesignIssues/LinkedData.html</a>
+   <dt id="biblio-nanopub">[NANOPUB]
+   <dd>Tobias Kuhn; et al. <a href="https://nanopub.net"><cite>Nanopublications: A Growing Resource of Provenance-Centric Scientific Linked Data</cite></a>. 2016. URL: <a href="https://nanopub.net">https://nanopub.net</a>
+   <dt id="biblio-provo">[PROVO]
+   <dd><a href="https://www.w3.org/TR/prov-o/"><cite>PROV-O: The PROV Ontology</cite></a>. URL: <a href="https://www.w3.org/TR/prov-o/">https://www.w3.org/TR/prov-o/</a>
+   <dt id="biblio-rwp">[RWP]
+   <dd>Nik Jenzer. <a href="https://recordweb.github.io/rwp/"><cite>RecordWeb Protocol (RWP)</cite></a>. CG-DRAFT. URL: <a href="https://recordweb.github.io/rwp/">https://recordweb.github.io/rwp/</a>
+   <dt id="biblio-solid">[SOLID]
+   <dd>Sarven Capadisli; et al. <a href="https://solidproject.org/TR/protocol"><cite>The Solid Protocol</cite></a>. 2022. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a>
+   <dt id="biblio-upward-1996">[UPWARD-1996]
+   <dd>Frank Upward. <cite>Structuring the Records Continuum — Part One</cite>. 1996. 
+   <dt id="biblio-upward-1997">[UPWARD-1997]
+   <dd>Frank Upward. <cite>Structuring the Records Continuum — Part Two</cite>. 1997. 
+   <dt id="biblio-zenodo-rwc">[ZENODO-RWC]
+   <dd>Nik Jenzer. <a href="https://doi.org/10.5281/zenodo.20475343"><cite>RecordWeb Concept (RWC) v1.0 — Published baseline</cite></a>. 2026. URL: <a href="https://doi.org/10.5281/zenodo.20475343">https://doi.org/10.5281/zenodo.20475343</a>
+  </dl>
+<script>/* Boilerplate: script-dom-helper */
+"use strict";
+function query(sel) { return document.querySelector(sel); }
+
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
+
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
+});
+
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+let dfnPanelData = {
+"branch": {"dfnID":"branch","dfnText":"branch","external":false,"refSections":[{"refs":[{"id":"ref-for-branch"}],"title":"9.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-branch\u2460"}],"title":"12. Annex A: Glossary"}],"url":"#branch"},
+"case": {"dfnID":"case","dfnText":"Case","external":false,"refSections":[{"refs":[{"id":"ref-for-case"},{"id":"ref-for-case\u2460"},{"id":"ref-for-case\u2461"}],"title":"8.2. What a Case Is"},{"refs":[{"id":"ref-for-case\u2462"},{"id":"ref-for-case\u2463"},{"id":"ref-for-case\u2464"}],"title":"8.3. Case as View, Not as Container"},{"refs":[{"id":"ref-for-case\u2465"},{"id":"ref-for-case\u2466"},{"id":"ref-for-case\u2467"},{"id":"ref-for-case\u2468"}],"title":"8.4. Example: A Building Permit as a Case"},{"refs":[{"id":"ref-for-case\u2460\u24ea"},{"id":"ref-for-case\u2460\u2460"},{"id":"ref-for-case\u2460\u2461"},{"id":"ref-for-case\u2460\u2462"}],"title":"8.5. Cases and Governance"},{"refs":[{"id":"ref-for-case\u2460\u2463"},{"id":"ref-for-case\u2460\u2464"},{"id":"ref-for-case\u2460\u2465"}],"title":"9.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-case\u2460\u2466"},{"id":"ref-for-case\u2460\u2467"},{"id":"ref-for-case\u2460\u2468"}],"title":"9.3. The Optional Ledger: Hyperledger as External Anchor"},{"refs":[{"id":"ref-for-case\u2461\u24ea"}],"title":"9.4. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-case\u2461\u2460"}],"title":"11.2. The Next Steps"},{"refs":[{"id":"ref-for-case\u2461\u2461"},{"id":"ref-for-case\u2461\u2462"},{"id":"ref-for-case\u2461\u2463"}],"title":"12. Annex A: Glossary"}],"url":"#case"},
+"directed-acyclic-graph-dag": {"dfnID":"directed-acyclic-graph-dag","dfnText":"Directed Acyclic Graph (DAG)","external":false,"refSections":[{"refs":[{"id":"ref-for-directed-acyclic-graph-dag"}],"title":"12. Annex A: Glossary"}],"url":"#directed-acyclic-graph-dag"},
+"draft": {"dfnID":"draft","dfnText":"draft","external":false,"refSections":[{"refs":[{"id":"ref-for-draft"}],"title":"5.3. The Thesis: System Boundaries Are an Artefact of the Twentieth Century"},{"refs":[{"id":"ref-for-draft\u2460"}],"title":"6.2. The Three Components of a Record"},{"refs":[{"id":"ref-for-draft\u2461"}],"title":"7.3. Branches: Parallel Work as the Normal Case"},{"refs":[{"id":"ref-for-draft\u2462"}],"title":"12. Annex A: Glossary"}],"url":"#draft"},
+"finalisation": {"dfnID":"finalisation","dfnText":"finalisation","external":false,"refSections":[{"refs":[{"id":"ref-for-finalisation"}],"title":"5.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-finalisation\u2460"}],"title":"10.3. ISO 15489 and eCH-0164"},{"refs":[{"id":"ref-for-finalisation\u2461"}],"title":"12. Annex A: Glossary"}],"url":"#finalisation"},
+"finalized": {"dfnID":"finalized","dfnText":"finalized","external":false,"refSections":[{"refs":[{"id":"ref-for-finalized"}],"title":"6.2. The Three Components of a Record"},{"refs":[{"id":"ref-for-finalized\u2460"}],"title":"12. Annex A: Glossary"}],"url":"#finalized"},
+"identity": {"dfnID":"identity","dfnText":"identity","external":false,"refSections":[{"refs":[{"id":"ref-for-identity"}],"title":"6.2. The Three Components of a Record"},{"refs":[{"id":"ref-for-identity\u2460"}],"title":"12. Annex A: Glossary"},{"refs":[{"id":"ref-for-identity\u2461"}],"title":"13. Annex B: Relationship to Existing Standards"}],"url":"#identity"},
+"merkle-root": {"dfnID":"merkle-root","dfnText":"Merkle root","external":false,"refSections":[{"refs":[{"id":"ref-for-merkle-root"}],"title":"9.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-merkle-root\u2460"},{"id":"ref-for-merkle-root\u2461"}],"title":"9.3. The Optional Ledger: Hyperledger as External Anchor"},{"refs":[{"id":"ref-for-merkle-root\u2462"}],"title":"12. Annex A: Glossary"}],"url":"#merkle-root"},
+"metadata": {"dfnID":"metadata","dfnText":"metadata","external":false,"refSections":[{"refs":[{"id":"ref-for-metadata"}],"title":"5.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-metadata\u2460"}],"title":"6.2. The Three Components of a Record"},{"refs":[{"id":"ref-for-metadata\u2461"}],"title":"9.2.1. Level 1: The Individual Record"},{"refs":[{"id":"ref-for-metadata\u2462"}],"title":"9.4. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-metadata\u2463"}],"title":"10.3. ISO 15489 and eCH-0164"},{"refs":[{"id":"ref-for-metadata\u2464"},{"id":"ref-for-metadata\u2465"},{"id":"ref-for-metadata\u2466"},{"id":"ref-for-metadata\u2467"},{"id":"ref-for-metadata\u2468"}],"title":"11.3. Open Questions"},{"refs":[{"id":"ref-for-metadata\u2460\u24ea"}],"title":"12. Annex A: Glossary"}],"url":"#metadata"},
+"payload": {"dfnID":"payload","dfnText":"payload","external":false,"refSections":[{"refs":[{"id":"ref-for-payload"},{"id":"ref-for-payload\u2460"}],"title":"6.2. The Three Components of a Record"},{"refs":[{"id":"ref-for-payload\u2461"},{"id":"ref-for-payload\u2462"}],"title":"11.3. Open Questions"},{"refs":[{"id":"ref-for-payload\u2463"},{"id":"ref-for-payload\u2464"}],"title":"12. Annex A: Glossary"}],"url":"#payload"},
+"record": {"dfnID":"record","dfnText":"Record","external":false,"refSections":[{"refs":[{"id":"ref-for-record"},{"id":"ref-for-record\u2460"}],"title":"3.3. The Overlooked Question"},{"refs":[{"id":"ref-for-record\u2461"},{"id":"ref-for-record\u2462"}],"title":"3.4. RecordWeb: The Consistent Extension"},{"refs":[{"id":"ref-for-record\u2463"}],"title":"4.4. RecordWeb as Synthesis"},{"refs":[{"id":"ref-for-record\u2464"}],"title":"5.3. The Thesis: System Boundaries Are an Artefact of the Twentieth Century"},{"refs":[{"id":"ref-for-record\u2465"}],"title":"5.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-record\u2466"},{"id":"ref-for-record\u2467"},{"id":"ref-for-record\u2468"},{"id":"ref-for-record\u2460\u24ea"}],"title":"6.1. What a Record Is \u2014 and What It Is Not"},{"refs":[{"id":"ref-for-record\u2460\u2460"},{"id":"ref-for-record\u2460\u2461"},{"id":"ref-for-record\u2460\u2462"},{"id":"ref-for-record\u2460\u2463"},{"id":"ref-for-record\u2460\u2464"},{"id":"ref-for-record\u2460\u2465"},{"id":"ref-for-record\u2460\u2466"},{"id":"ref-for-record\u2460\u2467"},{"id":"ref-for-record\u2460\u2468"}],"title":"6.2. The Three Components of a Record"},{"refs":[{"id":"ref-for-record\u2461\u24ea"},{"id":"ref-for-record\u2461\u2460"},{"id":"ref-for-record\u2461\u2461"},{"id":"ref-for-record\u2461\u2462"},{"id":"ref-for-record\u2461\u2463"}],"title":"6.3. Type and Schema: The Record\u2019s Contract"},{"refs":[{"id":"ref-for-record\u2461\u2464"}],"title":"6.4. States: The Liveliness of the Record"},{"refs":[{"id":"ref-for-record\u2461\u2465"},{"id":"ref-for-record\u2461\u2466"}],"title":"6.5. An Example from Administrative Practice"},{"refs":[{"id":"ref-for-record\u2461\u2467"},{"id":"ref-for-record\u2461\u2468"},{"id":"ref-for-record\u2462\u24ea"}],"title":"7.2. The Core Idea: Change as Linkage"},{"refs":[{"id":"ref-for-record\u2462\u2460"}],"title":"7.3. Branches: Parallel Work as the Normal Case"},{"refs":[{"id":"ref-for-record\u2462\u2461"}],"title":"7.4. Finalisation: The Moment of Binding Force"},{"refs":[{"id":"ref-for-record\u2462\u2462"}],"title":"7.5. Corrections, Replacements, and Validity"},{"refs":[{"id":"ref-for-record\u2462\u2463"}],"title":"7.6. Why a DAG Is More Than a Technical Detail"},{"refs":[{"id":"ref-for-record\u2462\u2464"},{"id":"ref-for-record\u2462\u2465"},{"id":"ref-for-record\u2462\u2466"},{"id":"ref-for-record\u2462\u2467"},{"id":"ref-for-record\u2462\u2468"},{"id":"ref-for-record\u2463\u24ea"}],"title":"8.2. What a Case Is"},{"refs":[{"id":"ref-for-record\u2463\u2460"},{"id":"ref-for-record\u2463\u2461"},{"id":"ref-for-record\u2463\u2462"},{"id":"ref-for-record\u2463\u2463"}],"title":"8.3. Case as View, Not as Container"},{"refs":[{"id":"ref-for-record\u2463\u2464"},{"id":"ref-for-record\u2463\u2465"},{"id":"ref-for-record\u2463\u2466"},{"id":"ref-for-record\u2463\u2467"}],"title":"8.4. Example: A Building Permit as a Case"},{"refs":[{"id":"ref-for-record\u2463\u2468"}],"title":"8.5. Cases and Governance"},{"refs":[{"id":"ref-for-record\u2464\u24ea"},{"id":"ref-for-record\u2464\u2460"}],"title":"9.2.1. Level 1: The Individual Record"},{"refs":[{"id":"ref-for-record\u2464\u2461"}],"title":"9.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-record\u2464\u2462"},{"id":"ref-for-record\u2464\u2463"}],"title":"9.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-record\u2464\u2464"},{"id":"ref-for-record\u2464\u2465"},{"id":"ref-for-record\u2464\u2466"},{"id":"ref-for-record\u2464\u2467"},{"id":"ref-for-record\u2464\u2468"},{"id":"ref-for-record\u2465\u24ea"},{"id":"ref-for-record\u2465\u2460"}],"title":"9.4. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-record\u2465\u2461"}],"title":"10.2. Records Continuum"},{"refs":[{"id":"ref-for-record\u2465\u2462"},{"id":"ref-for-record\u2465\u2463"},{"id":"ref-for-record\u2465\u2464"},{"id":"ref-for-record\u2465\u2465"}],"title":"10.3. ISO 15489 and eCH-0164"},{"refs":[{"id":"ref-for-record\u2465\u2466"}],"title":"10.4. OAIS"},{"refs":[{"id":"ref-for-record\u2465\u2467"}],"title":"11.2. The Next Steps"},{"refs":[{"id":"ref-for-record\u2465\u2468"},{"id":"ref-for-record\u2466\u24ea"},{"id":"ref-for-record\u2466\u2460"},{"id":"ref-for-record\u2466\u2461"},{"id":"ref-for-record\u2466\u2462"},{"id":"ref-for-record\u2466\u2463"},{"id":"ref-for-record\u2466\u2464"}],"title":"11.3. Open Questions"},{"refs":[{"id":"ref-for-record\u2466\u2465"},{"id":"ref-for-record\u2466\u2466"},{"id":"ref-for-record\u2466\u2467"},{"id":"ref-for-record\u2466\u2468"},{"id":"ref-for-record\u2467\u24ea"},{"id":"ref-for-record\u2467\u2460"},{"id":"ref-for-record\u2467\u2461"},{"id":"ref-for-record\u2467\u2462"},{"id":"ref-for-record\u2467\u2463"},{"id":"ref-for-record\u2467\u2464"},{"id":"ref-for-record\u2467\u2465"},{"id":"ref-for-record\u2467\u2466"},{"id":"ref-for-record\u2467\u2467"},{"id":"ref-for-record\u2467\u2468"},{"id":"ref-for-record\u2468\u24ea"}],"title":"12. Annex A: Glossary"},{"refs":[{"id":"ref-for-record\u2468\u2460"},{"id":"ref-for-record\u2468\u2461"}],"title":"13. Annex B: Relationship to Existing Standards"}],"url":"#record"},
+"record-owner": {"dfnID":"record-owner","dfnText":"record owner","external":false,"refSections":[{"refs":[{"id":"ref-for-record-owner"}],"title":"10.6. Git"},{"refs":[{"id":"ref-for-record-owner\u2460"},{"id":"ref-for-record-owner\u2461"}],"title":"12. Annex A: Glossary"}],"url":"#record-owner"},
+"state-transition": {"dfnID":"state-transition","dfnText":"state transition","external":false,"refSections":[{"refs":[{"id":"ref-for-state-transition"}],"title":"12. Annex A: Glossary"}],"url":"#state-transition"},
+"version-graph": {"dfnID":"version-graph","dfnText":"version graph","external":false,"refSections":[{"refs":[{"id":"ref-for-version-graph"}],"title":"3.4. RecordWeb: The Consistent Extension"},{"refs":[{"id":"ref-for-version-graph\u2460"}],"title":"4.4. RecordWeb as Synthesis"},{"refs":[{"id":"ref-for-version-graph\u2461"}],"title":"6.3. Type and Schema: The Record\u2019s Contract"},{"refs":[{"id":"ref-for-version-graph\u2462"}],"title":"7.4. Finalisation: The Moment of Binding Force"},{"refs":[{"id":"ref-for-version-graph\u2463"},{"id":"ref-for-version-graph\u2464"}],"title":"7.6. Why a DAG Is More Than a Technical Detail"},{"refs":[{"id":"ref-for-version-graph\u2465"}],"title":"9.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-version-graph\u2466"}],"title":"9.4. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-version-graph\u2467"}],"title":"10.2. Records Continuum"},{"refs":[{"id":"ref-for-version-graph\u2468"}],"title":"10.5. PROV-O"},{"refs":[{"id":"ref-for-version-graph\u2460\u24ea"}],"title":"11.1. What RecordWeb Is Today"},{"refs":[{"id":"ref-for-version-graph\u2460\u2460"}],"title":"11.2. The Next Steps"},{"refs":[{"id":"ref-for-version-graph\u2460\u2461"}],"title":"11.3. Open Questions"},{"refs":[{"id":"ref-for-version-graph\u2460\u2462"},{"id":"ref-for-version-graph\u2460\u2463"},{"id":"ref-for-version-graph\u2460\u2464"},{"id":"ref-for-version-graph\u2460\u2465"},{"id":"ref-for-version-graph\u2460\u2466"}],"title":"12. Annex A: Glossary"}],"url":"#version-graph"},
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    genAllDfnPanels();
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Pin any visible dfn panel
+    queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>positionDfnPanel(el));
+});
+
+function genAllDfnPanels() {
+    for(const panelData of Object.values(dfnPanelData)) {
+        const dfnID = panelData.dfnID;
+        const dfn = document.getElementById(dfnID);
+        if(!dfn) {
+            console.log(`Can't find dfn#${dfnID}.`, panelData);
+            continue;
+        }
+        dfn.panelData = panelData;
+        insertDfnPopupAction(dfn);
+    }
+}
+
+function genDfnPanel(dfn, { dfnID, url, dfnText, refSections, external }) {
+    const dfnPanel = mk.aside({
+        class: "dfn-panel on",
+        id: `infopanel-for-${dfnID}`,
+        "data-for": dfnID,
+        "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+        },
+        mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+            `Info about the '${dfnText}' ${external?"external":""} reference.`),
+        mk.a({href:url, class:"dfn-link"}, url),
+        refSections.length == 0 ? [] :
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({ href: `#${ref.id}` },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        genLinkingSyntaxes(dfn),
+    );
+
+    dfnPanel.addEventListener('click', (event) => {
+        if (event.target.nodeName == 'A') {
+            scrollToTargetAndHighlight(event);
+            pinDfnPanel(dfnPanel);
+        }
+        event.stopPropagation();
+        refocusOnTarget(event);
+    });
+    dfnPanel.addEventListener('keydown', (event) => {
+        if(event.keyCode == 27) { // Escape key
+            hideDfnPanel({dfnPanel});
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+
+    dfnPanel.dfn = dfn;
+    dfn.dfnPanel = dfnPanel;
+    return dfnPanel;
+}
+
+
+
+function hideAllDfnPanels() {
+    // Delete the currently-active dfn panel.
+    queryAll(".dfn-panel").forEach(dfnPanel=>hideDfnPanel({dfnPanel}));
+}
+
+function showDfnPanel(dfn) {
+    hideAllDfnPanels(); // Only display one at a time.
+
+    dfn.setAttribute("aria-expanded", "true");
+
+    const dfnPanel = genDfnPanel(dfn, dfn.panelData);
+
+    // Give the dfn a unique tabindex, and then
+    // give all the tabbable panel bits successive indexes.
+    let tabIndex = 100;
+    dfn.tabIndex = tabIndex++;
+    const tabbable = dfnPanel.querySelectorAll(":is(a, button)");
+    for (const el of tabbable) {
+        el.tabIndex = tabIndex++;
+    }
+
+    append(document.body, dfnPanel);
+    positionDfnPanel(dfnPanel);
+}
+
+function positionDfnPanel(dfnPanel) {
+    const dfn = dfnPanel.dfn;
+    const dfnPos = getBounds(dfn);
+    dfnPanel.style.top = dfnPos.bottom + "px";
+    dfnPanel.style.left = dfnPos.left + "px";
+
+    const panelPos = dfnPanel.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, dfnPos.left - overflowAmount);
+        dfnPanel.style.left = newLeft + "px";
+    }
+}
+
+function pinDfnPanel(dfnPanel) {
+    // Switch it to "activated" state, which pins it.
+    dfnPanel.classList.add("activated");
+    dfnPanel.style.position = "fixed";
+    dfnPanel.style.left = null;
+    dfnPanel.style.top = null;
+}
+
+function hideDfnPanel({dfn, dfnPanel}) {
+    if(!dfnPanel) dfnPanel = dfn.dfnPanel;
+    if(!dfn) dfn = dfnPanel.dfn;
+    dfn.dfnPanel = undefined;
+    dfnPanel.dfn = undefined;
+    dfn.setAttribute("aria-expanded", "false");
+    dfn.tabIndex = undefined;
+    dfnPanel.remove()
+}
+
+function toggleDfnPanel(dfn) {
+    if(dfn.dfnPanel) {
+        hideDfnPanel(dfn);
+    } else {
+        showDfnPanel(dfn);
+    }
+}
+
+function insertDfnPopupAction(dfn) {
+    dfn.setAttribute('role', 'button');
+    dfn.setAttribute('aria-expanded', 'false')
+    dfn.tabIndex = 0;
+    dfn.classList.add('has-dfn-panel');
+    dfn.addEventListener('click', (event) => {
+        toggleDfnPanel(dfn);
+        event.stopPropagation();
+    });
+    dfn.addEventListener('keypress', (event) => {
+        const kc = event.keyCode;
+        // 32->Space, 13->Enter
+        if(kc == 32 || kc == 13) {
+            toggleDfnPanel(dfn);
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+}
+
+function refocusOnTarget(event) {
+    const target = event.target;
+    setTimeout(() => {
+        // Refocus on the event.target element.
+        // This is needed after browser scrolls to the destination.
+        target.focus();
+    });
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function scrollToTargetAndHighlight(event) {
+    let hash = event.target.hash;
+    if (hash) {
+        hash = decodeURIComponent(hash.substring(1));
+        const dest = document.getElementById(hash);
+        if (dest) {
+            dest.classList.add('highlighted');
+            setTimeout(() => dest.classList.remove('highlighted'), 1000);
+        }
+    }
+}
+
+// Functions, divided by link type, that wrap an autolink's
+// contents with the appropriate outer syntax.
+// Alternately, a string naming another type they format
+// the same as.
+function needsFor(type) {
+    switch(type) {
+        case "descriptor":
+        case "value":
+        case "element-attr":
+        case "attr-value":
+        case "element-state":
+        case "method":
+        case "constructor":
+        case "argument":
+        case "attribute":
+        case "const":
+        case "dict-member":
+        case "event":
+        case "enum-value":
+        case "stringifier":
+        case "serializer":
+        case "iterator":
+        case "maplike":
+        case "setlike":
+        case "state":
+        case "mode":
+        case "context":
+        case "facet": return true;
+
+        default: return false;
+    }
+}
+function refusesFor(type) {
+    switch(type) {
+        case "property":
+        case "element":
+        case "interface":
+        case "namespace":
+        case "callback":
+        case "dictionary":
+        case "enum":
+        case "exception":
+        case "typedef":
+        case "http-header":
+        case "permission": return true;
+
+        default: return false;
+    }
+}
+function linkFormatterFromType(type) {
+    switch(type) {
+        case 'scheme':
+        case 'permission':
+        case 'dfn': return (text) => `[=${text}=]`;
+
+        case 'abstract-op': return (text) => `[\$${text}\$]`;
+
+        case 'function':
+        case 'at-rule':
+        case 'selector':
+        case 'value': return (text) => `''${text}''`;
+
+        case 'http-header': return (text) => `[:${text}:]`;
+
+        case 'interface':
+        case 'constructor':
+        case 'method':
+        case 'argument':
+        case 'attribute':
+        case 'callback':
+        case 'dictionary':
+        case 'dict-member':
+        case 'enum':
+        case 'enum-value':
+        case 'exception':
+        case 'const':
+        case 'typedef':
+        case 'stringifier':
+        case 'serializer':
+        case 'iterator':
+        case 'maplike':
+        case 'setlike':
+        case 'extended-attribute':
+        case 'event':
+        case 'idl': return (text) => `{{${text}}}`;
+
+        case 'element-state':
+        case 'element-attr':
+        case 'attr-value':
+        case 'element': return (element) => `<{${element}}>`;
+
+        case 'grammar': return (text) => `${text} (within a <pre class=prod>)`;
+
+        case 'type': return (text)=> `<<${text}>>`;
+
+        case 'descriptor':
+        case 'property': return (text) => `'${text}'`;
+
+        default: return;
+    };
+};
+
+function genLinkingSyntaxes(dfn) {
+    if(dfn.tagName != "DFN") return;
+
+    const type = dfn.getAttribute('data-dfn-type');
+    if(!type) {
+        console.log(`<dfn> doesn't have a data-dfn-type:`, dfn);
+        return [];
+    }
+
+    // Return a function that wraps link text based on the type
+    const linkFormatter = linkFormatterFromType(type);
+    if(!linkFormatter) {
+        console.log(`<dfn> has an unknown data-dfn-type:`, dfn);
+        return [];
+    }
+
+    let ltAlts;
+    if(dfn.hasAttribute('data-lt')) {
+        ltAlts = dfn.getAttribute('data-lt')
+            .split("|")
+            .map(x=>x.trim());
+    } else {
+        ltAlts = [dfn.textContent.trim()];
+    }
+    if(type == "type") {
+        // lt of "<foo>", but "foo" is the interior;
+        // <<foo/bar>> is how you write it with a for,
+        // not <foo/<bar>> or whatever.
+        for(var i = 0; i < ltAlts.length; i++) {
+            const lt = ltAlts[i];
+            const match = /<(.*)>/.exec(lt);
+            if(match) { ltAlts[i] = match[1]; }
+        }
+    }
+
+    let forAlts;
+    if(dfn.hasAttribute('data-dfn-for')) {
+        forAlts = dfn.getAttribute('data-dfn-for')
+            .split(",")
+            .map(x=>x.trim());
+    } else {
+        forAlts = [''];
+    }
+
+    let linkingSyntaxes = [];
+    if(!needsFor(type)) {
+        for(const lt of ltAlts) {
+            linkingSyntaxes.push(linkFormatter(lt));
+        }
+    }
+    if(!refusesFor(type)) {
+        for(const f of forAlts) {
+            linkingSyntaxes.push(linkFormatter(`${f}/${ltAlts[0]}`))
+        }
+    }
+    return [
+        mk.b({}, 'Possible linking syntaxes:'),
+        mk.ul({},
+            ...linkingSyntaxes.map(link => {
+                const copyLink = async () =>
+                    await navigator.clipboard.writeText(link);
+                return mk.li({},
+                    mk.div({ class: 'link-item' },
+                        mk.button({
+                            class: 'copy-icon', title: 'Copy',
+                            type: 'button',
+                            _onclick: copyLink,
+                            tabindex: 0,
+                        }, mk.span({ class: 'icon' }) ),
+                        mk.span({}, link)
+                    )
+                );
+            })
+        )
+    ];
+}
+}
+</script>
+<script>/* Boilerplate: script-ref-hints */
+"use strict";
+{
+let refsData = {
+"#branch": {"displayText":"branch","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"branch","type":"dfn","url":"#branch"},
+"#case": {"displayText":"case","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"case","type":"dfn","url":"#case"},
+"#directed-acyclic-graph-dag": {"displayText":"directed acyclic graph (dag)","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"directed acyclic graph (dag)","type":"dfn","url":"#directed-acyclic-graph-dag"},
+"#draft": {"displayText":"draft","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"draft","type":"dfn","url":"#draft"},
+"#finalisation": {"displayText":"finalisation","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"finalisation","type":"dfn","url":"#finalisation"},
+"#finalized": {"displayText":"finalized","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"finalized","type":"dfn","url":"#finalized"},
+"#identity": {"displayText":"identity","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"identity","type":"dfn","url":"#identity"},
+"#merkle-root": {"displayText":"merkle root","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"merkle root","type":"dfn","url":"#merkle-root"},
+"#metadata": {"displayText":"metadata","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"metadata","type":"dfn","url":"#metadata"},
+"#payload": {"displayText":"payload","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"payload","type":"dfn","url":"#payload"},
+"#record": {"displayText":"record","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"record","type":"dfn","url":"#record"},
+"#record-owner": {"displayText":"record owner","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"record owner","type":"dfn","url":"#record-owner"},
+"#state-transition": {"displayText":"state transition","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"state transition","type":"dfn","url":"#state-transition"},
+"#version-graph": {"displayText":"version graph","export":true,"for_":[],"level":"1","normative":true,"shortname":"rwc","spec":"rwc-1","status":"local","text":"version graph","type":"dfn","url":"#version-graph"},
+};
+
+function mkRefHint(link, ref) {
+    const linkText = link.textContent;
+    let dfnTextElements = '';
+    if (ref.displayText.toLowerCase() != linkText.toLowerCase()) {
+        // Give the original term if it's being displayed in a different way.
+        // But allow casing differences, they're insignificant.
+        dfnTextElements =
+            mk.li({},
+                mk.b({}, "Term: "),
+                mk.span({}, ref.displayText)
+            );
+    }
+    const forList = ref.for_;
+    let forListElements;
+    if(forList.length == 0) {
+        forListElements = [];
+    } else if(forList.length == 1) {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.span({}, forList[0]),
+        );
+    } else {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.ul({},
+                ...forList.map(forItem =>
+                    mk.li({},
+                        mk.span({}, forItem)
+                    ),
+                ),
+            ),
+        );
+    }
+    const url = ref.url;
+    const safeUrl = encodeURIComponent(url);
+    const hintPanel = mk.aside({
+        class: "ref-hint",
+        id: `ref-hint-for-${safeUrl}`,
+        "data-for": url,
+        "aria-labelled-by": `ref-hint-for-${safeUrl}`,
+    },
+        mk.ul({},
+            dfnTextElements,
+            mk.li({},
+                mk.b({}, "URL: "),
+                mk.a({ href: url, class: "ref" }, url),
+            ),
+            mk.li({},
+                mk.b({}, "Type: "),
+                mk.span({}, `${ref.type}`),
+            ),
+            mk.li({},
+                mk.b({}, "Spec: "),
+                mk.span({}, `${ref.spec ? ref.spec : ''}`),
+            ),
+            forListElements
+        ),
+    );
+    hintPanel.forLink = link;
+    setupRefHintEventListeners(link, hintPanel);
+    return hintPanel;
+}
+
+function hideAllRefHints() {
+    queryAll(".ref-hint").forEach(el=>hideRefHint(el));
+}
+
+function hideRefHint(refHint) {
+    const link = refHint.forLink;
+    link.setAttribute("aria-expanded", "false");
+    if(refHint.teardownEventListeners) {
+        refHint.teardownEventListeners();
+    }
+    refHint.remove();
+}
+
+function showRefHint(link) {
+    if(link.classList.contains("dfn-link")) return;
+    const url = link.getAttribute("href");
+    const refHintKey = link.getAttribute("data-refhint-key");
+    let key = url;
+    if(refHintKey) {
+        key = refHintKey + "_" + url;
+    }
+    const ref = refsData[key];
+    if(!ref) return;
+
+    hideAllRefHints(); // Only display one at this time.
+
+    const refHint = mkRefHint(link, ref);
+    append(document.body, refHint);
+    link.setAttribute("aria-expanded", "true");
+    positionRefHint(refHint);
+}
+
+function setupRefHintEventListeners(link, refHint) {
+    if (refHint.teardownEventListeners) return;
+    // Add event handlers to hide the refHint after the user moves away
+    // from both the link and refHint, if not hovering either within one second.
+    let timeout = null;
+    const startHidingRefHint = (event) => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+            hideRefHint(refHint);
+        }, 1000);
+    }
+    const resetHidingRefHint = (event) => {
+        if (timeout) clearTimeout(timeout);
+        timeout = null;
+    };
+    link.addEventListener("mouseleave", startHidingRefHint);
+    link.addEventListener("mouseenter", resetHidingRefHint);
+    link.addEventListener("blur", startHidingRefHint);
+    link.addEventListener("focus", resetHidingRefHint);
+    refHint.addEventListener("mouseleave", startHidingRefHint);
+    refHint.addEventListener("mouseenter", resetHidingRefHint);
+    refHint.addEventListener("blur", startHidingRefHint);
+    refHint.addEventListener("focus", resetHidingRefHint);
+
+    refHint.teardownEventListeners = () => {
+        // remove event listeners
+        resetHidingRefHint();
+        link.removeEventListener("mouseleave", startHidingRefHint);
+        link.removeEventListener("mouseenter", resetHidingRefHint);
+        link.removeEventListener("blur", startHidingRefHint);
+        link.removeEventListener("focus", resetHidingRefHint);
+        refHint.removeEventListener("mouseleave", startHidingRefHint);
+        refHint.removeEventListener("mouseenter", resetHidingRefHint);
+        refHint.removeEventListener("blur", startHidingRefHint);
+        refHint.removeEventListener("focus", resetHidingRefHint);
+    };
+}
+
+function positionRefHint(refHint) {
+    const link = refHint.forLink;
+    const linkPos = getBounds(link);
+    refHint.style.top = linkPos.bottom + "px";
+    refHint.style.left = linkPos.left + "px";
+
+    const panelPos = refHint.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, linkPos.left - overflowAmount);
+        refHint.style.left = newLeft + "px";
+    }
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function showRefHintListener(e) {
+    // If the target isn't in a link (or is a link),
+    // just ignore it.
+    let link = e.target.closest("a");
+    if(!link) return;
+
+    // If the target is in a ref-hint panel
+    // (aka a link in the already-open one),
+    // also just ignore it.
+    if(link.closest(".ref-hint")) return;
+
+    // Otherwise, show the panel for the link.
+    showRefHint(link);
+}
+
+function hideAllHintsListener(e) {
+    // If the click is inside a ref-hint panel, ignore it.
+    if(e.target.closest(".ref-hint")) return;
+    // Otherwise, close all the current panels.
+    hideAllRefHints();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("mousedown", showRefHintListener);
+    document.body.addEventListener("focus", showRefHintListener);
+
+    document.body.addEventListener("click", hideAllHintsListener);
+});
+
+window.addEventListener("resize", () => {
+    // Hide any open ref hint.
+    hideAllRefHints();
+});
+}
+</script>
