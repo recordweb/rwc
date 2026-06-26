@@ -1,0 +1,776 @@
+<pre class='metadata'>
+Title: RecordWeb Concept (RWC)
+Shortname: rwc
+Level: 1
+Status: CG-DRAFT
+Group: recordweb
+URL: https://recordweb.github.io/rwc/
+Editor: Nik Jenzer, nik@triebwerkstatt.ch
+Abstract:
+    RecordWeb postulates a paradigm shift in institutional information management. Not a better filing principle, not a smarter dossier structure — but a different foundational decision about what information is: an autonomous, permanently identifiable, versioned, and cryptographically secured object called a Record. This concept paper lays out the conceptual foundations of RecordWeb, distinguishes it from related approaches, and describes the path from idea to specification. It is the conceptual counterpart to the RecordWeb Protocol ([[RWP]]).
+Repository: recordweb/rwc
+Markup Shorthands: markdown yes
+Boilerplate: copyright no
+Version History: https://github.com/recordweb/rwc/commits/main/index.bs
+Previous Version: https://doi.org/10.5281/zenodo.20475343
+License: https://creativecommons.org/licenses/by/4.0/
+</pre>
+
+<pre class="biblio">
+{
+    "RWP": {
+        "title": "RecordWeb Protocol (RWP)",
+        "authors": ["Nik Jenzer"],
+        "href": "https://recordweb.github.io/rwp/",
+        "status": "CG-DRAFT"
+    },
+    "ISO15489": {
+        "title": "ISO 15489-1:2016 — Information and documentation — Records management",
+        "href": "https://www.iso.org/standard/62542.html",
+        "publisher": "ISO"
+    },
+    "ISO14721": {
+        "title": "ISO 14721:2012 — Open Archival Information System (OAIS)",
+        "href": "https://www.iso.org/standard/57284.html",
+        "publisher": "ISO"
+    },
+    "PROVO": {
+        "title": "PROV-O: The PROV Ontology",
+        "href": "https://www.w3.org/TR/prov-o/",
+        "publisher": "W3C"
+    },
+    "DID-CORE": {
+        "title": "Decentralized Identifiers (DIDs) v1.0",
+        "href": "https://www.w3.org/TR/did-core/",
+        "publisher": "W3C"
+    },
+    "ECH-0164": {
+        "title": "eCH-0164 — Information lifecycle in public administration",
+        "href": "https://www.ech.ch",
+        "publisher": "eCH"
+    },
+    "BERNERS-LEE-1989": {
+        "title": "Information Management: A Proposal",
+        "authors": ["Tim Berners-Lee"],
+        "href": "https://www.w3.org/History/1989/proposal.html",
+        "date": "1989"
+    },
+    "LINKED-DATA": {
+        "title": "Linked Data",
+        "authors": ["Tim Berners-Lee"],
+        "href": "https://www.w3.org/DesignIssues/LinkedData.html",
+        "date": "2006"
+    },
+    "UPWARD-1996": {
+        "title": "Structuring the Records Continuum — Part One",
+        "authors": ["Frank Upward"],
+        "date": "1996",
+        "publisher": "Archives and Manuscripts, 24(2), 268–285"
+    },
+    "UPWARD-1997": {
+        "title": "Structuring the Records Continuum — Part Two",
+        "authors": ["Frank Upward"],
+        "date": "1997",
+        "publisher": "Archives and Manuscripts, 25(1), 10–35"
+    },
+    "GIT": {
+        "title": "Git: Fast Version Control System",
+        "authors": ["Linus Torvalds"],
+        "href": "https://git-scm.com",
+        "date": "2005"
+    },
+    "HYPERLEDGER": {
+        "title": "Hyperledger: An Introduction",
+        "href": "https://www.hyperledger.org/learn/white-papers",
+        "publisher": "Linux Foundation",
+        "date": "2015"
+    },
+	"SOLID": {
+		"title": "The Solid Protocol",
+		"authors": ["Sarven Capadisli", "Tim Berners-Lee", "Ruben Verborgh", "Kjetil Kjernsmo"],
+		"href": "https://solidproject.org/TR/protocol",
+		"publisher": "W3C Solid Community Group",
+		"date": "2022"
+	},
+	"NANOPUB": {
+		"title": "Nanopublications: A Growing Resource of Provenance-Centric Scientific Linked Data",
+		"authors": ["Tobias Kuhn", "Christine Chichester", "Michael Krauthammer", "Núria Queralt-Rosinach", "Ruben Verborgh", "George Giannakopoulos", "Axel-Cyrille Ngonga Ngomo", "Rafaël Gonçalves", "Michel Dumontier"],
+		"href": "https://nanopub.net",
+		"date": "2016"
+	},
+    "ZENODO-RWC": {
+        "title": "RecordWeb Concept (RWC) v1.0 — Published baseline",
+        "authors": ["Nik Jenzer"],
+        "href": "https://doi.org/10.5281/zenodo.20475343",
+        "date": "2026"
+    }
+}
+</pre>
+
+
+Introduction {#intro}
+=====================
+
+## Status of This Document ## {#status}
+
+This document is a **CG Draft** of the RecordWeb Community Group. It is an Editor's Draft and does not represent a W3C standard or endorsed position.
+
+The published baseline of this concept is available at [[ZENODO-RWC]] (Version 1.0, DOI: 10.5281/zenodo.20475343). This working document reflects ongoing development toward the Community Group deliverable.
+
+Feedback is invited via [GitHub Issues](https://github.com/recordweb/rwc/issues).
+
+
+Abstract {#abstract}
+=====================
+
+Public administrations have managed information for decades in systems built for filing, not for traceability. The result is well known: incomplete dossiers, lost version histories, system boundaries that fragment information, and an institutional memory that promises more than it delivers.
+
+RecordWeb postulates a paradigm shift. Not a better filing principle, not a smarter dossier structure, but a different foundational decision about what information is: an autonomous, permanently identifiable, versioned, and cryptographically secured object. The <dfn>Record</dfn> is the smallest meaningful unit of information. It knows its origin. It proves its state. It exists independently of the systems in which it is stored.
+
+RecordWeb takes up the networking idea of the World Wide Web (not for documents, but for Records) and combines it with the conceptual openness of the Records Continuum, the cryptographic integrity of modern versioning systems, and the institutional accountability of classical Records Management. The result is an architecture in which information no longer migrates through system changes but traverses states. In which completeness is not trusted but proven. In which accountability is not a claim but a structural property.
+
+This concept paper lays out the conceptual foundations of RecordWeb, distinguishes it from related approaches, and describes the path from idea to specification. It is addressed to professionals in Records Management, archival science, and public administration, as well as to anyone interested in the question of how institutional information can exist in a digital world in a way that allows it not merely to be stored but permanently proven. For the normative technical specification, see [[RWP]].
+
+
+From Berners-Lee to RecordWeb: The Unfinished Revolution {#web-to-recordweb}
+=============================================================================
+
+## The World Wide Web as an Information Architecture ## {#www-architecture}
+
+When Tim Berners-Lee sketched out his idea for a distributed hypertext system at CERN in 1989 [[BERNERS-LEE-1989]], he was pursuing a precise goal: information should be linked together, regardless of which system it was stored on. His proposal, "a large hypertext database with typed links", was no technical gimmick but an epistemological thesis: knowledge emerges through connection, not through filing.
+
+The Web that grew from it fulfilled this thesis, but only halfway. It networked *documents*: Web pages, PDFs, images, videos. The networked unit remained the document, not the information.
+
+## Linked Data: The Second Attempt ## {#linked-data}
+
+Berners-Lee recognised the incompleteness early. With his concept of the *Semantic Web* and later the *Linked Data* principles [[LINKED-DATA]], he tried to go a step further: networking not documents but data. The four principles are well known:
+
+1. Use URIs as names for things.
+2. Use HTTP URIs so that names can be resolved.
+3. Provide useful information when someone looks up a URI.
+4. Link to other URIs to enable discovery.
+
+Linked Data has achieved significant successes: Wikidata, DBpedia, and Google's Knowledge Graph are children of this idea. But the core problem remained: the networked unit is a *data point in a graph*, not an *autonomous information object with history, provenance, and accountability*.
+
+What is missing is the institutional dimension. An RDF triple does not know who created it. It does not know when it was valid. It has no version. It has no responsible party. It is not auditable.
+
+## The Overlooked Question ## {#overlooked-question}
+
+Berners-Lee's approaches answer the question *how do I connect information?*, but not the question *what is information that can be connected?* This question arises everywhere that information must not merely be *transmitted* but *proven*.
+
+Note: [[ISO15489]] defines a Record as "information created, received, and maintained as evidence and as an asset by an organization or person, in pursuit of legal obligations or in the transaction of business" (Section 3.14). This definition emphasises the evidentiary character (information as an object of proof) and forms the normative foundation for the [=Record=] concept in RecordWeb.
+
+This question is not technical. It is ontological: what is the smallest meaningful unit of information; autonomous, identifiable, traceable, and permanent?
+
+The answer RecordWeb postulates is: **the [=Record=]**.
+
+## RecordWeb: The Consistent Extension ## {#recordweb-extension}
+
+RecordWeb takes up Berners-Lee's core idea and radicalises it. Not documents are networked, not data points, but **[=Records=]**: autonomous, versioned, schema-based information objects with unambiguous identity, traceable provenance, and explicit accountability.
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Dimension</th>
+      <th>World Wide Web</th>
+      <th>Linked Data</th>
+      <th>RecordWeb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Networked unit</td>
+      <td>Document</td>
+      <td>Data point (triple)</td>
+      <td>[=Record=]</td>
+    </tr>
+    <tr>
+      <td>Identity</td>
+      <td>URL (location = name)</td>
+      <td>URI</td>
+      <td>DID (location ≠ name)</td>
+    </tr>
+    <tr>
+      <td>Versioning</td>
+      <td>None (implicit)</td>
+      <td>None</td>
+      <td>[=Version graph=] (DAG)</td>
+    </tr>
+    <tr>
+      <td>Accountability</td>
+      <td>None</td>
+      <td>None</td>
+      <td>[=Owner=] (DID)</td>
+    </tr>
+    <tr>
+      <td>Immutability</td>
+      <td>None</td>
+      <td>None</td>
+      <td>Content hash per version</td>
+    </tr>
+    <tr>
+      <td>Auditability</td>
+      <td>None</td>
+      <td>None</td>
+      <td>Merkle integrity</td>
+    </tr>
+    <tr>
+      <td>Schema</td>
+      <td>Not required</td>
+      <td>RDF/OWL (optional)</td>
+      <td>Mandatory per type and version</td>
+    </tr>
+  </tbody>
+</table>
+
+The Web made documents findable. Linked Data made facts linkable. RecordWeb makes **information provable**.
+
+## A Paradigm Shift, Not a Replacement ## {#paradigm-shift}
+
+RecordWeb does not replace the World Wide Web and does not compete with Linked Data. It is a complementary architecture that answers a different question: how can information (as an atomic, autonomous unit) exist in such a way that it can be reliably identified, linked, and proven across system boundaries, organisational boundaries, and time boundaries?
+
+This question arises everywhere that information must not merely be *transmitted* but *proven*: in healthcare, in finance, and especially in public administration, which owes accountability to the sovereign, to parliaments, and to courts.
+
+
+The Records Continuum and Its Unresolved Tension {#records-continuum}
+======================================================================
+
+## The Australian Revolution ## {#australian-revolution}
+
+In the second half of the twentieth century, archival science was dominated by linear thinking: Records are created, used, transferred to the archive, and end there. This lifecycle (creation, maintenance, disposal) was intuitive, easy to convey, and closely tied to the physical reality of paper documents.
+
+Frank Upward and his colleagues at Monash University fundamentally challenged this model in the 1990s [[UPWARD-1996]] [[UPWARD-1997]]. Their *Records Continuum Model* replaced the linear sequence with a multidimensional, continuous spatial model. A Record does not pass through phases, it exists simultaneously across multiple dimensions: *create*, *capture*, *organise*, *pluralise*. The underlying idea is radical: a Record is not an object that travels from A to B. It is an entity that lives in a continuous space of meaning, context, and use.
+
+This idea is conceptually far more advanced than the classical lifecycle. It anticipates what RecordWeb thinks through to its logical conclusion: a Record never ceases to exist. It changes its context, its use, its meaning. But it itself endures.
+
+## The Unresolved Tension: Continuity Versus Provability ## {#continuity-vs-provability}
+
+The Records Continuum Model has a blind spot that is often underestimated in scholarly discussion. The model's strength (its openness, its multidimensionality, its rejection of rigid phase boundaries) is simultaneously its weakness in the institutional context.
+
+Public administrations owe accountability. They must be able to prove:
+
+- *When* was which information available in which version?
+- *Who* had knowledge of which matter at which point in time?
+- *How* was a decision prepared — which information was present, which was not?
+
+The Records Continuum provides no structural answer to these questions. It describes how Records are *meaningful*, but not how they are *provable*. This is not a flaw in the model; it was not designed for this purpose. But it is the gap that RecordWeb must close.
+
+## The Classical Lifecycle: Structure Without Flexibility ## {#classical-lifecycle}
+
+On the other side stands the classical lifecycle, as anchored in [[ISO15489]] and in Switzerland in [[ECH-0164]]: processing — retention — archiving or disposal.
+
+This framework has great merits. It creates clarity about responsibilities, enables legally compliant retention periods, and structures the transition between operational use and historical preservation. But the model carries a structural cost: it thinks in system boundaries. A Record "lives" in one system and is "moved" to another. Every transition is a migration, a transformation, a potential loss of information.
+
+## RecordWeb as Synthesis ## {#synthesis}
+
+RecordWeb postulates that the tension between continuity and provability cannot be resolved through a better lifecycle model, but through a different approach.
+
+**The thesis:** a Record does not need a system that carries it through phases. It needs an identity that outlasts it. It needs a version history that documents its change. And it needs cryptographic integrity that proves its state at any point in time.
+
+What is today understood as "archiving" (the physical or digital transfer to a retention system) becomes in RecordWeb a <dfn>state transition</dfn>. The [=Record=] stays where it is. It receives a new state. Its location can change; its DID remains. Its version is frozen; new versions can emerge without overwriting the old one.
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>Records Continuum</th>
+      <th>Classical Lifecycle</th>
+      <th>RecordWeb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Core idea</td>
+      <td>Record lives continuously</td>
+      <td>Record moves through phases</td>
+      <td>Record exists with states</td>
+    </tr>
+    <tr>
+      <td>Strength</td>
+      <td>Flexibility, openness</td>
+      <td>Clarity, legal compliance</td>
+      <td>Provability, continuity</td>
+    </tr>
+    <tr>
+      <td>Weakness</td>
+      <td>Weak auditability</td>
+      <td>Rigid system boundaries, migration losses</td>
+      <td>Higher technical complexity</td>
+    </tr>
+    <tr>
+      <td>Archive</td>
+      <td>No fixed boundary</td>
+      <td>Separate system (SoA)</td>
+      <td>State, not a system change</td>
+    </tr>
+    <tr>
+      <td>Versions</td>
+      <td>Not explicitly modelled</td>
+      <td>Not explicitly modelled</td>
+      <td>[=Version graph=] (DAG), mandatory</td>
+    </tr>
+    <tr>
+      <td>Integrity</td>
+      <td>Conceptual</td>
+      <td>Organisational</td>
+      <td>Cryptographic</td>
+    </tr>
+  </tbody>
+</table>
+
+## What RecordWeb Inherits from Both ## {#inheritance}
+
+RecordWeb is not a refutation of the Records Continuum, it is its technical implementation. The idea that a Record does not die but lives on is the core thought of both approaches. What RecordWeb adds is the mechanism: the immutable, cryptographically secured snapshot as the basis for every statement about the state of information at a specific point in time.
+
+From the classical lifecycle, RecordWeb inherits the insight that Records exist in an institutional context, with responsible parties, with retention periods, with governance. This institutional dimension is absent from the Records Continuum just as it is from Linked Data. It is constitutive for RecordWeb.
+
+The result is a model that combines the conceptual openness of the Continuum with the institutional binding force of the classical lifecycle (and places both on a cryptographic foundation that was not yet available in the 1990s).
+
+
+Why SoW, SoR, and SoA Have No Future {#sow-sor-soa}
+=====================================================
+
+## An Honest Appreciation ## {#appreciation}
+
+The distinction between <dfn>System of Work (SoW)</dfn>, <dfn>System of Record (SoR)</dfn>, and <dfn>System of Archive (SoA)</dfn> is not wrong. It is precise, legally grounded, and reflects a real institutional logic: information is created in the work process, secured in the record repository, and preserved in the archive. RecordWeb does not challenge this approach. It asks one level deeper.
+
+## The Diagnosis: The Problem Is the System Boundary Itself ## {#system-boundary}
+
+The lifecycle model does not fail in practice due to poor technology. It fails because of people, but not because people lack discipline. It fails because the model assigns people a task that is structurally incompatible with their work.
+
+Staff in a public authority want two things: to get their work done, and to have access to all relevant information at any time. What they do not want (and what they have consistently refused to do over decades, not out of ill will but out of rational time management) is the manual transfer of information from one system to another.
+
+## The Thesis: System Boundaries Are an Artefact of the Twentieth Century ## {#artefact}
+
+The tripartite SoW/SoR/SoA structure is historically motivated. Paper could not simultaneously be in circulation and in the archive. Electronic systems were expensive, specialised, and poorly networked. The transition between phases was a physical or organisational necessity.
+
+**This necessity no longer exists technically.**
+
+RecordWeb does precisely this: there is no longer any transition between SoW and SoR, because every [=Record=] from the outset satisfies both requirements: it is editable (in the [=draft=] state) and it is archivable (every finalised version is immutable, cryptographically secured, and permanently addressable). There is no longer any transition between SoR and SoA, because the archive is no longer a place, it is a state.
+
+## What Remains — and What Disappears ## {#what-remains}
+
+**What disappears:**
+
+- The organisational obligation to manually transfer information between systems
+- The institutional distinction between "working area" and "record repository" as a system boundary
+- Migration as a regular, risk-laden transition in the information lifecycle
+- The archive as a separate system with its own staff, its own interfaces, its own logic
+
+**What remains:**
+
+- The substantive distinction between active and concluded information: mapped as states
+- Legal retention periods: mapped as [=metadata=] in the [=Record=]
+- The archive's responsibility for long-term stability and accessibility: mapped as governance rules
+- The human decision about [=finalisation=]: as an explicit, documented act
+
+## The Consequence for Staff ## {#consequence-for-staff}
+
+For staff, RecordWeb means a radical simplification: they work in a single conceptual space. They create Records, edit them, finalise them. They link Records to Cases. They never again have to decide whether information is "ready for filing". They never again have to switch between systems. They never again have to classify before they are allowed to work.
+
+
+The Record: The Smallest Meaningful Unit of Information {#the-record}
+======================================================================
+
+## What a Record Is — and What It Is Not ## {#record-definition}
+
+The term "Record" is established in archival science and Records Management, but it is imprecise. RecordWeb uses the term more precisely: a [=Record=] is the **smallest semantically autonomous unit of information** that can meaningfully exist without additional context.
+
+Note: This definition sharpens the normative Record concept from [[ISO15489]] (Section 3.14) in two dimensions: first, RecordWeb emphasises *semantic autonomy*: a [=Record=] must be understandable without an external container. Second, RecordWeb adds *technical identifiability*: a [=Record=] must be globally and uniquely addressable without a foreign register.
+
+A single database field is not a Record. An email attachment is not a Record. A folder is not a Record (it is a container).
+
+A [=Record=], by contrast, is: a decision of a public authority; an application submitted by a citizen; minutes of a meeting; an expert opinion; a contract. Each of these objects carries its meaning within itself.
+
+## The Three Components of a Record ## {#record-components}
+
+Every [=Record=] in RecordWeb consists of three inseparable components: its <dfn>identity</dfn>, its <dfn>payload</dfn>, and its <dfn>metadata</dfn>.
+
+**[=Identity=]** is what makes the [=Record=] unambiguous. Globally, permanently, and without a foreign register. Every [=Record=] carries a unique identifier that identifies it across system boundaries, organisational boundaries, and time boundaries. This identifier is entirely independent of the [=Record=]'s physical storage location.
+
+**The [=payload=]** is the actual content, the information that the [=Record=] carries. A [=payload=] always follows a schema defined for its Record type. The schema is the contract between the [=Record=] and the system. A [=Record=] can carry multiple payload representations of the same information: a working format in [=draft=] state and a long-term format in [=finalized=] state.
+
+**[=Metadata=]** are the dimensions along which a [=Record=] can be found, linked, and classified. They describe the [=Record=] from the outside without needing to know its content. The minimum set is deliberately kept small: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.
+
+## Type and Schema: The Record's Contract ## {#record-type-schema}
+
+Every [=Record=] has a type. And every type has a schema. A [=Record=]'s type is not merely a label, it is a statement about which rules apply to this [=Record=]. In RecordWeb, a schema is itself a [=Record=]: a SchemaRecord with its own type, its own [=version graph=], and its own history. This guarantees backward compatibility structurally: every version of a [=Record=] remains permanently linked to the schema version that was valid at the time of its creation.
+
+## States: The Liveliness of the Record ## {#record-states}
+
+A [=Record=] in RecordWeb is not static. It has a **state** that describes the condition it is in. The minimum set is:
+
+: <dfn>draft</dfn>
+:: Being worked on. Not yet linkable. Content can still change.
+
+: <dfn>finalized</dfn>
+:: Complete. Content is immutable. Cryptographically secured. Linkable.
+
+Record types MAY define additional states. A contract may have the state *signed*. An expert opinion may have the state *under review*. These extensions must be defined in the SchemaRecord.
+
+What does *not* exist is a state *archived* as a system transition. In RecordWeb, there is no "moving into the archive". There are finalised versions that can no longer be changed. That is archiving, without migration, without a system boundary.
+
+## An Example from Administrative Practice ## {#admin-example}
+
+A citizen submits an application for a building permit.
+
+**In today's system:** the application arrives by email or as a PDF. It is printed out or filed in a RecordManagement System. Perhaps it is classified, perhaps not. Later someone looks for it and finds three versions on two drives and in one email.
+
+**In RecordWeb:** the application is captured as a [=Record=] of the type *building-permit-application*. Its schema specifies which fields must be present: parcel number, applicant, description of the construction project, date. The [=Record=] immediately receives a unique identity. Once fully captured, it is finalised. From that moment on, it is immutable, but accessible, linkable, and discoverable for all involved.
+
+
+The Version Graph: How Information Changes Without Disappearing {#version-graph}
+================================================================================
+
+## The Problem with Versions Today ## {#versions-today}
+
+Anyone who today looks for the "current version" of a document in a public authority enters uncertain terrain. In most cases, the history of a document (who changed it, when, and how) cannot be reconstructed. This is not a marginal problem. It is the normal condition. And it has real consequences: decisions are made on the basis of information whose period of validity is unclear.
+
+## The Core Idea: Change as Linkage ## {#change-as-linkage}
+
+In RecordWeb, information is never overwritten. When a [=Record=] changes, a new version arises, a new, autonomous snapshot. This snapshot is linked to its predecessor: it knows where it came from. The entirety of all versions of a [=Record=] and their linkages forms the <dfn>version graph</dfn>.
+
+A graph is the right metaphor because the history of information is rarely a straight line. Sometimes it branches: two staff members work simultaneously on different aspects of the same [=Record=]. Sometimes strands come together again: different revisions are merged into one authoritative version.
+
+## Branches: Parallel Work as the Normal Case ## {#branches}
+
+A <dfn>branch</dfn> arises when from one finalised version, two or more simultaneously existing drafts emerge. Both are visible. Both are in the [=draft=] state. Anyone looking at the [=Record=] sees immediately that parallel work is underway. Nothing is hidden, nothing is lost.
+
+## Finalisation: The Moment of Binding Force ## {#finalisation}
+
+The heart of the [=version graph=] is <dfn>finalisation</dfn>. It is the moment in which a draft becomes binding information. The moment in which the [=Record=] becomes linkable, referencable, and usable as the basis for further actions.
+
+Finalisation is not a technical automatism. It is a human decision, documented and attributable. Whoever finalises assumes responsibility for the content. A finalised version is immutable: it cannot be withdrawn, corrected, or overwritten. Corrections arise as new versions, with explicit reference to the version they replace.
+
+This immutability is not a technical limitation. It is a statement about the nature of accountability: whoever declares something to be true and binding at a particular point in time must be able to stand by it.
+
+## Corrections, Replacements, and Validity ## {#corrections}
+
+When a finalised [=Record=] is incorrect, it remains what it was — a finalised, provable version at a particular point in time. A new version arises that corrects or replaces it. What changes is not the past, but the state of knowledge about the past.
+
+This distinction is central. An incorrect version remains visible as a historical fact. The corrected version becomes visible as its successor. This does not weaken trust, it strengthens it. Trust does not arise from the fiction that institutions never make mistakes, but from the ability to prove how they dealt with mistakes.
+
+## Why a DAG Is More Than a Technical Detail ## {#dag-semantics}
+
+Technically, the [=version graph=] is implemented as a <dfn>Directed Acyclic Graph (DAG)</dfn>. This means: every version has one or more predecessors, but no cycles. A [=Record=] can refer back to earlier versions, but it cannot become its own ancestor.
+
+Acyclicity means that history has a direction. One can reinterpret the past, correct it, recontextualise it, but one cannot make it unhappen. The graph therefore expresses, in technical form, an institutional principle: **accountability needs chronology**.
+
+The [=version graph=] is not an optional implementation feature of RecordWeb. It is part of its ontology.
+
+The Case: Cases as a View onto the RecordWeb {#cases}
+======================================================
+
+## Why the Dossier Is Not Enough ## {#dossier-limitations}
+
+In public administration, the dossier has long been the central organisational principle. But it has a weakness that becomes visible in the digital context: the dossier is a **container**. It holds together what belongs together. But it does not explain why it belongs together, and it does not create any identity of its own for the individual parts.
+
+RecordWeb therefore proposes a different perspective: not the dossier as the primary unit, but the <dfn>Case</dfn> as a view onto linked Records.
+
+## What a Case Is ## {#case-definition}
+
+A [=Case=] in RecordWeb is not a container into which [=Records=] are placed. It is a **semantic and procedural relationship structure** that links [=Records=] to one another and makes them visible as belonging together.
+
+A [=Case=] answers questions such as:
+
+- Which [=Records=] belong to the same matter?
+- Which [=Records=] were causally relevant to a decision?
+- Which [=Records=] together constitute the context of a process?
+
+This has a fundamental consequence: a [=Record=] can belong to multiple [=Cases=]
+without being duplicated.
+
+## Case as View, Not as Container ## {#case-as-view}
+
+In the classical system, the dossier is primary and the document secondary. In RecordWeb, the [=Record=] is primary and the [=Case=] secondary. The [=Record=] exists in its own right. The [=Case=] emerges through the explicit linking of [=Records=]. Context is not produced by storage, but by relation.
+
+A [=Case=] can be polycontextual: it can connect [=Records=] across organisational units, across processes, across time periods. It can represent causal links where the dossier can only represent storage location.
+
+## Example: A Building Permit as a Case ## {#building-permit-example}
+
+A citizen submits an application for a building permit. This application is a [=Record=]. Later a site plan is added, then an expert opinion from the heritage authority, then the hearing of neighbours, then the authority's decision.
+
+In a classical system, all of this would be placed in a dossier. In RecordWeb, all these are autonomous [=Records=] linked through a [=Case=]: "Building Permit Muller, Parcel 4711".
+
+The [=Case=] makes visible that the [=Records=] belong together. But none of them loses its autonomy. The heritage expert opinion can later appear in another [=Case=] if a legal dispute arises. The authority's decision can be linked to a political oversight [=Case=]. The application remains the same application.
+
+**The context changes. The [=Record=] remains.**
+
+## Cases and Governance ## {#case-governance}
+
+Because [=Cases=] create context, they are institutionally relevant. They also need governance: who may open a [=Case=]? Who may add or remove [=Records=]? Under what conditions may a [=Case=] be split, merged, or closed?
+
+RecordWeb's answer is clear: [=Cases=] must be defined semantically and governed institutionally, but without reducing them again to containers.
+
+
+Accountability and Trust: Proving Rather Than Claiming {#accountability}
+=========================================================================
+
+## The Question Authorities Dread ## {#the-question}
+
+"Can you prove that this information existed at the time the decision was made?"
+
+No court asks this question lightly. But it is asked in legal remedy proceedings, in parliamentary inquiries, in audits, in criminal investigations. And in most administrations, the honest answer is the same: no, not with certainty.
+
+RecordWeb is built for provability. That is not a side benefit, it is a design principle.
+
+## Three Levels of Traceability ## {#traceability-levels}
+
+RecordWeb anchors traceability at three levels that together produce a complete picture.
+
+### Level 1: The Individual Record ### {#level-1-record}
+
+Every finalised version of a [=Record=] is cryptographically secured. The content, the schema, the [=metadata=], and the provenance references are condensed into a single hash value. This value is unambiguous: two [=Records=] with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable.
+
+### Level 2: The Version Graph ### {#level-2-version-graph}
+
+The history of a [=Record=] is not separately documented, it is structurally anchored. Every version knows its predecessors. Every [=branch=] is visible. The question "which information was available at the time of the decision?" is answered by examining the [=version graph=] at the relevant point in time (not by questioning those involved, not by searching through email archives).
+
+### Level 3: The Case Merkle Root ### {#level-3-merkle}
+
+A finalised [=Case=] has a fingerprint: the <dfn>Merkle root</dfn>, calculated from the hash values of all linked [=Records=]. This value represents the entire state of the [=Case=] at a specific point in time: completely, immutably, and machine-verifiably.
+
+The question "was this [=Case=] complete at the time of the decision?" is answered by comparing the [=Merkle root=] from that time with the one from today. If they are identical, nothing has changed. If they differ, the system knows exactly which [=Record=] has changed.
+
+## The Optional Ledger: Hyperledger as External Anchor ## {#optional-ledger}
+
+For situations in which an authority needs external proof, RecordWeb offers an optional extension: anchoring the [=Case=] [=Merkle root=] on a distributed infrastructure (for example Hyperledger Fabric [[HYPERLEDGER]], a permissioned distributed ledger that operates without a public blockchain).
+
+The principle is simple: when a [=Case=] is finalised, its [=Merkle root=] (and only this value, no content) is written to the ledger. This creates a timestamped, publicly provable entry: "this [=Case=] had this state at this point in time", without privacy or official secrecy being violated.
+
+The Hyperledger anchor is an option, not an obligation.
+
+## The Optional Pod: Solid as Citizen-Controlled Storage ## {#optional-solid}
+
+For situations in which a [=Record=] or [=Case=] belongs not to an authority but to a citizen (as the subject, recipient, or rights-holder) RecordWeb offers a second optional extension: delivery and storage of [=Records=] in a Solid Pod [[SOLID]].
+
+Solid is a W3C-based protocol that enables individuals to store their own data in a personal online data store (a *Pod*), fully under their own control. Applications and institutions may read from or write to a Pod only with explicit, revocable consent. The citizen is not the recipient of a copy, the citizen is the **owner of the original**.
+
+The principle for RecordWeb is straightforward: when an authority finalises a [=Record=] that concerns a specific citizen, it may (with the citizen's consent) deliver that [=Record=] directly into the citizen's Pod. The [=Record=] retains its DID, its [=version graph=], and its cryptographic integrity. What changes is the storage location: the authority's system and the citizen's Pod both hold a reference to the same immutable, permanently addressable object.
+
+Typical use cases for citizen-held Records include:
+
+- A driving licence issued by the road traffic authority
+- A medical image (X-ray, MRI) delivered by a hospital
+- A residence registration confirmation issued by the municipality
+- A building permit delivered to the applicant
+- A diploma or professional certification
+
+In each case, the citizen can present the [=Record=] to any third party (an employer, an insurer, a foreign authority) who can independently verify its authenticity via the DID and the cryptographic hash, without querying the issuing authority. The authority's system remains authoritative; the citizen's Pod holds a provable, portable copy.
+
+Note: The Solid Pod option complements, not replaces, the authority's own record keeping. The issuing authority retains the [=Record=] in its own RecordWeb system. The Pod delivery is an additional output, a citizen-facing endpoint for Records whose primary subject is the individual.
+
+The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a `delivery-target` field in the optional [=metadata=] extension block for this purpose.
+
+## Trust Through Transparency, Transparency Through Structure ## {#trust}
+
+Trust in public institutions arises not from promises but from provability. An authority that can say: "here is the decision, here is its history, here is the proof that it has not changed", this authority deserves trust. Not because it was well-intentioned, but because it can prove it.
+
+RecordWeb is not an instrument of control *against* authorities. It is an instrument of credibility *for* authorities.
+
+
+Related Concepts and Demarcation {#related-concepts}
+=====================================================
+
+## Linked Data and the Semantic Web ## {#related-linked-data}
+
+Tim Berners-Lee's Linked Data principles [[LINKED-DATA]] are the conceptually closest relative of RecordWeb. RecordWeb takes up the networking idea from Linked Data and adds the institutional dimension that is missing there: accountability, versioning, auditability, states.
+
+## Records Continuum ## {#related-continuum}
+
+RecordWeb is the technical implementation of the Records Continuum idea [[UPWARD-1996]] [[UPWARD-1997]]. The notion that a [=Record=] does not die but lives on is structurally anchored in RecordWeb, through immutable versions, through the [=version graph=], through the absence of an "archiving" system transition.
+
+## ISO 15489 and eCH-0164 ## {#related-iso15489}
+
+[[ISO15489]] defines international principles of Records Management: authenticity, reliability, integrity, usability. These four properties are RecordWeb's requirements specification. RecordWeb fulfils all four structurally:
+
+- **Authenticity**: DID and cryptographic hash guarantee that a [=Record=] is what it claims to be
+- **Reliability**: [=Finalisation=] and immutable versions guarantee that a [=Record=] is complete and correct at the time of finalisation
+- **Integrity**: Merkle hashes guarantee that a [=Record=] cannot change unnoticed after finalisation
+- **Usability**: The DID document and [=metadata=] guarantee that a [=Record=] remains findable and accessible, regardless of system migrations
+
+[[ECH-0164]] defines the information lifecycle for Swiss administration. RecordWeb reinterprets this model: the three phases become states within a single information object, without system boundaries between them.
+
+## OAIS ## {#related-oais}
+
+OAIS [[ISO14721]] is the international standard for digital long-term preservation. RecordWeb and OAIS are complementary: RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb [=Records=] can be migrated to long-term archives according to OAIS principles; the DID is retained in this process.
+
+## PROV-O ## {#related-provo}
+
+[[PROVO]] is a W3C standard for describing the provenance and history of data. RecordWeb and PROV-O overlap in intention. The difference: PROV-O is a description standard, it can be layered onto existing systems. RecordWeb is an architecture standard, provenance is structurally anchored in the [=version graph=]. PROV-O would be a possible serialisation format for RecordWeb lineage documentation.
+
+## Git ## {#related-git}
+
+[[GIT]] internally uses the same DAG approach as RecordWeb: every commit is an immutable snapshot, linked to its predecessors, identified by a cryptographic hash.
+
+RecordWeb learns from [[GIT]]: the immutability of commits, the explicitness of branches and merges, the cryptographic securing through content hashes. The difference: [[GIT]] is for code and files, not for semantic information objects with institutional accountability. [[GIT]] knows no states, no [=owner=], no classification, no schema. RecordWeb adopts the fundamental technical logic of [[GIT]] and transfers it into the institutional context.
+
+## Summary: Positioning of RecordWeb ## {#positioning-summary}
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>Networking</th>
+      <th>Versioning</th>
+      <th>Auditability</th>
+      <th>Institutional Governance</th>
+      <th>Long-term Stability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Linked Data</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
+    <tr><td>Records Continuum</td><td>✓</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td></tr>
+    <tr><td>ISO 15489</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>eCH-0164</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>OAIS</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>PROV-O</td><td>✓</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td></tr>
+    <tr><td>Git</td><td>✗</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td></tr>
+    <tr>
+      <td><strong>RecordWeb</strong></td>
+      <td><strong>✓</strong></td>
+      <td><strong>✓</strong></td>
+      <td><strong>✓</strong></td>
+      <td><strong>✓</strong></td>
+      <td><strong>✓</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+Roadmap and Open Questions: An Invitation {#roadmap}
+=====================================================
+
+## What RecordWeb Is Today ## {#current-state}
+
+In this document, RecordWeb is a concept with an initial specification. It is not a product, not software. It is an architectural idea. Precise enough to discuss, open enough to be developed further together. The normative technical specification (the RecordWeb Protocol [[RWP]]) defines the JSON schemas, the DID structure, the [=version graph=] algorithms, and the Merkle calculations.
+
+## The Next Steps ## {#next-steps}
+
+**Step 1: Concept Validation**
+
+The present concept must be discussed with professionals from Records Management, archival science, computer science, and public administration. Do the basic assumptions hold? Are there use cases that the model does not cover?
+
+**Step 2: Pilot Use Case**
+
+A concrete pilot use case is needed: a real [=Case=] from a public authority, modelled as a RecordWeb structure. What [=Record=] types arise? What does the [=version graph=] look like? Where do the concepts reach their limits?
+
+**Step 3: Standardisation Process**
+
+RecordWeb has the potential to contribute to international standardisation processes. This path is long. It begins with the concept, proceeds through the specification, and is validated through implementations.
+
+## Open Questions ## {#open-questions}
+
+The following questions are explicitly offered for community contribution:
+
+**Access control**: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional `access-policy` block in the minimum metadata set.
+
+**Federation**: RecordWeb offers a directional answer inspired by DNS architecture. DID resolvers function like DNS servers: federated, replicated, without a single point of failure. The Nanopublication network [[NANOPUB]] offers a working reference model: a decentralised peer-to-peer server network in which each node holds cryptographically signed, immutable micro-assertions identified by Trusty URIs. RecordWeb [=Records=] in their finalised state share the same structural properties (immutable, hash-identified, independently verifiable) and could be published and queried across a Nanopub-inspired federation layer. The complete federation architecture is the subject of [[RWP]].
+
+**Deletion obligations**: The tension between RecordWeb's immutability and the data protection right to erasure (GDPR, Swiss DSG) is resolved through *payload deletion while retaining structure*. On a legal requirement, the payload is deleted; the DID, the [=metadata=], and the graph structure are retained. The [=Record=] continues to exist as a provable "empty shell", its former existence is documented, its content is gone.
+
+Depending on the specific legal basis, the deletion regime admits three distinct modes:
+
+: Payload deletion (default)
+:: The [=payload=] is deleted; DID, [=metadata=], and [=version graph=] are retained. The [=Record=] remains as a structural shell. Applies where provenance continuity is legally required despite erasure (e.g. audit trails, public registers).
+
+: Full deletion (opt-out)
+:: The entire [=Record=] (including DID, [=metadata=], and graph edges) is deleted. Applies where no retention obligation exists and the right to erasure is absolute (e.g. erroneously captured personal data with no public interest basis).
+
+: Deletion exemption (opt-out)
+:: No deletion occurs, not even of the [=payload=]. Applies where a statutory retention obligation overrides the erasure claim (e.g. tax records, notarial acts, public register entries). The legal basis must be documented as [=metadata=] on the [=Record=] at the time of creation.
+
+The applicable mode is declared in the `deletion-regime` field of the [=Record=]'s [=metadata=]. Implementations MUST respect this field and MAY enforce it at the infrastructure level.
+
+**Performance and scaling**: A global network of linked [=Records=] with cryptographic hash values places demands on infrastructure that are not yet fully foreseeable.
+
+**Platform adoption**: The actual adoption task lies not with the end user, but with the platform providers: Microsoft, Google, SAP, and others must integrate RWP as a native layer into their products.
+
+## An Invitation ## {#invitation}
+
+RecordWeb is a thesis, not a doctrine. It is an invitation to think together about the foundations of institutional information architecture, and in doing so, to question old assumptions.
+
+Whoever wishes to accept this invitation (as a critic, as a fellow thinker, as an implementer) is welcome. Feedback is invited via [GitHub Issues](https://github.com/recordweb/rwc/issues).
+
+
+Annex A: Glossary {#glossary}
+==============================
+
+<dl>
+  <dt><dfn>Branch</dfn></dt>
+  <dd>A parallel development line within the [=version graph=] of a [=Record=]. From one finalised version, two or more simultaneously existing drafts arise. Branches are transparently visible; their consolidation is effected through an explicit merge act.</dd>
+
+  <dt><dfn>Case</dfn></dt>
+  <dd>A specialised Record type that represents a persisted view of a set of linked [=Records=]. A [=Case=] groups the [=Records=] belonging to a business transaction according to a defined schema. It follows the same rules as any other [=Record=]: DID, states, [=version graph=], [=finalisation=].</dd>
+
+  <dt><dfn>Content hash</dfn></dt>
+  <dd>A cryptographic fingerprint calculated from the content of a dataset. Two datasets with identical content hashes are guaranteed to be identical. If even a single bit in the content changes, the hash changes.</dd>
+
+  <dt><dfn>DID (Decentralized Identifier)</dfn></dt>
+  <dd>A globally unique identifier that requires no central register. A DID permanently identifies a [=Record=] — regardless of where it is physically stored. Defined in [[DID-CORE]].</dd>
+
+  <dt><dfn>Directed Acyclic Graph (DAG)</dfn></dt>
+  <dd>A graph with directed edges and no cycles. Every node has one or more predecessors; no node can be its own ancestor. The [=version graph=] of every [=Record=] in RecordWeb is a DAG.</dd>
+
+  <dt><dfn>Finalisation</dfn></dt>
+  <dd>The explicit act by which a [=Record=] draft is converted into a binding, immutable version. Only finalised versions are linkable. Finalisation is a human decision, documented with [=owner=] and timestamp.</dd>
+
+  <dt><dfn>Merkle root</dfn></dt>
+  <dd>A cryptographic value calculated from the hash values of a set of [=Records=] that uniquely represents the aggregate state of that set. The [=Case=] [=Merkle root=] represents the state of a complete [=Case=] at a specific point in time.</dd>
+
+  <dt><dfn>Metadata</dfn></dt>
+  <dd>The dimensions along which a [=Record=] can be found, linked, and classified. The minimum set: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.</dd>
+
+  <dt><dfn>Owner</dfn></dt>
+  <dd>The person or organisational unit responsible for a [=Record=] at a specific point in time. Identified by a DID. The [=owner=] is the one who finalises the [=Record=] and thereby assumes accountability for its content.</dd>
+
+  <dt><dfn>Payload</dfn></dt>
+  <dd>The actual content of a [=Record=] — the information it carries. A [=payload=] always follows the schema of its Record type.</dd>
+
+  <dt><dfn>Record</dfn></dt>
+  <dd>The smallest semantically autonomous unit of information in RecordWeb. A [=Record=] consists of [=identity=] (DID), [=payload=], and [=metadata=]. It has a type that determines its schema, and a state that controls its linkability. It exists
+  within a [=version graph=] and is permanently identifiable regardless of system boundaries.</dd>
+
+  <dt><dfn>State transition</dfn></dt>
+  <dd>A change of the state of a [=Record=], for example from [=draft=] to [=finalized=]. In RecordWeb, "archiving" is a [=state transition=], not a system migration.</dd>
+
+  <dt><dfn>Version graph</dfn></dt>
+  <dd>The entirety of all versions of a [=Record=] and their linkages. Every node is an immutable snapshot; every edge describes a provenance relationship. The [=version graph=] is a [=Directed Acyclic Graph (DAG)=]: directed (from old to new), acyclic (no cycles). It contains [=branches=] and merges.</dd>
+</dl>
+
+
+Annex B: Relationship to Existing Standards {#annex-standards}
+===============================================================
+
+<table class="data">
+  <thead>
+    <tr><th>Standard</th><th>Relationship to RecordWeb</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[[ISO15489]]</td>
+      <td>Conceptually compatible. RecordWeb provides a technical architecture that makes the normative requirements (authenticity, reliability, integrity, usability) implementable.</td>
+    </tr>
+    <tr>
+      <td>ISO 30300</td>
+      <td>Complementary. ISO 30300 defines who is responsible; RecordWeb defines how responsibility is structurally anchored.</td>
+    </tr>
+    <tr>
+      <td>[[ISO14721]] (OAIS)</td>
+      <td>Complementary. RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb [=Records=] can be migrated to OAIS-compliant archives with the DID retained.</td>
+    </tr>
+    <tr>
+      <td>[[ECH-0164]]</td>
+      <td>Compatible. RecordWeb reinterprets the three lifecycle phases as states within a single information object, without system boundaries between them.</td>
+    </tr>
+    <tr>
+      <td>[[DID-CORE]]</td>
+      <td>RecordWeb uses DIDs as the basis for [=Record=] [=identity=] and is fully compatible with the W3C DID standard.</td>
+    </tr>
+    <tr>
+      <td>[[PROVO]]</td>
+      <td>PROV-O could be used as a serialisation format for RecordWeb lineage documentation to establish interoperability with PROV-O-compatible systems.</td>
+    </tr>
+  </tbody>
+</table>
+
