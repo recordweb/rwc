@@ -1,0 +1,14 @@
+name: Build and Deploy Spec
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    uses: w3c/spec-prod/.github/workflows/reusable-build-deploy.yml@v2
+    with:
+      TOOLCHAIN: bikeshed
+      GH_PAGES_BRANCH: gh-pages
+    permissions:
+      contents: write
