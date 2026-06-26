@@ -3,7 +3,7 @@ Title: RecordWeb Concept (RWC)
 Shortname: rwc
 Level: 1
 Status: CG-DRAFT
-Group: w3c
+Group: wicg
 URL: https://recordweb.github.io/rwc/
 Editor: Nik Jenzer, nik@triebwerkstatt.ch
 Abstract:
@@ -199,7 +199,7 @@ RecordWeb takes up Berners-Lee's core idea and radicalises it. Not documents are
       <td>Accountability</td>
       <td>None</td>
       <td>None</td>
-      <td>[=Owner=] (DID)</td>
+      <td><dfn>record owner</dfn> (DID)</td>
     </tr>
     <tr>
       <td>Immutability</td>
@@ -418,7 +418,7 @@ A citizen submits an application for a building permit.
 **In RecordWeb:** the application is captured as a [=Record=] of the type *building-permit-application*. Its schema specifies which fields must be present: parcel number, applicant, description of the construction project, date. The [=Record=] immediately receives a unique identity. Once fully captured, it is finalised. From that moment on, it is immutable, but accessible, linkable, and discoverable for all involved.
 
 
-The Version Graph: How Information Changes Without Disappearing {#version-graph}
+The Version Graph: How Information Changes Without Disappearing {#version-graph-section}
 ================================================================================
 
 ## The Problem with Versions Today ## {#versions-today}
@@ -435,7 +435,7 @@ A graph is the right metaphor because the history of information is rarely a str
 
 A <dfn>branch</dfn> arises when from one finalised version, two or more simultaneously existing drafts emerge. Both are visible. Both are in the [=draft=] state. Anyone looking at the [=Record=] sees immediately that parallel work is underway. Nothing is hidden, nothing is lost.
 
-## Finalisation: The Moment of Binding Force ## {#finalisation}
+## Finalisation: The Moment of Binding Force ## {#finalisation-section}
 
 The heart of the [=version graph=] is <dfn>finalisation</dfn>. It is the moment in which a draft becomes binding information. The moment in which the [=Record=] becomes linkable, referencable, and usable as the basis for further actions.
 
@@ -602,7 +602,7 @@ OAIS [[ISO14721]] is the international standard for digital long-term preservati
 
 [[GIT]] internally uses the same DAG approach as RecordWeb: every commit is an immutable snapshot, linked to its predecessors, identified by a cryptographic hash.
 
-RecordWeb learns from [[GIT]]: the immutability of commits, the explicitness of branches and merges, the cryptographic securing through content hashes. The difference: [[GIT]] is for code and files, not for semantic information objects with institutional accountability. [[GIT]] knows no states, no [=owner=], no classification, no schema. RecordWeb adopts the fundamental technical logic of [[GIT]] and transfers it into the institutional context.
+RecordWeb learns from [[GIT]]: the immutability of commits, the explicitness of branches and merges, the cryptographic securing through content hashes. The difference: [[GIT]] is for code and files, not for semantic information objects with institutional accountability. [[GIT]] knows no states, no [=record owner=], no classification, no schema. RecordWeb adopts the fundamental technical logic of [[GIT]] and transfers it into the institutional context.
 
 ## Summary: Positioning of RecordWeb ## {#positioning-summary}
 
@@ -712,7 +712,7 @@ Annex A: Glossary {#glossary}
   <dd>A graph with directed edges and no cycles. Every node has one or more predecessors; no node can be its own ancestor. The [=version graph=] of every [=Record=] in RecordWeb is a DAG.</dd>
 
   <dt>Finalisation</dt>
-  <dd>The explicit act by which a [=Record=] draft is converted into a binding, immutable version. Only finalised versions are linkable. Finalisation is a human decision, documented with [=owner=] and timestamp.</dd>
+  <dd>The explicit act by which a [=Record=] draft is converted into a binding, immutable version. Only finalised versions are linkable. Finalisation is a human decision, documented with [=record owner=] and timestamp.</dd>
 
   <dt>Merkle root</dt>
   <dd>A cryptographic value calculated from the hash values of a set of [=Records=] that uniquely represents the aggregate state of that set. The [=Case=] [=Merkle root=] represents the state of a complete [=Case=] at a specific point in time.</dd>
@@ -721,7 +721,7 @@ Annex A: Glossary {#glossary}
   <dd>The dimensions along which a [=Record=] can be found, linked, and classified. The minimum set: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.</dd>
 
   <dt>Owner</dt>
-  <dd>The person or organisational unit responsible for a [=Record=] at a specific point in time. Identified by a DID. The [=owner=] is the one who finalises the [=Record=] and thereby assumes accountability for its content.</dd>
+  <dd>The person or organisational unit responsible for a [=Record=] at a specific point in time. Identified by a DID. The [=record owner=] is the one who finalises the [=Record=] and thereby assumes accountability for its content.</dd>
 
   <dt>Payload</dt>
   <dd>The actual content of a [=Record=] — the information it carries. A [=payload=] always follows the schema of its Record type.</dd>
