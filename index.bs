@@ -3,7 +3,7 @@ Title: RecordWeb Concept (RWC)
 Shortname: rwc
 Level: 1
 Status: CG-DRAFT
-Group: wicg
+Group: recordweb
 URL: https://recordweb.github.io/rwc/
 Editor: Nik Jenzer, nik@triebwerkstatt.ch
 Abstract:
