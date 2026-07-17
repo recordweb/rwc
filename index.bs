@@ -10,7 +10,6 @@ Abstract:
     RecordWeb postulates a paradigm shift in institutional information management. Not a better filing principle, not a smarter dossier structure — but a different foundational decision about what information is: an autonomous, permanently identifiable, versioned, and cryptographically secured object called a Record. This concept paper lays out the conceptual foundations of RecordWeb, distinguishes it from related approaches, and describes the path from idea to specification. It is the conceptual counterpart to the RecordWeb Protocol ([[RWP]]).
 Repository: recordweb/rwc
 Markup Shorthands: markdown yes
-Boilerplate: omit copyright
 Version History: https://github.com/recordweb/rwc/commits/main/index.bs
 Previous Version: https://doi.org/10.5281/zenodo.20475343
 </pre>
