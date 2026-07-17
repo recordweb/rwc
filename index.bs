@@ -3,14 +3,13 @@ Title: RecordWeb Concept (RWC)
 Shortname: rwc
 Level: 1
 Status: CG-DRAFT
-Group: wicg
+Org: W3C
 URL: https://recordweb.github.io/rwc/
 Editor: Nik Jenzer, nik@triebwerkstatt.ch
 Abstract:
     RecordWeb postulates a paradigm shift in institutional information management. Not a better filing principle, not a smarter dossier structure — but a different foundational decision about what information is: an autonomous, permanently identifiable, versioned, and cryptographically secured object called a Record. This concept paper lays out the conceptual foundations of RecordWeb, distinguishes it from related approaches, and describes the path from idea to specification. It is the conceptual counterpart to the RecordWeb Protocol ([[RWP]]).
 Repository: recordweb/rwc
 Markup Shorthands: markdown yes
-Boilerplate: omit copyright
 Version History: https://github.com/recordweb/rwc/commits/main/index.bs
 Previous Version: https://doi.org/10.5281/zenodo.20475343
 </pre>
@@ -119,7 +118,7 @@ The published baseline of this concept is available at [[ZENODO-RWC]] (Version 1
 Feedback is invited via [GitHub Issues](https://github.com/recordweb/rwc/issues).
 
 
-Abstract {#abstract}
+Summary {#summary}
 =====================
 
 Public administrations have managed information for decades in systems built for filing, not for traceability. The result is well known: incomplete dossiers, lost version histories, system boundaries that fragment information, and an institutional memory that promises more than it delivers.
