@@ -1,4 +1,19 @@
-# Changelog
+# Changelog — RecordWeb Concept (RWC)
+
+All notable changes to this concept are documented here.
+Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+Versioning follows [Semantic Versioning](https://semver.org/).
+
+---
+
+## [0.0.2] – 2026-08-04
+
+Editorial alignment between RWC and RWP:
+
+- RWC §11.3: aligned metadata field names to camelCase (`accessPolicy`, `deletionRegime`)
+- RWP §9.5: corrected pseudocode return types and restored missing bracket
+- RWP §14.1: removed duplicate chapter reference in Level 2 conformance list
+- Both documents: added explicit `Version: 0.0.2` in Bikeshed metadata
 
 ## [0.0.1] — 2026-06-26
 

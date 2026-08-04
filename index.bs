@@ -10,9 +10,14 @@ Abstract:
     RecordWeb postulates a paradigm shift in institutional information management. Not a better filing principle, not a smarter dossier structure — but a different foundational decision about what information is: an autonomous, permanently identifiable, versioned, and cryptographically secured object called a Record. This concept paper lays out the conceptual foundations of RecordWeb, distinguishes it from related approaches, and describes the path from idea to specification. It is the conceptual counterpart to the RecordWeb Protocol ([[RWP]]).
 Repository: recordweb/rwc
 Markup Shorthands: markdown yes
+Version: 0.0.2
 Version History: https://github.com/recordweb/rwc/commits/main/index.bs
 Previous Version: https://doi.org/10.5281/zenodo.20475343
 </pre>
+
+<div class="copyright">
+<p>Copyright © 2026 the Contributors to the RecordWeb Concept (RWC) v0.0.2, published by the <a href="https://www.w3.org/community/recordweb/">RecordWeb Community Group</a> under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
+</div>
 
 <pre class="biblio">
 {
@@ -43,9 +48,10 @@ Previous Version: https://doi.org/10.5281/zenodo.20475343
         "publisher": "W3C"
     },
     "ECH-0164": {
-        "title": "eCH-0164 — Information lifecycle in public administration",
-        "href": "https://www.ech.ch",
-        "publisher": "eCH"
+      "title": "eCH-0164 Information lifecycle in public administration (V1.1, in preparation)",
+      "href": "https://www.ech.ch/de/ech/ech-standards/ech-0164",
+      "publisher": "eCH",
+      "status": "Draft"
     },
     "BERNERS-LEE-1989": {
         "title": "Information Management: A Proposal",
@@ -111,9 +117,9 @@ Introduction {#intro}
 
 ## Status of This Document ## {#status}
 
-This document is a **CG Draft** of the RecordWeb Community Group. It is an Editor's Draft and does not represent a W3C standard or endorsed position.
+This document is a **CG Draft** of the RecordWeb Community Group. It is an Editor's Draft maintained in the group's repository and does not represent a W3C standard or endorsed position.
 
-The published baseline of this concept is available at [[ZENODO-RWC]] (Version 1.0, DOI: 10.5281/zenodo.20475343). This working document reflects ongoing development toward the Community Group deliverable.
+The published baseline of this concept is available at [[ZENODO-RWC]] (DOI: 10.5281/zenodo.20475343). This working document reflects ongoing development toward the Community Group deliverable.
 
 Feedback is invited via [GitHub Issues](https://github.com/recordweb/rwc/issues).
 
@@ -661,7 +667,7 @@ RecordWeb has the potential to contribute to international standardisation proce
 
 The following questions are explicitly offered for community contribution:
 
-**Access control**: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional `access-policy` block in the minimum metadata set.
+**Access control**: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional `accessPolicy` block in the minimum metadata set.
 
 **Federation**: RecordWeb offers a directional answer inspired by DNS architecture. DID resolvers function like DNS servers: federated, replicated, without a single point of failure. The Nanopublication network [[NANOPUB]] offers a working reference model: a decentralised peer-to-peer server network in which each node holds cryptographically signed, immutable micro-assertions identified by Trusty URIs. RecordWeb [=Records=] in their finalised state share the same structural properties (immutable, hash-identified, independently verifiable) and could be published and queried across a Nanopub-inspired federation layer. The complete federation architecture is the subject of [[RWP]].
 
@@ -678,7 +684,7 @@ Depending on the specific legal basis, the deletion regime admits three distinct
 : Deletion exemption (opt-out)
 :: No deletion occurs, not even of the [=payload=]. Applies where a statutory retention obligation overrides the erasure claim (e.g. tax records, notarial acts, public register entries). The legal basis must be documented as [=metadata=] on the [=Record=] at the time of creation.
 
-The applicable mode is declared in the `deletion-regime` field of the [=Record=]'s [=metadata=]. Implementations MUST respect this field and MAY enforce it at the infrastructure level.
+The applicable mode is declared in the `deletionRegime` field of the [=Record=]'s [=metadata=]. Implementations MUST respect this field and MAY enforce it at the infrastructure level.
 
 **Performance and scaling**: A global network of linked [=Records=] with cryptographic hash values places demands on infrastructure that are not yet fully foreseeable.
 
