@@ -8,7 +8,7 @@
   <meta content="Bikeshed version d113b2e81, updated Tue Jun 9 14:57:55 2026 -0700" name="generator">
   <link href="https://recordweb.github.io/rwc/" rel="canonical">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="7fc703c84628c42ef5b62a196c5e343ec804af62" name="revision">
+  <meta content="4b5e1a6384ab6627057e71ed83d6c6370e816979" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>/* Boilerplate: style-autolinks */
@@ -581,7 +581,7 @@ dfn > a.self-link::before      { content: "#"; }
 </p>
    <h1 class="no-ref p-name" id="title">RecordWeb Concept (RWC)</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>,
-    <time class="dt-updated" datetime="2026-07-17">17 July 2026</time></p>
+    <time class="dt-updated" datetime="2026-08-04">4 August 2026</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -732,10 +732,13 @@ dfn > a.self-link::before      { content: "#"; }
    </ol>
   </nav>
   <main>
+   <div class="copyright">
+    <p>Copyright © 2026 the Contributors to the RecordWeb Concept (RWC) v0.0.2, published by the <a href="https://www.w3.org/community/recordweb/">RecordWeb Community Group</a> under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
+   </div>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
    <h3 class="heading settled" data-level="1.1" id="status"><span class="secno">1.1. </span><span class="content">Status of This Document</span><a class="self-link" href="#status"></a></h3>
-   <p>This document is a <strong>CG Draft</strong> of the RecordWeb Community Group. It is an Editor’s Draft and does not represent a W3C standard or endorsed position.</p>
-   <p>The published baseline of this concept is available at <a data-link-type="biblio" href="#biblio-zenodo-rwc" title="RecordWeb Concept (RWC) v1.0 — Published baseline">[ZENODO-RWC]</a> (Version 1.0, DOI: 10.5281/zenodo.20475343). This working document reflects ongoing development toward the Community Group deliverable.</p>
+   <p>This document is a <strong>CG Draft</strong> of the RecordWeb Community Group. It is an Editor’s Draft maintained in the group’s repository and does not represent a W3C standard or endorsed position.</p>
+   <p>The published baseline of this concept is available at <a data-link-type="biblio" href="#biblio-zenodo-rwc" title="RecordWeb Concept (RWC) v1.0 — Published baseline">[ZENODO-RWC]</a> (DOI: 10.5281/zenodo.20475343). This working document reflects ongoing development toward the Community Group deliverable.</p>
    <p>Feedback is invited via <a href="https://github.com/recordweb/rwc/issues">GitHub Issues</a>.</p>
    <h2 class="heading settled" data-level="2" id="summary"><span class="secno">2. </span><span class="content">Summary</span><a class="self-link" href="#summary"></a></h2>
    <p>Public administrations have managed information for decades in systems built for filing, not for traceability. The result is well known: incomplete dossiers, lost version histories, system boundaries that fragment information, and an institutional memory that promises more than it delivers.</p>
@@ -833,7 +836,7 @@ dfn > a.self-link::before      { content: "#"; }
    </ul>
    <p>The Records Continuum provides no structural answer to these questions. It describes how Records are <em>meaningful</em>, but not how they are <em>provable</em>. This is not a flaw in the model; it was not designed for this purpose. But it is the gap that RecordWeb must close.</p>
    <h3 class="heading settled" data-level="4.3" id="classical-lifecycle"><span class="secno">4.3. </span><span class="content">The Classical Lifecycle: Structure Without Flexibility</span><a class="self-link" href="#classical-lifecycle"></a></h3>
-   <p>On the other side stands the classical lifecycle, as anchored in <a data-link-type="biblio" href="#biblio-iso15489" title="ISO 15489-1:2016 — Information and documentation — Records management">[ISO15489]</a> and in Switzerland in <a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 — Information lifecycle in public administration">[ECH-0164]</a>: processing — retention — archiving or disposal.</p>
+   <p>On the other side stands the classical lifecycle, as anchored in <a data-link-type="biblio" href="#biblio-iso15489" title="ISO 15489-1:2016 — Information and documentation — Records management">[ISO15489]</a> and in Switzerland in <a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 Information lifecycle in public administration (V1.1, in preparation)">[ECH-0164]</a>: processing — retention — archiving or disposal.</p>
    <p>This framework has great merits. It creates clarity about responsibilities, enables legally compliant retention periods, and structures the transition between operational use and historical preservation. But the model carries a structural cost: it thinks in system boundaries. A Record "lives" in one system and is "moved" to another. Every transition is a migration, a transformation, a potential loss of information.</p>
    <h3 class="heading settled" data-level="4.4" id="synthesis"><span class="secno">4.4. </span><span class="content">RecordWeb as Synthesis</span><a class="self-link" href="#synthesis"></a></h3>
    <p>RecordWeb postulates that the tension between continuity and provability cannot be resolved through a better lifecycle model, but through a different approach.</p>
@@ -1051,7 +1054,7 @@ without being duplicated.</p>
     <li data-md>
      <p><strong>Usability</strong>: The DID document and <a data-link-type="dfn" href="#metadata" id="ref-for-metadata④">metadata</a> guarantee that a <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑥">Record</a> remains findable and accessible, regardless of system migrations</p>
    </ul>
-   <p><a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 — Information lifecycle in public administration">[ECH-0164]</a> defines the information lifecycle for Swiss administration. RecordWeb reinterprets this model: the three phases become states within a single information object, without system boundaries between them.</p>
+   <p><a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 Information lifecycle in public administration (V1.1, in preparation)">[ECH-0164]</a> defines the information lifecycle for Swiss administration. RecordWeb reinterprets this model: the three phases become states within a single information object, without system boundaries between them.</p>
    <h3 class="heading settled" data-level="10.4" id="related-oais"><span class="secno">10.4. </span><span class="content">OAIS</span><a class="self-link" href="#related-oais"></a></h3>
    <p>OAIS <a data-link-type="biblio" href="#biblio-iso14721" title="ISO 14721:2012 — Open Archival Information System (OAIS)">[ISO14721]</a> is the international standard for digital long-term preservation. RecordWeb and OAIS are complementary: RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑦">Records</a> can be migrated to long-term archives according to OAIS principles; the DID is retained in this process.</p>
    <h3 class="heading settled" data-level="10.5" id="related-provo"><span class="secno">10.5. </span><span class="content">PROV-O</span><a class="self-link" href="#related-provo"></a></h3>
@@ -1139,7 +1142,7 @@ without being duplicated.</p>
    <p>RecordWeb has the potential to contribute to international standardisation processes. This path is long. It begins with the concept, proceeds through the specification, and is validated through implementations.</p>
    <h3 class="heading settled" data-level="11.3" id="open-questions"><span class="secno">11.3. </span><span class="content">Open Questions</span><a class="self-link" href="#open-questions"></a></h3>
    <p>The following questions are explicitly offered for community contribution:</p>
-   <p><strong>Access control</strong>: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional <code>access-policy</code> block in the minimum metadata set.</p>
+   <p><strong>Access control</strong>: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional <code>accessPolicy</code> block in the minimum metadata set.</p>
    <p><strong>Federation</strong>: RecordWeb offers a directional answer inspired by DNS architecture. DID resolvers function like DNS servers: federated, replicated, without a single point of failure. The Nanopublication network <a data-link-type="biblio" href="#biblio-nanopub" title="Nanopublications: A Growing Resource of Provenance-Centric Scientific Linked Data">[NANOPUB]</a> offers a working reference model: a decentralised peer-to-peer server network in which each node holds cryptographically signed, immutable micro-assertions identified by Trusty URIs. RecordWeb <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑨">Records</a> in their finalised state share the same structural properties (immutable, hash-identified, independently verifiable) and could be published and queried across a Nanopub-inspired federation layer. The complete federation architecture is the subject of <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>.</p>
    <p><strong>Deletion obligations</strong>: The tension between RecordWeb’s immutability and the data protection right to erasure (GDPR, Swiss DSG) is resolved through <em>payload deletion while retaining structure</em>. On a legal requirement, the payload is deleted; the DID, the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑤">metadata</a>, and the graph structure are retained. The <a data-link-type="dfn" href="#record" id="ref-for-record⑦⓪">Record</a> continues to exist as a provable "empty shell", its former existence is documented, its content is gone.</p>
    <p>Depending on the specific legal basis, the deletion regime admits three distinct modes:</p>
@@ -1154,7 +1157,7 @@ without being duplicated.</p>
     <dd data-md>
      <p>No deletion occurs, not even of the <a data-link-type="dfn" href="#payload" id="ref-for-payload③">payload</a>. Applies where a statutory retention obligation overrides the erasure claim (e.g. tax records, notarial acts, public register entries). The legal basis must be documented as <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑧">metadata</a> on the <a data-link-type="dfn" href="#record" id="ref-for-record⑦③">Record</a> at the time of creation.</p>
    </dl>
-   <p>The applicable mode is declared in the <code>deletion-regime</code> field of the <a data-link-type="dfn" href="#record" id="ref-for-record⑦④">Record</a>’s <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑨">metadata</a>. Implementations MUST respect this field and MAY enforce it at the infrastructure level.</p>
+   <p>The applicable mode is declared in the <code>deletionRegime</code> field of the <a data-link-type="dfn" href="#record" id="ref-for-record⑦④">Record</a>’s <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑨">metadata</a>. Implementations MUST respect this field and MAY enforce it at the infrastructure level.</p>
    <p><strong>Performance and scaling</strong>: A global network of linked <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑤">Records</a> with cryptographic hash values places demands on infrastructure that are not yet fully foreseeable.</p>
    <p><strong>Platform adoption</strong>: The actual adoption task lies not with the end user, but with the platform providers: Microsoft, Google, SAP, and others must integrate RWP as a native layer into their products.</p>
    <h3 class="heading settled" data-level="11.4" id="invitation"><span class="secno">11.4. </span><span class="content">An Invitation</span><a class="self-link" href="#invitation"></a></h3>
@@ -1207,7 +1210,7 @@ without being duplicated.</p>
       <td><a data-link-type="biblio" href="#biblio-iso14721" title="ISO 14721:2012 — Open Archival Information System (OAIS)">[ISO14721]</a> (OAIS)
       <td>Complementary. RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb <a data-link-type="dfn" href="#record" id="ref-for-record⑨①">Records</a> can be migrated to OAIS-compliant archives with the DID retained.
      <tr>
-      <td><a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 — Information lifecycle in public administration">[ECH-0164]</a>
+      <td><a data-link-type="biblio" href="#biblio-ech-0164" title="eCH-0164 Information lifecycle in public administration (V1.1, in preparation)">[ECH-0164]</a>
       <td>Compatible. RecordWeb reinterprets the three lifecycle phases as states within a single information object, without system boundaries between them.
      <tr>
       <td><a data-link-type="biblio" href="#biblio-did-core" title="Decentralized Identifiers (DIDs) v1.0">[DID-CORE]</a>
@@ -1286,7 +1289,7 @@ without being duplicated.</p>
    <dt id="biblio-did-core">[DID-CORE]
    <dd><a href="https://www.w3.org/TR/did-core/"><cite>Decentralized Identifiers (DIDs) v1.0</cite></a>. URL: <a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>
    <dt id="biblio-ech-0164">[ECH-0164]
-   <dd><a href="https://www.ech.ch"><cite>eCH-0164 — Information lifecycle in public administration</cite></a>. URL: <a href="https://www.ech.ch">https://www.ech.ch</a>
+   <dd><a href="https://www.ech.ch/de/ech/ech-standards/ech-0164"><cite>eCH-0164 Information lifecycle in public administration (V1.1, in preparation)</cite></a>. Draft. URL: <a href="https://www.ech.ch/de/ech/ech-standards/ech-0164">https://www.ech.ch/de/ech/ech-standards/ech-0164</a>
    <dt id="biblio-git">[GIT]
    <dd>Linus Torvalds. <a href="https://git-scm.com"><cite>Git: Fast Version Control System</cite></a>. 2005. URL: <a href="https://git-scm.com">https://git-scm.com</a>
    <dt id="biblio-hyperledger">[HYPERLEDGER]
