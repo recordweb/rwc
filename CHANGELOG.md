@@ -6,6 +6,21 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.0.3] – 2026-08-06
+
+Editorial: standards and national mappings
+
+This version introduces editorial and scoping clarifications around standards referenced by RecordWeb:
+
+- Clarified the description of the classical lifecycle (Section 4.3) as anchored in ISO 15489 and other national standards (e.g. Switzerland eCH-0164), instead of singling out Switzerland alone.
+- Refined the discussion of ISO 15489: the section now focuses on ISO as the international foundation for RecordWeb’s requirements, with national lifecycle frameworks (such as eCH-0164) explicitly treated as jurisdiction-specific mappings defined by their respective owners.
+- Removed git from the “Related Concepts” section; git is referenced only as an implementation analogy for DAGs, not as a records or archival standard.
+- Updated Annex B to state that RecordWeb directly maintains only international standards (ISO, W3C, IETF, etc.) and core conceptual frameworks. National or sectoral standards MAY be listed as non-normative mappings, with relationship text supplied by the standard owners.
+- Marked the relationship text for eCH-0164 in Annex B as “TBD by eCH”, making explicit that RecordWeb does not define the official mapping for this national standard. Others as "TBD by RecordWeb CG".
+- Removed explicit chapter "Introduction" as the info is in the doc by W3C-Template (Status of this document).
+
+These changes do not introduce new normative requirements. They clarify RecordWeb’s positioning: grounded in international standards, open to national mappings without structural dependency.
+
 ## [0.0.2] – 2026-08-04
 
 Editorial alignment between RWC and RWP:

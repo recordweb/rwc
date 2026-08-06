@@ -2,7 +2,7 @@
 
 **Editor's Draft**: https://recordweb.github.io/rwc/
 
-**Published baseline (v1.0)**: https://doi.org/10.5281/zenodo.20475343
+**Published baseline**: https://doi.org/10.5281/zenodo.20475343
 
 ## About
 
@@ -12,24 +12,8 @@ RWC is the conceptual counterpart to the normative [RecordWeb Protocol (RWP)](ht
 
 ## Version History
 
-| Version | Date | Description |
-|---|---|---|
-| 0.0.1 | 2026-06-26 | Initial Editor's Draft — baseline from Zenodo v1.0 |
+See [`CHANGELOG.md`](CHANGELOG.md))
 
 ## How to Contribute
 
 Feedback and contributions are welcome via [GitHub Issues](https://github.com/recordweb/rwc/issues) and Pull Requests.
-
-## Building Locally
-
-```bash
-pip install bikeshed
-bikeshed spec index.bs
-```
-
-## License
-
-© 2026 Nik Jenzer — TRIEBWERKSTATT GmbH
-
-Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-You are free to share and adapt this material with attribution.

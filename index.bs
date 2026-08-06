@@ -15,79 +15,67 @@ Previous Version: https://doi.org/10.5281/zenodo.20475343
 </pre>
 
 <div class="copyright">
-<p>Copyright © 2026 the Contributors to the RecordWeb Concept (RWC) v0.0.2, published by the <a href="https://www.w3.org/community/recordweb/">RecordWeb Community Group</a> under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
+<p>Copyright © 2026 the Contributors to the RecordWeb Concept (RWC) v0.0.3, published by the <a href="https://www.w3.org/community/recordweb/">RecordWeb Community Group</a> under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
 </div>
 
 <pre class="biblio">
 {
-    "RWP": {
-        "title": "RecordWeb Protocol (RWP)",
-        "authors": ["Nik Jenzer"],
-        "href": "https://recordweb.github.io/rwp/",
-        "status": "CG-DRAFT"
-    },
-    "ISO15489": {
-        "title": "ISO 15489-1:2016 — Information and documentation — Records management",
-        "href": "https://www.iso.org/standard/62542.html",
-        "publisher": "ISO"
-    },
-    "ISO14721": {
-        "title": "ISO 14721:2012 — Open Archival Information System (OAIS)",
-        "href": "https://www.iso.org/standard/57284.html",
-        "publisher": "ISO"
-    },
-    "PROVO": {
-        "title": "PROV-O: The PROV Ontology",
-        "href": "https://www.w3.org/TR/prov-o/",
-        "publisher": "W3C"
-    },
-    "DID-CORE": {
-        "title": "Decentralized Identifiers (DIDs) v1.0",
-        "href": "https://www.w3.org/TR/did-core/",
-        "publisher": "W3C"
-    },
-    "ECH-0164": {
-      "title": "eCH-0164 Information lifecycle in public administration (V1.1, in preparation)",
-      "href": "https://www.ech.ch/de/ech/ech-standards/ech-0164",
-      "publisher": "eCH",
-      "status": "Draft"
-    },
-    "BERNERS-LEE-1989": {
-        "title": "Information Management: A Proposal",
-        "authors": ["Tim Berners-Lee"],
-        "href": "https://www.w3.org/History/1989/proposal.html",
-        "date": "1989"
-    },
-    "LINKED-DATA": {
-        "title": "Linked Data",
-        "authors": ["Tim Berners-Lee"],
-        "href": "https://www.w3.org/DesignIssues/LinkedData.html",
-        "date": "2006"
-    },
-    "UPWARD-1996": {
-        "title": "Structuring the Records Continuum — Part One",
-        "authors": ["Frank Upward"],
-        "date": "1996",
-        "publisher": "Archives and Manuscripts, 24(2), 268–285"
-    },
-    "UPWARD-1997": {
-        "title": "Structuring the Records Continuum — Part Two",
-        "authors": ["Frank Upward"],
-        "date": "1997",
-        "publisher": "Archives and Manuscripts, 25(1), 10–35"
-    },
-    "GIT": {
-        "title": "Git: Fast Version Control System",
-        "authors": ["Linus Torvalds"],
-        "href": "https://git-scm.com",
-        "date": "2005"
-    },
-    "HYPERLEDGER": {
-        "title": "Hyperledger: An Introduction",
-        "href": "https://www.hyperledger.org/learn/white-papers",
-        "publisher": "Linux Foundation",
-        "date": "2015"
-    },
+  "BERNERS-LEE-1989": {
+      "title": "Information Management: A Proposal",
+      "authors": ["Tim Berners-Lee"],
+      "href": "https://www.w3.org/History/1989/proposal.html",
+      "date": "1989"
+  },
+  "DID-CORE": {
+      "title": "Decentralized Identifiers (DIDs) v1.0",
+      "href": "https://www.w3.org/TR/did-core/",
+      "publisher": "W3C"
+  },
+  "ECH-0164": {
+    "title": "eCH-0164 Information lifecycle in public administration (V1.1, in preparation)",
+    "href": "https://www.ech.ch/de/ech/ech-standards/ech-0164",
+    "publisher": "eCH",
+    "status": "Draft"
+  },
+  "HYPERLEDGER": {
+      "title": "Hyperledger: An Introduction",
+      "href": "https://www.hyperledger.org/learn/white-papers",
+      "publisher": "Linux Foundation",
+      "date": "2015"
+  },
+  "ISO14721": {
+      "title": "ISO 14721:2025 — Open Archival Information System (OAIS)",
+      "href": "https://www.iso.org/standard/87471.html",
+      "publisher": "ISO"
+  },
+  "ISO15489": {
+      "title": "ISO 15489-1:2016 — Information and documentation — Records management",
+      "href": "https://www.iso.org/standard/62542.html",
+      "publisher": "ISO"
+  },
+  "LINKED-DATA": {
+      "title": "Linked Data",
+      "authors": ["Tim Berners-Lee"],
+      "href": "https://www.w3.org/DesignIssues/LinkedData.html",
+      "date": "2006"
+  },
+	"NANOPUB": {
+		"title": "Nanopublications: A Growing Resource of Provenance-Centric Scientific Linked Data",
+		"authors": ["Tobias Kuhn", "Christine Chichester", "Michael Krauthammer", "Núria Queralt-Rosinach", "Ruben Verborgh", "George Giannakopoulos", "Axel-Cyrille Ngonga Ngomo", "Rafaël Gonçalves", "Michel Dumontier"],
+		"href": "https://nanopub.net",
+		"date": "2016"
+	},
+  "PROVO": {
+      "title": "PROV-O: The PROV Ontology",
+      "href": "https://www.w3.org/TR/prov-o/",
+      "publisher": "W3C"
+  },
+  "RWP": {
+      "title": "RecordWeb Protocol (RWP)",
+      "authors": ["RecordWeb CG"],
+      "href": "https://recordweb.github.io/rwp/",
+      "status": "CG-DRAFT"
+  },
 	"SOLID": {
 		"title": "The Solid Protocol",
 		"authors": ["Sarven Capadisli", "Tim Berners-Lee", "Ruben Verborgh", "Kjetil Kjernsmo"],
@@ -95,32 +83,20 @@ Previous Version: https://doi.org/10.5281/zenodo.20475343
 		"publisher": "W3C Solid Community Group",
 		"date": "2022"
 	},
-	"NANOPUB": {
-		"title": "Nanopublications: A Growing Resource of Provenance-Centric Scientific Linked Data",
-		"authors": ["Tobias Kuhn", "Christine Chichester", "Michael Krauthammer", "Núria Queralt-Rosinach", "Ruben Verborgh", "George Giannakopoulos", "Axel-Cyrille Ngonga Ngomo", "Rafaël Gonçalves", "Michel Dumontier"],
-		"href": "https://nanopub.net",
-		"date": "2016"
-	},
-    "ZENODO-RWC": {
-        "title": "RecordWeb Concept (RWC) v1.0 — Published baseline",
-        "authors": ["Nik Jenzer"],
-        "href": "https://doi.org/10.5281/zenodo.20475343",
-        "date": "2026"
-    }
+  "UPWARD-1996": {
+      "title": "Structuring the Records Continuum — Part One",
+      "authors": ["Frank Upward"],
+      "date": "1996",
+      "publisher": "Archives and Manuscripts, 24(2), 268–285"
+  },
+  "UPWARD-1997": {
+      "title": "Structuring the Records Continuum — Part Two",
+      "authors": ["Frank Upward"],
+      "date": "1997",
+      "publisher": "Archives and Manuscripts, 25(1), 10–35"
+  }
 }
 </pre>
-
-
-Introduction {#intro}
-=====================
-
-## Status of This Document ## {#status}
-
-This document is a **CG Draft** of the RecordWeb Community Group. It is an Editor's Draft maintained in the group's repository and does not represent a W3C standard or endorsed position.
-
-The published baseline of this concept is available at [[ZENODO-RWC]] (DOI: 10.5281/zenodo.20475343). This working document reflects ongoing development toward the Community Group deliverable.
-
-Feedback is invited via [GitHub Issues](https://github.com/recordweb/rwc/issues).
 
 
 Summary {#summary}
@@ -260,7 +236,7 @@ The Records Continuum provides no structural answer to these questions. It descr
 
 ## The Classical Lifecycle: Structure Without Flexibility ## {#classical-lifecycle}
 
-On the other side stands the classical lifecycle, as anchored in [[ISO15489]] and in Switzerland in [[ECH-0164]]: processing — retention — archiving or disposal.
+On the other side stands the classical lifecycle, as anchored in [[ISO15489]] and other national standards (e.g. Switzerland [[ECH-0164]]): processing — retention — archiving or disposal.
 
 This framework has great merits. It creates clarity about responsibilities, enables legally compliant retention periods, and structures the transition between operational use and historical preservation. But the model carries a structural cost: it thinks in system boundaries. A Record "lives" in one system and is "moved" to another. Every transition is a migration, a transformation, a potential loss of information.
 
@@ -583,62 +559,22 @@ Tim Berners-Lee's Linked Data principles [[LINKED-DATA]] are the conceptually cl
 
 RecordWeb is the technical implementation of the Records Continuum idea [[UPWARD-1996]] [[UPWARD-1997]]. The notion that a [=Record=] does not die but lives on is structurally anchored in RecordWeb, through immutable versions, through the [=version graph=], through the absence of an "archiving" system transition.
 
-## ISO 15489 and eCH-0164 ## {#related-iso15489}
+## Records Management (RM) ## {#related-rm}
 
-[[ISO15489]] defines international principles of Records Management: authenticity, reliability, integrity, usability. These four properties are RecordWeb's requirements specification. RecordWeb fulfils all four structurally:
+RM [[ISO15489]] defines international principles of Records Management: authenticity, reliability, integrity, usability. These four properties are RecordWeb's requirements specification. RecordWeb fulfils all four structurally:
 
 - **Authenticity**: DID and cryptographic hash guarantee that a [=Record=] is what it claims to be
 - **Reliability**: [=Finalisation=] and immutable versions guarantee that a [=Record=] is complete and correct at the time of finalisation
 - **Integrity**: Merkle hashes guarantee that a [=Record=] cannot change unnoticed after finalisation
 - **Usability**: The DID document and [=metadata=] guarantee that a [=Record=] remains findable and accessible, regardless of system migrations
 
-[[ECH-0164]] defines the information lifecycle for Swiss administration. RecordWeb reinterprets this model: the three phases become states within a single information object, without system boundaries between them.
-
-## OAIS ## {#related-oais}
+## Open archival information system (OAIS) ## {#related-oais}
 
 OAIS [[ISO14721]] is the international standard for digital long-term preservation. RecordWeb and OAIS are complementary: RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb [=Records=] can be migrated to long-term archives according to OAIS principles; the DID is retained in this process.
 
 ## PROV-O ## {#related-provo}
 
 [[PROVO]] is a W3C standard for describing the provenance and history of data. RecordWeb and PROV-O overlap in intention. The difference: PROV-O is a description standard, it can be layered onto existing systems. RecordWeb is an architecture standard, provenance is structurally anchored in the [=version graph=]. PROV-O would be a possible serialisation format for RecordWeb lineage documentation.
-
-## Git ## {#related-git}
-
-[[GIT]] internally uses the same DAG approach as RecordWeb: every commit is an immutable snapshot, linked to its predecessors, identified by a cryptographic hash.
-
-RecordWeb learns from [[GIT]]: the immutability of commits, the explicitness of branches and merges, the cryptographic securing through content hashes. The difference: [[GIT]] is for code and files, not for semantic information objects with institutional accountability. [[GIT]] knows no states, no [=record owner=], no classification, no schema. RecordWeb adopts the fundamental technical logic of [[GIT]] and transfers it into the institutional context.
-
-## Summary: Positioning of RecordWeb ## {#positioning-summary}
-
-<table class="data">
-  <thead>
-    <tr>
-      <th>Concept</th>
-      <th>Networking</th>
-      <th>Versioning</th>
-      <th>Auditability</th>
-      <th>Institutional Governance</th>
-      <th>Long-term Stability</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>Linked Data</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
-    <tr><td>Records Continuum</td><td>✓</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td></tr>
-    <tr><td>ISO 15489</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>eCH-0164</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>OAIS</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>PROV-O</td><td>✓</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td></tr>
-    <tr><td>Git</td><td>✗</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td></tr>
-    <tr>
-      <td><strong>RecordWeb</strong></td>
-      <td><strong>✓</strong></td>
-      <td><strong>✓</strong></td>
-      <td><strong>✓</strong></td>
-      <td><strong>✓</strong></td>
-      <td><strong>✓</strong></td>
-    </tr>
-  </tbody>
-</table>
 
 
 Roadmap and Open Questions: An Invitation {#roadmap}
@@ -752,19 +688,19 @@ Annex B: Relationship to Existing Standards {#annex-standards}
   <tbody>
     <tr>
       <td>[[ISO15489]]</td>
-      <td>Conceptually compatible. RecordWeb provides a technical architecture that makes the normative requirements (authenticity, reliability, integrity, usability) implementable.</td>
+      <td>TBD by RecordWeb CG.</td>
     </tr>
     <tr>
       <td>ISO 30300</td>
-      <td>Complementary. ISO 30300 defines who is responsible; RecordWeb defines how responsibility is structurally anchored.</td>
+      <td>TBD by RecordWeb CG.</td>
     </tr>
     <tr>
       <td>[[ISO14721]] (OAIS)</td>
-      <td>Complementary. RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb [=Records=] can be migrated to OAIS-compliant archives with the DID retained.</td>
+      <td>TBD by RecordWeb CG.</td>
     </tr>
     <tr>
       <td>[[ECH-0164]]</td>
-      <td>Compatible. RecordWeb reinterprets the three lifecycle phases as states within a single information object, without system boundaries between them.</td>
+      <td>TBD by eCH.</td>
     </tr>
     <tr>
       <td>[[DID-CORE]]</td>
@@ -772,7 +708,7 @@ Annex B: Relationship to Existing Standards {#annex-standards}
     </tr>
     <tr>
       <td>[[PROVO]]</td>
-      <td>PROV-O could be used as a serialisation format for RecordWeb lineage documentation to establish interoperability with PROV-O-compatible systems.</td>
+      <td>PROV-O would be used as serialisation format for RecordWeb lineage documentation to establish interoperability with PROV-O-compatible systems.</td>
     </tr>
   </tbody>
 </table>
