@@ -15,7 +15,7 @@ Previous Version: https://doi.org/10.5281/zenodo.20475343
 </pre>
 
 <div class="copyright">
-<p>Copyright © 2026 the Contributors to the RecordWeb Concept (RWC) v0.0.3, published by the <a href="https://www.w3.org/community/recordweb/">RecordWeb Community Group</a> under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
+<p>Copyright © 2026 the Contributors to the RecordWeb Concept (RWC) v0.0.4, published by the <a href="https://www.w3.org/community/recordweb/">RecordWeb Community Group</a> under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
 </div>
 
 <pre class="biblio">
@@ -311,7 +311,7 @@ Why SoW, SoR, and SoA Have No Future {#sow-sor-soa}
 
 ## An Honest Appreciation ## {#appreciation}
 
-The distinction between *System of Work (SoW)*, *System of Record (SoR)*, and *System of Archive (SoA) is not wrong. It is precise, legally grounded, and reflects a real institutional logic: information is created in the work process, secured in the record repository, and preserved in the archive. RecordWeb does not challenge this approach. It asks one level deeper.
+The distinction between *System of Work (SoW)*, *System of Record (SoR)*, and *System of Archive (SoA)* is not wrong. It is precise, legally grounded, and reflects a real institutional logic: information is created in the work process, secured in the record repository, and preserved in the archive. RecordWeb does not challenge this approach. It asks one level deeper.
 
 ## The Diagnosis: The Problem Is the System Boundary Itself ## {#system-boundary}
 
@@ -360,6 +360,22 @@ Note: This definition sharpens the normative Record concept from [[ISO15489]] (S
 A single database field is not a Record. An email attachment is not a Record. A folder is not a Record (it is a container).
 
 A [=Record=], by contrast, is: a decision of a public authority; an application submitted by a citizen; minutes of a meeting; an expert opinion; a contract. Each of these objects carries its meaning within itself.
+
+## Conceptual Taxonomy of Records {#record-taxonomy}
+
+For the purposes of the RecordWeb conceptual model, [=Record|Records=] can be distinguished by their primary purpose:
+
+```text
+Record = InformationRecord | RelationRecord | SystemRecord
+```
+
+An <dfn>InformationRecord</dfn> primarily carries semantically autonomous institutional or domain information. Examples include an application, a decision, a contract, minutes, an expert opinion, or a captured representation of an object from a source system. InformationRecord is a conceptual category, not a mandatory technical Record type. Concrete InformationRecord types are defined by their respective [SchemaRecords](https://recordweb.github.io/rwp/#schema-record).
+
+A <dfn>RelationRecord</dfn> primarily establishes, preserves, and makes meaningful relationships between Records. For example a case provides a persisted, governed view of linked Records without becoming a container for them or containing their payload. For example [CaseRecord](https://recordweb.github.io/rwp/#caserecord-specification) and [AssertionRecord](https://recordweb.github.io/rwp/#assertionrecord-specification).
+
+A <dfn>SystemRecord</dfn> primarily defines, documents, or provides evidence of a RecordWeb system rule, operation, or capability. For example, the schemas and protocol evidence through which RecordWeb governs Records belong to this conceptual category. For example: [SchemaRecord](https://recordweb.github.io/rwp/#schema-record), MergeRecord, DeletionRecord, MigrationRecord, and ConformanceRecord (see the [RecordWeb Protocol](https://recordweb.github.io/rwp/)).
+
+This taxonomy describes conceptual purposes. It is not a mandatory implementation inheritance hierarchy, a required JSON type hierarchy, or a replacement for concrete Record types and their schemas. The normative protocol definitions and conformance consequences are defined by the [RecordWeb Protocol](https://recordweb.github.io/rwp/).
 
 ## The Three Components of a Record ## {#record-components}
 
@@ -448,7 +464,7 @@ RecordWeb therefore proposes a different perspective: not the dossier as the pri
 
 ## What a Case Is ## {#case-definition}
 
-A [=Case=] in RecordWeb is not a container into which [=Records=] are placed. It is a **semantic and procedural relationship structure** that links [=Records=] to one another and makes them visible as belonging together.
+A [=Case=] in RecordWeb is not a container into which [=Records=] are placed. It is a [=RelationRecord=]: a semantic and procedural relationship structure that links [=Records=] to one another and makes them visible as belonging together.
 
 A [=Case=] answers questions such as:
 
@@ -640,7 +656,7 @@ Annex A: Glossary {#glossary}
   <dd>A parallel development line within the [=version graph=] of a [=Record=]. From one finalised version, two or more simultaneously existing drafts arise. Branches are transparently visible; their consolidation is effected through an explicit merge act.</dd>
 
   <dt>Case</dt>
-  <dd>A specialised Record type that represents a persisted view of a set of linked [=Records=]. A [=Case=] groups the [=Records=] belonging to a business transaction according to a defined schema. It follows the same rules as any other [=Record=]: DID, states, [=version graph=], [=finalisation=].</dd>
+  <dd>A specialised Record type that represents a persisted, governed view of linked [=Records=]. A [=Case=] makes [=Records=] belonging to a business transaction visible according to a defined schema, without becoming a container for those [=Records=]. It follows the same rules as any other [=Record=]: DID, states, [=version graph=], [=finalisation=].</dd>
 
   <dt>Content hash</dt>
   <dd>A cryptographic fingerprint calculated from the content of a dataset. Two datasets with identical content hashes are guaranteed to be identical. If even a single bit in the content changes, the hash changes.</dd>
