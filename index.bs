@@ -396,10 +396,12 @@ Every [=Record=] has a type. And every type has a schema. A [=Record=]'s type is
 A [=Record=] in RecordWeb is not static. It has a **state** that describes the condition it is in. The minimum set is:
 
 : <dfn>draft</dfn>
-:: Being worked on. Not yet linkable. Content can still change.
+:: Being worked on. Content can still change. It MUST NOT be the target of a hard link.
 
 : <dfn>finalized</dfn>
-:: Complete. Content is immutable. Cryptographically secured. Linkable.
+:: Complete. Content is immutable and cryptographically secured. A Record MAY be the target of a hard link only when it is in this state.
+
+Additional states do not make a Record eligible as the target of a hard link. Only the [=finalized=] state has that effect. Working references may point to Records in any state.
 
 Record types MAY define additional states. A contract may have the state *signed*. An expert opinion may have the state *under review*. These extensions must be defined in the SchemaRecord.
 
@@ -450,7 +452,7 @@ A <dfn>branch</dfn> arises when from one finalised version, two or more simultan
 
 ## Finalisation: The Moment of Binding Force ## {#finalisation-section}
 
-The heart of the [=version graph=] is <dfn>finalisation</dfn>. It is the moment in which a draft becomes binding information. The moment in which the [=Record=] becomes linkable, referencable, and usable as the basis for further actions.
+The heart of the [=version graph=] is <dfn>finalisation</dfn>. It is the moment in which a draft becomes binding information. Only upon finalisation may a [=Record=] become the target of a hard link; it is then usable as the basis for further actions.
 
 Finalisation is not a technical automatism. It is a human decision, documented and attributable. Whoever finalises assumes responsibility for the content. A finalised version is immutable: it cannot be withdrawn, corrected, or overwritten. Corrections arise as new versions, with explicit reference to the version they replace.
 
@@ -685,7 +687,7 @@ Annex A: Glossary {#glossary}
   <dd>A graph with directed edges and no cycles. Every node has one or more predecessors; no node can be its own ancestor. The [=version graph=] of every [=Record=] in RecordWeb is a DAG.</dd>
 
   <dt>Finalisation</dt>
-  <dd>The explicit act by which a [=Record=] draft is converted into a binding, immutable version. Only finalised versions are linkable. Finalisation is a human decision, documented with [=record owner=] and timestamp.</dd>
+  <dd>The explicit act by which a [=Record=] draft is converted into a binding, immutable version. Only finalised versions MAY be the target of a hard link. Finalisation is a human decision, documented with [=record owner=] and timestamp.</dd>
 
   <dt>Merkle root</dt>
   <dd>A cryptographic value calculated from the hash values of a set of [=Records=] that uniquely represents the aggregate state of that set. The [=Case=] [=Merkle root=] represents the state of a complete [=Case=] at a specific point in time.</dd>
