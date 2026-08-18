@@ -405,6 +405,23 @@ Record types MAY define additional states. A contract may have the state *signed
 
 What does *not* exist is a state *archived* as a system transition. In RecordWeb, there is no "moving into the archive". There are finalised versions that can no longer be changed. That is archiving, without migration, without a system boundary.
 
+## Lifecycle
+
+RecordWeb does not prescribe a mandatory lifecycle for Records. A Record remains a Record regardless of the system in which its content is physically stored, processed, preserved, or made available. Its identity, provenance, and evidential context are maintained through its persistent identifier and DID Document rather than through membership in a particular repository or lifecycle phase.
+
+Nevertheless, organisations may apply an established records lifecycle where this supports their operational, governance, archival, or legal requirements. In particular, a progression from a **System of Work (SoW)** to a **System of Record (SoR)** and subsequently to a **System of Archive (SoA)** remains possible within the RecordWeb approach.
+
+The transition between lifecycle stages does not require creating a new Record or discarding information about its previous context. Instead, the organisation transfers the Records digital representation to the appropriate target system and updates the Records DID Document accordingly.
+
+A lifecycle transition therefore consists principally of two coordinated activities:
+
+1. The Record, including the relevant content and associated representations, is physically transferred and made available in the target system.
+2. The DID Document is updated to reflect the current location, service endpoint, access method, or other technical information required to retrieve or interact with the Record in its new environment.
+
+The DID Document may retain references to previous locations, services, or lifecycle events where this is required for traceability, auditability, or preservation purposes. This allows an organisation to document that a Record was previously managed in a SoW or SoR while making its authoritative representation available from a SoR or SoA.  This is not currently part of RWP; the [DID document](https://recordweb.github.io/rwp/#did-document) can be supplemented according the organisations requirements.
+
+Consequently, lifecycle management in RecordWeb is an organisational capability rather than a protocol-imposed state machine. RecordWeb enables organisations to express lifecycle transitions without changing the identity of the Record and without losing its accumulated provenance, relationships, or evidential value. The Record remains continuously identifiable throughout its lifecycle; only its physical custody, technical accessibility, and relevant DID Document entries change.
+
 ## An Example from Administrative Practice ## {#admin-example}
 
 A citizen submits an application for a building permit.
