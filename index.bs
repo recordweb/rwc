@@ -667,6 +667,28 @@ RecordWeb is a thesis, not a doctrine. It is an invitation to think together abo
 Whoever wishes to accept this invitation (as a critic, as a fellow thinker, as an implementer) is welcome. Feedback is invited via [GitHub Issues](https://github.com/recordweb/rwc/issues).
 
 
+Conformance and Accountable Implementation Claims {#conformance}
+==============================
+
+In RecordWeb, conformance is understood as an accountable claim made by an identifiable implementation. It is not a general property of an organisation, a product family, a deployment environment, or an individual Record. The normative meaning, prerequisites, scope, and representation of such a claim are defined exclusively by the RecordWeb Protocol ([[RWP]]).
+
+Conceptually, the relevant trust boundary is the software component that creates, manages, validates, or makes an RWP representation available and that accepts responsibility for the RWP guarantees it claims. Depending on the deployment, this can be a source system, connector, capture service, Case system, Record repository, resolver, or another software component. The precise conformance boundary and the applicable roles are defined by [[RWP]].
+
+A source system does not, merely because another implementation creates an RWP representation from information obtained from it, thereby become the subject of that implementation's conformance claim. The allocation of conformance responsibility is defined by [[RWP]].
+
+## Validation, Assessment, Attestation, and Certification
+
+The following distinctions explain how conformance claims can be understood; they do not introduce additional protocol requirements.
+
+Record validation concerns a particular Record, snapshot, or other RWP representation: it examines whether that artefact satisfies the applicable RWP requirements.
+
+Implementation assessment concerns an implementation and the scope of its claimed RWP conformance, such as its declared RWP version, profiles, roles, and capabilities.
+
+An attestation is an inspectable statement by an identified attester about such an implementation assessment. It may be self-issued or independently issued.
+
+Certification is an attestation issued under an external certification regime. RecordWeb itself neither operates nor presupposes a certification authority, accreditation scheme, or legal certification regime. Whether and how an external regime uses RWP conformance claims is outside the scope of this concept document and of the RWP protocol.
+
+
 Annex A: Glossary {#glossary}
 ==============================
 
@@ -676,6 +698,12 @@ Annex A: Glossary {#glossary}
 
   <dt>Case</dt>
   <dd>A specialised Record type that represents a persisted, governed view of linked [=Records=]. A [=Case=] makes [=Records=] belonging to a business transaction visible according to a defined schema, without becoming a container for those [=Records=]. It follows the same rules as any other [=Record=]: DID, states, [=version graph=], [=finalisation=].</dd>
+
+  <dt>Conformance claim</dt>
+  <dd>A statement by an identifiable implementation about the scope in which it claims conformance with the RecordWeb Protocol. The normative content, scope, and conditions of a conformance claim are defined by [[RWP]].</dd>
+
+  <dt>Conformance attestation</dt>
+  <dd>An inspectable statement by an identified attester about an assessment of a conformance claim. An attestation may be self-issued or independently issued. Whether an attestation forms part of an external certification regime depends on that regime.</dd>
 
   <dt>Content hash</dt>
   <dd>A cryptographic fingerprint calculated from the content of a dataset. Two datasets with identical content hashes are guaranteed to be identical. If even a single bit in the content changes, the hash changes.</dd>
