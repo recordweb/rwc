@@ -6,6 +6,12 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.0.5] – 2026-08-24
+
+Implemented CfC 2 outcomes. See 
+- [RWC#12](https://github.com/recordweb/rwc/issues/12)
+- Editorial: References in bikeshed-syntax
+
 ## [0.0.4] – 2026-08-14
 
 - Implemented CfC 1 outcomes. See [RWC#11](https://github.com/recordweb/rwc/issues/11) and [RWP#12](https://github.com/recordweb/rwp/issues/12).

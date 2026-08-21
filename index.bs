@@ -15,7 +15,7 @@ Previous Version: https://doi.org/10.5281/zenodo.20475343
 </pre>
 
 <div class="copyright">
-<p>Copyright © 2026 the Contributors to the RecordWeb Concept (RWC) v0.0.4, published by the <a href="https://www.w3.org/community/recordweb/">RecordWeb Community Group</a> under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
+<p>Copyright © 2026 the Contributors to the RecordWeb Concept (RWC) v0.0.5, published by the <a href="https://www.w3.org/community/recordweb/">RecordWeb Community Group</a> under the <a href="https://www.w3.org/community/about/process/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/process/cla-deed/">summary</a> is available.</p>
 </div>
 
 <pre class="biblio">
