@@ -1,7 +1,7 @@
-The Record: The Smallest Meaningful Unit of Information {#the-record}
+The Record: The Smallest Meaningful Unit of Information {#chapter-record}
 ======================================================================
 
-## What a Record Is — and What It Is Not ## {#record-definition}
+## What a Record Is — and What It Is Not ## {#section-record-definition}
 
 The term "Record" is established in archival science and Records Management, but it is imprecise. RecordWeb uses the term more precisely: a [=Record=] is the **smallest semantically autonomous unit of information** that can meaningfully exist without additional context.
 
@@ -11,7 +11,7 @@ A single database field is not a Record. An email attachment is not a Record. A 
 
 A [=Record=], by contrast, is: a decision of a public authority; an application submitted by a citizen; minutes of a meeting; an expert opinion; a contract. Each of these objects carries its meaning within itself.
 
-## Conceptual Taxonomy of Records {#record-taxonomy}
+## Conceptual Taxonomy of Records {#section-record-taxonomy}
 
 For the purposes of the RecordWeb conceptual model, [=Record|Records=] can be distinguished by their primary purpose:
 
@@ -27,7 +27,8 @@ A <dfn>SystemRecord</dfn> primarily defines, documents, or provides evidence of 
 
 This taxonomy describes conceptual purposes. It is not a mandatory implementation inheritance hierarchy, a required JSON type hierarchy, or a replacement for concrete Record types and their schemas. The normative protocol definitions and conformance consequences are defined by the [RecordWeb Protocol](https://recordweb.github.io/rwp/).
 
-## The Three Components of a Record ## {#record-components}
+
+## The Three Components of a Record ## {#section-record-components}
 
 Every [=Record=] in RecordWeb consists of three inseparable components: its <dfn>identity</dfn>, its <dfn>payload</dfn>, and its <dfn>metadata</dfn>.
 
@@ -41,7 +42,8 @@ Every [=Record=] in RecordWeb consists of three inseparable components: its <dfn
 
 Every [=Record=] has a type. And every type has a schema. A [=Record=]'s type is not merely a label, it is a statement about which rules apply to this [=Record=]. In RecordWeb, a schema is itself a [=Record=]: a SchemaRecord with its own type, its own [=version graph=], and its own history. This guarantees backward compatibility structurally: every version of a [=Record=] remains permanently linked to the schema version that was valid at the time of its creation.
 
-## States: The Liveliness of the Record ## {#record-states}
+
+## States: The Liveliness of the Record ## {#section-record-states}
 
 A [=Record=] in RecordWeb is not static. It has a **state** that describes the condition it is in. The minimum set is:
 
@@ -57,7 +59,8 @@ Record types MAY define additional states. A contract may have the state *signed
 
 What does *not* exist is a state *archived* as a system transition. In RecordWeb, there is no "moving into the archive". There are finalised versions that can no longer be changed. That is archiving, without migration, without a system boundary.
 
-## Lifecycle
+
+## Lifecycle ## {#section-record-lifecycle}
 
 RecordWeb does not prescribe a mandatory lifecycle for Records. A Record remains a Record regardless of the system in which its content is physically stored, processed, preserved, or made available. Its identity, provenance, and evidential context are maintained through its persistent identifier and DID Document rather than through membership in a particular repository or lifecycle phase.
 
@@ -74,7 +77,19 @@ The DID Document may retain references to previous locations, services, or lifec
 
 Consequently, lifecycle management in RecordWeb is an organisational capability rather than a protocol-imposed state machine. RecordWeb enables organisations to express lifecycle transitions without changing the identity of the Record and without losing its accumulated provenance, relationships, or evidential value. The Record remains continuously identifiable throughout its lifecycle; only its physical custody, technical accessibility, and relevant DID Document entries change.
 
-## An Example from Administrative Practice ## {#admin-example}
+
+## Identifying Agents Alongside Records ## {#section-record-agents}
+
+RecordWeb uses the same identifier scheme, `did:rwp`, both for Records and for the parties that bear responsibility for them — an owning organisational unit, a controller, someone asserting or attesting a fact, a source adapter capturing data, or a party approving a deletion.
+
+To keep this distinction explicit rather than implicit, RWP defines a separate category, the **AgentRecord**, aligned with the general notion of an *agent* from the PROV provenance model [[PROVO]]: something that bears responsibility for an entity, an activity, or another agent's actions, without itself being the thing being tracked (see also [Record Identity](https://recordweb.github.io/rwp/#chapter-agentrecord)).
+
+This split matters conceptually because it draws a clean line between what RecordWeb manages (traceable institutional information) and what it merely needs to reference (the identity of a responsible party). RecordWeb does not attempt to be an identity or organisation-management system: it defines only enough structure to say "this DID identifies an agent, not a record," leaving how that agent is described, verified, or authenticated to other systems or specifications.
+
+**Also relevant to:** the local vs. globally resolvable distinction described in [Record Identity](https://recordweb.github.io/rwp/#chapter-record-identity), which applies identically to Records and AgentRecords. An AgentRecord DID may be globally resolvable or scoped to a local resolution context under the same rules.
+
+
+## An Example from Administrative Practice ## {#section-record-example}
 
 A citizen submits an application for a building permit.
 
