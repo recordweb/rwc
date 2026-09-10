@@ -39,7 +39,7 @@ This distinction (coordination without ownership) has precedent outside RecordWe
 
 Why does this role need to be named explicitly, rather than left to emerge informally? Because the alternative to a named coordinator is not "no coordination", it is unaccountable coordination: whoever happens to run the most infrastructure at a given moment. For a registry that public administrations depend on to resolve identifiers tied to legal records, that default is not acceptable. A named operating organisation, bound to a published governance framework, is what makes the difference between infrastructure that happens to work today and infrastructure that institutions can commit to for decades.
 
-The governance framework itself is deliberately not specified here. Its required minimum content (who may join, how namespaces are registered and retired, how incidents and upgrades are handled, how history remains auditable) is a conformance question for implementers and is defined in the RecordWeb Protocol [RWP]. What matters at the concept level is only the shape of the role: a coordinating body, accountable and named, sitting beside the namespace owners and resolver operators it serves rather than above them.
+The governance framework itself is deliberately not specified here. Its required minimum content (who may join, how namespaces are registered and retired, how incidents and upgrades are handled, how history remains auditable) is a conformance question for implementers and is defined in the RecordWeb Protocol [[RWP]]. What matters at the concept level is only the shape of the role: a coordinating body, accountable and named, sitting beside the namespace owners and resolver operators it serves rather than above them.
 
 That is RecordWeb Trust Association.
 
