@@ -1,0 +1,84 @@
+The Record: The Smallest Meaningful Unit of Information {#the-record}
+======================================================================
+
+## What a Record Is — and What It Is Not ## {#record-definition}
+
+The term "Record" is established in archival science and Records Management, but it is imprecise. RecordWeb uses the term more precisely: a [=Record=] is the **smallest semantically autonomous unit of information** that can meaningfully exist without additional context.
+
+Note: This definition sharpens the normative Record concept from [[ISO15489]] (Section 3.14) in two dimensions: first, RecordWeb emphasises *semantic autonomy*: a [=Record=] must be understandable without an external container. Second, RecordWeb adds *technical identifiability*: a [=Record=] must be globally and uniquely addressable without a foreign register.
+
+A single database field is not a Record. An email attachment is not a Record. A folder is not a Record (it is a container).
+
+A [=Record=], by contrast, is: a decision of a public authority; an application submitted by a citizen; minutes of a meeting; an expert opinion; a contract. Each of these objects carries its meaning within itself.
+
+## Conceptual Taxonomy of Records {#record-taxonomy}
+
+For the purposes of the RecordWeb conceptual model, [=Record|Records=] can be distinguished by their primary purpose:
+
+```text
+Record = InformationRecord | RelationRecord | SystemRecord
+```
+
+An <dfn>InformationRecord</dfn> primarily carries semantically autonomous institutional or domain information. Examples include an application, a decision, a contract, minutes, an expert opinion, or a captured representation of an object from a source system. InformationRecord is a conceptual category, not a mandatory technical Record type. Concrete InformationRecord types are defined by their respective [SchemaRecords](https://recordweb.github.io/rwp/#schema-record).
+
+A <dfn>RelationRecord</dfn> primarily establishes, preserves, and makes meaningful relationships between Records. For example a case provides a persisted, governed view of linked Records without becoming a container for them or containing their payload. For example [CaseRecord](https://recordweb.github.io/rwp/#caserecord-specification) and [AssertionRecord](https://recordweb.github.io/rwp/#assertionrecord-specification).
+
+A <dfn>SystemRecord</dfn> primarily defines, documents, or provides evidence of a RecordWeb system rule, operation, or capability. For example, the schemas and protocol evidence through which RecordWeb governs Records belong to this conceptual category. For example: [SchemaRecord](https://recordweb.github.io/rwp/#schema-record), MergeRecord, DeletionRecord, MigrationRecord, and ConformanceRecord (see the [RecordWeb Protocol](https://recordweb.github.io/rwp/)).
+
+This taxonomy describes conceptual purposes. It is not a mandatory implementation inheritance hierarchy, a required JSON type hierarchy, or a replacement for concrete Record types and their schemas. The normative protocol definitions and conformance consequences are defined by the [RecordWeb Protocol](https://recordweb.github.io/rwp/).
+
+## The Three Components of a Record ## {#record-components}
+
+Every [=Record=] in RecordWeb consists of three inseparable components: its <dfn>identity</dfn>, its <dfn>payload</dfn>, and its <dfn>metadata</dfn>.
+
+**[=Identity=]** is what makes the [=Record=] unambiguous. Globally, permanently, and without a foreign register. Every [=Record=] carries a unique identifier that identifies it across system boundaries, organisational boundaries, and time boundaries. This identifier is entirely independent of the [=Record=]'s physical storage location.
+
+**The [=payload=]** is the actual content, the information that the [=Record=] carries. A [=payload=] always follows a schema defined for its Record type. The schema is the contract between the [=Record=] and the system. A [=Record=] can carry multiple payload representations of the same information: a working format in [=draft=] state and a long-term format in [=finalized=] state.
+
+**[=Metadata=]** are the dimensions along which a [=Record=] can be found, linked, and classified. They describe the [=Record=] from the outside without needing to know its content. The minimum set is deliberately kept small: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.
+
+## Type and Schema: The Record's Contract ## {#record-type-schema}
+
+Every [=Record=] has a type. And every type has a schema. A [=Record=]'s type is not merely a label, it is a statement about which rules apply to this [=Record=]. In RecordWeb, a schema is itself a [=Record=]: a SchemaRecord with its own type, its own [=version graph=], and its own history. This guarantees backward compatibility structurally: every version of a [=Record=] remains permanently linked to the schema version that was valid at the time of its creation.
+
+## States: The Liveliness of the Record ## {#record-states}
+
+A [=Record=] in RecordWeb is not static. It has a **state** that describes the condition it is in. The minimum set is:
+
+: <dfn>draft</dfn>
+:: Being worked on. Content can still change. It MUST NOT be the target of a hard link.
+
+: <dfn>finalized</dfn>
+:: Complete. Content is immutable and cryptographically secured. A Record MAY be the target of a hard link only when it is in this state.
+
+Additional states do not make a Record eligible as the target of a hard link. Only the [=finalized=] state has that effect. Working references may point to Records in any state.
+
+Record types MAY define additional states. A contract may have the state *signed*. An expert opinion may have the state *under review*. These extensions must be defined in the SchemaRecord.
+
+What does *not* exist is a state *archived* as a system transition. In RecordWeb, there is no "moving into the archive". There are finalised versions that can no longer be changed. That is archiving, without migration, without a system boundary.
+
+## Lifecycle
+
+RecordWeb does not prescribe a mandatory lifecycle for Records. A Record remains a Record regardless of the system in which its content is physically stored, processed, preserved, or made available. Its identity, provenance, and evidential context are maintained through its persistent identifier and DID Document rather than through membership in a particular repository or lifecycle phase.
+
+Nevertheless, organisations may apply an established records lifecycle where this supports their operational, governance, archival, or legal requirements. In particular, a progression from a **System of Work (SoW)** to a **System of Record (SoR)** and subsequently to a **System of Archive (SoA)** remains possible within the RecordWeb approach.
+
+The transition between lifecycle stages does not require creating a new Record or discarding information about its previous context. Instead, the organisation transfers the Records digital representation to the appropriate target system and updates the Records DID Document accordingly.
+
+A lifecycle transition therefore consists principally of two coordinated activities:
+
+1. The Record, including the relevant content and associated representations, is physically transferred and made available in the target system.
+2. The DID Document is updated to reflect the current location, service endpoint, access method, or other technical information required to retrieve or interact with the Record in its new environment.
+
+The DID Document may retain references to previous locations, services, or lifecycle events where this is required for traceability, auditability, or preservation purposes. This allows an organisation to document that a Record was previously managed in a SoW or SoR while making its authoritative representation available from a SoR or SoA.  This is not currently part of RWP; the [DID document](https://recordweb.github.io/rwp/#did-document) can be supplemented according the organisations requirements.
+
+Consequently, lifecycle management in RecordWeb is an organisational capability rather than a protocol-imposed state machine. RecordWeb enables organisations to express lifecycle transitions without changing the identity of the Record and without losing its accumulated provenance, relationships, or evidential value. The Record remains continuously identifiable throughout its lifecycle; only its physical custody, technical accessibility, and relevant DID Document entries change.
+
+## An Example from Administrative Practice ## {#admin-example}
+
+A citizen submits an application for a building permit.
+
+**In today's system:** the application arrives by email or as a PDF. It is printed out or filed in a RecordManagement System. Perhaps it is classified, perhaps not. Later someone looks for it and finds three versions on two drives and in one email.
+
+**In RecordWeb:** the application is captured as a [=Record=] of the type *building-permit-application*. Its schema specifies which fields must be present: parcel number, applicant, description of the construction project, date. The [=Record=] immediately receives a unique identity. Once fully captured, it is finalised. From that moment on, it is immutable, but accessible, linkable, and discoverable for all involved.
+

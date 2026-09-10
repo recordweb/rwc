@@ -1,0 +1,28 @@
+Related Concepts and Demarcation {#related-concepts}
+=====================================================
+
+## Linked Data and the Semantic Web ## {#related-linked-data}
+
+Tim Berners-Lee's Linked Data principles [[LINKED-DATA]] are the conceptually closest relative of RecordWeb. RecordWeb takes up the networking idea from Linked Data and adds the institutional dimension that is missing there: accountability, versioning, auditability, states.
+
+## Records Continuum ## {#related-continuum}
+
+RecordWeb is the technical implementation of the Records Continuum idea [[UPWARD-1996]] [[UPWARD-1997]]. The notion that a [=Record=] does not die but lives on is structurally anchored in RecordWeb, through immutable versions, through the [=version graph=], through the absence of an "archiving" system transition.
+
+## Records Management (RM) ## {#related-rm}
+
+RM [[ISO15489]] defines international principles of Records Management: authenticity, reliability, integrity, usability. These four properties are RecordWeb's requirements specification. RecordWeb fulfils all four structurally:
+
+- **Authenticity**: DID and cryptographic hash guarantee that a [=Record=] is what it claims to be
+- **Reliability**: [=Finalisation=] and immutable versions guarantee that a [=Record=] is complete and correct at the time of finalisation
+- **Integrity**: Merkle hashes guarantee that a [=Record=] cannot change unnoticed after finalisation
+- **Usability**: The DID document and [=metadata=] guarantee that a [=Record=] remains findable and accessible, regardless of system migrations
+
+## Open archival information system (OAIS) ## {#related-oais}
+
+OAIS [[ISO14721]] is the international standard for digital long-term preservation. RecordWeb and OAIS are complementary: RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb [=Records=] can be migrated to long-term archives according to OAIS principles; the DID is retained in this process.
+
+## PROV-O ## {#related-provo}
+
+[[PROVO]] is a W3C standard for describing the provenance and history of data. RecordWeb and PROV-O overlap in intention. The difference: PROV-O is a description standard, it can be layered onto existing systems. RecordWeb is an architecture standard, provenance is structurally anchored in the [=version graph=]. PROV-O would be a possible serialisation format for RecordWeb lineage documentation.
+

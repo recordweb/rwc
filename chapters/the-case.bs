@@ -1,0 +1,44 @@
+The Case: Cases as a View onto the RecordWeb {#cases}
+======================================================
+
+## Why the Dossier Is Not Enough ## {#dossier-limitations}
+
+In public administration, the dossier has long been the central organisational principle. But it has a weakness that becomes visible in the digital context: the dossier is a **container**. It holds together what belongs together. But it does not explain why it belongs together, and it does not create any identity of its own for the individual parts.
+
+RecordWeb therefore proposes a different perspective: not the dossier as the primary unit, but the <dfn>Case</dfn> as a view onto linked Records.
+
+## What a Case Is ## {#case-definition}
+
+A [=Case=] in RecordWeb is not a container into which [=Records=] are placed. It is a [=RelationRecord=]: a semantic and procedural relationship structure that links [=Records=] to one another and makes them visible as belonging together.
+
+A [=Case=] answers questions such as:
+
+- Which [=Records=] belong to the same matter?
+- Which [=Records=] were causally relevant to a decision?
+- Which [=Records=] together constitute the context of a process?
+
+This has a fundamental consequence: a [=Record=] can belong to multiple [=Cases=]
+without being duplicated.
+
+## Case as View, Not as Container ## {#case-as-view}
+
+In the classical system, the dossier is primary and the document secondary. In RecordWeb, the [=Record=] is primary and the [=Case=] secondary. The [=Record=] exists in its own right. The [=Case=] emerges through the explicit linking of [=Records=]. Context is not produced by storage, but by relation.
+
+A [=Case=] can be polycontextual: it can connect [=Records=] across organisational units, across processes, across time periods. It can represent causal links where the dossier can only represent storage location.
+
+## Example: A Building Permit as a Case ## {#building-permit-example}
+
+A citizen submits an application for a building permit. This application is a [=Record=]. Later a site plan is added, then an expert opinion from the heritage authority, then the hearing of neighbours, then the authority's decision.
+
+In a classical system, all of this would be placed in a dossier. In RecordWeb, all these are autonomous [=Records=] linked through a [=Case=]: "Building Permit Muller, Parcel 4711".
+
+The [=Case=] makes visible that the [=Records=] belong together. But none of them loses its autonomy. The heritage expert opinion can later appear in another [=Case=] if a legal dispute arises. The authority's decision can be linked to a political oversight [=Case=]. The application remains the same application.
+
+**The context changes. The [=Record=] remains.**
+
+## Cases and Governance ## {#case-governance}
+
+Because [=Cases=] create context, they are institutionally relevant. They also need governance: who may open a [=Case=]? Who may add or remove [=Records=]? Under what conditions may a [=Case=] be split, merged, or closed?
+
+RecordWeb's answer is clear: [=Cases=] must be defined semantically and governed institutionally, but without reducing them again to containers.
+

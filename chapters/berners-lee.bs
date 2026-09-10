@@ -1,0 +1,99 @@
+From Berners-Lee to RecordWeb: The Unfinished Revolution {#web-to-recordweb}
+=============================================================================
+
+## The World Wide Web as an Information Architecture ## {#www-architecture}
+
+When Tim Berners-Lee sketched out his idea for a distributed hypertext system at CERN in 1989 [[BERNERS-LEE-1989]], he was pursuing a precise goal: information should be linked together, regardless of which system it was stored on. His proposal, "a large hypertext database with typed links", was no technical gimmick but an epistemological thesis: knowledge emerges through connection, not through filing.
+
+The Web that grew from it fulfilled this thesis, but only halfway. It networked *documents*: Web pages, PDFs, images, videos. The networked unit remained the document, not the information.
+
+## Linked Data: The Second Attempt ## {#linked-data}
+
+Berners-Lee recognised the incompleteness early. With his concept of the *Semantic Web* and later the *Linked Data* principles [[LINKED-DATA]], he tried to go a step further: networking not documents but data. The four principles are well known:
+
+1. Use URIs as names for things.
+2. Use HTTP URIs so that names can be resolved.
+3. Provide useful information when someone looks up a URI.
+4. Link to other URIs to enable discovery.
+
+Linked Data has achieved significant successes: Wikidata, DBpedia, and Google's Knowledge Graph are children of this idea. But the core problem remained: the networked unit is a *data point in a graph*, not an *autonomous information object with history, provenance, and accountability*.
+
+What is missing is the institutional dimension. An RDF triple does not know who created it. It does not know when it was valid. It has no version. It has no responsible party. It is not auditable.
+
+## The Overlooked Question ## {#overlooked-question}
+
+Berners-Lee's approaches answer the question *how do I connect information?*, but not the question *what is information that can be connected?* This question arises everywhere that information must not merely be *transmitted* but *proven*.
+
+Note: [[ISO15489]] defines a Record as "information created, received, and maintained as evidence and as an asset by an organization or person, in pursuit of legal obligations or in the transaction of business" (Section 3.14). This definition emphasises the evidentiary character (information as an object of proof) and forms the normative foundation for the [=Record=] concept in RecordWeb.
+
+This question is not technical. It is ontological: what is the smallest meaningful unit of information; autonomous, identifiable, traceable, and permanent?
+
+The answer RecordWeb postulates is: **the [=Record=]**.
+
+## RecordWeb: The Consistent Extension ## {#recordweb-extension}
+
+RecordWeb takes up Berners-Lee's core idea and radicalises it. Not documents are networked, not data points, but **[=Records=]**: autonomous, versioned, schema-based information objects with unambiguous identity, traceable provenance, and explicit accountability.
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Dimension</th>
+      <th>World Wide Web</th>
+      <th>Linked Data</th>
+      <th>RecordWeb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Networked unit</td>
+      <td>Document</td>
+      <td>Data point (triple)</td>
+      <td>[=Record=]</td>
+    </tr>
+    <tr>
+      <td>Identity</td>
+      <td>URL (location = name)</td>
+      <td>URI</td>
+      <td>DID (location ≠ name)</td>
+    </tr>
+    <tr>
+      <td>Versioning</td>
+      <td>None (implicit)</td>
+      <td>None</td>
+      <td>[=Version graph=] (DAG)</td>
+    </tr>
+    <tr>
+      <td>Accountability</td>
+      <td>None</td>
+      <td>None</td>
+      <td><dfn>record owner</dfn> (DID)</td>
+    </tr>
+    <tr>
+      <td>Immutability</td>
+      <td>None</td>
+      <td>None</td>
+      <td>Content hash per version</td>
+    </tr>
+    <tr>
+      <td>Auditability</td>
+      <td>None</td>
+      <td>None</td>
+      <td>Merkle integrity</td>
+    </tr>
+    <tr>
+      <td>Schema</td>
+      <td>Not required</td>
+      <td>RDF/OWL (optional)</td>
+      <td>Mandatory per type and version</td>
+    </tr>
+  </tbody>
+</table>
+
+The Web made documents findable. Linked Data made facts linkable. RecordWeb makes **information provable**.
+
+## A Paradigm Shift, Not a Replacement ## {#paradigm-shift}
+
+RecordWeb does not replace the World Wide Web and does not compete with Linked Data. It is a complementary architecture that answers a different question: how can information (as an atomic, autonomous unit) exist in such a way that it can be reliably identified, linked, and proven across system boundaries, organisational boundaries, and time boundaries?
+
+This question arises everywhere that information must not merely be *transmitted* but *proven*: in healthcare, in finance, and especially in public administration, which owes accountability to the sovereign, to parliaments, and to courts.
+

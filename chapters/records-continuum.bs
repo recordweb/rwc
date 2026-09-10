@@ -1,0 +1,94 @@
+The Records Continuum and Its Unresolved Tension {#records-continuum}
+======================================================================
+
+## The Australian Revolution ## {#australian-revolution}
+
+In the second half of the twentieth century, archival science was dominated by linear thinking: Records are created, used, transferred to the archive, and end there. This lifecycle (creation, maintenance, disposal) was intuitive, easy to convey, and closely tied to the physical reality of paper documents.
+
+Frank Upward and his colleagues at Monash University fundamentally challenged this model in the 1990s [[UPWARD-1996]] [[UPWARD-1997]]. Their *Records Continuum Model* replaced the linear sequence with a multidimensional, continuous spatial model. A Record does not pass through phases, it exists simultaneously across multiple dimensions: *create*, *capture*, *organise*, *pluralise*. The underlying idea is radical: a Record is not an object that travels from A to B. It is an entity that lives in a continuous space of meaning, context, and use.
+
+This idea is conceptually far more advanced than the classical lifecycle. It anticipates what RecordWeb thinks through to its logical conclusion: a Record never ceases to exist. It changes its context, its use, its meaning. But it itself endures.
+
+## The Unresolved Tension: Continuity Versus Provability ## {#continuity-vs-provability}
+
+The Records Continuum Model has a blind spot that is often underestimated in scholarly discussion. The model's strength (its openness, its multidimensionality, its rejection of rigid phase boundaries) is simultaneously its weakness in the institutional context.
+
+Public administrations owe accountability. They must be able to prove:
+
+- *When* was which information available in which version?
+- *Who* had knowledge of which matter at which point in time?
+- *How* was a decision prepared — which information was present, which was not?
+
+The Records Continuum provides no structural answer to these questions. It describes how Records are *meaningful*, but not how they are *provable*. This is not a flaw in the model; it was not designed for this purpose. But it is the gap that RecordWeb must close.
+
+## The Classical Lifecycle: Structure Without Flexibility ## {#classical-lifecycle}
+
+On the other side stands the classical lifecycle, as anchored in [[ISO15489]] and other national standards (e.g. Switzerland [[ECH-0164]]): processing — retention — archiving or disposal.
+
+This framework has great merits. It creates clarity about responsibilities, enables legally compliant retention periods, and structures the transition between operational use and historical preservation. But the model carries a structural cost: it thinks in system boundaries. A Record "lives" in one system and is "moved" to another. Every transition is a migration, a transformation, a potential loss of information.
+
+## RecordWeb as Synthesis ## {#synthesis}
+
+RecordWeb postulates that the tension between continuity and provability cannot be resolved through a better lifecycle model, but through a different approach.
+
+**The thesis:** a Record does not need a system that carries it through phases. It needs an identity that outlasts it. It needs a version history that documents its change. And it needs cryptographic integrity that proves its state at any point in time.
+
+What is today understood as "archiving" (the physical or digital transfer to a retention system) becomes in RecordWeb a <dfn>state transition</dfn>. The [=Record=] stays where it is. It receives a new state. Its location can change; its DID remains. Its version is frozen; new versions can emerge without overwriting the old one.
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>Records Continuum</th>
+      <th>Classical Lifecycle</th>
+      <th>RecordWeb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Core idea</td>
+      <td>Record lives continuously</td>
+      <td>Record moves through phases</td>
+      <td>Record exists with states</td>
+    </tr>
+    <tr>
+      <td>Strength</td>
+      <td>Flexibility, openness</td>
+      <td>Clarity, legal compliance</td>
+      <td>Provability, continuity</td>
+    </tr>
+    <tr>
+      <td>Weakness</td>
+      <td>Weak auditability</td>
+      <td>Rigid system boundaries, migration losses</td>
+      <td>Higher technical complexity</td>
+    </tr>
+    <tr>
+      <td>Archive</td>
+      <td>No fixed boundary</td>
+      <td>Separate system (SoA)</td>
+      <td>State, not a system change</td>
+    </tr>
+    <tr>
+      <td>Versions</td>
+      <td>Not explicitly modelled</td>
+      <td>Not explicitly modelled</td>
+      <td>[=Version graph=] (DAG), mandatory</td>
+    </tr>
+    <tr>
+      <td>Integrity</td>
+      <td>Conceptual</td>
+      <td>Organisational</td>
+      <td>Cryptographic</td>
+    </tr>
+  </tbody>
+</table>
+
+## What RecordWeb Inherits from Both ## {#inheritance}
+
+RecordWeb is not a refutation of the Records Continuum, it is its technical implementation. The idea that a Record does not die but lives on is the core thought of both approaches. What RecordWeb adds is the mechanism: the immutable, cryptographically secured snapshot as the basis for every statement about the state of information at a specific point in time.
+
+From the classical lifecycle, RecordWeb inherits the insight that Records exist in an institutional context, with responsible parties, with retention periods, with governance. This institutional dimension is absent from the Records Continuum just as it is from Linked Data. It is constitutive for RecordWeb.
+
+The result is a model that combines the conceptual openness of the Continuum with the institutional binding force of the classical lifecycle (and places both on a cryptographic foundation that was not yet available in the 1990s).
+

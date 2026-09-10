@@ -1,0 +1,41 @@
+Why SoW, SoR, and SoA Have No Future {#sow-sor-soa}
+=====================================================
+
+## An Honest Appreciation ## {#appreciation}
+
+The distinction between *System of Work (SoW)*, *System of Record (SoR)*, and *System of Archive (SoA)* is not wrong. It is precise, legally grounded, and reflects a real institutional logic: information is created in the work process, secured in the record repository, and preserved in the archive. RecordWeb does not challenge this approach. It asks one level deeper.
+
+## The Diagnosis: The Problem Is the System Boundary Itself ## {#system-boundary}
+
+The lifecycle model does not fail in practice due to poor technology. It fails because of people, but not because people lack discipline. It fails because the model assigns people a task that is structurally incompatible with their work.
+
+Staff in a public authority want two things: to get their work done, and to have access to all relevant information at any time. What they do not want (and what they have consistently refused to do over decades, not out of ill will but out of rational time management) is the manual transfer of information from one system to another.
+
+## The Thesis: System Boundaries Are an Artefact of the Twentieth Century ## {#artefact}
+
+The tripartite SoW/SoR/SoA structure is historically motivated. Paper could not simultaneously be in circulation and in the archive. Electronic systems were expensive, specialised, and poorly networked. The transition between phases was a physical or organisational necessity.
+
+**This necessity no longer exists technically.**
+
+RecordWeb does precisely this: there is no longer any transition between SoW and SoR, because every [=Record=] from the outset satisfies both requirements: it is editable (in the [=draft=] state) and it is archivable (every finalised version is immutable, cryptographically secured, and permanently addressable). There is no longer any transition between SoR and SoA, because the archive is no longer a place, it is a state.
+
+## What Remains — and What Disappears ## {#what-remains}
+
+**What disappears:**
+
+- The organisational obligation to manually transfer information between systems
+- The institutional distinction between "working area" and "record repository" as a system boundary
+- Migration as a regular, risk-laden transition in the information lifecycle
+- The archive as a separate system with its own staff, its own interfaces, its own logic
+
+**What remains:**
+
+- The substantive distinction between active and concluded information: mapped as states
+- Legal retention periods: mapped as [=metadata=] in the [=Record=]
+- The archive's responsibility for long-term stability and accessibility: mapped as governance rules
+- The human decision about [=finalisation=]: as an explicit, documented act
+
+## The Consequence for Staff ## {#consequence-for-staff}
+
+For staff, RecordWeb means a radical simplification: they work in a single conceptual space. They create Records, edit them, finalise them. They link Records to Cases. They never again have to decide whether information is "ready for filing". They never again have to switch between systems. They never again have to classify before they are allowed to work.
+

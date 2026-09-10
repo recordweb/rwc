@@ -1,0 +1,65 @@
+Accountability and Trust: Proving Rather Than Claiming {#accountability}
+=========================================================================
+
+## The Question Authorities Dread ## {#the-question}
+
+"Can you prove that this information existed at the time the decision was made?"
+
+No court asks this question lightly. But it is asked in legal remedy proceedings, in parliamentary inquiries, in audits, in criminal investigations. And in most administrations, the honest answer is the same: no, not with certainty.
+
+RecordWeb is built for provability. That is not a side benefit, it is a design principle.
+
+## Three Levels of Traceability ## {#traceability-levels}
+
+RecordWeb anchors traceability at three levels that together produce a complete picture.
+
+### Level 1: The Individual Record ### {#level-1-record}
+
+Every finalised version of a [=Record=] is cryptographically secured. The content, the schema, the [=metadata=], and the provenance references are condensed into a single hash value. This value is unambiguous: two [=Records=] with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable.
+
+### Level 2: The Version Graph ### {#level-2-version-graph}
+
+The history of a [=Record=] is not separately documented, it is structurally anchored. Every version knows its predecessors. Every [=branch=] is visible. The question "which information was available at the time of the decision?" is answered by examining the [=version graph=] at the relevant point in time (not by questioning those involved, not by searching through email archives).
+
+### Level 3: The Case Merkle Root ### {#level-3-merkle}
+
+A finalised [=Case=] has a fingerprint: the <dfn>Merkle root</dfn>, calculated from the hash values of all linked [=Records=]. This value represents the entire state of the [=Case=] at a specific point in time: completely, immutably, and machine-verifiably.
+
+The question "was this [=Case=] complete at the time of the decision?" is answered by comparing the [=Merkle root=] from that time with the one from today. If they are identical, nothing has changed. If they differ, the system knows exactly which [=Record=] has changed.
+
+## The Optional Ledger: Hyperledger as External Anchor ## {#optional-ledger}
+
+For situations in which an authority needs external proof, RecordWeb offers an optional extension: anchoring the [=Case=] [=Merkle root=] on a distributed infrastructure (for example Hyperledger Fabric [[HYPERLEDGER]], a permissioned distributed ledger that operates without a public blockchain).
+
+The principle is simple: when a [=Case=] is finalised, its [=Merkle root=] (and only this value, no content) is written to the ledger. This creates a timestamped, publicly provable entry: "this [=Case=] had this state at this point in time", without privacy or official secrecy being violated.
+
+The Hyperledger anchor is an option, not an obligation.
+
+## The Optional Pod: Solid as Citizen-Controlled Storage ## {#optional-solid}
+
+For situations in which a [=Record=] or [=Case=] belongs not to an authority but to a citizen (as the subject, recipient, or rights-holder) RecordWeb offers a second optional extension: delivery and storage of [=Records=] in a Solid Pod [[SOLID]].
+
+Solid is a W3C-based protocol that enables individuals to store their own data in a personal online data store (a *Pod*), fully under their own control. Applications and institutions may read from or write to a Pod only with explicit, revocable consent. The citizen is not the recipient of a copy, the citizen is the **owner of the original**.
+
+The principle for RecordWeb is straightforward: when an authority finalises a [=Record=] that concerns a specific citizen, it may (with the citizen's consent) deliver that [=Record=] directly into the citizen's Pod. The [=Record=] retains its DID, its [=version graph=], and its cryptographic integrity. What changes is the storage location: the authority's system and the citizen's Pod both hold a reference to the same immutable, permanently addressable object.
+
+Typical use cases for citizen-held Records include:
+
+- A driving licence issued by the road traffic authority
+- A medical image (X-ray, MRI) delivered by a hospital
+- A residence registration confirmation issued by the municipality
+- A building permit delivered to the applicant
+- A diploma or professional certification
+
+In each case, the citizen can present the [=Record=] to any third party (an employer, an insurer, a foreign authority) who can independently verify its authenticity via the DID and the cryptographic hash, without querying the issuing authority. The authority's system remains authoritative; the citizen's Pod holds a provable, portable copy.
+
+Note: The Solid Pod option complements, not replaces, the authority's own record keeping. The issuing authority retains the [=Record=] in its own RecordWeb system. The Pod delivery is an additional output, a citizen-facing endpoint for Records whose primary subject is the individual.
+
+The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a `delivery-target` field in the optional [=metadata=] extension block for this purpose.
+
+## Trust Through Transparency, Transparency Through Structure ## {#trust}
+
+Trust in public institutions arises not from promises but from provability. An authority that can say: "here is the decision, here is its history, here is the proof that it has not changed", this authority deserves trust. Not because it was well-intentioned, but because it can prove it.
+
+RecordWeb is not an instrument of control *against* authorities. It is an instrument of credibility *for* authorities.
+

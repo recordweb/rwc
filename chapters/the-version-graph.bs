@@ -1,0 +1,39 @@
+The Version Graph: How Information Changes Without Disappearing {#version-graph-section}
+================================================================================
+
+## The Problem with Versions Today ## {#versions-today}
+
+Anyone who today looks for the "current version" of a document in a public authority enters uncertain terrain. In most cases, the history of a document (who changed it, when, and how) cannot be reconstructed. This is not a marginal problem. It is the normal condition. And it has real consequences: decisions are made on the basis of information whose period of validity is unclear.
+
+## The Core Idea: Change as Linkage ## {#change-as-linkage}
+
+In RecordWeb, information is never overwritten. When a [=Record=] changes, a new version arises, a new, autonomous snapshot. This snapshot is linked to its predecessor: it knows where it came from. The entirety of all versions of a [=Record=] and their linkages forms the <dfn>version graph</dfn>.
+
+A graph is the right metaphor because the history of information is rarely a straight line. Sometimes it branches: two staff members work simultaneously on different aspects of the same [=Record=]. Sometimes strands come together again: different revisions are merged into one authoritative version.
+
+## Branches: Parallel Work as the Normal Case ## {#branches}
+
+A <dfn>branch</dfn> arises when from one finalised version, two or more simultaneously existing drafts emerge. Both are visible. Both are in the [=draft=] state. Anyone looking at the [=Record=] sees immediately that parallel work is underway. Nothing is hidden, nothing is lost.
+
+## Finalisation: The Moment of Binding Force ## {#finalisation-section}
+
+The heart of the [=version graph=] is <dfn>finalisation</dfn>. It is the moment in which a draft becomes binding information. Only upon finalisation may a [=Record=] become the target of a hard link; it is then usable as the basis for further actions.
+
+Finalisation is not a technical automatism. It is a human decision, documented and attributable. Whoever finalises assumes responsibility for the content. A finalised version is immutable: it cannot be withdrawn, corrected, or overwritten. Corrections arise as new versions, with explicit reference to the version they replace.
+
+This immutability is not a technical limitation. It is a statement about the nature of accountability: whoever declares something to be true and binding at a particular point in time must be able to stand by it.
+
+## Corrections, Replacements, and Validity ## {#corrections}
+
+When a finalised [=Record=] is incorrect, it remains what it was — a finalised, provable version at a particular point in time. A new version arises that corrects or replaces it. What changes is not the past, but the state of knowledge about the past.
+
+This distinction is central. An incorrect version remains visible as a historical fact. The corrected version becomes visible as its successor. This does not weaken trust, it strengthens it. Trust does not arise from the fiction that institutions never make mistakes, but from the ability to prove how they dealt with mistakes.
+
+## Why a DAG Is More Than a Technical Detail ## {#dag-semantics}
+
+Technically, the [=version graph=] is implemented as a <dfn>Directed Acyclic Graph (DAG)</dfn>. This means: every version has one or more predecessors, but no cycles. A [=Record=] can refer back to earlier versions, but it cannot become its own ancestor.
+
+Acyclicity means that history has a direction. One can reinterpret the past, correct it, recontextualise it, but one cannot make it unhappen. The graph therefore expresses, in technical form, an institutional principle: **accountability needs chronology**.
+
+The [=version graph=] is not an optional implementation feature of RecordWeb. It is part of its ontology.
+

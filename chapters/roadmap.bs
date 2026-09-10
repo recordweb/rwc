@@ -1,0 +1,54 @@
+Roadmap and Open Questions: An Invitation {#roadmap}
+=====================================================
+
+## What RecordWeb Is Today ## {#current-state}
+
+In this document, RecordWeb is a concept with an initial specification. It is not a product, not software. It is an architectural idea. Precise enough to discuss, open enough to be developed further together. The normative technical specification (the RecordWeb Protocol [[RWP]]) defines the JSON schemas, the DID structure, the [=version graph=] algorithms, and the Merkle calculations.
+
+## The Next Steps ## {#next-steps}
+
+**Step 1: Concept Validation**
+
+The present concept must be discussed with professionals from Records Management, archival science, computer science, and public administration. Do the basic assumptions hold? Are there use cases that the model does not cover?
+
+**Step 2: Pilot Use Case**
+
+A concrete pilot use case is needed: a real [=Case=] from a public authority, modelled as a RecordWeb structure. What [=Record=] types arise? What does the [=version graph=] look like? Where do the concepts reach their limits?
+
+**Step 3: Standardisation Process**
+
+RecordWeb has the potential to contribute to international standardisation processes. This path is long. It begins with the concept, proceeds through the specification, and is validated through implementations.
+
+## Open Questions ## {#open-questions}
+
+The following questions are explicitly offered for community contribution:
+
+**Access control**: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional `accessPolicy` block in the minimum metadata set.
+
+**Federation**: RecordWeb offers a directional answer inspired by DNS architecture. DID resolvers function like DNS servers: federated, replicated, without a single point of failure. The Nanopublication network [[NANOPUB]] offers a working reference model: a decentralised peer-to-peer server network in which each node holds cryptographically signed, immutable micro-assertions identified by Trusty URIs. RecordWeb [=Records=] in their finalised state share the same structural properties (immutable, hash-identified, independently verifiable) and could be published and queried across a Nanopub-inspired federation layer. The complete federation architecture is the subject of [[RWP]].
+
+**Deletion obligations**: The tension between RecordWeb's immutability and the data protection right to erasure (GDPR, Swiss DSG) is resolved through *payload deletion while retaining structure*. On a legal requirement, the payload is deleted; the DID, the [=metadata=], and the graph structure are retained. The [=Record=] continues to exist as a provable "empty shell", its former existence is documented, its content is gone.
+
+Depending on the specific legal basis, the deletion regime admits three distinct modes:
+
+: Payload deletion (default)
+:: The [=payload=] is deleted; DID, [=metadata=], and [=version graph=] are retained. The [=Record=] remains as a structural shell. Applies where provenance continuity is legally required despite erasure (e.g. audit trails, public registers).
+
+: Full deletion (opt-out)
+:: The entire [=Record=] (including DID, [=metadata=], and graph edges) is deleted. Applies where no retention obligation exists and the right to erasure is absolute (e.g. erroneously captured personal data with no public interest basis).
+
+: Deletion exemption (opt-out)
+:: No deletion occurs, not even of the [=payload=]. Applies where a statutory retention obligation overrides the erasure claim (e.g. tax records, notarial acts, public register entries). The legal basis must be documented as [=metadata=] on the [=Record=] at the time of creation.
+
+The applicable mode is declared in the `deletionRegime` field of the [=Record=]'s [=metadata=]. Implementations MUST respect this field and MAY enforce it at the infrastructure level.
+
+**Performance and scaling**: A global network of linked [=Records=] with cryptographic hash values places demands on infrastructure that are not yet fully foreseeable.
+
+**Platform adoption**: The actual adoption task lies not with the end user, but with the platform providers: Microsoft, Google, SAP, and others must integrate RWP as a native layer into their products.
+
+## An Invitation ## {#invitation}
+
+RecordWeb is a thesis, not a doctrine. It is an invitation to think together about the foundations of institutional information architecture, and in doing so, to question old assumptions.
+
+Whoever wishes to accept this invitation (as a critic, as a fellow thinker, as an implementer) is welcome. Feedback is invited via [GitHub Issues](https://github.com/recordweb/rwc/issues).
+
