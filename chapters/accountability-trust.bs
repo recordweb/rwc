@@ -1,7 +1,7 @@
-Accountability and Trust: Proving Rather Than Claiming {#accountability}
+Accountability and Trust: Proving Rather Than Claiming {#chapter-accountability}
 =========================================================================
 
-## The Question Authorities Dread ## {#the-question}
+## The Question Authorities Dread ## {#section-accountability-question}
 
 "Can you prove that this information existed at the time the decision was made?"
 
@@ -9,23 +9,40 @@ No court asks this question lightly. But it is asked in legal remedy proceedings
 
 RecordWeb is built for provability. That is not a side benefit, it is a design principle.
 
-## Three Levels of Traceability ## {#traceability-levels}
+
+## Three Levels of Traceability ## {#section-accountability-traceability}
 
 RecordWeb anchors traceability at three levels that together produce a complete picture.
 
-### Level 1: The Individual Record ### {#level-1-record}
+### Level 1: The Individual Record ### {#subsection-accountability-record}
 
 Every finalised version of a [=Record=] is cryptographically secured. The content, the schema, the [=metadata=], and the provenance references are condensed into a single hash value. This value is unambiguous: two [=Records=] with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable.
 
-### Level 2: The Version Graph ### {#level-2-version-graph}
+### Level 2: The Version Graph ### {#subsection-accountability-versiongraph}
 
 The history of a [=Record=] is not separately documented, it is structurally anchored. Every version knows its predecessors. Every [=branch=] is visible. The question "which information was available at the time of the decision?" is answered by examining the [=version graph=] at the relevant point in time (not by questioning those involved, not by searching through email archives).
 
-### Level 3: The Case Merkle Root ### {#level-3-merkle}
+### Level 3: The Case Merkle Root ### {#subsection-accountability-merkle}
 
 A finalised [=Case=] has a fingerprint: the <dfn>Merkle root</dfn>, calculated from the hash values of all linked [=Records=]. This value represents the entire state of the [=Case=] at a specific point in time: completely, immutably, and machine-verifiably.
 
 The question "was this [=Case=] complete at the time of the decision?" is answered by comparing the [=Merkle root=] from that time with the one from today. If they are identical, nothing has changed. If they differ, the system knows exactly which [=Record=] has changed.
+
+
+## Federation Needs an Anchor Without an Owner ## {#section-accountability-federation}
+
+A federated namespace, however, still needs one thing a purely peer-to-peer network cannot provide on its own: a starting point that every participant can agree to trust before they have ever spoken to each other.
+
+This is the role of the operating organisation for the global Global Namespace Registry (GNR). It is not a central authority in the sense the Web was built to avoid. It does not own the namespaces it helps route between, it does not operate every resolver in the federation, and it does not see the Records or DID Documents that lie behind a resolved namespace. Its function is narrower and, for that reason, more durable: it coordinates the infrastructure that keeps the shared namespace directory consistent, available, and trustworthy across organisations that may never fully trust one another individually.
+
+This distinction (coordination without ownership) has precedent outside RecordWeb. The European Commission's role in EBSI, the European Blockchain Services Infrastructure, is structurally similar: it facilitates a shared ledger operated jointly by member states without holding a private copy of the data itself. The US Federal Public Key Infrastructure Policy Authority plays a comparable part for cross-certified certificate authorities: it sets accreditation criteria without itself issuing end-user certificates. RecordWeb's operating organisation is proposed in this lineage, not as a novel kind of institution.
+
+Why does this role need to be named explicitly, rather than left to emerge informally? Because the alternative to a named coordinator is not "no coordination", it is unaccountable coordination: whoever happens to run the most infrastructure at a given moment. For a registry that public administrations depend on to resolve identifiers tied to legal records, that default is not acceptable. A named operating organisation, bound to a published governance framework, is what makes the difference between infrastructure that happens to work today and infrastructure that institutions can commit to for decades.
+
+The governance framework itself is deliberately not specified here. Its required minimum content (who may join, how namespaces are registered and retired, how incidents and upgrades are handled, how history remains auditable) is a conformance question for implementers and is defined in the RecordWeb Protocol [RWP]. What matters at the concept level is only the shape of the role: a coordinating body, accountable and named, sitting beside the namespace owners and resolver operators it serves rather than above them.
+
+That is RecordWeb Trust Association.
+
 
 ## The Optional Ledger: Hyperledger as External Anchor ## {#optional-ledger}
 
@@ -34,6 +51,7 @@ For situations in which an authority needs external proof, RecordWeb offers an o
 The principle is simple: when a [=Case=] is finalised, its [=Merkle root=] (and only this value, no content) is written to the ledger. This creates a timestamped, publicly provable entry: "this [=Case=] had this state at this point in time", without privacy or official secrecy being violated.
 
 The Hyperledger anchor is an option, not an obligation.
+
 
 ## The Optional Pod: Solid as Citizen-Controlled Storage ## {#optional-solid}
 
@@ -56,6 +74,7 @@ In each case, the citizen can present the [=Record=] to any third party (an empl
 Note: The Solid Pod option complements, not replaces, the authority's own record keeping. The issuing authority retains the [=Record=] in its own RecordWeb system. The Pod delivery is an additional output, a citizen-facing endpoint for Records whose primary subject is the individual.
 
 The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a `delivery-target` field in the optional [=metadata=] extension block for this purpose.
+
 
 ## Trust Through Transparency, Transparency Through Structure ## {#trust}
 
