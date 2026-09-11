@@ -1,0 +1,48 @@
+Source Integration: From Domain Content to a Record {#chapter-sourceintegration}
+==============================
+
+A Source Application remains responsible for the domain object that it creates, manages, or interprets. A conversation in a collaboration platform, a case in a specialist application, or a document in a business system remains a source object in that application's domain. RecordWeb does not require such a system to adopt RWP's identity, versioning, or storage model.
+
+A source-adapter can expose content and provenance from such a source object to an RWP producer. The source-adapter does not thereby need to implement the RWP DID method, snapshot graph, storage model, or Case model. The form of the exchange is a matter for the participating implementations: it may be an API, an event, a file transfer, a queue, or another agreed mechanism. This exchange mechanism is deliberately outside the scope of [[RWP]] and is not expected to be standardised by a future protocol version without a dedicated specification effort.
+
+The boundary of RWP responsibility is the producer that creates the RWP representation. From that point, the information becomes a Record only when it has received an RWP identity, has been associated with an applicable schema, and has been created and, where applicable, finalised according to the RWP rules. The producer, and not the source application merely providing content, is accountable for the resulting RWP Record.
+
+A source-adapter may itself also act as an RWP producer. In that case, it does not merely provide source content: it creates an RWP Record and is subject to the full RWP requirements for that role. Another RWP implementation may then retrieve, validate, or retain that Record according to the ordinary producer, consumer, and custodian responsibilities.
+
+## Provenance without content ## {#section-sourceintegration-nocontent}
+
+A source-adapter may deliberately provide only source-provenance information, without transferring the underlying source content, when that content is subject to confidentiality or secrecy classification and must not leave the source system. This is not a degraded or incomplete case of Source Integration; it is a deliberate deployment choice with its own trust basis.
+
+In this pattern, trust in the resulting reference does not rest on the producer having received and validated the source payload. It rests instead on independent evidence that the source system itself is properly governed and operated. For example, an implementation assessment of the source-adapter, expressed as an attestation under [[RWP]]. A relying party evaluates such evidence according to its own trust policy, in the same way it would evaluate any other conformance claim.
+
+This separation preserves implementation freedom while keeping the evidential boundary clear: a source system may remain specialised in its domain, and may keep sensitive content within its own perimeter, while an RWP producer ensures the identity, versioning, integrity, and long-term provability of whatever is actually represented as a Record.
+
+## Illustration (non-normative) ## {#section-sourceintegration-illustration}
+
+The following flow illustrates the pattern from a proof-of-concept implementation. It is not a prescribed Source Integration protocol.
+
+```text
+RWP-compliant system
+  │ opens or requests Record context
+  ▼
+SoX
+  │ producer + custodian
+  │ creates permanent Record DID
+  │ may retain an empty draft while source content is unavailable
+  ▼
+ChatAdapter
+  │ source-adapter
+  │ exposes content and source provenance for a thread
+  ▼
+SoX
+  │ applies its own applicable RWP production and finalization process
+  │ creates and retains the resulting RWP snapshots
+  ▼
+RWP-compliant system
+  │ resolves the Record DID
+  │ verifies a finalized snapshot and snapshotHash
+  ▼
+CaseRecord hard link
+```
+
+The systems in this illustration share no common database, storage model, or orchestration layer. The architectural insight (a clear responsibility boundary between source-adapter and producer) is independent of the transport used between them.

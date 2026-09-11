@@ -5,7 +5,7 @@ In RecordWeb, conformance is understood as an accountable claim made by an ident
 
 Conceptually, the relevant trust boundary is the software component that creates, manages, validates, or makes an RWP representation available and that accepts responsibility for the RWP guarantees it claims. Depending on the deployment, this can be a source system, connector, capture service, Case system, Record repository, resolver, or another software component. The precise conformance boundary and the applicable roles are defined by [[RWP]].
 
-A source system does not, merely because another implementation creates an RWP representation from information obtained from it, thereby become the subject of that implementation's conformance claim. The allocation of conformance responsibility is defined by [[RWP]].
+A source system does not, merely because another implementation creates an RWP representation from information obtained from it, thereby become the subject of that implementation's conformance claim. This holds independently of whether the source system also transfers its underlying content, or provides only provenance information about it while the content itself remains outside RWP's reach, for instance where the content is confidential and must not leave the source system. The allocation of conformance responsibility is defined by [[RWP]].
 
 ## Validation, Assessment, Attestation, and Certification
 
