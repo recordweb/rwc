@@ -6,6 +6,27 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.0.7] – 2026-09-15
+
+Implemented CfC 4 outcomes. See 
+DID:
+- [RWP#27](https://github.com/recordweb/rwp/issues/27)
+
+GNR:
+- [RWC#17](https://github.com/recordweb/rwc/issues/17)
+
+SI:
+- [RWP#22](https://github.com/recordweb/rwp/issues/22)
+
+Conformance:
+- none
+
+RWRA:
+- [RWC#16](https://github.com/recordweb/rwc/issues/16)
+
+Editorial:
+- Version update
+
 ## [0.0.5] – 2026-08-24
 
 Implemented CfC 2 outcomes. See 
