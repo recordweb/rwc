@@ -136,7 +136,15 @@ path: chapters/the-case.bs
 </pre>
 
 <pre class=include>
+path: chapters/source-integration.bs
+</pre>
+
+<pre class=include>
 path: chapters/accountability-trust.bs
+</pre>
+
+<pre class=include>
+path: chapters/conformance.bs
 </pre>
 
 <pre class=include>
@@ -147,9 +155,6 @@ path: chapters/related-concepts.bs
 path: chapters/roadmap.bs
 </pre>
 
-<pre class=include>
-path: chapters/conformance.bs
-</pre>
 
 
 Annex A: Glossary {#glossary}
