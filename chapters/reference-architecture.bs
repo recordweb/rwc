@@ -1,0 +1,347 @@
+RecordWeb Reference Architecture {#chapter-reference-architecture}
+===============================================================
+
+<div class="note" role="note">
+
+The RecordWeb Reference Architecture (RWRA) and the RecordWeb Reference Stack (RWRS) explain conceptual boundaries and interoperability concerns. They do not prescribe a fixed software architecture, deployment topology, storage technology, publication mechanism, or division into separate software components.
+
+The RecordWeb Reference Stack is a conceptual model for persistent institutional information. It is not a network-layer model and does not extend or replace Internet or Web protocols.
+
+</div>
+
+
+## Purpose ## {#section-rwra-purpose}
+
+RecordWeb provides an architectural and interoperability framework for treating institutional information as persistent, identifiable, contextualised, and verifiable Records across systems, organisations, and time.
+
+RecordWeb is not a replacement for Internet, network, transport, or Web protocols. It is not itself a records-management application, repository, archival system, or certification authority.
+
+The Internet makes communication interoperable. RecordWeb makes institutional information interoperable, continuous, and verifiable.
+
+The RecordWeb Reference Architecture explains how RecordWeb concerns relate to technical infrastructure, information representations, Records, contextual relations, records governance, and institutional use.
+
+It is intended to provide a common explanatory model for records-management professionals, archivists, institutional adopters, architects, developers, and implementers.
+
+
+## Architecture and stack ## {#section-rwra-stack}
+
+The RecordWeb Reference Architecture is represented through the RecordWeb Reference Stack.
+
+The stack has six conceptual layers. The layers identify abstraction boundaries and primary concerns. They do not require that every layer be implemented by a separate system, service, database, organisation, or protocol.
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│ 6. Use and Institutional Effect                              │
+│    Decisions, accountability, public access, reuse           │
+├──────────────────────────────────────────────────────────────┤
+│ 5. Governance and Records Continuum                          │
+│    Responsibility, access, retention, appraisal, disposal    │
+├──────────────────────────────────────────────────────────────┤
+│ 4. Context, Relations and Case Views                         │
+│    Functions, agents, activities, relations, generated cases │
+├──────────────────────────────────────────────────────────────┤
+│ 3. Record and Evidence                                       │
+│    Identity, state, version, provenance, integrity, proof    │
+├──────────────────────────────────────────────────────────────┤
+│ 2. Information Package and Representation                    │
+│    Content, metadata, schemas, serialisations, files         │
+├──────────────────────────────────────────────────────────────┤
+│ 1. Carrier and Infrastructure                                │
+│    Storage, repositories, Web, resolvers, network, hardware  │
+└──────────────────────────────────────────────────────────────┘
+```
+
+The principal RecordWeb boundary is between the Record and Evidence layer and the layers that describe information representations and technical carriers.
+
+```text
+Institutional use and effect
+────────────────────────────
+
+Governance and records continuum
+────────────────────────────
+
+Context, relations and case views
+────────────────────────────
+
+Record: identity, state, version and evidence
+════════════════════════════════════════════
+
+Information package and representations
+────────────────────────────
+
+Carrier, storage, resolver and network infrastructure
+```
+
+This boundary expresses a central RecordWeb principle:
+
+> A Record is not identical to a file, database row, URL, repository location, application, or technical carrier.
+
+A Record may have several representations, locations, copies, custodial arrangements, and technical service endpoints over time. Its persistent identity, contextual meaning, state, version history, provenance, and integrity evidence can remain independently verifiable despite those changes.
+
+
+## Layers ## {#section-rwra-layers}
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Name</th>
+      <th>Primary question</th>
+      <th>Typical concerns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>6</td>
+      <td>Use and Institutional Effect</td>
+      <td>For what purpose is the Record used, and what institutional effect can it support?</td>
+      <td>Decision-making, accountability, evidence, access, public communication, reuse, research, archival use</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Governance and Records Continuum</td>
+      <td>Who is responsible, which rules apply, and what must happen to the Record over time?</td>
+      <td>Mandates, responsibility, access conditions, protection requirements, retention, appraisal, transfer, disposal, compliance, preservation planning</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Context, Relations and Case Views</td>
+      <td>In which functional, organisational, legal, semantic, and temporal context is the Record situated?</td>
+      <td>Functions, activities, agents, subjects, provenance relations, archival context, AssertionRecords, Record relations, cases and dossiers as generated views</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Record and Evidence</td>
+      <td>What is the persistent, authoritative, citable, and verifiable Record?</td>
+      <td>Persistent identity, Record type, schema association, lifecycle state, version graph, finalisation, integrity evidence, signatures, provenance, verification, conformance assertions</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Information Package and Representation</td>
+      <td>How is Record content structured, rendered, exchanged, and interpreted?</td>
+      <td>Content, metadata, structured data, binary objects, files, representations, schemas, JSON, JSON-LD, RDF, serialisation, canonicalisation</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Carrier and Infrastructure</td>
+      <td>Where and how is information stored, transmitted, replicated, resolved, and preserved technically?</td>
+      <td>Repositories, databases, object storage, archival storage, APIs, HTTP(S), DID resolvers, namespace directories, DNS, networks, hardware</td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Carrier and Infrastructure ### {#subsection-rwra-carrier-infrastructure}
+
+The Carrier and Infrastructure layer contains the technical means through which information is stored, transmitted, replicated, resolved, and preserved.
+
+A carrier may be a file, database object, object-storage object, message, repository resource, export package, storage medium, or network-accessible service representation.
+
+This layer includes service discovery and technical resolution mechanisms. Such mechanisms can identify a current service endpoint or storage location, but they do not by themselves define the identity, status, evidentiary value, or institutional meaning of a Record.
+
+A DID Resolver and a namespace-resolution mechanism are therefore infrastructure functions. They support the resolution of persistent Record identity to current technical information without making the Record identical to a resolver, repository, URL, or endpoint.
+
+
+### Information Package and Representation ### {#subsection-rwra-information-representation}
+
+The Information Package and Representation layer concerns the content and representations through which a Record can be rendered, interpreted, exchanged, or preserved.
+
+A Record may include, reference, or be represented through structured data, metadata, documents, binary objects, files, serialisations, schemas, and semantic vocabularies.
+
+Several representations may express the same Record at different times or for different uses. For example, a Record may be represented as JSON for exchange, JSON-LD or RDF for linked-data processing, PDF for human rendering, and a preservation package for archival transfer.
+
+A representation is not, solely by being technically complete or cryptographically protected, the Record itself. Its relationship to a Record depends on the applicable identity, version, provenance, integrity, and contextual evidence.
+
+
+### Record and Evidence ### {#subsection-rwra-record-evidence}
+
+The Record and Evidence layer is the principal focus of RWP.
+
+This layer concerns the persistent identity, type, state, version history, provenance, integrity, finalisation, and verifiability of a Record.
+
+RWP specifies mechanisms through which an implementation can create, manage, retrieve, validate, and verify Records. These mechanisms allow a Record to remain identifiable and inspectable when its content representation, storage location, custodian, resolver endpoint, or surrounding application changes.
+
+A Record may be associated with one or more representations and technical carriers. The persistent Record identity is not reduced to any particular representation or carrier.
+
+Record-level evidence may include, as applicable:
+
+- a persistent identifier;
+- schema association;
+- metadata and contextual references;
+- version and derivation relations;
+- lifecycle state and finalisation information;
+- integrity hashes;
+- signatures and attributable agents;
+- provenance statements;
+- references to validated linked Records; and
+- an inspectable conformance or validation assertion.
+
+The Record and Evidence layer does not itself decide whether a Record is useful, admissible, accessible, retained, transferred, appraised, or disposed of in a particular institutional setting. Those decisions require the upper layers of context, governance, and use.
+
+
+### Context, Relations and Case Views ### {#subsection-rwra-context-relations}
+
+The Context, Relations and Case Views layer places Records in the relationships that make them understandable and accountable.
+
+Relevant context can include functions, activities, transactions, agents, mandates, legal bases, subjects, events, classifications, retention contexts, archival descriptions, and relations to other Records.
+
+PROV-O is relevant to the description of creation, derivation, revision, attribution, and related provenance events. RiC-O and other permitted contextual vocabularies can express archival, institutional, functional, legal, subject-matter, and descriptive context.
+
+An AssertionRecord can preserve an attributable and durable assertion about one concrete relation. It provides a bridge between Record-level evidence and the contextual graph in which Records are interpreted.
+
+A case or dossier is not necessarily a primary, permanent technical container. It can be generated as a meaningful view over a set of Records and their relations for a defined purpose, scope, time, or institutional context.
+
+
+### Governance and Records Continuum ### {#subsection-rwra-governance-continuum}
+
+The Governance and Records Continuum layer concerns the institutional responsibilities and rules that apply throughout the life of Records.
+
+It includes, as applicable:
+
+- mandates and legal bases;
+- responsibility and authority;
+- access conditions and protection requirements;
+- retention and disposition rules;
+- appraisal and archival selection;
+- transfer between custodians or institutions;
+- migration and preservation planning;
+- compliance, audit, and accountability requirements.
+
+This layer distinguishes the technical lifecycle of a particular carrier, repository, or service from the continuing institutional responsibility for the Record.
+
+A Record can remain subject to governance obligations when it is copied, migrated, transferred, redacted, transformed, preserved, or made accessible through a different technical environment.
+
+
+### Use and Institutional Effect ### {#subsection-rwra-use-institutional-effect}
+
+The Use and Institutional Effect layer concerns the purposes for which Records are created, relied upon, communicated, disclosed, reused, or preserved.
+
+Relevant purposes can include administrative decisions, accountability, legal evidence, service delivery, public access, research, archival use, historical interpretation, and democratic scrutiny.
+
+A Record supports institutional effect not only because information is available, but because its identity, context, authority, state, provenance, and integrity can be understood and evaluated in relation to the relevant institutional setting.
+
+RecordWeb supports this layer by making Record-level evidence interoperable. It does not decide the legal effect, evidentiary weight, or institutional authority of a Record in a specific jurisdiction or procedure.
+
+
+## Cross-cutting dimensions ## {#section-rwra-cross-cutting}
+
+The stack should not be interpreted as a strictly one-directional processing sequence. Two dimensions cross all layers: `time and continuity`, and `trust, assurance, and conformance`.
+
+
+### Time and continuity ### {#subsection-rwra-time-continuity}
+
+Time and continuity cross the complete RecordWeb Reference Architecture.
+
+Relevant events and processes include:
+
+- creation, capture, and registration;
+- revision, derivation, and versioning;
+- finalisation and authoritative use;
+- copying, replication, and transfer;
+- migration and transformation;
+- retention, appraisal, and disposal;
+- archival preservation and continuing access.
+
+This dimension distinguishes the lifecycle of a technical carrier or representation from the Records continuum of the persistent Record and its institutional context.
+
+A particular file, storage object, URL, resolver endpoint, application, or repository may be replaced. The Record can nevertheless remain identifiable and its history inspectable when continuity is supported by appropriate identity, provenance, integrity, and contextual evidence.
+
+
+### Trust, assurance, and conformance ### {#subsection-rwra-trust-assurance}
+
+Trust, assurance, and conformance cross all layers of the architecture.
+
+Relevant mechanisms include:
+
+- identification and attribution of agents;
+- authority and responsibility;
+- governance and access conditions;
+- integrity hashes and signatures;
+- provenance and derivation chains;
+- schema, profile, and Record validation;
+- implementation assessment;
+- conformance attestations;
+- completeness and scope evidence for cases, exports, transfers, and aggregations.
+
+These mechanisms answer different questions and should not be conflated.
+
+A Record validation result concerns whether a specific Record or snapshot satisfies applicable requirements. An implementation assessment concerns whether an identified implementation version fulfils the requirements of claimed RWP profiles and roles. An attestation is a signed statement by an identifiable attester about such an assessment. Certification is an institutional process that remains outside the RWP base protocol.
+
+A ConformanceRecord is a RecordWeb SystemRecord that can preserve a durable, machine-readable conformance attestation. Its presence does not by itself establish that a claim is true, independently assessed, or certified. A verifier evaluates the identity of the attester, the claimed scope, the assessment method, the evidence, and the applicable trust policy.
+
+
+### Publication of conformance attestations ### {#subsection-rwra-conformance-publication}
+
+An organisation may publish a ConformanceRecord, or a verifiable reference to one, through a publication mechanism appropriate to its disclosure, governance, and trust requirements.
+
+Possible publication mechanisms include:
+
+- an organisational website or service endpoint;
+- a procurement or audit evidence repository;
+- an institutional registry;
+- a DID-related service endpoint;
+- a signed Nanopublication; or
+- direct provision to an auditor, procuring organisation, or other verifier.
+
+A publication mechanism can make an attestation easier to discover, cite, replicate, or inspect. It does not itself establish that the underlying claim is true, authoritative, independently assessed, or certified.
+
+The choice of publication mechanism is outside the RWP conformance requirements. RecordWeb does not require a central conformance registry, a particular distributed ledger, Nanopublications, or any other specific publication infrastructure for ConformanceRecords.
+
+
+## Position of RWC and RWP ## {#section-rwra-rwc-rwp}
+
+RWC explains the overall conceptual architecture and the relationships between Records, information packages, technical carriers, context, governance, and institutional use.
+
+RWP primarily specifies the Record and Evidence layer. It also defines selected interfaces to adjacent layers, particularly where persistent identity must be resolved through technical infrastructure or where Record context and representations must be referenced and verified.
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Position in the Reference Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RWC</td>
+      <td>Explains the overall architecture, principles, and distinctions between Records, contexts, information packages, carriers, governance, and use.</td>
+    </tr>
+    <tr>
+      <td>RWP</td>
+      <td>Specifies the core Record and Evidence layer, including Record identity, Record types, state, versioning, integrity, provenance, and verification.</td>
+    </tr>
+    <tr>
+      <td>DID and DID resolution</td>
+      <td>Connect persistent identity in the Record and Evidence layer with technical resolution and infrastructure functions in the Carrier and Infrastructure layer.</td>
+    </tr>
+    <tr>
+      <td>Global Namespace Registry and DID Resolver</td>
+      <td>Provide infrastructure functions for locating the responsible DID Resolver and resolving a DID. They do not themselves establish Record existence, Record accessibility, or Record validity.</td>
+    </tr>
+    <tr>
+      <td>PROV-O</td>
+      <td>Provides a cross-cutting provenance model, with particular relevance to Record and Evidence and Context, Relations and Case Views.</td>
+    </tr>
+    <tr>
+      <td>RiC-O and permitted contextual vocabularies</td>
+      <td>Primarily support Context, Relations and Case Views by expressing institutional, functional, legal, subject-matter, and archival context.</td>
+    </tr>
+    <tr>
+      <td>AssertionRecord</td>
+      <td>Provides a durable and attributable expression of a concrete asserted relation, bridging Record and Evidence with Context, Relations and Case Views.</td>
+    </tr>
+    <tr>
+      <td>ConformanceRecord</td>
+      <td>Provides a cross-cutting assurance mechanism. It records a machine-readable attestation about an implementation assessment without forming a separate architectural layer.</td>
+    </tr>
+    <tr>
+      <td>Records-management, case-management, archival, and domain applications</td>
+      <td>Usually implement substantial parts of Governance and Records Continuum and Use and Institutional Effect, and may implement RecordWeb-conformant functions at Record & Evidence and Context, Relations & Case Views.</td>
+    </tr>
+    <tr>
+      <td>Storage, repository, preservation, resolver, and connector services</td>
+      <td>Usually implement parts of Carrier and Infrastructure and Information Package and Representation, and may expose interfaces that support Record and Evidence functions.</td>
+    </tr>
+  </tbody>
+</table>
+
