@@ -8,7 +8,7 @@
   <meta content="Bikeshed version ac92c2f0d, updated Fri Aug 21 16:01:29 2026 -0700" name="generator">
   <link href="https://recordweb.github.io/rwc/" rel="canonical">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="b6784c5d38a0d0104c5656afe7939bff6f243709" name="revision">
+  <meta content="33813ad47ce82508fa34954702abeb0cc5180b9f" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>/* Boilerplate: style-autolinks */
@@ -802,70 +802,94 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#section-record-example"><span class="secno">5.8</span> <span class="content">An Example from Administrative Practice</span></a>
      </ol>
     <li>
-     <a href="#version-graph-section"><span class="secno">6</span> <span class="content">The Version Graph: How Information Changes Without Disappearing</span></a>
+     <a href="#chapter-reference-architecture"><span class="secno">6</span> <span class="content">RecordWeb Reference Architecture</span></a>
      <ol class="toc">
-      <li><a href="#versions-today"><span class="secno">6.1</span> <span class="content">The Problem with Versions Today</span></a>
-      <li><a href="#change-as-linkage"><span class="secno">6.2</span> <span class="content">The Core Idea: Change as Linkage</span></a>
-      <li><a href="#branches"><span class="secno">6.3</span> <span class="content">Branches: Parallel Work as the Normal Case</span></a>
-      <li><a href="#finalisation-section"><span class="secno">6.4</span> <span class="content">Finalisation: The Moment of Binding Force</span></a>
-      <li><a href="#corrections"><span class="secno">6.5</span> <span class="content">Corrections, Replacements, and Validity</span></a>
-      <li><a href="#dag-semantics"><span class="secno">6.6</span> <span class="content">Why a DAG Is More Than a Technical Detail</span></a>
-     </ol>
-    <li>
-     <a href="#cases"><span class="secno">7</span> <span class="content">The Case: Cases as a View onto the RecordWeb</span></a>
-     <ol class="toc">
-      <li><a href="#dossier-limitations"><span class="secno">7.1</span> <span class="content">Why the Dossier Is Not Enough</span></a>
-      <li><a href="#case-definition"><span class="secno">7.2</span> <span class="content">What a Case Is</span></a>
-      <li><a href="#case-as-view"><span class="secno">7.3</span> <span class="content">Case as View, Not as Container</span></a>
-      <li><a href="#building-permit-example"><span class="secno">7.4</span> <span class="content">Example: A Building Permit as a Case</span></a>
-      <li><a href="#case-governance"><span class="secno">7.5</span> <span class="content">Cases and Governance</span></a>
-     </ol>
-    <li>
-     <a href="#chapter-sourceintegration"><span class="secno">8</span> <span class="content">Source Integration: From Domain Content to a Record</span></a>
-     <ol class="toc">
-      <li><a href="#section-sourceintegration-nocontent"><span class="secno">8.1</span> <span class="content">Provenance without content</span></a>
-      <li><a href="#section-sourceintegration-illustration"><span class="secno">8.2</span> <span class="content">Illustration (non-normative)</span></a>
-     </ol>
-    <li>
-     <a href="#chapter-accountability"><span class="secno">9</span> <span class="content">Accountability and Trust: Proving Rather Than Claiming</span></a>
-     <ol class="toc">
-      <li><a href="#section-accountability-question"><span class="secno">9.1</span> <span class="content">The Question Authorities Dread</span></a>
+      <li><a href="#section-rwra-purpose"><span class="secno">6.1</span> <span class="content">Purpose</span></a>
+      <li><a href="#section-rwra-stack"><span class="secno">6.2</span> <span class="content">Architecture and stack</span></a>
       <li>
-       <a href="#section-accountability-traceability"><span class="secno">9.2</span> <span class="content">Three Levels of Traceability</span></a>
+       <a href="#section-rwra-layers"><span class="secno">6.3</span> <span class="content">Layers</span></a>
        <ol class="toc">
-        <li><a href="#subsection-accountability-record"><span class="secno">9.2.1</span> <span class="content">Level 1: The Individual Record</span></a>
-        <li><a href="#subsection-accountability-versiongraph"><span class="secno">9.2.2</span> <span class="content">Level 2: The Version Graph</span></a>
-        <li><a href="#subsection-accountability-merkle"><span class="secno">9.2.3</span> <span class="content">Level 3: The Case Merkle Root</span></a>
+        <li><a href="#subsection-rwra-carrier-infrastructure"><span class="secno">6.3.1</span> <span class="content">Carrier and Infrastructure</span></a>
+        <li><a href="#subsection-rwra-information-representation"><span class="secno">6.3.2</span> <span class="content">Information Package and Representation</span></a>
+        <li><a href="#subsection-rwra-record-evidence"><span class="secno">6.3.3</span> <span class="content">Record and Evidence</span></a>
+        <li><a href="#subsection-rwra-context-relations"><span class="secno">6.3.4</span> <span class="content">Context, Relations and Case Views</span></a>
+        <li><a href="#subsection-rwra-governance-continuum"><span class="secno">6.3.5</span> <span class="content">Governance and Records Continuum</span></a>
+        <li><a href="#subsection-rwra-use-institutional-effect"><span class="secno">6.3.6</span> <span class="content">Use and Institutional Effect</span></a>
        </ol>
-      <li><a href="#section-accountability-federation"><span class="secno">9.3</span> <span class="content">Federation Needs an Anchor Without an Owner</span></a>
-      <li><a href="#optional-ledger"><span class="secno">9.4</span> <span class="content">The Optional Ledger: Hyperledger as External Anchor</span></a>
-      <li><a href="#optional-solid"><span class="secno">9.5</span> <span class="content">The Optional Pod: Solid as Citizen-Controlled Storage</span></a>
-      <li><a href="#trust"><span class="secno">9.6</span> <span class="content">Trust Through Transparency, Transparency Through Structure</span></a>
+      <li>
+       <a href="#section-rwra-cross-cutting"><span class="secno">6.4</span> <span class="content">Cross-cutting dimensions</span></a>
+       <ol class="toc">
+        <li><a href="#subsection-rwra-time-continuity"><span class="secno">6.4.1</span> <span class="content">Time and continuity</span></a>
+        <li><a href="#subsection-rwra-trust-assurance"><span class="secno">6.4.2</span> <span class="content">Trust, assurance, and conformance</span></a>
+        <li><a href="#subsection-rwra-conformance-publication"><span class="secno">6.4.3</span> <span class="content">Publication of conformance attestations</span></a>
+       </ol>
+      <li><a href="#section-rwra-rwc-rwp"><span class="secno">6.5</span> <span class="content">Position of RWC and RWP</span></a>
      </ol>
     <li>
-     <a href="#conformance"><span class="secno">10</span> <span class="content">Conformance and Accountable Implementation Claims</span></a>
+     <a href="#version-graph-section"><span class="secno">7</span> <span class="content">The Version Graph: How Information Changes Without Disappearing</span></a>
      <ol class="toc">
-      <li><a href="#validation-assessment-attestation-and-certification"><span class="secno">10.1</span> <span class="content">Validation, Assessment, Attestation, and Certification</span></a>
+      <li><a href="#versions-today"><span class="secno">7.1</span> <span class="content">The Problem with Versions Today</span></a>
+      <li><a href="#change-as-linkage"><span class="secno">7.2</span> <span class="content">The Core Idea: Change as Linkage</span></a>
+      <li><a href="#branches"><span class="secno">7.3</span> <span class="content">Branches: Parallel Work as the Normal Case</span></a>
+      <li><a href="#finalisation-section"><span class="secno">7.4</span> <span class="content">Finalisation: The Moment of Binding Force</span></a>
+      <li><a href="#corrections"><span class="secno">7.5</span> <span class="content">Corrections, Replacements, and Validity</span></a>
+      <li><a href="#dag-semantics"><span class="secno">7.6</span> <span class="content">Why a DAG Is More Than a Technical Detail</span></a>
      </ol>
     <li>
-     <a href="#related-concepts"><span class="secno">11</span> <span class="content">Related Concepts and Demarcation</span></a>
+     <a href="#cases"><span class="secno">8</span> <span class="content">The Case: Cases as a View onto the RecordWeb</span></a>
      <ol class="toc">
-      <li><a href="#related-linked-data"><span class="secno">11.1</span> <span class="content">Linked Data and the Semantic Web</span></a>
-      <li><a href="#related-continuum"><span class="secno">11.2</span> <span class="content">Records Continuum</span></a>
-      <li><a href="#related-rm"><span class="secno">11.3</span> <span class="content">Records Management (RM)</span></a>
-      <li><a href="#related-oais"><span class="secno">11.4</span> <span class="content">Open archival information system (OAIS)</span></a>
-      <li><a href="#related-provo"><span class="secno">11.5</span> <span class="content">PROV-O</span></a>
+      <li><a href="#dossier-limitations"><span class="secno">8.1</span> <span class="content">Why the Dossier Is Not Enough</span></a>
+      <li><a href="#case-definition"><span class="secno">8.2</span> <span class="content">What a Case Is</span></a>
+      <li><a href="#case-as-view"><span class="secno">8.3</span> <span class="content">Case as View, Not as Container</span></a>
+      <li><a href="#building-permit-example"><span class="secno">8.4</span> <span class="content">Example: A Building Permit as a Case</span></a>
+      <li><a href="#case-governance"><span class="secno">8.5</span> <span class="content">Cases and Governance</span></a>
      </ol>
     <li>
-     <a href="#roadmap"><span class="secno">12</span> <span class="content">Roadmap and Open Questions: An Invitation</span></a>
+     <a href="#chapter-sourceintegration"><span class="secno">9</span> <span class="content">Source Integration: From Domain Content to a Record</span></a>
      <ol class="toc">
-      <li><a href="#current-state"><span class="secno">12.1</span> <span class="content">What RecordWeb Is Today</span></a>
-      <li><a href="#next-steps"><span class="secno">12.2</span> <span class="content">The Next Steps</span></a>
-      <li><a href="#open-questions"><span class="secno">12.3</span> <span class="content">Open Questions</span></a>
-      <li><a href="#invitation"><span class="secno">12.4</span> <span class="content">An Invitation</span></a>
+      <li><a href="#section-sourceintegration-nocontent"><span class="secno">9.1</span> <span class="content">Provenance without content</span></a>
+      <li><a href="#section-sourceintegration-illustration"><span class="secno">9.2</span> <span class="content">Illustration (non-normative)</span></a>
      </ol>
-    <li><a href="#glossary"><span class="secno">13</span> <span class="content">Annex A: Glossary</span></a>
-    <li><a href="#annex-standards"><span class="secno">14</span> <span class="content">Annex B: Relationship to Existing Standards</span></a>
+    <li>
+     <a href="#chapter-accountability"><span class="secno">10</span> <span class="content">Accountability and Trust: Proving Rather Than Claiming</span></a>
+     <ol class="toc">
+      <li><a href="#section-accountability-question"><span class="secno">10.1</span> <span class="content">The Question Authorities Dread</span></a>
+      <li>
+       <a href="#section-accountability-traceability"><span class="secno">10.2</span> <span class="content">Three Levels of Traceability</span></a>
+       <ol class="toc">
+        <li><a href="#subsection-accountability-record"><span class="secno">10.2.1</span> <span class="content">Level 1: The Individual Record</span></a>
+        <li><a href="#subsection-accountability-versiongraph"><span class="secno">10.2.2</span> <span class="content">Level 2: The Version Graph</span></a>
+        <li><a href="#subsection-accountability-merkle"><span class="secno">10.2.3</span> <span class="content">Level 3: The Case Merkle Root</span></a>
+       </ol>
+      <li><a href="#section-accountability-federation"><span class="secno">10.3</span> <span class="content">Federation Needs an Anchor Without an Owner</span></a>
+      <li><a href="#optional-ledger"><span class="secno">10.4</span> <span class="content">The Optional Ledger: Hyperledger as External Anchor</span></a>
+      <li><a href="#optional-solid"><span class="secno">10.5</span> <span class="content">The Optional Pod: Solid as Citizen-Controlled Storage</span></a>
+      <li><a href="#trust"><span class="secno">10.6</span> <span class="content">Trust Through Transparency, Transparency Through Structure</span></a>
+     </ol>
+    <li>
+     <a href="#conformance"><span class="secno">11</span> <span class="content">Conformance and Accountable Implementation Claims</span></a>
+     <ol class="toc">
+      <li><a href="#validation-assessment-attestation-and-certification"><span class="secno">11.1</span> <span class="content">Validation, Assessment, Attestation, and Certification</span></a>
+     </ol>
+    <li>
+     <a href="#related-concepts"><span class="secno">12</span> <span class="content">Related Concepts and Demarcation</span></a>
+     <ol class="toc">
+      <li><a href="#related-linked-data"><span class="secno">12.1</span> <span class="content">Linked Data and the Semantic Web</span></a>
+      <li><a href="#related-continuum"><span class="secno">12.2</span> <span class="content">Records Continuum</span></a>
+      <li><a href="#related-rm"><span class="secno">12.3</span> <span class="content">Records Management (RM)</span></a>
+      <li><a href="#related-oais"><span class="secno">12.4</span> <span class="content">Open archival information system (OAIS)</span></a>
+      <li><a href="#related-provo"><span class="secno">12.5</span> <span class="content">PROV-O</span></a>
+     </ol>
+    <li>
+     <a href="#roadmap"><span class="secno">13</span> <span class="content">Roadmap and Open Questions: An Invitation</span></a>
+     <ol class="toc">
+      <li><a href="#current-state"><span class="secno">13.1</span> <span class="content">What RecordWeb Is Today</span></a>
+      <li><a href="#next-steps"><span class="secno">13.2</span> <span class="content">The Next Steps</span></a>
+      <li><a href="#open-questions"><span class="secno">13.3</span> <span class="content">Open Questions</span></a>
+      <li><a href="#invitation"><span class="secno">13.4</span> <span class="content">An Invitation</span></a>
+     </ol>
+    <li><a href="#glossary"><span class="secno">14</span> <span class="content">Annex A: Glossary</span></a>
+    <li><a href="#annex-standards"><span class="secno">15</span> <span class="content">Annex B: Relationship to Existing Standards</span></a>
     <li>
      <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
      <ol class="toc">
@@ -1124,30 +1148,308 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>A citizen submits an application for a building permit.</p>
    <p><strong>In today’s system:</strong> the application arrives by email or as a PDF. It is printed out or filed in a RecordManagement System. Perhaps it is classified, perhaps not. Later someone looks for it and finds three versions on two drives and in one email.</p>
    <p><strong>In RecordWeb:</strong> the application is captured as a <a data-link-type="dfn" href="#record" id="ref-for-record②⑦">Record</a> of the type <em>building-permit-application</em>. Its schema specifies which fields must be present: parcel number, applicant, description of the construction project, date. The <a data-link-type="dfn" href="#record" id="ref-for-record②⑧">Record</a> immediately receives a unique identity. Once fully captured, it is finalised. From that moment on, it is immutable, but accessible, linkable, and discoverable for all involved.</p>
-   <h2 class="heading settled" data-level="6" id="version-graph-section"><span class="secno">6. </span><span class="content">The Version Graph: How Information Changes Without Disappearing</span><a class="self-link" href="#version-graph-section"></a></h2>
-   <h3 class="heading settled" data-level="6.1" id="versions-today"><span class="secno">6.1. </span><span class="content">The Problem with Versions Today</span><a class="self-link" href="#versions-today"></a></h3>
+   <h2 class="heading settled" data-level="6" id="chapter-reference-architecture"><span class="secno">6. </span><span class="content">RecordWeb Reference Architecture</span><a class="self-link" href="#chapter-reference-architecture"></a></h2>
+   <div class="note" role="note">
+    <p>The RecordWeb Reference Architecture (RWRA) and the RecordWeb Reference Stack (RWRS) explain conceptual boundaries and interoperability concerns. They do not prescribe a fixed software architecture, deployment topology, storage technology, publication mechanism, or division into separate software components.</p>
+    <p>The RecordWeb Reference Stack is a conceptual model for persistent institutional information. It is not a network-layer model and does not extend or replace Internet or Web protocols.</p>
+   </div>
+   <h3 class="heading settled" data-level="6.1" id="section-rwra-purpose"><span class="secno">6.1. </span><span class="content">Purpose</span><a class="self-link" href="#section-rwra-purpose"></a></h3>
+   <p>RecordWeb provides an architectural and interoperability framework for treating institutional information as persistent, identifiable, contextualised, and verifiable Records across systems, organisations, and time.</p>
+   <p>RecordWeb is not a replacement for Internet, network, transport, or Web protocols. It is not itself a records-management application, repository, archival system, or certification authority.</p>
+   <p>The Internet makes communication interoperable. RecordWeb makes institutional information interoperable, continuous, and verifiable.</p>
+   <p>The RecordWeb Reference Architecture explains how RecordWeb concerns relate to technical infrastructure, information representations, Records, contextual relations, records governance, and institutional use.</p>
+   <p>It is intended to provide a common explanatory model for records-management professionals, archivists, institutional adopters, architects, developers, and implementers.</p>
+   <h3 class="heading settled" data-level="6.2" id="section-rwra-stack"><span class="secno">6.2. </span><span class="content">Architecture and stack</span><a class="self-link" href="#section-rwra-stack"></a></h3>
+   <p>The RecordWeb Reference Architecture is represented through the RecordWeb Reference Stack.</p>
+   <p>The stack has six conceptual layers. The layers identify abstraction boundaries and primary concerns. They do not require that every layer be implemented by a separate system, service, database, organisation, or protocol.</p>
+<pre class="highlight language-text">┌──────────────────────────────────────────────────────────────┐
+│ 6. Use and Institutional Effect                              │
+│    Decisions, accountability, public access, reuse           │
+├──────────────────────────────────────────────────────────────┤
+│ 5. Governance and Records Continuum                          │
+│    Responsibility, access, retention, appraisal, disposal    │
+├──────────────────────────────────────────────────────────────┤
+│ 4. Context, Relations and Case Views                         │
+│    Functions, agents, activities, relations, generated cases │
+├──────────────────────────────────────────────────────────────┤
+│ 3. Record and Evidence                                       │
+│    Identity, state, version, provenance, integrity, proof    │
+├──────────────────────────────────────────────────────────────┤
+│ 2. Information Package and Representation                    │
+│    Content, metadata, schemas, serialisations, files         │
+├──────────────────────────────────────────────────────────────┤
+│ 1. Carrier and Infrastructure                                │
+│    Storage, repositories, Web, resolvers, network, hardware  │
+└──────────────────────────────────────────────────────────────┘
+</pre>
+   <p>The principal RecordWeb boundary is between the Record and Evidence layer and the layers that describe information representations and technical carriers.</p>
+<pre class="highlight language-text">Institutional use and effect
+────────────────────────────
+
+Governance and records continuum
+────────────────────────────
+
+Context, relations and case views
+────────────────────────────
+
+Record: identity, state, version and evidence
+════════════════════════════════════════════
+
+Information package and representations
+────────────────────────────
+
+Carrier, storage, resolver and network infrastructure
+</pre>
+   <p>This boundary expresses a central RecordWeb principle:</p>
+   <blockquote>
+    <p>A Record is not identical to a file, database row, URL, repository location, application, or technical carrier.</p>
+   </blockquote>
+   <p>A Record may have several representations, locations, copies, custodial arrangements, and technical service endpoints over time. Its persistent identity, contextual meaning, state, version history, provenance, and integrity evidence can remain independently verifiable despite those changes.</p>
+   <h3 class="heading settled" data-level="6.3" id="section-rwra-layers"><span class="secno">6.3. </span><span class="content">Layers</span><a class="self-link" href="#section-rwra-layers"></a></h3>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Layer
+      <th>Name
+      <th>Primary question
+      <th>Typical concerns
+    <tbody>
+     <tr>
+      <td>6
+      <td>Use and Institutional Effect
+      <td>For what purpose is the Record used, and what institutional effect can it support?
+      <td>Decision-making, accountability, evidence, access, public communication, reuse, research, archival use
+     <tr>
+      <td>5
+      <td>Governance and Records Continuum
+      <td>Who is responsible, which rules apply, and what must happen to the Record over time?
+      <td>Mandates, responsibility, access conditions, protection requirements, retention, appraisal, transfer, disposal, compliance, preservation planning
+     <tr>
+      <td>4
+      <td>Context, Relations and Case Views
+      <td>In which functional, organisational, legal, semantic, and temporal context is the Record situated?
+      <td>Functions, activities, agents, subjects, provenance relations, archival context, AssertionRecords, Record relations, cases and dossiers as generated views
+     <tr>
+      <td>3
+      <td>Record and Evidence
+      <td>What is the persistent, authoritative, citable, and verifiable Record?
+      <td>Persistent identity, Record type, schema association, lifecycle state, version graph, finalisation, integrity evidence, signatures, provenance, verification, conformance assertions
+     <tr>
+      <td>2
+      <td>Information Package and Representation
+      <td>How is Record content structured, rendered, exchanged, and interpreted?
+      <td>Content, metadata, structured data, binary objects, files, representations, schemas, JSON, JSON-LD, RDF, serialisation, canonicalisation
+     <tr>
+      <td>1
+      <td>Carrier and Infrastructure
+      <td>Where and how is information stored, transmitted, replicated, resolved, and preserved technically?
+      <td>Repositories, databases, object storage, archival storage, APIs, HTTP(S), DID resolvers, namespace directories, DNS, networks, hardware
+   </table>
+   <h4 class="heading settled" data-level="6.3.1" id="subsection-rwra-carrier-infrastructure"><span class="secno">6.3.1. </span><span class="content">Carrier and Infrastructure</span><a class="self-link" href="#subsection-rwra-carrier-infrastructure"></a></h4>
+   <p>The Carrier and Infrastructure layer contains the technical means through which information is stored, transmitted, replicated, resolved, and preserved.</p>
+   <p>A carrier may be a file, database object, object-storage object, message, repository resource, export package, storage medium, or network-accessible service representation.</p>
+   <p>This layer includes service discovery and technical resolution mechanisms. Such mechanisms can identify a current service endpoint or storage location, but they do not by themselves define the identity, status, evidentiary value, or institutional meaning of a Record.</p>
+   <p>A DID Resolver and a namespace-resolution mechanism are therefore infrastructure functions. They support the resolution of persistent Record identity to current technical information without making the Record identical to a resolver, repository, URL, or endpoint.</p>
+   <h4 class="heading settled" data-level="6.3.2" id="subsection-rwra-information-representation"><span class="secno">6.3.2. </span><span class="content">Information Package and Representation</span><a class="self-link" href="#subsection-rwra-information-representation"></a></h4>
+   <p>The Information Package and Representation layer concerns the content and representations through which a Record can be rendered, interpreted, exchanged, or preserved.</p>
+   <p>A Record may include, reference, or be represented through structured data, metadata, documents, binary objects, files, serialisations, schemas, and semantic vocabularies.</p>
+   <p>Several representations may express the same Record at different times or for different uses. For example, a Record may be represented as JSON for exchange, JSON-LD or RDF for linked-data processing, PDF for human rendering, and a preservation package for archival transfer.</p>
+   <p>A representation is not, solely by being technically complete or cryptographically protected, the Record itself. Its relationship to a Record depends on the applicable identity, version, provenance, integrity, and contextual evidence.</p>
+   <h4 class="heading settled" data-level="6.3.3" id="subsection-rwra-record-evidence"><span class="secno">6.3.3. </span><span class="content">Record and Evidence</span><a class="self-link" href="#subsection-rwra-record-evidence"></a></h4>
+   <p>The Record and Evidence layer is the principal focus of RWP.</p>
+   <p>This layer concerns the persistent identity, type, state, version history, provenance, integrity, finalisation, and verifiability of a Record.</p>
+   <p>RWP specifies mechanisms through which an implementation can create, manage, retrieve, validate, and verify Records. These mechanisms allow a Record to remain identifiable and inspectable when its content representation, storage location, custodian, resolver endpoint, or surrounding application changes.</p>
+   <p>A Record may be associated with one or more representations and technical carriers. The persistent Record identity is not reduced to any particular representation or carrier.</p>
+   <p>Record-level evidence may include, as applicable:</p>
+   <ul>
+    <li data-md>
+     <p>a persistent identifier;</p>
+    <li data-md>
+     <p>schema association;</p>
+    <li data-md>
+     <p>metadata and contextual references;</p>
+    <li data-md>
+     <p>version and derivation relations;</p>
+    <li data-md>
+     <p>lifecycle state and finalisation information;</p>
+    <li data-md>
+     <p>integrity hashes;</p>
+    <li data-md>
+     <p>signatures and attributable agents;</p>
+    <li data-md>
+     <p>provenance statements;</p>
+    <li data-md>
+     <p>references to validated linked Records; and</p>
+    <li data-md>
+     <p>an inspectable conformance or validation assertion.</p>
+   </ul>
+   <p>The Record and Evidence layer does not itself decide whether a Record is useful, admissible, accessible, retained, transferred, appraised, or disposed of in a particular institutional setting. Those decisions require the upper layers of context, governance, and use.</p>
+   <h4 class="heading settled" data-level="6.3.4" id="subsection-rwra-context-relations"><span class="secno">6.3.4. </span><span class="content">Context, Relations and Case Views</span><a class="self-link" href="#subsection-rwra-context-relations"></a></h4>
+   <p>The Context, Relations and Case Views layer places Records in the relationships that make them understandable and accountable.</p>
+   <p>Relevant context can include functions, activities, transactions, agents, mandates, legal bases, subjects, events, classifications, retention contexts, archival descriptions, and relations to other Records.</p>
+   <p>PROV-O is relevant to the description of creation, derivation, revision, attribution, and related provenance events. RiC-O and other permitted contextual vocabularies can express archival, institutional, functional, legal, subject-matter, and descriptive context.</p>
+   <p>An AssertionRecord can preserve an attributable and durable assertion about one concrete relation. It provides a bridge between Record-level evidence and the contextual graph in which Records are interpreted.</p>
+   <p>A case or dossier is not necessarily a primary, permanent technical container. It can be generated as a meaningful view over a set of Records and their relations for a defined purpose, scope, time, or institutional context.</p>
+   <h4 class="heading settled" data-level="6.3.5" id="subsection-rwra-governance-continuum"><span class="secno">6.3.5. </span><span class="content">Governance and Records Continuum</span><a class="self-link" href="#subsection-rwra-governance-continuum"></a></h4>
+   <p>The Governance and Records Continuum layer concerns the institutional responsibilities and rules that apply throughout the life of Records.</p>
+   <p>It includes, as applicable:</p>
+   <ul>
+    <li data-md>
+     <p>mandates and legal bases;</p>
+    <li data-md>
+     <p>responsibility and authority;</p>
+    <li data-md>
+     <p>access conditions and protection requirements;</p>
+    <li data-md>
+     <p>retention and disposition rules;</p>
+    <li data-md>
+     <p>appraisal and archival selection;</p>
+    <li data-md>
+     <p>transfer between custodians or institutions;</p>
+    <li data-md>
+     <p>migration and preservation planning;</p>
+    <li data-md>
+     <p>compliance, audit, and accountability requirements.</p>
+   </ul>
+   <p>This layer distinguishes the technical lifecycle of a particular carrier, repository, or service from the continuing institutional responsibility for the Record.</p>
+   <p>A Record can remain subject to governance obligations when it is copied, migrated, transferred, redacted, transformed, preserved, or made accessible through a different technical environment.</p>
+   <h4 class="heading settled" data-level="6.3.6" id="subsection-rwra-use-institutional-effect"><span class="secno">6.3.6. </span><span class="content">Use and Institutional Effect</span><a class="self-link" href="#subsection-rwra-use-institutional-effect"></a></h4>
+   <p>The Use and Institutional Effect layer concerns the purposes for which Records are created, relied upon, communicated, disclosed, reused, or preserved.</p>
+   <p>Relevant purposes can include administrative decisions, accountability, legal evidence, service delivery, public access, research, archival use, historical interpretation, and democratic scrutiny.</p>
+   <p>A Record supports institutional effect not only because information is available, but because its identity, context, authority, state, provenance, and integrity can be understood and evaluated in relation to the relevant institutional setting.</p>
+   <p>RecordWeb supports this layer by making Record-level evidence interoperable. It does not decide the legal effect, evidentiary weight, or institutional authority of a Record in a specific jurisdiction or procedure.</p>
+   <h3 class="heading settled" data-level="6.4" id="section-rwra-cross-cutting"><span class="secno">6.4. </span><span class="content">Cross-cutting dimensions</span><a class="self-link" href="#section-rwra-cross-cutting"></a></h3>
+   <p>The stack should not be interpreted as a strictly one-directional processing sequence. Two dimensions cross all layers: <code>time and continuity</code>, and <code>trust, assurance, and conformance</code>.</p>
+   <h4 class="heading settled" data-level="6.4.1" id="subsection-rwra-time-continuity"><span class="secno">6.4.1. </span><span class="content">Time and continuity</span><a class="self-link" href="#subsection-rwra-time-continuity"></a></h4>
+   <p>Time and continuity cross the complete RecordWeb Reference Architecture.</p>
+   <p>Relevant events and processes include:</p>
+   <ul>
+    <li data-md>
+     <p>creation, capture, and registration;</p>
+    <li data-md>
+     <p>revision, derivation, and versioning;</p>
+    <li data-md>
+     <p>finalisation and authoritative use;</p>
+    <li data-md>
+     <p>copying, replication, and transfer;</p>
+    <li data-md>
+     <p>migration and transformation;</p>
+    <li data-md>
+     <p>retention, appraisal, and disposal;</p>
+    <li data-md>
+     <p>archival preservation and continuing access.</p>
+   </ul>
+   <p>This dimension distinguishes the lifecycle of a technical carrier or representation from the Records continuum of the persistent Record and its institutional context.</p>
+   <p>A particular file, storage object, URL, resolver endpoint, application, or repository may be replaced. The Record can nevertheless remain identifiable and its history inspectable when continuity is supported by appropriate identity, provenance, integrity, and contextual evidence.</p>
+   <h4 class="heading settled" data-level="6.4.2" id="subsection-rwra-trust-assurance"><span class="secno">6.4.2. </span><span class="content">Trust, assurance, and conformance</span><a class="self-link" href="#subsection-rwra-trust-assurance"></a></h4>
+   <p>Trust, assurance, and conformance cross all layers of the architecture.</p>
+   <p>Relevant mechanisms include:</p>
+   <ul>
+    <li data-md>
+     <p>identification and attribution of agents;</p>
+    <li data-md>
+     <p>authority and responsibility;</p>
+    <li data-md>
+     <p>governance and access conditions;</p>
+    <li data-md>
+     <p>integrity hashes and signatures;</p>
+    <li data-md>
+     <p>provenance and derivation chains;</p>
+    <li data-md>
+     <p>schema, profile, and Record validation;</p>
+    <li data-md>
+     <p>implementation assessment;</p>
+    <li data-md>
+     <p>conformance attestations;</p>
+    <li data-md>
+     <p>completeness and scope evidence for cases, exports, transfers, and aggregations.</p>
+   </ul>
+   <p>These mechanisms answer different questions and should not be conflated.</p>
+   <p>A Record validation result concerns whether a specific Record or snapshot satisfies applicable requirements. An implementation assessment concerns whether an identified implementation version fulfils the requirements of claimed RWP profiles and roles. An attestation is a signed statement by an identifiable attester about such an assessment. Certification is an institutional process that remains outside the RWP base protocol.</p>
+   <p>A ConformanceRecord is a RecordWeb SystemRecord that can preserve a durable, machine-readable conformance attestation. Its presence does not by itself establish that a claim is true, independently assessed, or certified. A verifier evaluates the identity of the attester, the claimed scope, the assessment method, the evidence, and the applicable trust policy.</p>
+   <h4 class="heading settled" data-level="6.4.3" id="subsection-rwra-conformance-publication"><span class="secno">6.4.3. </span><span class="content">Publication of conformance attestations</span><a class="self-link" href="#subsection-rwra-conformance-publication"></a></h4>
+   <p>An organisation may publish a ConformanceRecord, or a verifiable reference to one, through a publication mechanism appropriate to its disclosure, governance, and trust requirements.</p>
+   <p>Possible publication mechanisms include:</p>
+   <ul>
+    <li data-md>
+     <p>an organisational website or service endpoint;</p>
+    <li data-md>
+     <p>a procurement or audit evidence repository;</p>
+    <li data-md>
+     <p>an institutional registry;</p>
+    <li data-md>
+     <p>a DID-related service endpoint;</p>
+    <li data-md>
+     <p>a signed Nanopublication; or</p>
+    <li data-md>
+     <p>direct provision to an auditor, procuring organisation, or other verifier.</p>
+   </ul>
+   <p>A publication mechanism can make an attestation easier to discover, cite, replicate, or inspect. It does not itself establish that the underlying claim is true, authoritative, independently assessed, or certified.</p>
+   <p>The choice of publication mechanism is outside the RWP conformance requirements. RecordWeb does not require a central conformance registry, a particular distributed ledger, Nanopublications, or any other specific publication infrastructure for ConformanceRecords.</p>
+   <h3 class="heading settled" data-level="6.5" id="section-rwra-rwc-rwp"><span class="secno">6.5. </span><span class="content">Position of RWC and RWP</span><a class="self-link" href="#section-rwra-rwc-rwp"></a></h3>
+   <p>RWC explains the overall conceptual architecture and the relationships between Records, information packages, technical carriers, context, governance, and institutional use.</p>
+   <p>RWP primarily specifies the Record and Evidence layer. It also defines selected interfaces to adjacent layers, particularly where persistent identity must be resolved through technical infrastructure or where Record context and representations must be referenced and verified.</p>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Element
+      <th>Position in the Reference Stack
+    <tbody>
+     <tr>
+      <td>RWC
+      <td>Explains the overall architecture, principles, and distinctions between Records, contexts, information packages, carriers, governance, and use.
+     <tr>
+      <td>RWP
+      <td>Specifies the core Record and Evidence layer, including Record identity, Record types, state, versioning, integrity, provenance, and verification.
+     <tr>
+      <td>DID and DID resolution
+      <td>Connect persistent identity in the Record and Evidence layer with technical resolution and infrastructure functions in the Carrier and Infrastructure layer.
+     <tr>
+      <td>Global Namespace Registry and DID Resolver
+      <td>Provide infrastructure functions for locating the responsible DID Resolver and resolving a DID. They do not themselves establish Record existence, Record accessibility, or Record validity.
+     <tr>
+      <td>PROV-O
+      <td>Provides a cross-cutting provenance model, with particular relevance to Record and Evidence and Context, Relations and Case Views.
+     <tr>
+      <td>RiC-O and permitted contextual vocabularies
+      <td>Primarily support Context, Relations and Case Views by expressing institutional, functional, legal, subject-matter, and archival context.
+     <tr>
+      <td>AssertionRecord
+      <td>Provides a durable and attributable expression of a concrete asserted relation, bridging Record and Evidence with Context, Relations and Case Views.
+     <tr>
+      <td>ConformanceRecord
+      <td>Provides a cross-cutting assurance mechanism. It records a machine-readable attestation about an implementation assessment without forming a separate architectural layer.
+     <tr>
+      <td>Records-management, case-management, archival, and domain applications
+      <td>Usually implement substantial parts of Governance and Records Continuum and Use and Institutional Effect, and may implement RecordWeb-conformant functions at Record &amp; Evidence and Context, Relations &amp; Case Views.
+     <tr>
+      <td>Storage, repository, preservation, resolver, and connector services
+      <td>Usually implement parts of Carrier and Infrastructure and Information Package and Representation, and may expose interfaces that support Record and Evidence functions.
+   </table>
+   <h2 class="heading settled" data-level="7" id="version-graph-section"><span class="secno">7. </span><span class="content">The Version Graph: How Information Changes Without Disappearing</span><a class="self-link" href="#version-graph-section"></a></h2>
+   <h3 class="heading settled" data-level="7.1" id="versions-today"><span class="secno">7.1. </span><span class="content">The Problem with Versions Today</span><a class="self-link" href="#versions-today"></a></h3>
    <p>Anyone who today looks for the "current version" of a document in a public authority enters uncertain terrain. In most cases, the history of a document (who changed it, when, and how) cannot be reconstructed. This is not a marginal problem. It is the normal condition. And it has real consequences: decisions are made on the basis of information whose period of validity is unclear.</p>
-   <h3 class="heading settled" data-level="6.2" id="change-as-linkage"><span class="secno">6.2. </span><span class="content">The Core Idea: Change as Linkage</span><a class="self-link" href="#change-as-linkage"></a></h3>
+   <h3 class="heading settled" data-level="7.2" id="change-as-linkage"><span class="secno">7.2. </span><span class="content">The Core Idea: Change as Linkage</span><a class="self-link" href="#change-as-linkage"></a></h3>
    <p>In RecordWeb, information is never overwritten. When a <a data-link-type="dfn" href="#record" id="ref-for-record②⑨">Record</a> changes, a new version arises, a new, autonomous snapshot. This snapshot is linked to its predecessor: it knows where it came from. The entirety of all versions of a <a data-link-type="dfn" href="#record" id="ref-for-record③⓪">Record</a> and their linkages forms the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="version-graph">version graph</dfn>.</p>
    <p>A graph is the right metaphor because the history of information is rarely a straight line. Sometimes it branches: two staff members work simultaneously on different aspects of the same <a data-link-type="dfn" href="#record" id="ref-for-record③①">Record</a>. Sometimes strands come together again: different revisions are merged into one authoritative version.</p>
-   <h3 class="heading settled" data-level="6.3" id="branches"><span class="secno">6.3. </span><span class="content">Branches: Parallel Work as the Normal Case</span><a class="self-link" href="#branches"></a></h3>
+   <h3 class="heading settled" data-level="7.3" id="branches"><span class="secno">7.3. </span><span class="content">Branches: Parallel Work as the Normal Case</span><a class="self-link" href="#branches"></a></h3>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="branch">branch</dfn> arises when from one finalised version, two or more simultaneously existing drafts emerge. Both are visible. Both are in the <a data-link-type="dfn" href="#draft" id="ref-for-draft②">draft</a> state. Anyone looking at the <a data-link-type="dfn" href="#record" id="ref-for-record③②">Record</a> sees immediately that parallel work is underway. Nothing is hidden, nothing is lost.</p>
-   <h3 class="heading settled" data-level="6.4" id="finalisation-section"><span class="secno">6.4. </span><span class="content">Finalisation: The Moment of Binding Force</span><a class="self-link" href="#finalisation-section"></a></h3>
+   <h3 class="heading settled" data-level="7.4" id="finalisation-section"><span class="secno">7.4. </span><span class="content">Finalisation: The Moment of Binding Force</span><a class="self-link" href="#finalisation-section"></a></h3>
    <p>The heart of the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph③">version graph</a> is <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="finalisation">finalisation</dfn>. It is the moment in which a draft becomes binding information. Only upon finalisation may a <a data-link-type="dfn" href="#record" id="ref-for-record③③">Record</a> become the target of a hard link; it is then usable as the basis for further actions.</p>
    <p>Finalisation is not a technical automatism. It is a human decision, documented and attributable. Whoever finalises assumes responsibility for the content. A finalised version is immutable: it cannot be withdrawn, corrected, or overwritten. Corrections arise as new versions, with explicit reference to the version they replace.</p>
    <p>This immutability is not a technical limitation. It is a statement about the nature of accountability: whoever declares something to be true and binding at a particular point in time must be able to stand by it.</p>
-   <h3 class="heading settled" data-level="6.5" id="corrections"><span class="secno">6.5. </span><span class="content">Corrections, Replacements, and Validity</span><a class="self-link" href="#corrections"></a></h3>
+   <h3 class="heading settled" data-level="7.5" id="corrections"><span class="secno">7.5. </span><span class="content">Corrections, Replacements, and Validity</span><a class="self-link" href="#corrections"></a></h3>
    <p>When a finalised <a data-link-type="dfn" href="#record" id="ref-for-record③④">Record</a> is incorrect, it remains what it was — a finalised, provable version at a particular point in time. A new version arises that corrects or replaces it. What changes is not the past, but the state of knowledge about the past.</p>
    <p>This distinction is central. An incorrect version remains visible as a historical fact. The corrected version becomes visible as its successor. This does not weaken trust, it strengthens it. Trust does not arise from the fiction that institutions never make mistakes, but from the ability to prove how they dealt with mistakes.</p>
-   <h3 class="heading settled" data-level="6.6" id="dag-semantics"><span class="secno">6.6. </span><span class="content">Why a DAG Is More Than a Technical Detail</span><a class="self-link" href="#dag-semantics"></a></h3>
+   <h3 class="heading settled" data-level="7.6" id="dag-semantics"><span class="secno">7.6. </span><span class="content">Why a DAG Is More Than a Technical Detail</span><a class="self-link" href="#dag-semantics"></a></h3>
    <p>Technically, the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph④">version graph</a> is implemented as a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="directed-acyclic-graph-dag">Directed Acyclic Graph (DAG)</dfn>. This means: every version has one or more predecessors, but no cycles. A <a data-link-type="dfn" href="#record" id="ref-for-record③⑤">Record</a> can refer back to earlier versions, but it cannot become its own ancestor.</p>
    <p>Acyclicity means that history has a direction. One can reinterpret the past, correct it, recontextualise it, but one cannot make it unhappen. The graph therefore expresses, in technical form, an institutional principle: <strong>accountability needs chronology</strong>.</p>
    <p>The <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑤">version graph</a> is not an optional implementation feature of RecordWeb. It is part of its ontology.</p>
-   <h2 class="heading settled" data-level="7" id="cases"><span class="secno">7. </span><span class="content">The Case: Cases as a View onto the RecordWeb</span><a class="self-link" href="#cases"></a></h2>
-   <h3 class="heading settled" data-level="7.1" id="dossier-limitations"><span class="secno">7.1. </span><span class="content">Why the Dossier Is Not Enough</span><a class="self-link" href="#dossier-limitations"></a></h3>
+   <h2 class="heading settled" data-level="8" id="cases"><span class="secno">8. </span><span class="content">The Case: Cases as a View onto the RecordWeb</span><a class="self-link" href="#cases"></a></h2>
+   <h3 class="heading settled" data-level="8.1" id="dossier-limitations"><span class="secno">8.1. </span><span class="content">Why the Dossier Is Not Enough</span><a class="self-link" href="#dossier-limitations"></a></h3>
    <p>In public administration, the dossier has long been the central organisational principle. But it has a weakness that becomes visible in the digital context: the dossier is a <strong>container</strong>. It holds together what belongs together. But it does not explain why it belongs together, and it does not create any identity of its own for the individual parts.</p>
    <p>RecordWeb therefore proposes a different perspective: not the dossier as the primary unit, but the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="case">Case</dfn> as a view onto linked Records.</p>
-   <h3 class="heading settled" data-level="7.2" id="case-definition"><span class="secno">7.2. </span><span class="content">What a Case Is</span><a class="self-link" href="#case-definition"></a></h3>
+   <h3 class="heading settled" data-level="8.2" id="case-definition"><span class="secno">8.2. </span><span class="content">What a Case Is</span><a class="self-link" href="#case-definition"></a></h3>
    <p>A <a data-link-type="dfn" href="#case" id="ref-for-case">Case</a> in RecordWeb is not a container into which <a data-link-type="dfn" href="#record" id="ref-for-record③⑥">Records</a> are placed. It is a <a data-link-type="dfn" href="#relationrecord" id="ref-for-relationrecord">RelationRecord</a>: a semantic and procedural relationship structure that links <a data-link-type="dfn" href="#record" id="ref-for-record③⑦">Records</a> to one another and makes them visible as belonging together.</p>
    <p>A <a data-link-type="dfn" href="#case" id="ref-for-case①">Case</a> answers questions such as:</p>
    <ul>
@@ -1160,27 +1462,27 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    </ul>
    <p>This has a fundamental consequence: a <a data-link-type="dfn" href="#record" id="ref-for-record④①">Record</a> can belong to multiple <a data-link-type="dfn" href="#case" id="ref-for-case②">Cases</a>
 without being duplicated.</p>
-   <h3 class="heading settled" data-level="7.3" id="case-as-view"><span class="secno">7.3. </span><span class="content">Case as View, Not as Container</span><a class="self-link" href="#case-as-view"></a></h3>
+   <h3 class="heading settled" data-level="8.3" id="case-as-view"><span class="secno">8.3. </span><span class="content">Case as View, Not as Container</span><a class="self-link" href="#case-as-view"></a></h3>
    <p>In the classical system, the dossier is primary and the document secondary. In RecordWeb, the <a data-link-type="dfn" href="#record" id="ref-for-record④②">Record</a> is primary and the <a data-link-type="dfn" href="#case" id="ref-for-case③">Case</a> secondary. The <a data-link-type="dfn" href="#record" id="ref-for-record④③">Record</a> exists in its own right. The <a data-link-type="dfn" href="#case" id="ref-for-case④">Case</a> emerges through the explicit linking of <a data-link-type="dfn" href="#record" id="ref-for-record④④">Records</a>. Context is not produced by storage, but by relation.</p>
    <p>A <a data-link-type="dfn" href="#case" id="ref-for-case⑤">Case</a> can be polycontextual: it can connect <a data-link-type="dfn" href="#record" id="ref-for-record④⑤">Records</a> across organisational units, across processes, across time periods. It can represent causal links where the dossier can only represent storage location.</p>
-   <h3 class="heading settled" data-level="7.4" id="building-permit-example"><span class="secno">7.4. </span><span class="content">Example: A Building Permit as a Case</span><a class="self-link" href="#building-permit-example"></a></h3>
+   <h3 class="heading settled" data-level="8.4" id="building-permit-example"><span class="secno">8.4. </span><span class="content">Example: A Building Permit as a Case</span><a class="self-link" href="#building-permit-example"></a></h3>
    <p>A citizen submits an application for a building permit. This application is a <a data-link-type="dfn" href="#record" id="ref-for-record④⑥">Record</a>. Later a site plan is added, then an expert opinion from the heritage authority, then the hearing of neighbours, then the authority’s decision.</p>
    <p>In a classical system, all of this would be placed in a dossier. In RecordWeb, all these are autonomous <a data-link-type="dfn" href="#record" id="ref-for-record④⑦">Records</a> linked through a <a data-link-type="dfn" href="#case" id="ref-for-case⑥">Case</a>: "Building Permit Muller, Parcel 4711".</p>
    <p>The <a data-link-type="dfn" href="#case" id="ref-for-case⑦">Case</a> makes visible that the <a data-link-type="dfn" href="#record" id="ref-for-record④⑧">Records</a> belong together. But none of them loses its autonomy. The heritage expert opinion can later appear in another <a data-link-type="dfn" href="#case" id="ref-for-case⑧">Case</a> if a legal dispute arises. The authority’s decision can be linked to a political oversight <a data-link-type="dfn" href="#case" id="ref-for-case⑨">Case</a>. The application remains the same application.</p>
    <p>**The context changes. The <a data-link-type="dfn" href="#record" id="ref-for-record④⑨">Record</a> remains.**</p>
-   <h3 class="heading settled" data-level="7.5" id="case-governance"><span class="secno">7.5. </span><span class="content">Cases and Governance</span><a class="self-link" href="#case-governance"></a></h3>
+   <h3 class="heading settled" data-level="8.5" id="case-governance"><span class="secno">8.5. </span><span class="content">Cases and Governance</span><a class="self-link" href="#case-governance"></a></h3>
    <p>Because <a data-link-type="dfn" href="#case" id="ref-for-case①⓪">Cases</a> create context, they are institutionally relevant. They also need governance: who may open a <a data-link-type="dfn" href="#case" id="ref-for-case①①">Case</a>? Who may add or remove <a data-link-type="dfn" href="#record" id="ref-for-record⑤⓪">Records</a>? Under what conditions may a <a data-link-type="dfn" href="#case" id="ref-for-case①②">Case</a> be split, merged, or closed?</p>
    <p>RecordWeb’s answer is clear: <a data-link-type="dfn" href="#case" id="ref-for-case①③">Cases</a> must be defined semantically and governed institutionally, but without reducing them again to containers.</p>
-   <h2 class="heading settled" data-level="8" id="chapter-sourceintegration"><span class="secno">8. </span><span class="content">Source Integration: From Domain Content to a Record</span><a class="self-link" href="#chapter-sourceintegration"></a></h2>
+   <h2 class="heading settled" data-level="9" id="chapter-sourceintegration"><span class="secno">9. </span><span class="content">Source Integration: From Domain Content to a Record</span><a class="self-link" href="#chapter-sourceintegration"></a></h2>
    <p>A Source Application remains responsible for the domain object that it creates, manages, or interprets. A conversation in a collaboration platform, a case in a specialist application, or a document in a business system remains a source object in that application’s domain. RecordWeb does not require such a system to adopt RWP’s identity, versioning, or storage model.</p>
    <p>A source-adapter can expose content and provenance from such a source object to an RWP producer. The source-adapter does not thereby need to implement the RWP DID method, snapshot graph, storage model, or Case model. The form of the exchange is a matter for the participating implementations: it may be an API, an event, a file transfer, a queue, or another agreed mechanism. This exchange mechanism is deliberately outside the scope of <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a> and is not expected to be standardised by a future protocol version without a dedicated specification effort.</p>
    <p>The boundary of RWP responsibility is the producer that creates the RWP representation. From that point, the information becomes a Record only when it has received an RWP identity, has been associated with an applicable schema, and has been created and, where applicable, finalised according to the RWP rules. The producer, and not the source application merely providing content, is accountable for the resulting RWP Record.</p>
    <p>A source-adapter may itself also act as an RWP producer. In that case, it does not merely provide source content: it creates an RWP Record and is subject to the full RWP requirements for that role. Another RWP implementation may then retrieve, validate, or retain that Record according to the ordinary producer, consumer, and custodian responsibilities.</p>
-   <h3 class="heading settled" data-level="8.1" id="section-sourceintegration-nocontent"><span class="secno">8.1. </span><span class="content">Provenance without content</span><a class="self-link" href="#section-sourceintegration-nocontent"></a></h3>
+   <h3 class="heading settled" data-level="9.1" id="section-sourceintegration-nocontent"><span class="secno">9.1. </span><span class="content">Provenance without content</span><a class="self-link" href="#section-sourceintegration-nocontent"></a></h3>
    <p>A source-adapter may deliberately provide only source-provenance information, without transferring the underlying source content, when that content is subject to confidentiality or secrecy classification and must not leave the source system. This is not a degraded or incomplete case of Source Integration; it is a deliberate deployment choice with its own trust basis.</p>
    <p>In this pattern, trust in the resulting reference does not rest on the producer having received and validated the source payload. It rests instead on independent evidence that the source system itself is properly governed and operated. For example, an implementation assessment of the source-adapter, expressed as an attestation under <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>. A relying party evaluates such evidence according to its own trust policy, in the same way it would evaluate any other conformance claim.</p>
    <p>This separation preserves implementation freedom while keeping the evidential boundary clear: a source system may remain specialised in its domain, and may keep sensitive content within its own perimeter, while an RWP producer ensures the identity, versioning, integrity, and long-term provability of whatever is actually represented as a Record.</p>
-   <h3 class="heading settled" data-level="8.2" id="section-sourceintegration-illustration"><span class="secno">8.2. </span><span class="content">Illustration (non-normative)</span><a class="self-link" href="#section-sourceintegration-illustration"></a></h3>
+   <h3 class="heading settled" data-level="9.2" id="section-sourceintegration-illustration"><span class="secno">9.2. </span><span class="content">Illustration (non-normative)</span><a class="self-link" href="#section-sourceintegration-illustration"></a></h3>
    <p>The following flow illustrates the pattern from a proof-of-concept implementation. It is not a prescribed Source Integration protocol.</p>
 <pre class="highlight language-text">RWP-compliant system
   │ opens or requests Record context
@@ -1205,32 +1507,32 @@ RWP-compliant system
 CaseRecord hard link
 </pre>
    <p>The systems in this illustration share no common database, storage model, or orchestration layer. The architectural insight (a clear responsibility boundary between source-adapter and producer) is independent of the transport used between them.</p>
-   <h2 class="heading settled" data-level="9" id="chapter-accountability"><span class="secno">9. </span><span class="content">Accountability and Trust: Proving Rather Than Claiming</span><a class="self-link" href="#chapter-accountability"></a></h2>
-   <h3 class="heading settled" data-level="9.1" id="section-accountability-question"><span class="secno">9.1. </span><span class="content">The Question Authorities Dread</span><a class="self-link" href="#section-accountability-question"></a></h3>
+   <h2 class="heading settled" data-level="10" id="chapter-accountability"><span class="secno">10. </span><span class="content">Accountability and Trust: Proving Rather Than Claiming</span><a class="self-link" href="#chapter-accountability"></a></h2>
+   <h3 class="heading settled" data-level="10.1" id="section-accountability-question"><span class="secno">10.1. </span><span class="content">The Question Authorities Dread</span><a class="self-link" href="#section-accountability-question"></a></h3>
    <p>"Can you prove that this information existed at the time the decision was made?"</p>
    <p>No court asks this question lightly. But it is asked in legal remedy proceedings, in parliamentary inquiries, in audits, in criminal investigations. And in most administrations, the honest answer is the same: no, not with certainty.</p>
    <p>RecordWeb is built for provability. That is not a side benefit, it is a design principle.</p>
-   <h3 class="heading settled" data-level="9.2" id="section-accountability-traceability"><span class="secno">9.2. </span><span class="content">Three Levels of Traceability</span><a class="self-link" href="#section-accountability-traceability"></a></h3>
+   <h3 class="heading settled" data-level="10.2" id="section-accountability-traceability"><span class="secno">10.2. </span><span class="content">Three Levels of Traceability</span><a class="self-link" href="#section-accountability-traceability"></a></h3>
    <p>RecordWeb anchors traceability at three levels that together produce a complete picture.</p>
-   <h4 class="heading settled" data-level="9.2.1" id="subsection-accountability-record"><span class="secno">9.2.1. </span><span class="content">Level 1: The Individual Record</span><a class="self-link" href="#subsection-accountability-record"></a></h4>
+   <h4 class="heading settled" data-level="10.2.1" id="subsection-accountability-record"><span class="secno">10.2.1. </span><span class="content">Level 1: The Individual Record</span><a class="self-link" href="#subsection-accountability-record"></a></h4>
    <p>Every finalised version of a <a data-link-type="dfn" href="#record" id="ref-for-record⑤①">Record</a> is cryptographically secured. The content, the schema, the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata②">metadata</a>, and the provenance references are condensed into a single hash value. This value is unambiguous: two <a data-link-type="dfn" href="#record" id="ref-for-record⑤②">Records</a> with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable.</p>
-   <h4 class="heading settled" data-level="9.2.2" id="subsection-accountability-versiongraph"><span class="secno">9.2.2. </span><span class="content">Level 2: The Version Graph</span><a class="self-link" href="#subsection-accountability-versiongraph"></a></h4>
+   <h4 class="heading settled" data-level="10.2.2" id="subsection-accountability-versiongraph"><span class="secno">10.2.2. </span><span class="content">Level 2: The Version Graph</span><a class="self-link" href="#subsection-accountability-versiongraph"></a></h4>
    <p>The history of a <a data-link-type="dfn" href="#record" id="ref-for-record⑤③">Record</a> is not separately documented, it is structurally anchored. Every version knows its predecessors. Every <a data-link-type="dfn" href="#branch" id="ref-for-branch">branch</a> is visible. The question "which information was available at the time of the decision?" is answered by examining the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑥">version graph</a> at the relevant point in time (not by questioning those involved, not by searching through email archives).</p>
-   <h4 class="heading settled" data-level="9.2.3" id="subsection-accountability-merkle"><span class="secno">9.2.3. </span><span class="content">Level 3: The Case Merkle Root</span><a class="self-link" href="#subsection-accountability-merkle"></a></h4>
+   <h4 class="heading settled" data-level="10.2.3" id="subsection-accountability-merkle"><span class="secno">10.2.3. </span><span class="content">Level 3: The Case Merkle Root</span><a class="self-link" href="#subsection-accountability-merkle"></a></h4>
    <p>A finalised <a data-link-type="dfn" href="#case" id="ref-for-case①④">Case</a> has a fingerprint: the <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="merkle-root">Merkle root</dfn>, calculated from the hash values of all linked <a data-link-type="dfn" href="#record" id="ref-for-record⑤④">Records</a>. This value represents the entire state of the <a data-link-type="dfn" href="#case" id="ref-for-case①⑤">Case</a> at a specific point in time: completely, immutably, and machine-verifiably.</p>
    <p>The question "was this <a data-link-type="dfn" href="#case" id="ref-for-case①⑥">Case</a> complete at the time of the decision?" is answered by comparing the <a data-link-type="dfn" href="#merkle-root" id="ref-for-merkle-root">Merkle root</a> from that time with the one from today. If they are identical, nothing has changed. If they differ, the system knows exactly which <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑤">Record</a> has changed.</p>
-   <h3 class="heading settled" data-level="9.3" id="section-accountability-federation"><span class="secno">9.3. </span><span class="content">Federation Needs an Anchor Without an Owner</span><a class="self-link" href="#section-accountability-federation"></a></h3>
+   <h3 class="heading settled" data-level="10.3" id="section-accountability-federation"><span class="secno">10.3. </span><span class="content">Federation Needs an Anchor Without an Owner</span><a class="self-link" href="#section-accountability-federation"></a></h3>
    <p>A federated namespace, however, still needs one thing a purely peer-to-peer network cannot provide on its own: a starting point that every participant can agree to trust before they have ever spoken to each other.</p>
    <p>This is the role of the operating organisation for the global Global Namespace Registry (GNR). It is not a central authority in the sense the Web was built to avoid. It does not own the namespaces it helps route between, it does not operate every resolver in the federation, and it does not see the Records or DID Documents that lie behind a resolved namespace. Its function is narrower and, for that reason, more durable: it coordinates the infrastructure that keeps the shared namespace directory consistent, available, and trustworthy across organisations that may never fully trust one another individually.</p>
    <p>This distinction (coordination without ownership) has precedent outside RecordWeb. The European Commission’s role in EBSI, the European Blockchain Services Infrastructure, is structurally similar: it facilitates a shared ledger operated jointly by member states without holding a private copy of the data itself. The US Federal Public Key Infrastructure Policy Authority plays a comparable part for cross-certified certificate authorities: it sets accreditation criteria without itself issuing end-user certificates. RecordWeb’s operating organisation is proposed in this lineage, not as a novel kind of institution.</p>
    <p>Why does this role need to be named explicitly, rather than left to emerge informally? Because the alternative to a named coordinator is not "no coordination", it is unaccountable coordination: whoever happens to run the most infrastructure at a given moment. For a registry that public administrations depend on to resolve identifiers tied to legal records, that default is not acceptable. A named operating organisation, bound to a published governance framework, is what makes the difference between infrastructure that happens to work today and infrastructure that institutions can commit to for decades.</p>
    <p>The governance framework itself is deliberately not specified here. Its required minimum content (who may join, how namespaces are registered and retired, how incidents and upgrades are handled, how history remains auditable) is a conformance question for implementers and is defined in the RecordWeb Protocol <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>. What matters at the concept level is only the shape of the role: a coordinating body, accountable and named, sitting beside the namespace owners and resolver operators it serves rather than above them.</p>
    <p>That is RecordWeb Trust Association.</p>
-   <h3 class="heading settled" data-level="9.4" id="optional-ledger"><span class="secno">9.4. </span><span class="content">The Optional Ledger: Hyperledger as External Anchor</span><a class="self-link" href="#optional-ledger"></a></h3>
+   <h3 class="heading settled" data-level="10.4" id="optional-ledger"><span class="secno">10.4. </span><span class="content">The Optional Ledger: Hyperledger as External Anchor</span><a class="self-link" href="#optional-ledger"></a></h3>
    <p>For situations in which an authority needs external proof, RecordWeb offers an optional extension: anchoring the <a data-link-type="dfn" href="#case" id="ref-for-case①⑦">Case</a> <a data-link-type="dfn" href="#merkle-root" id="ref-for-merkle-root①">Merkle root</a> on a distributed infrastructure (for example Hyperledger Fabric <a data-link-type="biblio" href="#biblio-hyperledger" title="Hyperledger: An Introduction">[HYPERLEDGER]</a>, a permissioned distributed ledger that operates without a public blockchain).</p>
    <p>The principle is simple: when a <a data-link-type="dfn" href="#case" id="ref-for-case①⑧">Case</a> is finalised, its <a data-link-type="dfn" href="#merkle-root" id="ref-for-merkle-root②">Merkle root</a> (and only this value, no content) is written to the ledger. This creates a timestamped, publicly provable entry: "this <a data-link-type="dfn" href="#case" id="ref-for-case①⑨">Case</a> had this state at this point in time", without privacy or official secrecy being violated.</p>
    <p>The Hyperledger anchor is an option, not an obligation.</p>
-   <h3 class="heading settled" data-level="9.5" id="optional-solid"><span class="secno">9.5. </span><span class="content">The Optional Pod: Solid as Citizen-Controlled Storage</span><a class="self-link" href="#optional-solid"></a></h3>
+   <h3 class="heading settled" data-level="10.5" id="optional-solid"><span class="secno">10.5. </span><span class="content">The Optional Pod: Solid as Citizen-Controlled Storage</span><a class="self-link" href="#optional-solid"></a></h3>
    <p>For situations in which a <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑥">Record</a> or <a data-link-type="dfn" href="#case" id="ref-for-case②⓪">Case</a> belongs not to an authority but to a citizen (as the subject, recipient, or rights-holder) RecordWeb offers a second optional extension: delivery and storage of <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑦">Records</a> in a Solid Pod <a data-link-type="biblio" href="#biblio-solid" title="The Solid Protocol">[SOLID]</a>.</p>
    <p>Solid is a W3C-based protocol that enables individuals to store their own data in a personal online data store (a <em>Pod</em>), fully under their own control. Applications and institutions may read from or write to a Pod only with explicit, revocable consent. The citizen is not the recipient of a copy, the citizen is the <strong>owner of the original</strong>.</p>
    <p>The principle for RecordWeb is straightforward: when an authority finalises a <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑧">Record</a> that concerns a specific citizen, it may (with the citizen’s consent) deliver that <a data-link-type="dfn" href="#record" id="ref-for-record⑤⑨">Record</a> directly into the citizen’s Pod. The <a data-link-type="dfn" href="#record" id="ref-for-record⑥⓪">Record</a> retains its DID, its <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑦">version graph</a>, and its cryptographic integrity. What changes is the storage location: the authority’s system and the citizen’s Pod both hold a reference to the same immutable, permanently addressable object.</p>
@@ -1250,25 +1552,25 @@ CaseRecord hard link
    <p>In each case, the citizen can present the <a data-link-type="dfn" href="#record" id="ref-for-record⑥①">Record</a> to any third party (an employer, an insurer, a foreign authority) who can independently verify its authenticity via the DID and the cryptographic hash, without querying the issuing authority. The authority’s system remains authoritative; the citizen’s Pod holds a provable, portable copy.</p>
    <p class="note" role="note"><span class="marker">Note:</span> The Solid Pod option complements, not replaces, the authority’s own record keeping. The issuing authority retains the <a data-link-type="dfn" href="#record" id="ref-for-record⑥②">Record</a> in its own RecordWeb system. The Pod delivery is an additional output, a citizen-facing endpoint for Records whose primary subject is the individual.</p>
    <p>The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a <code>delivery-target</code> field in the optional <a data-link-type="dfn" href="#metadata" id="ref-for-metadata③">metadata</a> extension block for this purpose.</p>
-   <h3 class="heading settled" data-level="9.6" id="trust"><span class="secno">9.6. </span><span class="content">Trust Through Transparency, Transparency Through Structure</span><a class="self-link" href="#trust"></a></h3>
+   <h3 class="heading settled" data-level="10.6" id="trust"><span class="secno">10.6. </span><span class="content">Trust Through Transparency, Transparency Through Structure</span><a class="self-link" href="#trust"></a></h3>
    <p>Trust in public institutions arises not from promises but from provability. An authority that can say: "here is the decision, here is its history, here is the proof that it has not changed", this authority deserves trust. Not because it was well-intentioned, but because it can prove it.</p>
    <p>RecordWeb is not an instrument of control <em>against</em> authorities. It is an instrument of credibility <em>for</em> authorities.</p>
-   <h2 class="heading settled" data-level="10" id="conformance"><span class="secno">10. </span><span class="content">Conformance and Accountable Implementation Claims</span><a class="self-link" href="#conformance"></a></h2>
+   <h2 class="heading settled" data-level="11" id="conformance"><span class="secno">11. </span><span class="content">Conformance and Accountable Implementation Claims</span><a class="self-link" href="#conformance"></a></h2>
    <p>In RecordWeb, conformance is understood as an accountable claim made by an identifiable implementation. It is not a general property of an organisation, a product family, a deployment environment, or an individual Record. The normative meaning, prerequisites, scope, and representation of such a claim are defined exclusively by the RecordWeb Protocol (<a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>).</p>
    <p>Conceptually, the relevant trust boundary is the software component that creates, manages, validates, or makes an RWP representation available and that accepts responsibility for the RWP guarantees it claims. Depending on the deployment, this can be a source system, connector, capture service, Case system, Record repository, resolver, or another software component. The precise conformance boundary and the applicable roles are defined by <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>.</p>
    <p>A source system does not, merely because another implementation creates an RWP representation from information obtained from it, thereby become the subject of that implementation’s conformance claim. This holds independently of whether the source system also transfers its underlying content, or provides only provenance information about it while the content itself remains outside RWP’s reach, for instance where the content is confidential and must not leave the source system. The allocation of conformance responsibility is defined by <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>.</p>
-   <h3 class="heading settled" data-level="10.1" id="validation-assessment-attestation-and-certification"><span class="secno">10.1. </span><span class="content">Validation, Assessment, Attestation, and Certification</span><a class="self-link" href="#validation-assessment-attestation-and-certification"></a></h3>
+   <h3 class="heading settled" data-level="11.1" id="validation-assessment-attestation-and-certification"><span class="secno">11.1. </span><span class="content">Validation, Assessment, Attestation, and Certification</span><a class="self-link" href="#validation-assessment-attestation-and-certification"></a></h3>
    <p>The following distinctions explain how conformance claims can be understood; they do not introduce additional protocol requirements.</p>
    <p>Record validation concerns a particular Record, snapshot, or other RWP representation: it examines whether that artefact satisfies the applicable RWP requirements.</p>
    <p>Implementation assessment concerns an implementation and the scope of its claimed RWP conformance, such as its declared RWP version, profiles, roles, and capabilities.</p>
    <p>An attestation is an inspectable statement by an identified attester about such an implementation assessment. It may be self-issued or independently issued.</p>
    <p>Certification is an attestation issued under an external certification regime. RecordWeb itself neither operates nor presupposes a certification authority, accreditation scheme, or legal certification regime. Whether and how an external regime uses RWP conformance claims is outside the scope of this concept document and of the RWP protocol.</p>
-   <h2 class="heading settled" data-level="11" id="related-concepts"><span class="secno">11. </span><span class="content">Related Concepts and Demarcation</span><a class="self-link" href="#related-concepts"></a></h2>
-   <h3 class="heading settled" data-level="11.1" id="related-linked-data"><span class="secno">11.1. </span><span class="content">Linked Data and the Semantic Web</span><a class="self-link" href="#related-linked-data"></a></h3>
+   <h2 class="heading settled" data-level="12" id="related-concepts"><span class="secno">12. </span><span class="content">Related Concepts and Demarcation</span><a class="self-link" href="#related-concepts"></a></h2>
+   <h3 class="heading settled" data-level="12.1" id="related-linked-data"><span class="secno">12.1. </span><span class="content">Linked Data and the Semantic Web</span><a class="self-link" href="#related-linked-data"></a></h3>
    <p>Tim Berners-Lee’s Linked Data principles <a data-link-type="biblio" href="#biblio-linked-data" title="Linked Data">[LINKED-DATA]</a> are the conceptually closest relative of RecordWeb. RecordWeb takes up the networking idea from Linked Data and adds the institutional dimension that is missing there: accountability, versioning, auditability, states.</p>
-   <h3 class="heading settled" data-level="11.2" id="related-continuum"><span class="secno">11.2. </span><span class="content">Records Continuum</span><a class="self-link" href="#related-continuum"></a></h3>
+   <h3 class="heading settled" data-level="12.2" id="related-continuum"><span class="secno">12.2. </span><span class="content">Records Continuum</span><a class="self-link" href="#related-continuum"></a></h3>
    <p>RecordWeb is the technical implementation of the Records Continuum idea <a data-link-type="biblio" href="#biblio-upward-1996" title="Structuring the Records Continuum — Part One">[UPWARD-1996]</a> <a data-link-type="biblio" href="#biblio-upward-1997" title="Structuring the Records Continuum — Part Two">[UPWARD-1997]</a>. The notion that a <a data-link-type="dfn" href="#record" id="ref-for-record⑥③">Record</a> does not die but lives on is structurally anchored in RecordWeb, through immutable versions, through the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑧">version graph</a>, through the absence of an "archiving" system transition.</p>
-   <h3 class="heading settled" data-level="11.3" id="related-rm"><span class="secno">11.3. </span><span class="content">Records Management (RM)</span><a class="self-link" href="#related-rm"></a></h3>
+   <h3 class="heading settled" data-level="12.3" id="related-rm"><span class="secno">12.3. </span><span class="content">Records Management (RM)</span><a class="self-link" href="#related-rm"></a></h3>
    <p>RM <a data-link-type="biblio" href="#biblio-iso15489" title="ISO 15489-1:2016 — Information and documentation — Records management">[ISO15489]</a> defines international principles of Records Management: authenticity, reliability, integrity, usability. These four properties are RecordWeb’s requirements specification. RecordWeb fulfils all four structurally:</p>
    <ul>
     <li data-md>
@@ -1280,21 +1582,21 @@ CaseRecord hard link
     <li data-md>
      <p><strong>Usability</strong>: The DID document and <a data-link-type="dfn" href="#metadata" id="ref-for-metadata④">metadata</a> guarantee that a <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑦">Record</a> remains findable and accessible, regardless of system migrations</p>
    </ul>
-   <h3 class="heading settled" data-level="11.4" id="related-oais"><span class="secno">11.4. </span><span class="content">Open archival information system (OAIS)</span><a class="self-link" href="#related-oais"></a></h3>
+   <h3 class="heading settled" data-level="12.4" id="related-oais"><span class="secno">12.4. </span><span class="content">Open archival information system (OAIS)</span><a class="self-link" href="#related-oais"></a></h3>
    <p>OAIS <a data-link-type="biblio" href="#biblio-iso14721" title="ISO 14721:2025 — Open Archival Information System (OAIS)">[ISO14721]</a> is the international standard for digital long-term preservation. RecordWeb and OAIS are complementary: RecordWeb covers the operational phase; OAIS covers long-term preservation. RecordWeb <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑧">Records</a> can be migrated to long-term archives according to OAIS principles; the DID is retained in this process.</p>
-   <h3 class="heading settled" data-level="11.5" id="related-provo"><span class="secno">11.5. </span><span class="content">PROV-O</span><a class="self-link" href="#related-provo"></a></h3>
+   <h3 class="heading settled" data-level="12.5" id="related-provo"><span class="secno">12.5. </span><span class="content">PROV-O</span><a class="self-link" href="#related-provo"></a></h3>
    <p><a data-link-type="biblio" href="#biblio-provo" title="PROV-O: The PROV Ontology">[PROVO]</a> is a W3C standard for describing the provenance and history of data. RecordWeb and PROV-O overlap in intention. The difference: PROV-O is a description standard, it can be layered onto existing systems. RecordWeb is an architecture standard, provenance is structurally anchored in the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph⑨">version graph</a>. PROV-O would be a possible serialisation format for RecordWeb lineage documentation.</p>
-   <h2 class="heading settled" data-level="12" id="roadmap"><span class="secno">12. </span><span class="content">Roadmap and Open Questions: An Invitation</span><a class="self-link" href="#roadmap"></a></h2>
-   <h3 class="heading settled" data-level="12.1" id="current-state"><span class="secno">12.1. </span><span class="content">What RecordWeb Is Today</span><a class="self-link" href="#current-state"></a></h3>
+   <h2 class="heading settled" data-level="13" id="roadmap"><span class="secno">13. </span><span class="content">Roadmap and Open Questions: An Invitation</span><a class="self-link" href="#roadmap"></a></h2>
+   <h3 class="heading settled" data-level="13.1" id="current-state"><span class="secno">13.1. </span><span class="content">What RecordWeb Is Today</span><a class="self-link" href="#current-state"></a></h3>
    <p>In this document, RecordWeb is a concept with an initial specification. It is not a product, not software. It is an architectural idea. Precise enough to discuss, open enough to be developed further together. The normative technical specification (the RecordWeb Protocol <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>) defines the JSON schemas, the DID structure, the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①⓪">version graph</a> algorithms, and the Merkle calculations.</p>
-   <h3 class="heading settled" data-level="12.2" id="next-steps"><span class="secno">12.2. </span><span class="content">The Next Steps</span><a class="self-link" href="#next-steps"></a></h3>
+   <h3 class="heading settled" data-level="13.2" id="next-steps"><span class="secno">13.2. </span><span class="content">The Next Steps</span><a class="self-link" href="#next-steps"></a></h3>
    <p><strong>Step 1: Concept Validation</strong></p>
    <p>The present concept must be discussed with professionals from Records Management, archival science, computer science, and public administration. Do the basic assumptions hold? Are there use cases that the model does not cover?</p>
    <p><strong>Step 2: Pilot Use Case</strong></p>
    <p>A concrete pilot use case is needed: a real <a data-link-type="dfn" href="#case" id="ref-for-case②①">Case</a> from a public authority, modelled as a RecordWeb structure. What <a data-link-type="dfn" href="#record" id="ref-for-record⑥⑨">Record</a> types arise? What does the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①①">version graph</a> look like? Where do the concepts reach their limits?</p>
    <p><strong>Step 3: Standardisation Process</strong></p>
    <p>RecordWeb has the potential to contribute to international standardisation processes. This path is long. It begins with the concept, proceeds through the specification, and is validated through implementations.</p>
-   <h3 class="heading settled" data-level="12.3" id="open-questions"><span class="secno">12.3. </span><span class="content">Open Questions</span><a class="self-link" href="#open-questions"></a></h3>
+   <h3 class="heading settled" data-level="13.3" id="open-questions"><span class="secno">13.3. </span><span class="content">Open Questions</span><a class="self-link" href="#open-questions"></a></h3>
    <p>The following questions are explicitly offered for community contribution:</p>
    <p><strong>Access control</strong>: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional <code>accessPolicy</code> block in the minimum metadata set.</p>
    <p><strong>Federation</strong>: RecordWeb offers a directional answer inspired by DNS architecture. DID resolvers function like DNS servers: federated, replicated, without a single point of failure. The Nanopublication network <a data-link-type="biblio" href="#biblio-nanopub" title="Nanopublications: A Growing Resource of Provenance-Centric Scientific Linked Data">[NANOPUB]</a> offers a working reference model: a decentralised peer-to-peer server network in which each node holds cryptographically signed, immutable micro-assertions identified by Trusty URIs. RecordWeb <a data-link-type="dfn" href="#record" id="ref-for-record⑦⓪">Records</a> in their finalised state share the same structural properties (immutable, hash-identified, independently verifiable) and could be published and queried across a Nanopub-inspired federation layer. The complete federation architecture is the subject of <a data-link-type="biblio" href="#biblio-rwp" title="RecordWeb Protocol (RWP)">[RWP]</a>.</p>
@@ -1314,10 +1616,10 @@ CaseRecord hard link
    <p>The applicable mode is declared in the <code>deletionRegime</code> field of the <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑤">Record</a>’s <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑨">metadata</a>. Implementations MUST respect this field and MAY enforce it at the infrastructure level.</p>
    <p><strong>Performance and scaling</strong>: A global network of linked <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑥">Records</a> with cryptographic hash values places demands on infrastructure that are not yet fully foreseeable.</p>
    <p><strong>Platform adoption</strong>: The actual adoption task lies not with the end user, but with the platform providers: Microsoft, Google, SAP, and others must integrate RWP as a native layer into their products.</p>
-   <h3 class="heading settled" data-level="12.4" id="invitation"><span class="secno">12.4. </span><span class="content">An Invitation</span><a class="self-link" href="#invitation"></a></h3>
+   <h3 class="heading settled" data-level="13.4" id="invitation"><span class="secno">13.4. </span><span class="content">An Invitation</span><a class="self-link" href="#invitation"></a></h3>
    <p>RecordWeb is a thesis, not a doctrine. It is an invitation to think together about the foundations of institutional information architecture, and in doing so, to question old assumptions.</p>
    <p>Whoever wishes to accept this invitation (as a critic, as a fellow thinker, as an implementer) is welcome. Feedback is invited via <a href="https://github.com/recordweb/rwc/issues">GitHub Issues</a>.</p>
-   <h2 class="heading settled" data-level="13" id="glossary"><span class="secno">13. </span><span class="content">Annex A: Glossary</span><a class="self-link" href="#glossary"></a></h2>
+   <h2 class="heading settled" data-level="14" id="glossary"><span class="secno">14. </span><span class="content">Annex A: Glossary</span><a class="self-link" href="#glossary"></a></h2>
    <dl>
     <dt>Branch
     <dd>A parallel development line within the <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①③">version graph</a> of a <a data-link-type="dfn" href="#record" id="ref-for-record⑦⑦">Record</a>. From one finalised version, two or more simultaneously existing drafts arise. Branches are transparently visible; their consolidation is effected through an explicit merge act.
@@ -1351,7 +1653,7 @@ CaseRecord hard link
     <dt>Version graph
     <dd>The entirety of all versions of a <a data-link-type="dfn" href="#record" id="ref-for-record⑨②">Record</a> and their linkages. Every node is an immutable snapshot; every edge describes a provenance relationship. The <a data-link-type="dfn" href="#version-graph" id="ref-for-version-graph①⑦">version graph</a> is a <a data-link-type="dfn" href="#directed-acyclic-graph-dag" id="ref-for-directed-acyclic-graph-dag">Directed Acyclic Graph (DAG)</a>: directed (from old to new), acyclic (no cycles). It contains <a data-link-type="dfn" href="#branch" id="ref-for-branch①">branches</a> and merges.
    </dl>
-   <h2 class="heading settled" data-level="14" id="annex-standards"><span class="secno">14. </span><span class="content">Annex B: Relationship to Existing Standards</span><a class="self-link" href="#annex-standards"></a></h2>
+   <h2 class="heading settled" data-level="15" id="annex-standards"><span class="secno">15. </span><span class="content">Annex B: Relationship to Existing Standards</span><a class="self-link" href="#annex-standards"></a></h2>
    <table class="data">
     <thead>
      <tr>
@@ -1419,15 +1721,15 @@ CaseRecord hard link
   <h2 class="heading no-num no-ref settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="heading no-num no-ref settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#branch">branch</a><span>, in § 6.3</span>
-   <li><a href="#case">Case</a><span>, in § 7.1</span>
-   <li><a href="#directed-acyclic-graph-dag">Directed Acyclic Graph (DAG)</a><span>, in § 6.6</span>
+   <li><a href="#branch">branch</a><span>, in § 7.3</span>
+   <li><a href="#case">Case</a><span>, in § 8.1</span>
+   <li><a href="#directed-acyclic-graph-dag">Directed Acyclic Graph (DAG)</a><span>, in § 7.6</span>
    <li><a href="#draft">draft</a><span>, in § 5.5</span>
-   <li><a href="#finalisation">finalisation</a><span>, in § 6.4</span>
+   <li><a href="#finalisation">finalisation</a><span>, in § 7.4</span>
    <li><a href="#finalized">finalized</a><span>, in § 5.5</span>
    <li><a href="#identity">identity</a><span>, in § 5.3</span>
    <li><a href="#informationrecord">InformationRecord</a><span>, in § 5.2</span>
-   <li><a href="#merkle-root">Merkle root</a><span>, in § 9.2.3</span>
+   <li><a href="#merkle-root">Merkle root</a><span>, in § 10.2.3</span>
    <li><a href="#metadata">metadata</a><span>, in § 5.3</span>
    <li><a href="#payload">payload</a><span>, in § 5.3</span>
    <li><a href="#record">Record</a><span>, in § 1</span>
@@ -1435,7 +1737,7 @@ CaseRecord hard link
    <li><a href="#relationrecord">RelationRecord</a><span>, in § 5.2</span>
    <li><a href="#state-transition">state transition</a><span>, in § 3.4</span>
    <li><a href="#systemrecord">SystemRecord</a><span>, in § 5.2</span>
-   <li><a href="#version-graph">version graph</a><span>, in § 6.2</span>
+   <li><a href="#version-graph">version graph</a><span>, in § 7.2</span>
   </ul>
   <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
@@ -1672,23 +1974,23 @@ function parseHTML(markup) {
 "use strict";
 {
 let dfnPanelData = {
-"branch": {"dfnID":"branch","dfnText":"branch","external":false,"refSections":[{"refs":[{"id":"ref-for-branch"}],"title":"9.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-branch\u2460"}],"title":"13. Annex A: Glossary"}],"url":"#branch"},
-"case": {"dfnID":"case","dfnText":"Case","external":false,"refSections":[{"refs":[{"id":"ref-for-case"},{"id":"ref-for-case\u2460"},{"id":"ref-for-case\u2461"}],"title":"7.2. What a Case Is"},{"refs":[{"id":"ref-for-case\u2462"},{"id":"ref-for-case\u2463"},{"id":"ref-for-case\u2464"}],"title":"7.3. Case as View, Not as Container"},{"refs":[{"id":"ref-for-case\u2465"},{"id":"ref-for-case\u2466"},{"id":"ref-for-case\u2467"},{"id":"ref-for-case\u2468"}],"title":"7.4. Example: A Building Permit as a Case"},{"refs":[{"id":"ref-for-case\u2460\u24ea"},{"id":"ref-for-case\u2460\u2460"},{"id":"ref-for-case\u2460\u2461"},{"id":"ref-for-case\u2460\u2462"}],"title":"7.5. Cases and Governance"},{"refs":[{"id":"ref-for-case\u2460\u2463"},{"id":"ref-for-case\u2460\u2464"},{"id":"ref-for-case\u2460\u2465"}],"title":"9.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-case\u2460\u2466"},{"id":"ref-for-case\u2460\u2467"},{"id":"ref-for-case\u2460\u2468"}],"title":"9.4. The Optional Ledger: Hyperledger as External Anchor"},{"refs":[{"id":"ref-for-case\u2461\u24ea"}],"title":"9.5. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-case\u2461\u2460"}],"title":"12.2. The Next Steps"},{"refs":[{"id":"ref-for-case\u2461\u2461"},{"id":"ref-for-case\u2461\u2462"},{"id":"ref-for-case\u2461\u2463"}],"title":"13. Annex A: Glossary"}],"url":"#case"},
-"directed-acyclic-graph-dag": {"dfnID":"directed-acyclic-graph-dag","dfnText":"Directed Acyclic Graph (DAG)","external":false,"refSections":[{"refs":[{"id":"ref-for-directed-acyclic-graph-dag"}],"title":"13. Annex A: Glossary"}],"url":"#directed-acyclic-graph-dag"},
-"draft": {"dfnID":"draft","dfnText":"draft","external":false,"refSections":[{"refs":[{"id":"ref-for-draft"}],"title":"4.3. The Thesis: System Boundaries Are an Artefact of the Twentieth Century"},{"refs":[{"id":"ref-for-draft\u2460"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-draft\u2461"}],"title":"6.3. Branches: Parallel Work as the Normal Case"},{"refs":[{"id":"ref-for-draft\u2462"}],"title":"13. Annex A: Glossary"}],"url":"#draft"},
-"finalisation": {"dfnID":"finalisation","dfnText":"finalisation","external":false,"refSections":[{"refs":[{"id":"ref-for-finalisation"}],"title":"4.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-finalisation\u2460"}],"title":"11.3. Records Management (RM)"},{"refs":[{"id":"ref-for-finalisation\u2461"}],"title":"13. Annex A: Glossary"}],"url":"#finalisation"},
-"finalized": {"dfnID":"finalized","dfnText":"finalized","external":false,"refSections":[{"refs":[{"id":"ref-for-finalized"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-finalized\u2460"}],"title":"5.5. States: The Liveliness of the Record"},{"refs":[{"id":"ref-for-finalized\u2461"}],"title":"13. Annex A: Glossary"}],"url":"#finalized"},
-"identity": {"dfnID":"identity","dfnText":"identity","external":false,"refSections":[{"refs":[{"id":"ref-for-identity"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-identity\u2460"}],"title":"13. Annex A: Glossary"},{"refs":[{"id":"ref-for-identity\u2461"}],"title":"14. Annex B: Relationship to Existing Standards"}],"url":"#identity"},
+"branch": {"dfnID":"branch","dfnText":"branch","external":false,"refSections":[{"refs":[{"id":"ref-for-branch"}],"title":"10.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-branch\u2460"}],"title":"14. Annex A: Glossary"}],"url":"#branch"},
+"case": {"dfnID":"case","dfnText":"Case","external":false,"refSections":[{"refs":[{"id":"ref-for-case"},{"id":"ref-for-case\u2460"},{"id":"ref-for-case\u2461"}],"title":"8.2. What a Case Is"},{"refs":[{"id":"ref-for-case\u2462"},{"id":"ref-for-case\u2463"},{"id":"ref-for-case\u2464"}],"title":"8.3. Case as View, Not as Container"},{"refs":[{"id":"ref-for-case\u2465"},{"id":"ref-for-case\u2466"},{"id":"ref-for-case\u2467"},{"id":"ref-for-case\u2468"}],"title":"8.4. Example: A Building Permit as a Case"},{"refs":[{"id":"ref-for-case\u2460\u24ea"},{"id":"ref-for-case\u2460\u2460"},{"id":"ref-for-case\u2460\u2461"},{"id":"ref-for-case\u2460\u2462"}],"title":"8.5. Cases and Governance"},{"refs":[{"id":"ref-for-case\u2460\u2463"},{"id":"ref-for-case\u2460\u2464"},{"id":"ref-for-case\u2460\u2465"}],"title":"10.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-case\u2460\u2466"},{"id":"ref-for-case\u2460\u2467"},{"id":"ref-for-case\u2460\u2468"}],"title":"10.4. The Optional Ledger: Hyperledger as External Anchor"},{"refs":[{"id":"ref-for-case\u2461\u24ea"}],"title":"10.5. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-case\u2461\u2460"}],"title":"13.2. The Next Steps"},{"refs":[{"id":"ref-for-case\u2461\u2461"},{"id":"ref-for-case\u2461\u2462"},{"id":"ref-for-case\u2461\u2463"}],"title":"14. Annex A: Glossary"}],"url":"#case"},
+"directed-acyclic-graph-dag": {"dfnID":"directed-acyclic-graph-dag","dfnText":"Directed Acyclic Graph (DAG)","external":false,"refSections":[{"refs":[{"id":"ref-for-directed-acyclic-graph-dag"}],"title":"14. Annex A: Glossary"}],"url":"#directed-acyclic-graph-dag"},
+"draft": {"dfnID":"draft","dfnText":"draft","external":false,"refSections":[{"refs":[{"id":"ref-for-draft"}],"title":"4.3. The Thesis: System Boundaries Are an Artefact of the Twentieth Century"},{"refs":[{"id":"ref-for-draft\u2460"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-draft\u2461"}],"title":"7.3. Branches: Parallel Work as the Normal Case"},{"refs":[{"id":"ref-for-draft\u2462"}],"title":"14. Annex A: Glossary"}],"url":"#draft"},
+"finalisation": {"dfnID":"finalisation","dfnText":"finalisation","external":false,"refSections":[{"refs":[{"id":"ref-for-finalisation"}],"title":"4.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-finalisation\u2460"}],"title":"12.3. Records Management (RM)"},{"refs":[{"id":"ref-for-finalisation\u2461"}],"title":"14. Annex A: Glossary"}],"url":"#finalisation"},
+"finalized": {"dfnID":"finalized","dfnText":"finalized","external":false,"refSections":[{"refs":[{"id":"ref-for-finalized"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-finalized\u2460"}],"title":"5.5. States: The Liveliness of the Record"},{"refs":[{"id":"ref-for-finalized\u2461"}],"title":"14. Annex A: Glossary"}],"url":"#finalized"},
+"identity": {"dfnID":"identity","dfnText":"identity","external":false,"refSections":[{"refs":[{"id":"ref-for-identity"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-identity\u2460"}],"title":"14. Annex A: Glossary"},{"refs":[{"id":"ref-for-identity\u2461"}],"title":"15. Annex B: Relationship to Existing Standards"}],"url":"#identity"},
 "informationrecord": {"dfnID":"informationrecord","dfnText":"InformationRecord","external":false,"refSections":[],"url":"#informationrecord"},
-"merkle-root": {"dfnID":"merkle-root","dfnText":"Merkle root","external":false,"refSections":[{"refs":[{"id":"ref-for-merkle-root"}],"title":"9.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-merkle-root\u2460"},{"id":"ref-for-merkle-root\u2461"}],"title":"9.4. The Optional Ledger: Hyperledger as External Anchor"},{"refs":[{"id":"ref-for-merkle-root\u2462"}],"title":"13. Annex A: Glossary"}],"url":"#merkle-root"},
-"metadata": {"dfnID":"metadata","dfnText":"metadata","external":false,"refSections":[{"refs":[{"id":"ref-for-metadata"}],"title":"4.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-metadata\u2460"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-metadata\u2461"}],"title":"9.2.1. Level 1: The Individual Record"},{"refs":[{"id":"ref-for-metadata\u2462"}],"title":"9.5. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-metadata\u2463"}],"title":"11.3. Records Management (RM)"},{"refs":[{"id":"ref-for-metadata\u2464"},{"id":"ref-for-metadata\u2465"},{"id":"ref-for-metadata\u2466"},{"id":"ref-for-metadata\u2467"},{"id":"ref-for-metadata\u2468"}],"title":"12.3. Open Questions"},{"refs":[{"id":"ref-for-metadata\u2460\u24ea"}],"title":"13. Annex A: Glossary"}],"url":"#metadata"},
-"payload": {"dfnID":"payload","dfnText":"payload","external":false,"refSections":[{"refs":[{"id":"ref-for-payload"},{"id":"ref-for-payload\u2460"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-payload\u2461"},{"id":"ref-for-payload\u2462"}],"title":"12.3. Open Questions"},{"refs":[{"id":"ref-for-payload\u2463"},{"id":"ref-for-payload\u2464"}],"title":"13. Annex A: Glossary"}],"url":"#payload"},
-"record": {"dfnID":"record","dfnText":"Record","external":false,"refSections":[{"refs":[{"id":"ref-for-record"},{"id":"ref-for-record\u2460"}],"title":"2.3. The Overlooked Question"},{"refs":[{"id":"ref-for-record\u2461"},{"id":"ref-for-record\u2462"}],"title":"2.4. RecordWeb: The Consistent Extension"},{"refs":[{"id":"ref-for-record\u2463"}],"title":"3.4. RecordWeb as Synthesis"},{"refs":[{"id":"ref-for-record\u2464"}],"title":"4.3. The Thesis: System Boundaries Are an Artefact of the Twentieth Century"},{"refs":[{"id":"ref-for-record\u2465"}],"title":"4.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-record\u2466"},{"id":"ref-for-record\u2467"},{"id":"ref-for-record\u2468"},{"id":"ref-for-record\u2460\u24ea"}],"title":"5.1. What a Record Is \u2014 and What It Is Not"},{"refs":[{"id":"ref-for-record\u2460\u2460"}],"title":"5.2. Conceptual Taxonomy of Records {#section-record-taxonomy}"},{"refs":[{"id":"ref-for-record\u2460\u2461"},{"id":"ref-for-record\u2460\u2462"},{"id":"ref-for-record\u2460\u2463"},{"id":"ref-for-record\u2460\u2464"},{"id":"ref-for-record\u2460\u2465"},{"id":"ref-for-record\u2460\u2466"},{"id":"ref-for-record\u2460\u2467"},{"id":"ref-for-record\u2460\u2468"},{"id":"ref-for-record\u2461\u24ea"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-record\u2461\u2460"},{"id":"ref-for-record\u2461\u2461"},{"id":"ref-for-record\u2461\u2462"},{"id":"ref-for-record\u2461\u2463"},{"id":"ref-for-record\u2461\u2464"}],"title":"5.4. Type and Schema: The Record\u2019s Contract"},{"refs":[{"id":"ref-for-record\u2461\u2465"}],"title":"5.5. States: The Liveliness of the Record"},{"refs":[{"id":"ref-for-record\u2461\u2466"},{"id":"ref-for-record\u2461\u2467"}],"title":"5.8. An Example from Administrative Practice"},{"refs":[{"id":"ref-for-record\u2461\u2468"},{"id":"ref-for-record\u2462\u24ea"},{"id":"ref-for-record\u2462\u2460"}],"title":"6.2. The Core Idea: Change as Linkage"},{"refs":[{"id":"ref-for-record\u2462\u2461"}],"title":"6.3. Branches: Parallel Work as the Normal Case"},{"refs":[{"id":"ref-for-record\u2462\u2462"}],"title":"6.4. Finalisation: The Moment of Binding Force"},{"refs":[{"id":"ref-for-record\u2462\u2463"}],"title":"6.5. Corrections, Replacements, and Validity"},{"refs":[{"id":"ref-for-record\u2462\u2464"}],"title":"6.6. Why a DAG Is More Than a Technical Detail"},{"refs":[{"id":"ref-for-record\u2462\u2465"},{"id":"ref-for-record\u2462\u2466"},{"id":"ref-for-record\u2462\u2467"},{"id":"ref-for-record\u2462\u2468"},{"id":"ref-for-record\u2463\u24ea"},{"id":"ref-for-record\u2463\u2460"}],"title":"7.2. What a Case Is"},{"refs":[{"id":"ref-for-record\u2463\u2461"},{"id":"ref-for-record\u2463\u2462"},{"id":"ref-for-record\u2463\u2463"},{"id":"ref-for-record\u2463\u2464"}],"title":"7.3. Case as View, Not as Container"},{"refs":[{"id":"ref-for-record\u2463\u2465"},{"id":"ref-for-record\u2463\u2466"},{"id":"ref-for-record\u2463\u2467"},{"id":"ref-for-record\u2463\u2468"}],"title":"7.4. Example: A Building Permit as a Case"},{"refs":[{"id":"ref-for-record\u2464\u24ea"}],"title":"7.5. Cases and Governance"},{"refs":[{"id":"ref-for-record\u2464\u2460"},{"id":"ref-for-record\u2464\u2461"}],"title":"9.2.1. Level 1: The Individual Record"},{"refs":[{"id":"ref-for-record\u2464\u2462"}],"title":"9.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-record\u2464\u2463"},{"id":"ref-for-record\u2464\u2464"}],"title":"9.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-record\u2464\u2465"},{"id":"ref-for-record\u2464\u2466"},{"id":"ref-for-record\u2464\u2467"},{"id":"ref-for-record\u2464\u2468"},{"id":"ref-for-record\u2465\u24ea"},{"id":"ref-for-record\u2465\u2460"},{"id":"ref-for-record\u2465\u2461"}],"title":"9.5. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-record\u2465\u2462"}],"title":"11.2. Records Continuum"},{"refs":[{"id":"ref-for-record\u2465\u2463"},{"id":"ref-for-record\u2465\u2464"},{"id":"ref-for-record\u2465\u2465"},{"id":"ref-for-record\u2465\u2466"}],"title":"11.3. Records Management (RM)"},{"refs":[{"id":"ref-for-record\u2465\u2467"}],"title":"11.4. Open archival information system (OAIS)"},{"refs":[{"id":"ref-for-record\u2465\u2468"}],"title":"12.2. The Next Steps"},{"refs":[{"id":"ref-for-record\u2466\u24ea"},{"id":"ref-for-record\u2466\u2460"},{"id":"ref-for-record\u2466\u2461"},{"id":"ref-for-record\u2466\u2462"},{"id":"ref-for-record\u2466\u2463"},{"id":"ref-for-record\u2466\u2464"},{"id":"ref-for-record\u2466\u2465"}],"title":"12.3. Open Questions"},{"refs":[{"id":"ref-for-record\u2466\u2466"},{"id":"ref-for-record\u2466\u2467"},{"id":"ref-for-record\u2466\u2468"},{"id":"ref-for-record\u2467\u24ea"},{"id":"ref-for-record\u2467\u2460"},{"id":"ref-for-record\u2467\u2461"},{"id":"ref-for-record\u2467\u2462"},{"id":"ref-for-record\u2467\u2463"},{"id":"ref-for-record\u2467\u2464"},{"id":"ref-for-record\u2467\u2465"},{"id":"ref-for-record\u2467\u2466"},{"id":"ref-for-record\u2467\u2467"},{"id":"ref-for-record\u2467\u2468"},{"id":"ref-for-record\u2468\u24ea"},{"id":"ref-for-record\u2468\u2460"},{"id":"ref-for-record\u2468\u2461"}],"title":"13. Annex A: Glossary"},{"refs":[{"id":"ref-for-record\u2468\u2462"}],"title":"14. Annex B: Relationship to Existing Standards"}],"url":"#record"},
-"record-owner": {"dfnID":"record-owner","dfnText":"record owner","external":false,"refSections":[{"refs":[{"id":"ref-for-record-owner"},{"id":"ref-for-record-owner\u2460"}],"title":"13. Annex A: Glossary"}],"url":"#record-owner"},
-"relationrecord": {"dfnID":"relationrecord","dfnText":"RelationRecord","external":false,"refSections":[{"refs":[{"id":"ref-for-relationrecord"}],"title":"7.2. What a Case Is"}],"url":"#relationrecord"},
-"state-transition": {"dfnID":"state-transition","dfnText":"state transition","external":false,"refSections":[{"refs":[{"id":"ref-for-state-transition"}],"title":"13. Annex A: Glossary"}],"url":"#state-transition"},
+"merkle-root": {"dfnID":"merkle-root","dfnText":"Merkle root","external":false,"refSections":[{"refs":[{"id":"ref-for-merkle-root"}],"title":"10.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-merkle-root\u2460"},{"id":"ref-for-merkle-root\u2461"}],"title":"10.4. The Optional Ledger: Hyperledger as External Anchor"},{"refs":[{"id":"ref-for-merkle-root\u2462"}],"title":"14. Annex A: Glossary"}],"url":"#merkle-root"},
+"metadata": {"dfnID":"metadata","dfnText":"metadata","external":false,"refSections":[{"refs":[{"id":"ref-for-metadata"}],"title":"4.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-metadata\u2460"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-metadata\u2461"}],"title":"10.2.1. Level 1: The Individual Record"},{"refs":[{"id":"ref-for-metadata\u2462"}],"title":"10.5. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-metadata\u2463"}],"title":"12.3. Records Management (RM)"},{"refs":[{"id":"ref-for-metadata\u2464"},{"id":"ref-for-metadata\u2465"},{"id":"ref-for-metadata\u2466"},{"id":"ref-for-metadata\u2467"},{"id":"ref-for-metadata\u2468"}],"title":"13.3. Open Questions"},{"refs":[{"id":"ref-for-metadata\u2460\u24ea"}],"title":"14. Annex A: Glossary"}],"url":"#metadata"},
+"payload": {"dfnID":"payload","dfnText":"payload","external":false,"refSections":[{"refs":[{"id":"ref-for-payload"},{"id":"ref-for-payload\u2460"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-payload\u2461"},{"id":"ref-for-payload\u2462"}],"title":"13.3. Open Questions"},{"refs":[{"id":"ref-for-payload\u2463"},{"id":"ref-for-payload\u2464"}],"title":"14. Annex A: Glossary"}],"url":"#payload"},
+"record": {"dfnID":"record","dfnText":"Record","external":false,"refSections":[{"refs":[{"id":"ref-for-record"},{"id":"ref-for-record\u2460"}],"title":"2.3. The Overlooked Question"},{"refs":[{"id":"ref-for-record\u2461"},{"id":"ref-for-record\u2462"}],"title":"2.4. RecordWeb: The Consistent Extension"},{"refs":[{"id":"ref-for-record\u2463"}],"title":"3.4. RecordWeb as Synthesis"},{"refs":[{"id":"ref-for-record\u2464"}],"title":"4.3. The Thesis: System Boundaries Are an Artefact of the Twentieth Century"},{"refs":[{"id":"ref-for-record\u2465"}],"title":"4.4. What Remains \u2014 and What Disappears"},{"refs":[{"id":"ref-for-record\u2466"},{"id":"ref-for-record\u2467"},{"id":"ref-for-record\u2468"},{"id":"ref-for-record\u2460\u24ea"}],"title":"5.1. What a Record Is \u2014 and What It Is Not"},{"refs":[{"id":"ref-for-record\u2460\u2460"}],"title":"5.2. Conceptual Taxonomy of Records {#section-record-taxonomy}"},{"refs":[{"id":"ref-for-record\u2460\u2461"},{"id":"ref-for-record\u2460\u2462"},{"id":"ref-for-record\u2460\u2463"},{"id":"ref-for-record\u2460\u2464"},{"id":"ref-for-record\u2460\u2465"},{"id":"ref-for-record\u2460\u2466"},{"id":"ref-for-record\u2460\u2467"},{"id":"ref-for-record\u2460\u2468"},{"id":"ref-for-record\u2461\u24ea"}],"title":"5.3. The Three Components of a Record"},{"refs":[{"id":"ref-for-record\u2461\u2460"},{"id":"ref-for-record\u2461\u2461"},{"id":"ref-for-record\u2461\u2462"},{"id":"ref-for-record\u2461\u2463"},{"id":"ref-for-record\u2461\u2464"}],"title":"5.4. Type and Schema: The Record\u2019s Contract"},{"refs":[{"id":"ref-for-record\u2461\u2465"}],"title":"5.5. States: The Liveliness of the Record"},{"refs":[{"id":"ref-for-record\u2461\u2466"},{"id":"ref-for-record\u2461\u2467"}],"title":"5.8. An Example from Administrative Practice"},{"refs":[{"id":"ref-for-record\u2461\u2468"},{"id":"ref-for-record\u2462\u24ea"},{"id":"ref-for-record\u2462\u2460"}],"title":"7.2. The Core Idea: Change as Linkage"},{"refs":[{"id":"ref-for-record\u2462\u2461"}],"title":"7.3. Branches: Parallel Work as the Normal Case"},{"refs":[{"id":"ref-for-record\u2462\u2462"}],"title":"7.4. Finalisation: The Moment of Binding Force"},{"refs":[{"id":"ref-for-record\u2462\u2463"}],"title":"7.5. Corrections, Replacements, and Validity"},{"refs":[{"id":"ref-for-record\u2462\u2464"}],"title":"7.6. Why a DAG Is More Than a Technical Detail"},{"refs":[{"id":"ref-for-record\u2462\u2465"},{"id":"ref-for-record\u2462\u2466"},{"id":"ref-for-record\u2462\u2467"},{"id":"ref-for-record\u2462\u2468"},{"id":"ref-for-record\u2463\u24ea"},{"id":"ref-for-record\u2463\u2460"}],"title":"8.2. What a Case Is"},{"refs":[{"id":"ref-for-record\u2463\u2461"},{"id":"ref-for-record\u2463\u2462"},{"id":"ref-for-record\u2463\u2463"},{"id":"ref-for-record\u2463\u2464"}],"title":"8.3. Case as View, Not as Container"},{"refs":[{"id":"ref-for-record\u2463\u2465"},{"id":"ref-for-record\u2463\u2466"},{"id":"ref-for-record\u2463\u2467"},{"id":"ref-for-record\u2463\u2468"}],"title":"8.4. Example: A Building Permit as a Case"},{"refs":[{"id":"ref-for-record\u2464\u24ea"}],"title":"8.5. Cases and Governance"},{"refs":[{"id":"ref-for-record\u2464\u2460"},{"id":"ref-for-record\u2464\u2461"}],"title":"10.2.1. Level 1: The Individual Record"},{"refs":[{"id":"ref-for-record\u2464\u2462"}],"title":"10.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-record\u2464\u2463"},{"id":"ref-for-record\u2464\u2464"}],"title":"10.2.3. Level 3: The Case Merkle Root"},{"refs":[{"id":"ref-for-record\u2464\u2465"},{"id":"ref-for-record\u2464\u2466"},{"id":"ref-for-record\u2464\u2467"},{"id":"ref-for-record\u2464\u2468"},{"id":"ref-for-record\u2465\u24ea"},{"id":"ref-for-record\u2465\u2460"},{"id":"ref-for-record\u2465\u2461"}],"title":"10.5. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-record\u2465\u2462"}],"title":"12.2. Records Continuum"},{"refs":[{"id":"ref-for-record\u2465\u2463"},{"id":"ref-for-record\u2465\u2464"},{"id":"ref-for-record\u2465\u2465"},{"id":"ref-for-record\u2465\u2466"}],"title":"12.3. Records Management (RM)"},{"refs":[{"id":"ref-for-record\u2465\u2467"}],"title":"12.4. Open archival information system (OAIS)"},{"refs":[{"id":"ref-for-record\u2465\u2468"}],"title":"13.2. The Next Steps"},{"refs":[{"id":"ref-for-record\u2466\u24ea"},{"id":"ref-for-record\u2466\u2460"},{"id":"ref-for-record\u2466\u2461"},{"id":"ref-for-record\u2466\u2462"},{"id":"ref-for-record\u2466\u2463"},{"id":"ref-for-record\u2466\u2464"},{"id":"ref-for-record\u2466\u2465"}],"title":"13.3. Open Questions"},{"refs":[{"id":"ref-for-record\u2466\u2466"},{"id":"ref-for-record\u2466\u2467"},{"id":"ref-for-record\u2466\u2468"},{"id":"ref-for-record\u2467\u24ea"},{"id":"ref-for-record\u2467\u2460"},{"id":"ref-for-record\u2467\u2461"},{"id":"ref-for-record\u2467\u2462"},{"id":"ref-for-record\u2467\u2463"},{"id":"ref-for-record\u2467\u2464"},{"id":"ref-for-record\u2467\u2465"},{"id":"ref-for-record\u2467\u2466"},{"id":"ref-for-record\u2467\u2467"},{"id":"ref-for-record\u2467\u2468"},{"id":"ref-for-record\u2468\u24ea"},{"id":"ref-for-record\u2468\u2460"},{"id":"ref-for-record\u2468\u2461"}],"title":"14. Annex A: Glossary"},{"refs":[{"id":"ref-for-record\u2468\u2462"}],"title":"15. Annex B: Relationship to Existing Standards"}],"url":"#record"},
+"record-owner": {"dfnID":"record-owner","dfnText":"record owner","external":false,"refSections":[{"refs":[{"id":"ref-for-record-owner"},{"id":"ref-for-record-owner\u2460"}],"title":"14. Annex A: Glossary"}],"url":"#record-owner"},
+"relationrecord": {"dfnID":"relationrecord","dfnText":"RelationRecord","external":false,"refSections":[{"refs":[{"id":"ref-for-relationrecord"}],"title":"8.2. What a Case Is"}],"url":"#relationrecord"},
+"state-transition": {"dfnID":"state-transition","dfnText":"state transition","external":false,"refSections":[{"refs":[{"id":"ref-for-state-transition"}],"title":"14. Annex A: Glossary"}],"url":"#state-transition"},
 "systemrecord": {"dfnID":"systemrecord","dfnText":"SystemRecord","external":false,"refSections":[],"url":"#systemrecord"},
-"version-graph": {"dfnID":"version-graph","dfnText":"version graph","external":false,"refSections":[{"refs":[{"id":"ref-for-version-graph"}],"title":"2.4. RecordWeb: The Consistent Extension"},{"refs":[{"id":"ref-for-version-graph\u2460"}],"title":"3.4. RecordWeb as Synthesis"},{"refs":[{"id":"ref-for-version-graph\u2461"}],"title":"5.4. Type and Schema: The Record\u2019s Contract"},{"refs":[{"id":"ref-for-version-graph\u2462"}],"title":"6.4. Finalisation: The Moment of Binding Force"},{"refs":[{"id":"ref-for-version-graph\u2463"},{"id":"ref-for-version-graph\u2464"}],"title":"6.6. Why a DAG Is More Than a Technical Detail"},{"refs":[{"id":"ref-for-version-graph\u2465"}],"title":"9.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-version-graph\u2466"}],"title":"9.5. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-version-graph\u2467"}],"title":"11.2. Records Continuum"},{"refs":[{"id":"ref-for-version-graph\u2468"}],"title":"11.5. PROV-O"},{"refs":[{"id":"ref-for-version-graph\u2460\u24ea"}],"title":"12.1. What RecordWeb Is Today"},{"refs":[{"id":"ref-for-version-graph\u2460\u2460"}],"title":"12.2. The Next Steps"},{"refs":[{"id":"ref-for-version-graph\u2460\u2461"}],"title":"12.3. Open Questions"},{"refs":[{"id":"ref-for-version-graph\u2460\u2462"},{"id":"ref-for-version-graph\u2460\u2463"},{"id":"ref-for-version-graph\u2460\u2464"},{"id":"ref-for-version-graph\u2460\u2465"},{"id":"ref-for-version-graph\u2460\u2466"}],"title":"13. Annex A: Glossary"}],"url":"#version-graph"},
+"version-graph": {"dfnID":"version-graph","dfnText":"version graph","external":false,"refSections":[{"refs":[{"id":"ref-for-version-graph"}],"title":"2.4. RecordWeb: The Consistent Extension"},{"refs":[{"id":"ref-for-version-graph\u2460"}],"title":"3.4. RecordWeb as Synthesis"},{"refs":[{"id":"ref-for-version-graph\u2461"}],"title":"5.4. Type and Schema: The Record\u2019s Contract"},{"refs":[{"id":"ref-for-version-graph\u2462"}],"title":"7.4. Finalisation: The Moment of Binding Force"},{"refs":[{"id":"ref-for-version-graph\u2463"},{"id":"ref-for-version-graph\u2464"}],"title":"7.6. Why a DAG Is More Than a Technical Detail"},{"refs":[{"id":"ref-for-version-graph\u2465"}],"title":"10.2.2. Level 2: The Version Graph"},{"refs":[{"id":"ref-for-version-graph\u2466"}],"title":"10.5. The Optional Pod: Solid as Citizen-Controlled Storage"},{"refs":[{"id":"ref-for-version-graph\u2467"}],"title":"12.2. Records Continuum"},{"refs":[{"id":"ref-for-version-graph\u2468"}],"title":"12.5. PROV-O"},{"refs":[{"id":"ref-for-version-graph\u2460\u24ea"}],"title":"13.1. What RecordWeb Is Today"},{"refs":[{"id":"ref-for-version-graph\u2460\u2460"}],"title":"13.2. The Next Steps"},{"refs":[{"id":"ref-for-version-graph\u2460\u2461"}],"title":"13.3. Open Questions"},{"refs":[{"id":"ref-for-version-graph\u2460\u2462"},{"id":"ref-for-version-graph\u2460\u2463"},{"id":"ref-for-version-graph\u2460\u2464"},{"id":"ref-for-version-graph\u2460\u2465"},{"id":"ref-for-version-graph\u2460\u2466"}],"title":"14. Annex A: Glossary"}],"url":"#version-graph"},
 };
 
 document.addEventListener("DOMContentLoaded", ()=>{
