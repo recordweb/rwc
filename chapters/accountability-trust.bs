@@ -110,9 +110,21 @@ Note: The Solid Pod option complements, not replaces, the authority's own record
 The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a `delivery-target` field in the optional [=metadata=] extension block for this purpose.
 
 
-## Trust Through Transparency, Transparency Through Structure ## {#trust}
+## Trust Through Transparent Governance and Publication ## {#trust}
 
 Trust in public institutions arises not from promises but from provability. An authority that can say: "here is the decision, here is its history, here is the proof that it has not changed", this authority deserves trust. Not because it was well-intentioned, but because it can prove it.
 
 RecordWeb is not an instrument of control *against* authorities. It is an instrument of credibility *for* authorities.
+
+RecordWeb does not treat trust as an unconditional technical property of a Record. Trust is supported by transparent governance, accountable actors, and independently inspectable evidence.
+
+A globally registered RecordWeb namespace provides a limited but meaningful trust basis. Its registration identifies a responsible Registrar within the RecordWeb Global Namespace Registry (GNR). The Registrar's participation, namespace responsibility, and applicable obligations are governed through the RecordWeb Trust Association and its published rules.
+
+This does not establish that every Record in the namespace is factually true, legally effective, or suitable for every purpose. It establishes that the namespace is publicly attributable to an identified and accountable Registrar under a transparent governance arrangement.
+
+RecordWeb supports publication of Records and verification-relevant information wherever this is compatible with confidentiality, privacy, security, and legal obligations. Publicly accessible registry entries, governance rules, attestations, and other verification evidence enable independent inspection and can strengthen trust through transparency and accountability.
+
+Open Government Data principles provide a useful model for this approach: information should be made open by default where appropriate, timely and comprehensive, accessible and usable, and comparable and interoperable. RecordWeb does not require every Record to be public. It supports the publication of the information necessary for independent verification while respecting legitimate access restrictions.
+
+Nanopublications or comparable citable publication mechanisms MAY be used to publish atomic assertions, provenance information, and publication information. They are optional publication mechanisms and are not required by the RWP core.
 
