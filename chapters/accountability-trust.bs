@@ -16,7 +16,7 @@ RecordWeb anchors traceability at three levels that together produce a complete 
 
 ### Level 1: The Individual Record ### {#subsection-accountability-record}
 
-Every finalised version of a [=Record=] is cryptographically secured. The content, the schema, the [=metadata=], and the provenance references are condensed into a single hash value. This value is unambiguous: two [=Records=] with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable.
+Every finalised version of a [=Record=] is cryptographically secured. The content, the schema, the [=metadata=], and the provenance references are condensed into a single hash value. This value is unambiguous: two [=Records=] with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable (see {[#section-accountability-validation}]).
 
 ### Level 2: The Version Graph ### {#subsection-accountability-versiongraph}
 
@@ -27,6 +27,40 @@ The history of a [=Record=] is not separately documented, it is structurally anc
 A finalised [=Case=] has a fingerprint: the <dfn>Merkle root</dfn>, calculated from the hash values of all linked [=Records=]. This value represents the entire state of the [=Case=] at a specific point in time: completely, immutably, and machine-verifiably.
 
 The question "was this [=Case=] complete at the time of the decision?" is answered by comparing the [=Merkle root=] from that time with the one from today. If they are identical, nothing has changed. If they differ, the system knows exactly which [=Record=] has changed.
+
+
+## Validating RecordWeb Objects ## {#section-accountability-validation}
+
+RecordWeb enables a Consumer to validate different objects independently. A Consumer may validate a Record, one specific Version of a Record, or the inline content of one Representation.
+
+Validation is repeatable. A Consumer may perform it when receiving an object, before using it in a business process, during a transfer or migration, or at a later time. RecordWeb does not prescribe when an organisation must validate an object or what consequence it must attach to the result.
+
+A successful integrity validation establishes only that the obtained object matches the applicable RecordWeb hash. It does not by itself establish that the content is true, that an organisation or person is authoritative, that an external or physical object is available, or that the object has legal effect.
+
+
+### Example: Separate Validation Objects ### {#subsection-accountability-validation-example1}
+
+A Consumer may receive a Record with several historical Versions and multiple Representations per Version.
+
+If the Consumer needs only one currently presented PDF representation, it may validate the Content object for that representation. This establishes whether the inline content matches its `contentHash`.
+
+That result does not establish the integrity of the containing Version or the entire Record. If the Consumer also needs to validate the Version or the Record, it performs separate validations of the corresponding Version and Record identifiers.
+
+This avoids treating a validation of one object as an assertion about all historical Versions, all Representations, or the complete Record.
+
+
+### Example: Content and References ### {#subsection-accountability-validation-example2}
+
+A Representation can contain inline content or a reference.
+
+Where inline content is present, RecordWeb can provide a `contentHash` for verifying that content. Where a Representation contains only a `ref`, such as an external repository identifier or the statement "Physically held in filing location x.y.z", the reference documents where content may be found. It does not by itself provide a RecordWeb integrity assertion about the referenced digital or physical content.
+
+
+### Retained Validation Results ### {#subsection-accountability-validation-result}
+
+A Consumer may retain the result of a validation in its own system or in an appropriate Record. A retained result is a statement by that Consumer, at the recorded time, about the identified object and the validation that it performed.
+
+A retained validation result is not a new state of the validated Record and does not prevent another Consumer from validating the same object independently at another time.
 
 
 ## Federation Needs an Anchor Without an Owner ## {#section-accountability-federation}
@@ -76,9 +110,21 @@ Note: The Solid Pod option complements, not replaces, the authority's own record
 The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a `delivery-target` field in the optional [=metadata=] extension block for this purpose.
 
 
-## Trust Through Transparency, Transparency Through Structure ## {#trust}
+## Trust Through Transparent Governance and Publication ## {#trust}
 
 Trust in public institutions arises not from promises but from provability. An authority that can say: "here is the decision, here is its history, here is the proof that it has not changed", this authority deserves trust. Not because it was well-intentioned, but because it can prove it.
 
 RecordWeb is not an instrument of control *against* authorities. It is an instrument of credibility *for* authorities.
+
+RecordWeb does not treat trust as an unconditional technical property of a Record. Trust is supported by transparent governance, accountable actors, and independently inspectable evidence.
+
+A globally registered RecordWeb namespace provides a limited but meaningful trust basis. Its registration identifies a responsible Registrar within the RecordWeb Global Namespace Registry (GNR). The Registrar's participation, namespace responsibility, and applicable obligations are governed through the RecordWeb Trust Association and its published rules.
+
+This does not establish that every Record in the namespace is factually true, legally effective, or suitable for every purpose. It establishes that the namespace is publicly attributable to an identified and accountable Registrar under a transparent governance arrangement.
+
+RecordWeb supports publication of Records and verification-relevant information wherever this is compatible with confidentiality, privacy, security, and legal obligations. Publicly accessible registry entries, governance rules, attestations, and other verification evidence enable independent inspection and can strengthen trust through transparency and accountability.
+
+Open Government Data principles provide a useful model for this approach: information should be made open by default where appropriate, timely and comprehensive, accessible and usable, and comparable and interoperable. RecordWeb does not require every Record to be public. It supports the publication of the information necessary for independent verification while respecting legitimate access restrictions.
+
+Nanopublications or comparable citable publication mechanisms MAY be used to publish atomic assertions, provenance information, and publication information. They are optional publication mechanisms and are not required by the RWP core.
 
