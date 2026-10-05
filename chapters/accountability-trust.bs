@@ -16,7 +16,7 @@ RecordWeb anchors traceability at three levels that together produce a complete 
 
 ### Level 1: The Individual Record ### {#subsection-accountability-record}
 
-Every finalised version of a [=Record=] is cryptographically secured. The content, the schema, the [=metadata=], and the provenance references are condensed into a single hash value. This value is unambiguous: two [=Records=] with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable (see {[#section-accountability-validation}]).
+Every finalised version of a [=Record=] is cryptographically secured. The content, the schema, the [=metadata=], and the provenance references are condensed into a single hash value. This value is unambiguous: two [=Records=] with the same hash value are guaranteed to be identical (bit for bit, without exception). If even a single character in the content changes, the hash value changes. Subsequent manipulation is not only prohibited, it is detectable (see [[#section-accountability-validation]]).
 
 ### Level 2: The Version Graph ### {#subsection-accountability-versiongraph}
 
@@ -110,7 +110,7 @@ Note: The Solid Pod option complements, not replaces, the authority's own record
 The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a `delivery-target` field in the optional [=metadata=] extension block for this purpose.
 
 
-## Trust Through Transparent Governance and Publication ## {#trust}
+## Trust Through Transparent Governance and Publication ## {#section-accountability-trust}
 
 Trust in public institutions arises not from promises but from provability. An authority that can say: "here is the decision, here is its history, here is the proof that it has not changed", this authority deserves trust. Not because it was well-intentioned, but because it can prove it.
 
@@ -128,7 +128,7 @@ Open Government Data principles provide a useful model for this approach: inform
 
 Nanopublications or comparable citable publication mechanisms MAY be used to publish atomic assertions, provenance information, and publication information. They are optional publication mechanisms and are not required by the RWP core.
 
-## Trust Assumptions ## {#trust-assumptions}
+## Trust Assumptions ## {#section-accountability-trust-assumptions}
 
 Every verification rests on trust assumptions. Integrity validation shows that an obtained object matches its RecordWeb hash. It does not show who controls an identifier, how that identifier was obtained, or under which rules a schema was published. RecordWeb distinguishes four trust assumptions:
 
