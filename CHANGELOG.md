@@ -6,6 +6,17 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.0.8] – 2026-10-05
+
+Implemented CfC 6 outcomes. See 
+Verifier Model:
+- [RWC#1](https://github.com/recordweb/rwc/issues/1)
+- [RWC#2](https://github.com/recordweb/rwc/issues/2)
+- [RWC#3](https://github.com/recordweb/rwc/issues/3)
+
+Editorial:
+- Version update, wording, syntax
+
 ## [0.0.7] – 2026-09-15
 
 Implemented CfC 4 outcomes. See 
