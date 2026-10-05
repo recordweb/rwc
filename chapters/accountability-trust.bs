@@ -128,3 +128,14 @@ Open Government Data principles provide a useful model for this approach: inform
 
 Nanopublications or comparable citable publication mechanisms MAY be used to publish atomic assertions, provenance information, and publication information. They are optional publication mechanisms and are not required by the RWP core.
 
+## Trust Assumptions ## {#trust-assumptions}
+
+Every verification rests on trust assumptions. Integrity validation shows that an obtained object matches its RecordWeb hash. It does not show who controls an identifier, how that identifier was obtained, or under which rules a schema was published. RecordWeb distinguishes four trust assumptions:
+
+1. Resolution: the DID Document was obtained from an authoritative resolution path.
+2. Namespace and controller: the owner DID is controlled by the entity it is claimed to represent, and its namespace registration is authoritative. For global namespaces, the GNR and its governance provide the fixed basis of trust defined by RecordWeb.
+3. Key custody: the owner's private keys are adequately protected and were valid at the relevant time.
+4. Schema governance: the schema version used was the one in force at the time.
+
+A Consumer decides which of these assumptions it accepts, and which evidence it requires for each.
+
