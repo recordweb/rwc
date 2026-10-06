@@ -11,7 +11,8 @@ A single database field is not a Record. An email attachment is not a Record. A 
 
 A [=Record=], by contrast, is: a decision of a public authority; an application submitted by a citizen; minutes of a meeting; an expert opinion; a contract. Each of these objects carries its meaning within itself.
 
-## Conceptual Taxonomy of Records {#section-record-taxonomy}
+
+## Conceptual Taxonomy of Records ## {#section-record-taxonomy}
 
 For the purposes of the RecordWeb conceptual model, [=Record|Records=] can be distinguished by their primary purpose:
 
@@ -38,9 +39,12 @@ Every [=Record=] in RecordWeb consists of three inseparable components: its <dfn
 
 **[=Metadata=]** are the dimensions along which a [=Record=] can be found, linked, and classified. They describe the [=Record=] from the outside without needing to know its content. The minimum set is deliberately kept small: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.
 
+
 ## Type and Schema: The Record's Contract ## {#record-type-schema}
 
 Every [=Record=] has a type. And every type has a schema. A [=Record=]'s type is not merely a label, it is a statement about which rules apply to this [=Record=]. In RecordWeb, a schema is itself a [=Record=]: a SchemaRecord with its own type, its own [=version graph=], and its own history. This guarantees backward compatibility structurally: every version of a [=Record=] remains permanently linked to the schema version that was valid at the time of its creation.
+
+A SchemaRecord can also declare which functions apply to Records of its type, for example retrieving, comparing, validating or publishing. This declaration is descriptive: it states what a Record type supports, not who may use it. Keeping it at the type level means it is governed, versioned and auditable once, instead of being repeated in every Record.
 
 
 ## States: The Liveliness of the Record ## {#section-record-states}
@@ -66,12 +70,12 @@ RecordWeb does not prescribe a mandatory lifecycle for Records. A Record remains
 
 Nevertheless, organisations may apply an established records lifecycle where this supports their operational, governance, archival, or legal requirements. In particular, a progression from a **System of Work (SoW)** to a **System of Record (SoR)** and subsequently to a **System of Archive (SoA)** remains possible within the RecordWeb approach.
 
-The transition between lifecycle stages does not require creating a new Record or discarding information about its previous context. Instead, the organisation transfers the Records digital representation to the appropriate target system and updates the Records DID Document accordingly.
+The transition between lifecycle stages does not require creating a new Record or discarding information about its previous context. Instead, the organisation transfers the Record's digital representation to the appropriate target system and updates the Record's DID Document accordingly.
 
 A lifecycle transition therefore consists principally of two coordinated activities:
 
 1. The Record, including the relevant content and associated representations, is physically transferred and made available in the target system.
-2. The DID Document is updated to reflect the current location, service endpoint, access method, or other technical information required to retrieve or interact with the Record in its new environment.
+2. The DID Document is updated to reflect the current location (the Record endpoint) and, where used, optional service entries that describe further access channels or other technical information required to retrieve or interact with the Record in its new environment.
 
 The DID Document may retain references to previous locations, services, or lifecycle events where this is required for traceability, auditability, or preservation purposes. This allows an organisation to document that a Record was previously managed in a SoW or SoR while making its authoritative representation available from a SoR or SoA.  This is not currently part of RWP; the [DID document](https://recordweb.github.io/rwp/#did-document) can be supplemented according the organisations requirements.
 
