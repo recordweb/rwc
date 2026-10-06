@@ -141,7 +141,7 @@ This layer includes service discovery and technical resolution mechanisms. Such 
 
 A DID Resolver and a namespace-resolution mechanism are therefore infrastructure functions. They support the resolution of persistent Record identity to current technical information without making the Record identical to a resolver, repository, URL, or endpoint.
 
-Beyond the mandatory Record endpoint, a DID Document can declare optional service entries, for example a restricted view of a Record or a list of the functions supported for it (see [RWP]). Such entries describe the technical availability of access channels. They do not grant access, which is decided at the governance level, and they are not part of the integrity evidence of a Record.
+Beyond the mandatory Record endpoint, a DID Document can declare optional service entries, for example a restricted view of a Record or a list of the functions supported for it (see [[RWP]]). Such entries describe the technical availability of access channels. They do not grant access, which is decided at the governance level, and they are not part of the integrity evidence of a Record.
 
 
 ### Information Package and Representation ### {#subsection-rwra-information-representation}
@@ -281,7 +281,7 @@ Possible publication mechanisms include:
 - an organisational website or service endpoint;
 - a procurement or audit evidence repository;
 - an institutional registry;
-- a service entry in a DID Document (see [RWP]);
+- a service entry in a DID Document (see [[RWP]]);
 - a signed Nanopublication; or
 - direct provision to an auditor, procuring organisation, or other verifier.
 
