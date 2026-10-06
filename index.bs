@@ -219,7 +219,7 @@ Annex A: Glossary {#glossary}
   within a [=version graph=] and is permanently identifiable regardless of system boundaries.</dd>
 
   <dt>Service entry</dt>
-  <dd>An optional entry in the service property of a Record's DID Document, as defined in [DID-CORE], declaring an additional access channel beyond the mandatory Record endpoint. A service entry declares availability, not authorisation.</dd>
+  <dd>An optional entry in the service property of a Record's DID Document, as defined in [[DID-CORE]], declaring an additional access channel beyond the mandatory Record endpoint. A service entry declares availability, not authorisation.</dd>
 
   <dt>State transition</dt>
   <dd>A change of the state of a [=Record=], for example from [=draft=] to [=finalized=]. In RecordWeb, "archiving" is a [=state transition=], not a system migration.</dd>
