@@ -31,13 +31,15 @@ This taxonomy describes conceptual purposes. It is not a mandatory implementatio
 
 ## The Three Components of a Record ## {#section-record-components}
 
-Every [=Record=] in RecordWeb consists of three inseparable components: its <dfn>identity</dfn>, its <dfn>payload</dfn>, and its <dfn>metadata</dfn>.
+Every [=Record=] in RecordWeb consists of four inseparable components: its <dfn>identity</dfn>, its <dfn>payload</dfn>, its <dfn>metadata</dfn>, and its <dfn>integrity evidence</dfn>.
 
 **[=Identity=]** is what makes the [=Record=] unambiguous. Globally, permanently, and without a foreign register. Every [=Record=] carries a unique identifier that identifies it across system boundaries, organisational boundaries, and time boundaries. This identifier is entirely independent of the [=Record=]'s physical storage location.
 
 **The [=payload=]** is the actual content, the information that the [=Record=] carries. A [=payload=] always follows a schema defined for its Record type. The schema is the contract between the [=Record=] and the system. A [=Record=] can carry multiple payload representations of the same information: a working format in [=draft=] state and a long-term format in [=finalized=] state.
 
 **[=Metadata=]** are the dimensions along which a [=Record=] can be found, linked, and classified. They describe the [=Record=] from the outside without needing to know its content. The minimum set is deliberately kept small: type, timestamp, responsible parties, state, provenance references, classification, and a free tag field.
+
+**[=Integrity evidence=]** is the hash value that makes any change to the Record detectable. Beyond it, each finalized Version carries one or more proofs, which allow the Version to be verified independently [issued copy](#section-issuedcopy).
 
 
 ## Type and Schema: The Record's Contract ## {#record-type-schema}
@@ -101,3 +103,17 @@ A citizen submits an application for a building permit.
 
 **In RecordWeb:** the application is captured as a [=Record=] of the type *building-permit-application*. Its schema specifies which fields must be present: parcel number, applicant, description of the construction project, date. The [=Record=] immediately receives a unique identity. Once fully captured, it is finalised. From that moment on, it is immutable, but accessible, linkable, and discoverable for all involved.
 
+
+## Transit: The Direction of a Record ## {#section-record-transit}
+
+Alongside type and state, a Record carries a third, independent classification: its **transit**. The type describes what a Record is, the state describes its maturity, and the transit describes its direction relative to the namespace in which it was created.
+
+The classification originates in classical records management, which distinguishes incoming, internal, and outgoing records (in German practice: Eingang, Verarbeitung, Ausgang).
+
+- A Record with transit **incoming** is created in a namespace upon receipt of information that originates outside it. A physiotherapist who captures an X-ray image brought by a patient creates such a Record. It is a copy of externally originated information, and its origin is stated explicitly as a provenance reference.
+- A Record with transit **internal** is intended for use within the namespace. It is not meant to be handed out or published.
+- A Record with transit **outgoing** is intended to leave the namespace. A decision handed to its addressee, a report sent by e-mail, or an [issued copy](#section-issuedcopy) are examples.
+
+Transit is metadata, not identity. It does not change the DID, the type, or the state of a Record. It reflects the circumstances of the Record's origin and is declared when the Record is created. The legal consequences of a classification are not defined by RecordWeb.
+
+The provenance reference of an incoming Record builds on the same idea as the source-provenance statement in [Source Integration](#chapter-sourceintegration): it names where information came from without claiming more than is known. The normative requirements are defined in RWP.

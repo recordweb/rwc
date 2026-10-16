@@ -87,27 +87,29 @@ The principle is simple: when a [=Case=] is finalised, its [=Merkle root=] (and 
 The Hyperledger anchor is an option, not an obligation.
 
 
-## The Optional Pod: Solid as Citizen-Controlled Storage ## {#optional-solid}
+## The Issued Copy: Proof Without Dependence ## {#section-issuedcopy}
 
-For situations in which a [=Record=] or [=Case=] belongs not to an authority but to a citizen (as the subject, recipient, or rights-holder) RecordWeb offers a second optional extension: delivery and storage of [=Records=] in a Solid Pod [[SOLID]].
+A finalized Record stays where it originated. This does not mean that the addressee of a Record's content has to trust the issuing system indefinitely. A DID document alone proves only that something existed and that it must have a certain hash. If the issuer no longer delivers the content, or presents different content, that proof is of little use to the person who relies on it.
 
-Solid is a W3C-based protocol that enables individuals to store their own data in a personal online data store (a *Pod*), fully under their own control. Applications and institutions may read from or write to a Pod only with explicit, revocable consent. The citizen is not the recipient of a copy, the citizen is the **owner of the original**.
+RecordWeb therefore distinguishes the Record from the **Issued Copy**. The term is borrowed from classical archival practice: an *Ausfertigung* is the version of a document that has actually left the issuer for the addressee, as distinct from the version the issuer retains. Typical examples are an identity card, a certificate, or a deed.
 
-The principle for RecordWeb is straightforward: when an authority finalises a [=Record=] that concerns a specific citizen, it may (with the citizen's consent) deliver that [=Record=] directly into the citizen's Pod. The [=Record=] retains its DID, its [=version graph=], and its cryptographic integrity. What changes is the storage location: the authority's system and the citizen's Pod both hold a reference to the same immutable, permanently addressable object.
+**Issuance.** When an issuer decides to hand out content, it decides which Version and which Representation are issued. This is often not the primary Representation: the working format may be a word-processing document, while the document handed out is a PDF. The issuance is itself documented in the Record: it produces a new finalized Version that contains exactly the issued Representation and a block describing the issuance (date, optionally the addressee, a validity period, and a reason). This Version is signed like any other.
 
-Typical use cases for citizen-held Records include:
+**Issued Copy.** The Issued Copy is the serialisation of this one Version, including its proofs, as a self-contained artifact. It is not a Record. It has no DID of its own, because a DID needs a resolver, and the Issued Copy is meant to work without one. It has no version graph and no state.
 
-- A driving licence issued by the road traffic authority
-- A medical image (X-ray, MRI) delivered by a hospital
-- A residence registration confirmation issued by the municipality
-- A building permit delivered to the applicant
-- A diploma or professional certification
+**What it achieves.**
+- The holder can prove that the issuer issued exactly this content, without the issuer's cooperation. The issuer cannot later claim to have issued something else, because the issued Version is part of its own Record and carries its signature.
+- The artifact can be bound to an addressee or be a bearer artifact. A share certificate that does not name a person is one example. In practice, binding to an addressee will be common, but RecordWeb does not require it.
+- An Issued Copy can be verified without access to the issuing system, provided the verifier trusts the key that signed it.
 
-In each case, the citizen can present the [=Record=] to any third party (an employer, an insurer, a foreign authority) who can independently verify its authenticity via the DID and the cryptographic hash, without querying the issuing authority. The authority's system remains authoritative; the citizen's Pod holds a provable, portable copy.
+**What it does not achieve.**
+- It does not prove that the person presenting it is the addressee. This is a matter for the check in the situation at hand.
+- It does not prove that the issuance is still valid. A validity period limits this risk, but an issuance cannot be revoked in an offline setting. This is comparable to a lost identity card: the replacement leaves two in circulation until the first one expires.
+- It does not replace the Record. The issuer's Record remains the authoritative institutional object.
 
-Note: The Solid Pod option complements, not replaces, the authority's own record keeping. The issuing authority retains the [=Record=] in its own RecordWeb system. The Pod delivery is an additional output, a citizen-facing endpoint for Records whose primary subject is the individual.
+An Issued Copy is typically, but not necessarily, an outgoing Record. An outgoing Record can also be a report sent by e-mail without any issuance.
 
-The Solid Pod anchor is an option, not an obligation. It requires the citizen to have a Pod and to have granted the relevant authority write access. The RecordWeb specification provides a `delivery-target` field in the optional [=metadata=] extension block for this purpose.
+**Solid Pod and Nanopublications.** The addressee holds an independently verifiable artifact locally, and its backup is the addressee's own choice. RecordWeb therefore does not pursue Solid Pod or Nanopublications integration.
 
 
 ## Trust Through Transparent Governance and Publication ## {#section-accountability-trust}
