@@ -109,7 +109,7 @@ RecordWeb therefore distinguishes the Record from the **Issued Copy**. The term 
 
 An Issued Copy is typically, but not necessarily, an outgoing Record. An outgoing Record can also be a report sent by e-mail without any issuance.
 
-**Solid Pod and Nanopublications.** The addressee holds an independently verifiable artifact locally, and its backup is the addressee's own choice. RecordWeb therefore does not pursue Solid Pod or Nanopublications integration.
+**Solid Pod and Nanopublications.** The addressee holds an independently verifiable artifact locally, and its backup is the addressee's own choice. RecordWeb therefore does not define Solid Pod or Nanopublications integration.
 
 
 ## Trust Through Transparent Governance and Publication ## {#section-accountability-trust}
