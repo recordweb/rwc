@@ -19,11 +19,14 @@ A concrete pilot use case is needed: a real [=Case=] from a public authority, mo
 
 RecordWeb has the potential to contribute to international standardisation processes. This path is long. It begins with the concept, proceeds through the specification, and is validated through implementations.
 
+
 ## Open Questions ## {#open-questions}
 
 The following questions are explicitly offered for community contribution:
 
 **Access control**: RecordWeb deliberately defines no authorisation model. Data security and information protection are delegated to the implementing systems. The specification provides an optional `accessPolicy` block in the minimum metadata set.
+
+**Capability discovery**: RWP offers optional service entries in the DID Document and capability declarations in SchemaRecords, so that a party, including an automated agent, can learn from resolution alone which access channels and functions exist for a Record [[DIDCOMM-DISCOVER-FEATURES]]. Open questions are how rich such declarations should be (for example with input and output descriptions), whether declared capabilities should become binding for resolvers, and how details are negotiated at runtime once a channel exists. The Discover Features protocol of DIDComm Messaging [[DIDCOMM-MESSAGING]] is a related mechanism for the last point. It works only after a connection is established, is best effort, and describes protocol support between agents rather than operations on a specific Record. It therefore complements, but does not replace, declaration at resolution time.
 
 **Federation**: RecordWeb offers a directional answer inspired by DNS architecture. DID resolvers function like DNS servers: federated, replicated, without a single point of failure. The Nanopublication network [[NANOPUB]] offers a working reference model: a decentralised peer-to-peer server network in which each node holds cryptographically signed, immutable micro-assertions identified by Trusty URIs. RecordWeb [=Records=] in their finalised state share the same structural properties (immutable, hash-identified, independently verifiable) and could be published and queried across a Nanopub-inspired federation layer. The complete federation architecture is the subject of [[RWP]].
 
@@ -45,6 +48,7 @@ The applicable mode is declared in the `deletionRegime` field of the [=Record=]'
 **Performance and scaling**: A global network of linked [=Records=] with cryptographic hash values places demands on infrastructure that are not yet fully foreseeable.
 
 **Platform adoption**: The actual adoption task lies not with the end user, but with the platform providers: Microsoft, Google, SAP, and others must integrate RWP as a native layer into their products.
+
 
 ## An Invitation ## {#invitation}
 

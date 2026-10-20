@@ -6,6 +6,15 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.0.9] – 2026-10-06
+
+Implemented CfC 8 outcomes. See 
+Optional Service-Block:
+- [RWP#28](https://github.com/recordweb/rwp/issues/28)
+
+Editorial:
+- Version update, wording, syntax
+
 ## [0.0.8] – 2026-10-05
 
 Implemented CfC 6 outcomes. See 

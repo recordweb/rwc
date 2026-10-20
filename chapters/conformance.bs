@@ -7,7 +7,7 @@ Conceptually, the relevant trust boundary is the software component that creates
 
 A source system does not, merely because another implementation creates an RWP representation from information obtained from it, thereby become the subject of that implementation's conformance claim. This holds independently of whether the source system also transfers its underlying content, or provides only provenance information about it while the content itself remains outside RWP's reach, for instance where the content is confidential and must not leave the source system. The allocation of conformance responsibility is defined by [[RWP]].
 
-## Validation, Assessment, Attestation, and Certification
+## Validation, Assessment, Attestation, and Certification ## {#section-conformance-validation}
 
 The following distinctions explain how conformance claims can be understood; they do not introduce additional protocol requirements.
 
