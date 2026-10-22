@@ -202,6 +202,12 @@ Annex A: Glossary {#glossary}
   <dt>Finalisation</dt>
   <dd>The explicit act by which a [=Record=] draft is converted into a binding, immutable version. Only finalised versions MAY be the target of a hard link. Finalisation is a human decision, documented with [=record owner=] and timestamp.</dd>
 
+  <dt>Issuance</dt>
+  <dd>The act by which an issuer hands out content, documented in the Record as a finalized Version with an issuance block.</dd>
+
+  <dt>Issued Copy</dt>
+  <dd>A self-contained artifact that contains exactly one issued Version including its proofs. It is not a Record, has no DID, and can be verified without access to the issuing system.</dd>
+
   <dt>Merkle root</dt>
   <dd>A cryptographic value calculated from the hash values of a set of [=Records=] that uniquely represents the aggregate state of that set. The [=Case=] [=Merkle root=] represents the state of a complete [=Case=] at a specific point in time.</dd>
 
@@ -223,6 +229,9 @@ Annex A: Glossary {#glossary}
 
   <dt>State transition</dt>
   <dd>A change of the state of a [=Record=], for example from [=draft=] to [=finalized=]. In RecordWeb, "archiving" is a [=state transition=], not a system migration.</dd>
+
+  <dt>Transit</dt>
+  <dd>The direction of a Record relative to its namespace: incoming, internal, or outgoing.</dd>
 
   <dt>Version graph</dt>
   <dd>The entirety of all versions of a [=Record=] and their linkages. Every node is an immutable snapshot; every edge describes a provenance relationship. The [=version graph=] is a [=Directed Acyclic Graph (DAG)=]: directed (from old to new), acyclic (no cycles). It contains [=branches=] and merges.</dd>
@@ -264,10 +273,30 @@ Annex B: Relationship to Existing Standards {#annex-standards}
     <tr>
       <td>[[DIDCOMM-DISCOVER-FEATURES]]</td>
       <td>Complementary. A DIDComm channel can be declared as a service entry; Discover Features can negotiate protocol details at runtime once a connection exists. It does not replace declaration at resolution time.</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC 18013-5</td>
+      <td>Proximity presentation of mobile driving licences. For such situations the issuer can issue a compact Representation. RecordWeb does not define the transport.</td>
+    </tr>
+    <tr>
+      <td>OpenID4VCI / OpenID4VP</td>
+      <td>Protocols for issuing and presenting credentials. RecordWeb does not specify how an Issued Copy is transferred to or presented by a holder. These protocols can serve that purpose. RecordWeb defines when and why an artifact is issued, and what it proves.</td>
+    </tr>
     <tr>
       <td>[[PROVO]]</td>
       <td>PROV-O would be used as serialisation format for RecordWeb lineage documentation to establish interoperability with PROV-O-compatible systems.</td>
     </tr>
+    <tr>
+      <td>W3C VC Data Model 2.0</td>
+      <td>An Issued Copy is functionally adjacent to a Verifiable Credential: a signed artifact that a holder presents to a verifier. RecordWeb does not require the VC data model and does not define a VC encoding. An implementation MAY map an Issued Copy to a VC where that serves its purpose.</td>
+    </tr>
+    <tr>
+      <td>W3C VC Data Integrity 1.0</td>
+      <td>RecordWeb uses the Data Integrity proof structure for the proofs of finalized Versions (see RWP).</td>
+    </tr>
   </tbody>
 </table>
 
+RecordWeb is complementary to the Verifiable Credentials ecosystem and does not compete with it. The Record remains the authoritative institutional object, addressed via a DID and retained at its place of origin. The Verifiable Credentials model has no equivalent, since a credential has no origin system it is bound to. Conversely, how an issued artifact is transferred and presented is a concern the credential ecosystem addresses.
+
+Where the receiving party has to retain the content, for example because the payload is too large for a proximity presentation or because the receiving party is itself an institution, RecordWeb does not introduce a transfer protocol. The receiving party creates its own Record with transit *incoming* and an explicit provenance reference. The holder's device does not act as a RecordWeb node.

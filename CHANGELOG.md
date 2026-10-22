@@ -6,6 +6,12 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.0.10] – 2026-10-22
+
+Implemented CfC 10 outcomes. See
+Citizen autonomy:
+- [RWC#5](https://github.com/recordweb/rwc/issues/5)
+
 ## [0.0.9] – 2026-10-06
 
 Implemented CfC 8 outcomes. See 
